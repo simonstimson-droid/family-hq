@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏠 Family HQ</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; }
+        
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: center; }
+        .header h1 { font-size: 28px; margin-bottom: 5px; }
+        .header .date { opacity: 0.9; font-size: 14px; }
+        
+        .tabs { display: flex; overflow-x: auto; background: white; border-bottom: 2px solid #e0e0e0; position: sticky; top: 0; z-index: 100; }
+        .tab { padding: 12px 20px; cursor: pointer; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; font-size: 14px; }
+        .tab:hover { background: #f0f0f0; }
+        .tab.active { border-bottom-color: #667eea; color: #667eea; font-weight: 600; }
+        
+        .content { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .panel { display: none; }
+        .panel.active { display: block; }
+        
+        .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .card h2 { font-size: 18px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        
+        .event-item, .chore-item, .shopping-item, .announcement-item, .meal-item, .activity-item {
+            padding: 12px; border-left: 4px solid #667eea; background: #f8f9ff; border-radius: 0 8px 8px 0; margin-bottom: 8px;
+        }
+        .event-item .time { font-weight: 600; color: #667eea; font-size: 13px; }
+        .event-item .title { font-weight: 500; margin: 4px 0; }
+        .event-item .location { font-size: 13px; color: #666; }
+        
+        .chore-item { border-left-color: #f59e0b; }
+        .chore-item.done { opacity: 0.5; text-decoration: line-through; border-left-color: #10b981; }
+        .chore-item .assignee { font-size: 13px; color: #666; }
+        
+        .shopping-item { border-left-color: #10b981; cursor: pointer; }
+        .shopping-item.done { opacity: 0.5; text-decoration: line-through; }
+        .shopping-item .category { font-size: 12px; color: #888; text-transform: uppercase; }
+        
+        .announcement-item { border-left-color: #ef4444; }
+        .announcement-item .from { font-size: 13px; color: #666; }
+        .announcement-item .msg { margin-top: 4px; }
+        .announcement-item.high { border-left-color: #dc2626; background: #fef2f2; }
+        
+        .meal-item { border-left-color: #8b5cf6; }
+        .meal-item .day { font-weight: 600; color: #8b5cf6; }
+        
+        .activity-item { border-left-color: #06b6d4; }
+        .activity-item .child { font-weight: 600; color: #06b6d4; }
+        
+        .add-btn { background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .add-btn:hover { background: #5a6fd6; }
+        
+        .empty { color: #999; font-style: italic; padding: 20px; text-align: center; }
+        
+        .family-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+        .family-card { background: #f8f9ff; border-radius: 10px; padding: 16px; text-align: center; }
+        .family-card .name { font-weight: 600; font-size: 16px; }
+        .family-card .role { font-size: 13px; color: #666; }
+        
+        .budget-bar { height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; margin-top: 4px; }
+        .budget-bar .fill { height: 100%; background: linear-gradient(90deg, #10b981, #667eea); border-radius: 4px; }
+        
+        .refresh-btn { position: fixed; bottom: 20px; right: 20px; background: #667eea; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 20px; cursor: pointer; box-shadow: 0 4px 12px rgba(102,126,234,0.4); }
+        .refresh-btn:hover { background: #5a6fd6; }
+        
+        @media (max-width: 600px) {
+            .header h1 { font-size: 22px; }
+            .tab { padding: 10px 14px; font-size: 13px; }
+            .content { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏠 Family HQ</h1>
+        <div class="date" id="currentDate"></div>
+    </div>
+    
+    <div class="tabs">
+        <div class="tab active" data-panel="today">📅 Today</div>
+        <div class="tab" data-panel="shopping">🛒 Shopping</div>
+        <div class="tab" data-panel="chores">✅ Chores</div>
+        <div class="tab" data-panel="meals">🍽️ Meals</div>
+        <div class="tab" data-panel="school">📋 School</div>
+        <div class="tab" data-panel="budget">💰 Budget</div>
+        <div class="tab" data-panel="announcements">📝 News</div>
+        <div class="tab" data-panel="family">👨‍👩‍👧‍👧 Family</div>
+    </div>
+    
+    <div class="content">
+        <div class="panel active" id="today">
+            <div class="card">
+                <h2>📅 Today's Events</h2>
+                <div id="todayEvents"><div class="empty">Loading...</div></div>
+            </div>
+            <div class="card">
+                <h2>✅ Today's Chores</h2>
+                <div id="todayChores"><div class="empty">Loading...</div></div>
+            </div>
+            <div class="card">
+                <h2>🍽️ Tonight's Dinner</h2>
+                <div id="tonightMeal"><div class="empty">Loading...</div></div>
+            </div>
+        </div>
+        
+        <div class="panel" id="shopping">
+            <div class="card">
+                <h2>🛒 Shopping List</h2>
+                <div id="shoppingList"><div class="empty">Loading...</div></div>
+                <button class="add-btn" onclick="addShoppingItem()">+ Add Item</button>
+            </div>
+        </div>
+        
+        <div class="panel" id="chores">
+            <div class="card">
+                <h2>✅ Family Chores</h2>
+                <div id="choreList"><div class="empty">Loading...</div></div>
+                <button class="add-btn" onclick="addChore()">+ Add Chore</button>
+            </div>
+        </div>
+        
+        <div class="panel" id="meals">
+            <div class="card">
+                <h2>🍽️ Weekly Meal Plan</h2>
+                <div id="mealPlan"><div class="empty">Loading...</div></div>
+            </div>
+        </div>
+        
+        <div class="panel" id="school">
+            <div class="card">
+                <h2>📋 School & Activities</h2>
+                <div id="schoolActivities"><div class="empty">Loading...</div></div>
+            </div>
+        </div>
+        
+        <div class="panel" id="budget">
+            <div class="card">
+                <h2>💰 Household Budget</h2>
+                <div id="budgetData"><div class="empty">Loading...</div></div>
+            </div>
+        </div>
+        
+        <div class="panel" id="announcements">
+            <div class="card">
+                <h2>📝 Family Announcements</h2>
+                <div id="announcementsList"><div class="empty">Loading...</div></div>
+                <button class="add-btn" onclick="addAnnouncement()">+ New Announcement</button>
+            </div>
+        </div>
+        
+        <div class="panel" id="family">
+            <div class="card">
+                <h2>👨‍👩‍👧‍👧 Family Members</h2>
+                <div class="family-grid" id="familyMembers"><div class="empty">Loading...</div></div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="refresh-btn" onclick="loadAllData()" title="Refresh">🔄</button>
+    
+    <script>
+        // Set current date
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-GB', options);
+        
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.panel).classList.add('active');
+            });
+        });
+        
+        // TODO: Connect to Google Sheets API
+        // For now, showing placeholder data
+        
+        function loadAllData() {
+            // Today's events
+            document.getElementById('todayEvents').innerHTML = `
+                <div class="event-item">
+                    <div class="time">All day</div>
+                    <div class="title">🛂 Simon passport expires</div>
+                </div>
+                <div class="event-item">
+                    <div class="time">All day</div>
+                    <div class="title">🛂 Emma's passport expires</div>
+                </div>
+            `;
+            
+            // Today's chores
+            document.getElementById('todayChores').innerHTML = `
+                <div class="empty">No chores due today — enjoy! 🎉</div>
+            `;
+            
+            // Tonight's meal
+            document.getElementById('tonightMeal').innerHTML = `
+                <div class="meal-item">
+                    <div class="day">Saturday</div>
+                    <div>Plan your dinner! 🍽️</div>
+                </div>
+            `;
+            
+            // Shopping list
+            document.getElementById('shoppingList').innerHTML = `
+                <div class="shopping-item" onclick="this.classList.toggle('done')">
+                    <div>Milk — 2 pints</div>
+                    <div class="category">Dairy • Added by Simon</div>
+                </div>
+                <div class="shopping-item" onclick="this.classList.toggle('done')">
+                    <div>Bread — 1 loaf</div>
+                    <div class="category">Bakery • Added by Simon</div>
+                </div>
+                <div class="shopping-item" onclick="this.classList.toggle('done')">
+                    <div>Bin bags — 1 roll</div>
+                    <div class="category">Household • Added by Simon</div>
+                </div>
+            `;
+            
+            // Chores
+            document.getElementById('choreList').innerHTML = `
+                <div class="empty">No chores set yet. Add some to get started! 💪</div>
+            `;
+            
+            // Meal plan
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            document.getElementById('mealPlan').innerHTML = days.map(d => `
+                <div class="meal-item">
+                    <div class="day">${d}</div>
+                    <div>Tap to plan meals 🍽️</div>
+                </div>
+            `).join('');
+            
+            // School
+            document.getElementById('schoolActivities').innerHTML = `
+                <div class="activity-item">
+                    <div class="child">Ava</div>
+                    <div>School — Mon-Fri 8:30-3:30</div>
+                    <div style="font-size:13px;color:#666;">Fairfield Park, Dickens Boulevard</div>
+                </div>
+                <div class="activity-item">
+                    <div class="child">Ava</div>
+                    <div>🎓 Father's Breakfast — Wed 17 Jun, 8:00</div>
+                    <div style="font-size:13px;color:#666;">Year 3 DB</div>
+                </div>
+                <div class="activity-item">
+                    <div class="child">Ava</div>
+                    <div>🎪 Summer Fete — Sun 14 Jun, 11:00-14:00</div>
+                    <div style="font-size:13px;color:#666;">Fairfield Park PTA</div>
+                </div>
+            `;
+            
+            // Budget
+            document.getElementById('budgetData').innerHTML = `
+                <div class="card">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>Groceries</span><span>£400/mo</span></div>
+                    <div class="budget-bar"><div class="fill" style="width:0%"></div></div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:12px;"><span>Utilities</span><span>£200/mo</span></div>
+                    <div class="budget-bar"><div class="fill" style="width:0%"></div></div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:12px;"><span>School</span><span>£100/mo</span></div>
+                    <div class="budget-bar"><div class="fill" style="width:0%"></div></div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:12px;"><span>Entertainment</span><span>£100/mo</span></div>
+                    <div class="budget-bar"><div class="fill" style="width:0%"></div></div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:12px;"><span>Transport</span><span>£150/mo</span></div>
+                    <div class="budget-bar"><div class="fill" style="width:0%"></div></div>
+                </div>
+            `;
+            
+            // Announcements
+            document.getElementById('announcementsList').innerHTML = `
+                <div class="announcement-item">
+                    <div class="from">Simon • 6 Jun</div>
+                    <div class="msg">Welcome to Family HQ! 🎉</div>
+                </div>
+                <div class="announcement-item high">
+                    <div class="from">Simon • 6 Jun</div>
+                    <div class="msg">⚠️ Passports expiring 9 June — need to renew!</div>
+                </div>
+                <div class="announcement-item">
+                    <div class="from">Simon • 6 Jun</div>
+                    <div class="msg">Ava's school fete 14 June, 11-2pm</div>
+                </div>
+            `;
+            
+            // Family members
+            document.getElementById('familyMembers').innerHTML = `
+                <div class="family-card">
+                    <div class="name">👨 Simon</div>
+                    <div class="role">Dad</div>
+                </div>
+                <div class="family-card">
+                    <div class="name">👩 Emma</div>
+                    <div class="role">Mum</div>
+                </div>
+                <div class="family-card">
+                    <div class="name">👧 Ava</div>
+                    <div class="role">Daughter • Year 3</div>
+                </div>
+                <div class="family-card">
+                    <div class="name">👧 [Name]</div>
+                    <div class="role">Daughter</div>
+                </div>
+            `;
+        }
+        
+        function addShoppingItem() {
+            const item = prompt("What do you need to buy?");
+            if (item) alert("Added: " + item + "\n\n(Full Google Sheets integration coming soon!)");
+        }
+        
+        function addChore() {
+            const task = prompt("What's the chore?");
+            if (task) alert("Added: " + task + "\n\n(Full Google Sheets integration coming soon!)");
+        }
+        
+        function addAnnouncement() {
+            const msg = prompt("What's the announcement?");
+            if (msg) alert("Posted: " + msg + "\n\n(Full Google Sheets integration coming soon!)");
+        }
+        
+        // Load data on page load
+        loadAllData();
+    </script>
+</body>
+</html>
