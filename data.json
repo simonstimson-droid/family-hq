@@ -10,110 +10,6 @@
     ],
     "rows": [
       {
-        "Date": "2026-06-08",
-        "Time": "All day",
-        "Event": "🛂 Apply for passport renewal",
-        "Who": "Simon & Emma",
-        "Location": "",
-        "Notes": "URGENT - expires tomorrow!"
-      },
-      {
-        "Date": "2026-06-09",
-        "Time": "All day",
-        "Event": "🛂 Passports expire!",
-        "Who": "Simon & Emma",
-        "Location": "",
-        "Notes": "Last valid day"
-      },
-      {
-        "Date": "2026-06-14",
-        "Time": "11:00-14:00",
-        "Event": "🎪 Fairfield Park Summer Fete",
-        "Who": "Ava's School",
-        "Location": "Fairfield Park",
-        "Notes": "PTA event £1 entry"
-      },
-      {
-        "Date": "2026-06-17",
-        "Time": "08:00-09:00",
-        "Event": "🎓 Father's Breakfast",
-        "Who": "Ava Year 3 DB",
-        "Location": "Fairfield Park",
-        "Notes": ""
-      },
-      {
-        "Date": "2026-06-23",
-        "Time": "All day",
-        "Event": "🧘 Year 5 Yoga Day 1",
-        "Who": "Ella",
-        "Location": "Pix Brook Academy",
-        "Notes": "Comfortable clothes, bare feet, water bottle"
-      },
-      {
-        "Date": "2026-06-24",
-        "Time": "All day",
-        "Event": "🧘 Year 5 Yoga Day 2",
-        "Who": "Ella",
-        "Location": "Pix Brook Academy",
-        "Notes": "Comfortable clothes, bare feet, water bottle"
-      },
-      {
-        "Date": "2026-06-26",
-        "Time": "All day",
-        "Event": "🎪 Where's Wally Day",
-        "Who": "Ella",
-        "Location": "Pix Brook Academy",
-        "Notes": "Dress up! £1.50 via MCAS"
-      },
-      {
-        "Date": "2026-07-08",
-        "Time": "All day",
-        "Event": "🎨 Creative Arts Festival",
-        "Who": "Ella",
-        "Location": "Pix Brook Academy",
-        "Notes": "Whole school event"
-      },
-      {
-        "Date": "2026-07-10",
-        "Time": "All day",
-        "Event": "🏃 Sports Day (Yrs 5-10)",
-        "Who": "Ella",
-        "Location": "Pix Brook Academy",
-        "Notes": ""
-      },
-      {
-        "Date": "",
-        "Time": "",
-        "Event": "",
-        "Who": "",
-        "Location": "",
-        "Notes": ""
-      },
-      {
-        "Date": "",
-        "Time": "",
-        "Event": "",
-        "Who": "",
-        "Location": "",
-        "Notes": ""
-      },
-      {
-        "Date": "",
-        "Time": "",
-        "Event": "",
-        "Who": "",
-        "Location": "",
-        "Notes": ""
-      },
-      {
-        "Date": "",
-        "Time": "",
-        "Event": "",
-        "Who": "",
-        "Location": "",
-        "Notes": ""
-      },
-      {
         "Date": "2026-04-13",
         "Time": "All day",
         "Event": "🏫 Training Day - Fairfield Park",
@@ -138,12 +34,460 @@
         "Notes": "All schools closed"
       },
       {
+        "Date": "2026-06-08",
+        "Time": "All day",
+        "Event": "🛂 Apply for passport renewal",
+        "Who": "Simon & Emma",
+        "Location": "",
+        "Notes": "URGENT - expires tomorrow!"
+      },
+      {
+        "Date": "2026-06-08",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-09",
+        "Time": "All day",
+        "Event": "🛂 Passports expire!",
+        "Who": "Simon & Emma",
+        "Location": "",
+        "Notes": "Last valid day"
+      },
+      {
+        "Date": "2026-06-09",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-10",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-11",
+        "Time": "17:45-18:30",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-11",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-13",
+        "Time": "09:15-10:00",
+        "Event": "BX Dance - Ava",
+        "Who": "Ava",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-13",
+        "Time": "10:00-10:45",
+        "Event": "BX Dance - Ella",
+        "Who": "Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-13",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-14",
+        "Time": "11:00-14:00",
+        "Event": "🎪 Fairfield Park Summer Fete",
+        "Who": "Ava's School",
+        "Location": "Fairfield Park",
+        "Notes": "PTA event £1 entry"
+      },
+      {
+        "Date": "2026-06-15",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-16",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-17",
+        "Time": "08:00-09:00",
+        "Event": "🎓 Father's Breakfast",
+        "Who": "Ava Year 3 DB",
+        "Location": "Fairfield Park",
+        "Notes": "Last day of school"
+      },
+      {
+        "Date": "2026-06-17",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-18",
+        "Time": "17:45-18:30",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-18",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-20",
+        "Time": "09:15-10:00",
+        "Event": "BX Dance - Ava",
+        "Who": "Ava",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-20",
+        "Time": "10:00-10:45",
+        "Event": "BX Dance - Ella",
+        "Who": "Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-20",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-22",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-23",
+        "Time": "All day",
+        "Event": "🧘 Year 5 Yoga Day 1",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Comfortable clothes, bare feet, water bottle"
+      },
+      {
+        "Date": "2026-06-23",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-24",
+        "Time": "All day",
+        "Event": "🧘 Year 5 Yoga Day 2",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Comfortable clothes, bare feet, water bottle"
+      },
+      {
+        "Date": "2026-06-24",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-25",
+        "Time": "17:45-18:30",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-25",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-26",
+        "Time": "All day",
+        "Event": "🎪 Where's Wally Day",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Dress up! £1.50 via MCAS"
+      },
+      {
+        "Date": "2026-06-27",
+        "Time": "09:15-10:00",
+        "Event": "BX Dance - Ava",
+        "Who": "Ava",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-27",
+        "Time": "10:00-10:45",
+        "Event": "BX Dance - Ella",
+        "Who": "Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-27",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-29",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-30",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-01",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-02",
+        "Time": "17:45-18:30",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-02",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-04",
+        "Time": "09:15-10:00",
+        "Event": "BX Dance - Ava",
+        "Who": "Ava",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-04",
+        "Time": "10:00-10:45",
+        "Event": "BX Dance - Ella",
+        "Who": "Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-04",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-06",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-07",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-08",
+        "Time": "All day",
+        "Event": "🎨 Creative Arts Festival",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Whole school event"
+      },
+      {
+        "Date": "2026-07-08",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-09",
+        "Time": "17:45-18:30",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-09",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-10",
+        "Time": "All day",
+        "Event": "🏃 Sports Day (Yrs 5-10)",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-11",
+        "Time": "09:15-10:00",
+        "Event": "BX Dance - Ava",
+        "Who": "Ava",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-11",
+        "Time": "10:00-10:45",
+        "Event": "BX Dance - Ella",
+        "Who": "Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-11",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-13",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-14",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-15",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-16",
+        "Time": "17:45-18:30",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-16",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
         "Date": "2026-07-17",
         "Time": "All day",
         "Event": "📅 End of Term - PBA",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": "Last day of school"
+      },
+      {
+        "Date": "2026-07-17",
+        "Time": "All day",
+        "Event": "📅 End of Term - PBA",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Last day of school"
+      },
+      {
+        "Date": "2026-07-17",
+        "Time": "All day",
+        "Event": "🏫 End of Term - Both Schools",
+        "Who": "Ava & Ella",
+        "Location": "",
+        "Notes": "Last day before summer holidays!"
       },
       {
         "Date": "2026-07-20",
@@ -160,6 +504,38 @@
         "Who": "Ella",
         "Location": "",
         "Notes": "School closed for pupils"
+      },
+      {
+        "Date": "2026-07-20",
+        "Time": "All day",
+        "Event": "🏫 Training Day - Fairfield Park",
+        "Who": "Ava",
+        "Location": "",
+        "Notes": "School closed for pupils"
+      },
+      {
+        "Date": "2026-07-20",
+        "Time": "All day",
+        "Event": "🏫 Training Day - PBA",
+        "Who": "Ella",
+        "Location": "",
+        "Notes": "School closed for pupils"
+      },
+      {
+        "Date": "2026-07-20",
+        "Time": "All day",
+        "Event": "🏫 Training Day - Both Schools",
+        "Who": "Ava & Ella",
+        "Location": "",
+        "Notes": "Staff training - children off"
+      },
+      {
+        "Date": "2026-07-21",
+        "Time": "All day",
+        "Event": "📅 End of Term - Fairfield Park",
+        "Who": "Ava",
+        "Location": "Fairfield Park",
+        "Notes": "Ava effectively finishes 17 July (training day 20 July)"
       },
       {
         "Date": "2026-07-22",
