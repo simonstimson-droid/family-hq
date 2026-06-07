@@ -11,6 +11,7 @@
         .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: center; }
         .header h1 { font-size: 28px; margin-bottom: 5px; }
         .header .date { opacity: 0.9; font-size: 14px; }
+        .header .update-time { opacity: 0.7; font-size: 12px; margin-top: 4px; }
         
         .tabs { display: flex; overflow-x: auto; background: white; border-bottom: 2px solid #e0e0e0; position: sticky; top: 0; z-index: 100; }
         .tab { padding: 12px 20px; cursor: pointer; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; font-size: 14px; }
@@ -24,36 +25,44 @@
         .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
         .card h2 { font-size: 18px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
         
-        .event-item, .chore-item, .shopping-item, .announcement-item, .meal-item, .activity-item {
+        .event-item, .chore-item, .shopping-item, .announcement-item, .meal-item, .activity-item, .contact-item {
             padding: 12px; border-left: 4px solid #667eea; background: #f8f9ff; border-radius: 0 8px 8px 0; margin-bottom: 8px;
         }
         .event-item .time { font-weight: 600; color: #667eea; font-size: 13px; }
         .event-item .title { font-weight: 500; margin: 4px 0; }
         .event-item .location { font-size: 13px; color: #666; }
         
-        .chore-item { border-left-color: #f59e0b; }
+        .chore-item { border-left-color: #f59e0b; background: #fffbeb; }
         .chore-item.done { opacity: 0.5; text-decoration: line-through; border-left-color: #10b981; }
         .chore-item .assignee { font-size: 13px; color: #666; }
         
-        .shopping-item { border-left-color: #10b981; cursor: pointer; }
+        .shopping-item { border-left-color: #10b981; background: #f0fdf4; cursor: pointer; }
         .shopping-item.done { opacity: 0.5; text-decoration: line-through; }
         .shopping-item .category { font-size: 12px; color: #888; text-transform: uppercase; }
+        .shopping-item .added-by { font-size: 12px; color: #888; }
         
-        .announcement-item { border-left-color: #ef4444; }
+        .announcement-item { border-left-color: #ef4444; background: #fef2f2; }
         .announcement-item .from { font-size: 13px; color: #666; }
         .announcement-item .msg { margin-top: 4px; }
         .announcement-item.high { border-left-color: #dc2626; background: #fef2f2; }
         
-        .meal-item { border-left-color: #8b5cf6; }
+        .meal-item { border-left-color: #8b5cf6; background: #faf5ff; }
         .meal-item .day { font-weight: 600; color: #8b5cf6; }
         
-        .activity-item { border-left-color: #06b6d4; }
+        .activity-item { border-left-color: #06b6d4; background: #f0fdff; }
         .activity-item .child { font-weight: 600; color: #06b6d4; }
+        .activity-item .details { font-size: 13px; color: #666; margin-top: 2px; }
+        
+        .contact-item { border-left-color: #64748b; background: #f8fafc; }
+        .contact-item .name { font-weight: 600; }
+        .contact-item .detail { font-size: 13px; color: #666; margin-top: 2px; }
         
         .add-btn { background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; margin-top: 10px; }
         .add-btn:hover { background: #5a6fd6; }
         
         .empty { color: #999; font-style: italic; padding: 20px; text-align: center; }
+        .loading { color: #667eea; padding: 20px; text-align: center; }
+        .error { color: #ef4444; padding: 20px; text-align: center; }
         
         .family-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
         .family-card { background: #f8f9ff; border-radius: 10px; padding: 16px; text-align: center; }
@@ -63,8 +72,11 @@
         .budget-bar { height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; margin-top: 4px; }
         .budget-bar .fill { height: 100%; background: linear-gradient(90deg, #10b981, #667eea); border-radius: 4px; }
         
-        .refresh-btn { position: fixed; bottom: 20px; right: 20px; background: #667eea; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 20px; cursor: pointer; box-shadow: 0 4px 12px rgba(102,126,234,0.4); }
+        .refresh-btn { position: fixed; bottom: 20px; right: 20px; background: #667eea; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 20px; cursor: pointer; box-shadow: 0 4px 12px rgba(102,126,234,0.4); z-index: 200; }
         .refresh-btn:hover { background: #5a6fd6; }
+        
+        .spinner { display: inline-block; animation: spin 1s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
         
         @media (max-width: 600px) {
             .header h1 { font-size: 22px; }
@@ -77,84 +89,111 @@
     <div class="header">
         <h1>🏠 Family HQ</h1>
         <div class="date" id="currentDate"></div>
+        <div class="update-time" id="updateTime"></div>
     </div>
     
     <div class="tabs">
         <div class="tab active" data-panel="today">📅 Today</div>
+        <div class="tab" data-panel="calendar">📆 Calendar</div>
         <div class="tab" data-panel="shopping">🛒 Shopping</div>
         <div class="tab" data-panel="chores">✅ Chores</div>
         <div class="tab" data-panel="meals">🍽️ Meals</div>
         <div class="tab" data-panel="school">📋 School</div>
+        <div class="tab" data-panel="contacts">📞 Contacts</div>
         <div class="tab" data-panel="budget">💰 Budget</div>
         <div class="tab" data-panel="announcements">📝 News</div>
         <div class="tab" data-panel="family">👨‍👩‍👧‍👧 Family</div>
     </div>
     
     <div class="content">
+        <!-- TODAY -->
         <div class="panel active" id="today">
             <div class="card">
                 <h2>📅 Today's Events</h2>
-                <div id="todayEvents"><div class="empty">Loading...</div></div>
+                <div id="todayEvents"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
             <div class="card">
                 <h2>✅ Today's Chores</h2>
-                <div id="todayChores"><div class="empty">Loading...</div></div>
+                <div id="todayChores"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
             <div class="card">
                 <h2>🍽️ Tonight's Dinner</h2>
-                <div id="tonightMeal"><div class="empty">Loading...</div></div>
+                <div id="tonightMeal"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
         </div>
         
+        <!-- CALENDAR -->
+        <div class="panel" id="calendar">
+            <div class="card">
+                <h2>📆 Upcoming Events</h2>
+                <div id="calendarEvents"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+        </div>
+        
+        <!-- SHOPPING -->
         <div class="panel" id="shopping">
             <div class="card">
                 <h2>🛒 Shopping List</h2>
-                <div id="shoppingList"><div class="empty">Loading...</div></div>
+                <div id="shoppingList"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
                 <button class="add-btn" onclick="addShoppingItem()">+ Add Item</button>
             </div>
         </div>
         
+        <!-- CHORES -->
         <div class="panel" id="chores">
             <div class="card">
                 <h2>✅ Family Chores</h2>
-                <div id="choreList"><div class="empty">Loading...</div></div>
+                <div id="choreList"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
                 <button class="add-btn" onclick="addChore()">+ Add Chore</button>
             </div>
         </div>
         
+        <!-- MEALS -->
         <div class="panel" id="meals">
             <div class="card">
                 <h2>🍽️ Weekly Meal Plan</h2>
-                <div id="mealPlan"><div class="empty">Loading...</div></div>
+                <div id="mealPlan"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
         </div>
         
+        <!-- SCHOOL -->
         <div class="panel" id="school">
             <div class="card">
                 <h2>📋 School & Activities</h2>
-                <div id="schoolActivities"><div class="empty">Loading...</div></div>
+                <div id="schoolActivities"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
         </div>
         
+        <!-- CONTACTS -->
+        <div class="panel" id="contacts">
+            <div class="card">
+                <h2>📞 Important Contacts</h2>
+                <div id="contactsList"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+        </div>
+        
+        <!-- BUDGET -->
         <div class="panel" id="budget">
             <div class="card">
                 <h2>💰 Household Budget</h2>
-                <div id="budgetData"><div class="empty">Loading...</div></div>
+                <div id="budgetData"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
         </div>
         
+        <!-- ANNOUNCEMENTS -->
         <div class="panel" id="announcements">
             <div class="card">
                 <h2>📝 Family Announcements</h2>
-                <div id="announcementsList"><div class="empty">Loading...</div></div>
+                <div id="announcementsList"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
                 <button class="add-btn" onclick="addAnnouncement()">+ New Announcement</button>
             </div>
         </div>
         
+        <!-- FAMILY -->
         <div class="panel" id="family">
             <div class="card">
                 <h2>👨‍👩‍👧‍👧 Family Members</h2>
-                <div class="family-grid" id="familyMembers"><div class="empty">Loading...</div></div>
+                <div class="family-grid" id="familyMembers"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
         </div>
     </div>
@@ -162,6 +201,8 @@
     <button class="refresh-btn" onclick="loadAllData()" title="Refresh">🔄</button>
     
     <script>
+        let familyData = null;
+        
         // Set current date
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-GB', options);
@@ -176,150 +217,301 @@
             });
         });
         
-        // TODO: Connect to Google Sheets API
-        // For now, showing placeholder data
+        // Helper: get today's date as YYYY-MM-DD
+        function getTodayStr() {
+            const d = new Date();
+            return d.toISOString().split('T')[0];
+        }
         
-        function loadAllData() {
+        // Helper: format date
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const d = new Date(dateStr);
+            if (isNaN(d.getTime())) return dateStr;
+            return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+        }
+        
+        // Helper: format time
+        function formatTime(timeStr) {
+            if (!timeStr) return '';
+            // Handle HH:MM or HH:MM:SS
+            const parts = timeStr.split(':');
+            if (parts.length >= 2) {
+                const h = parseInt(parts[0]);
+                const m = parts[1];
+                const ampm = h >= 12 ? 'pm' : 'am';
+                const h12 = h % 12 || 12;
+                return `${h12}:${m} ${ampm}`;
+            }
+            return timeStr;
+        }
+        
+        // Helper: get sheet data by emoji prefix
+        function getSheet(emoji) {
+            if (!familyData) return [];
+            for (const key of Object.keys(familyData)) {
+                if (key.startsWith(emoji)) {
+                    const sheet = familyData[key];
+                    return sheet.rows || [];
+                }
+            }
+            return [];
+        }
+        
+        // Helper: show error
+        function showError(elementId, message) {
+            document.getElementById(elementId).innerHTML = `<div class="error">${message}</div>`;
+        }
+        
+        // Helper: show empty
+        function showEmpty(elementId, message) {
+            document.getElementById(elementId).innerHTML = `<div class="empty">${message}</div>`;
+        }
+        
+        function renderToday(data) {
+            const today = getTodayStr();
+            const events = getSheet('📅');
+            const chores = getSheet('✅');
+            const meals = getSheet('🍽️');
+            
             // Today's events
-            document.getElementById('todayEvents').innerHTML = `
-                <div class="event-item">
-                    <div class="time">All day</div>
-                    <div class="title">🛂 Simon passport expires</div>
-                </div>
-                <div class="event-item">
-                    <div class="time">All day</div>
-                    <div class="title">🛂 Emma's passport expires</div>
-                </div>
-            `;
+            const todayEvents = events.filter(e => {
+                const date = e.Date || e.date || e.Start || e.start || '';
+                return date.startsWith(today) || date === today;
+            });
+            
+            if (todayEvents.length > 0) {
+                document.getElementById('todayEvents').innerHTML = todayEvents.map(e => `
+                    <div class="event-item">
+                        <div class="time">${formatTime(e.Time || e.time || '') || 'All day'}</div>
+                        <div class="title">${e.Event || e.event || e.Title || e.title || e.Summary || 'Event'}</div>
+                        ${e.Location || e.location ? `<div class="location">📍 ${e.Location || e.location}</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                showEmpty('todayEvents', 'No events today — enjoy! 🎉');
+            }
             
             // Today's chores
-            document.getElementById('todayChores').innerHTML = `
-                <div class="empty">No chores due today — enjoy! 🎉</div>
-            `;
+            const todayChores = chores.filter(c => {
+                const day = (c.Day || c.day || c.Frequency || '').toLowerCase();
+                const todayDay = new Date().toLocaleDateString('en-GB', { weekday: 'long' }).toLowerCase();
+                return day.includes(todayDay) || day.includes('daily') || day.includes('every');
+            });
+            
+            if (todayChores.length > 0) {
+                document.getElementById('todayChores').innerHTML = todayChores.map(c => `
+                    <div class="chore-item">
+                        <div>${c.Chore || c.chore || c.Task || c.task || 'Chore'}</div>
+                        <div class="assignee">👤 ${c.Assignee || c.assignee || c.Who || 'Anyone'}</div>
+                    </div>
+                `).join('');
+            } else {
+                showEmpty('todayChores', 'No chores due today — enjoy! 🎉');
+            }
             
             // Tonight's meal
-            document.getElementById('tonightMeal').innerHTML = `
-                <div class="meal-item">
-                    <div class="day">Saturday</div>
-                    <div>Plan your dinner! 🍽️</div>
-                </div>
-            `;
+            const todayDay = new Date().toLocaleDateString('en-GB', { weekday: 'long' });
+            const tonightMeal = meals.find(m => {
+                const day = (m.Day || m.day || '').toLowerCase();
+                return day === todayDay.toLowerCase();
+            });
             
-            // Shopping list
-            document.getElementById('shoppingList').innerHTML = `
-                <div class="shopping-item" onclick="this.classList.toggle('done')">
-                    <div>Milk — 2 pints</div>
-                    <div class="category">Dairy • Added by Simon</div>
-                </div>
-                <div class="shopping-item" onclick="this.classList.toggle('done')">
-                    <div>Bread — 1 loaf</div>
-                    <div class="category">Bakery • Added by Simon</div>
-                </div>
-                <div class="shopping-item" onclick="this.classList.toggle('done')">
-                    <div>Bin bags — 1 roll</div>
-                    <div class="category">Household • Added by Simon</div>
-                </div>
-            `;
-            
-            // Chores
-            document.getElementById('choreList').innerHTML = `
-                <div class="empty">No chores set yet. Add some to get started! 💪</div>
-            `;
-            
-            // Meal plan
-            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-            document.getElementById('mealPlan').innerHTML = days.map(d => `
-                <div class="meal-item">
-                    <div class="day">${d}</div>
-                    <div>Tap to plan meals 🍽️</div>
-                </div>
-            `).join('');
-            
-            // School
-            document.getElementById('schoolActivities').innerHTML = `
-                <div class="activity-item">
-                    <div class="child">Ava</div>
-                    <div>School — Mon-Fri 8:30-3:30</div>
-                    <div style="font-size:13px;color:#666;">Fairfield Park, Dickens Boulevard</div>
-                </div>
-                <div class="activity-item">
-                    <div class="child">Ava</div>
-                    <div>🎓 Father's Breakfast — Wed 17 Jun, 8:00</div>
-                    <div style="font-size:13px;color:#666;">Year 3 DB</div>
-                </div>
-                <div class="activity-item">
-                    <div class="child">Ava</div>
-                    <div>🎪 Summer Fete — Sun 14 Jun, 11:00-14:00</div>
-                    <div style="font-size:13px;color:#666;">Fairfield Park PTA</div>
-                </div>
-            `;
-            
-            // Budget
-            document.getElementById('budgetData').innerHTML = `
-                <div class="card">
-                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>Groceries</span><span>£400/mo</span></div>
-                    <div class="budget-bar"><div class="fill" style="width:0%"></div></div>
-                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:12px;"><span>Utilities</span><span>£200/mo</span></div>
-                    <div class="budget-bar"><div class="fill" style="width:0%"></div></div>
-                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:12px;"><span>School</span><span>£100/mo</span></div>
-                    <div class="budget-bar"><div class="fill" style="width:0%"></div></div>
-                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:12px;"><span>Entertainment</span><span>£100/mo</span></div>
-                    <div class="budget-bar"><div class="fill" style="width:0%"></div></div>
-                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:12px;"><span>Transport</span><span>£150/mo</span></div>
-                    <div class="budget-bar"><div class="fill" style="width:0%"></div></div>
-                </div>
-            `;
-            
-            // Announcements
-            document.getElementById('announcementsList').innerHTML = `
-                <div class="announcement-item">
-                    <div class="from">Simon • 6 Jun</div>
-                    <div class="msg">Welcome to Family HQ! 🎉</div>
-                </div>
-                <div class="announcement-item high">
-                    <div class="from">Simon • 6 Jun</div>
-                    <div class="msg">⚠️ Passports expiring 9 June — need to renew!</div>
-                </div>
-                <div class="announcement-item">
-                    <div class="from">Simon • 6 Jun</div>
-                    <div class="msg">Ava's school fete 14 June, 11-2pm</div>
-                </div>
-            `;
-            
-            // Family members
-            document.getElementById('familyMembers').innerHTML = `
-                <div class="family-card">
-                    <div class="name">👨 Simon</div>
-                    <div class="role">Dad</div>
-                </div>
-                <div class="family-card">
-                    <div class="name">👩 Emma</div>
-                    <div class="role">Mum</div>
-                </div>
-                <div class="family-card">
-                    <div class="name">👧 Ava</div>
-                    <div class="role">Daughter • Year 3</div>
-                </div>
-                <div class="family-card">
-                    <div class="name">👧 Ella</div>
-                    <div class="role">Daughter • Year 5</div>
-                </div>
-            `;
+            if (tonightMeal) {
+                document.getElementById('tonightMeal').innerHTML = `
+                    <div class="meal-item">
+                        <div class="day">${todayDay}</div>
+                        <div>${tonightMeal.Meal || tonightMeal.meal || tonightMeal.Dinner || tonightMeal.dinner || 'TBD'}</div>
+                        ${tonightMeal.Notes || tonightMeal.notes ? `<div style="font-size:13px;color:#666;margin-top:4px;">${tonightMeal.Notes || tonightMeal.notes}</div>` : ''}
+                    </div>
+                `;
+            } else {
+                showEmpty('tonightMeal', 'No meal planned yet — time to decide! 🍽️');
+            }
+        }
+        
+        function renderCalendar(data) {
+            const events = getSheet('📅');
+            if (events.length > 0) {
+                document.getElementById('calendarEvents').innerHTML = events.map(e => `
+                    <div class="event-item">
+                        <div class="time">${formatDate(e.Date || e.date || e.Start || '')}</div>
+                        <div class="title">${e.Event || e.event || e.Title || e.title || e.Summary || 'Event'}</div>
+                        ${e.Time || e.time ? `<div style="font-size:13px;color:#666;">🕐 ${formatTime(e.Time || e.time)}</div>` : ''}
+                        ${e.Location || e.location ? `<div class="location">📍 ${e.Location || e.location}</div>` : ''}
+                        ${e.Notes || e.notes ? `<div style="font-size:13px;color:#666;margin-top:4px;">${e.Notes || e.notes}</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                showEmpty('calendarEvents', 'No upcoming events');
+            }
+        }
+        
+        function renderShopping(data) {
+            const items = getSheet('🛒');
+            if (items.length > 0) {
+                document.getElementById('shoppingList').innerHTML = items.map(i => `
+                    <div class="shopping-item" onclick="this.classList.toggle('done')">
+                        <div>${i.Item || i.item || i.What || 'Item'}</div>
+                        <div class="category">${i.Category || i.category || ''} ${i.Quantity || i.qty ? '• ' + (i.Quantity || i.qty) : ''}</div>
+                        ${i['Added by'] || i.added_by ? `<div class="added-by">Added by ${i['Added by'] || i.added_by}</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                showEmpty('shoppingList', 'Nothing on the list — add what you need! 🛒');
+            }
+        }
+        
+        function renderChores(data) {
+            const chores = getSheet('✅');
+            if (chores.length > 0) {
+                document.getElementById('choreList').innerHTML = chores.map(c => `
+                    <div class="chore-item">
+                        <div>${c.Chore || c.chore || c.Task || c.task || 'Chore'}</div>
+                        <div class="assignee">👤 ${c.Assignee || c.assignee || c.Who || 'Anyone'} • ${c.Frequency || c.frequency || c.Day || 'Weekly'}</div>
+                    </div>
+                `).join('');
+            } else {
+                showEmpty('choreList', 'No chores set yet. Add some to get started! 💪');
+            }
+        }
+        
+        function renderMeals(data) {
+            const meals = getSheet('🍽️');
+            if (meals.length > 0) {
+                document.getElementById('mealPlan').innerHTML = meals.map(m => `
+                    <div class="meal-item">
+                        <div class="day">${m.Day || m.day || 'Day'}</div>
+                        <div>${m.Meal || m.meal || m.Dinner || m.dinner || m.What || 'TBD'}</div>
+                        ${m.Notes || m.notes ? `<div style="font-size:13px;color:#666;margin-top:4px;">${m.Notes || m.notes}</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                showEmpty('mealPlan', 'No meals planned yet — start planning! 🍽️');
+            }
+        }
+        
+        function renderSchool(data) {
+            const activities = getSheet('📋');
+            if (activities.length > 0) {
+                document.getElementById('schoolActivities').innerHTML = activities.map(a => `
+                    <div class="activity-item">
+                        <div class="child">${a.Child || a.child || a.Who || 'Child'}</div>
+                        <div>${a.Activity || a.activity || a.What || a.Event || 'Activity'}</div>
+                        <div class="details">${a.Day || a.day || ''} ${a.Time || a.time || ''}</div>
+                        ${a.Location || a.location ? `<div class="details">📍 ${a.Location || a.location}</div>` : ''}
+                        ${a.Notes || a.notes ? `<div class="details">${a.Notes || a.notes}</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                showEmpty('schoolActivities', 'No school activities listed yet');
+            }
+        }
+        
+        function renderContacts(data) {
+            const contacts = getSheet('📞');
+            if (contacts.length > 0) {
+                document.getElementById('contactsList').innerHTML = contacts.map(c => `
+                    <div class="contact-item">
+                        <div class="name">${c.Name || c.name || 'Contact'}</div>
+                        ${c.Phone || c.phone ? `<div class="detail">📞 ${c.Phone || c.phone}</div>` : ''}
+                        ${c.Email || c.email ? `<div class="detail">✉️ ${c.Email || c.email}</div>` : ''}
+                        ${c.Address || c.address ? `<div class="detail">📍 ${c.Address || c.address}</div>` : ''}
+                        ${c.Notes || c.notes ? `<div class="detail">${c.Notes || c.notes}</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                showEmpty('contactsList', 'No contacts added yet');
+            }
+        }
+        
+        function renderBudget(data) {
+            const budget = getSheet('💰');
+            if (budget.length > 0) {
+                document.getElementById('budgetData').innerHTML = budget.map(b => `
+                    <div style="margin-bottom:12px;">
+                        <div style="display:flex;justify-content:space-between;">
+                            <span>${b.Category || b.category || b.Item || 'Item'}</span>
+                            <span>${b.Amount || b.amount || b.Budget || '£0'}</span>
+                        </div>
+                        <div class="budget-bar"><div class="fill" style="width:${b.Percent || 0}%"></div></div>
+                    </div>
+                `).join('');
+            } else {
+                showEmpty('budgetData', 'No budget items yet');
+            }
+        }
+        
+        function renderAnnouncements(data) {
+            const announcements = getSheet('📝');
+            if (announcements.length > 0) {
+                document.getElementById('announcementsList').innerHTML = announcements.map(a => `
+                    <div class="announcement-item ${a.Priority === 'High' || a.priority === 'high' ? 'high' : ''}">
+                        <div class="from">${a.From || a.from || 'Family'} • ${a.Date || a.date || ''}</div>
+                        <div class="msg">${a.Message || a.message || a.Announcement || a.Text || ''}</div>
+                    </div>
+                `).join('');
+            } else {
+                showEmpty('announcementsList', 'No announcements — all quiet! 📢');
+            }
+        }
+        
+        function renderFamily(data) {
+            const members = getSheet('👨');
+            if (members.length > 0) {
+                document.getElementById('familyMembers').innerHTML = members.map(m => `
+                    <div class="family-card">
+                        <div class="name">${m.Name || m.name || 'Member'}</div>
+                        <div class="role">${m.Role || m.role || ''}</div>
+                        ${m.School || m.school ? `<div class="role">${m.School || m.school}</div>` : ''}
+                        ${m.Notes || m.notes ? `<div class="role">${m.Notes || m.notes}</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                showEmpty('familyMembers', 'No family members added yet');
+            }
+        }
+        
+        async function loadAllData() {
+            try {
+                const response = await fetch('data.json?' + Date.now());
+                if (!response.ok) throw new Error('Failed to load data');
+                familyData = await response.json();
+                
+                // Show last update time
+                document.getElementById('updateTime').textContent = 'Last updated: ' + new Date().toLocaleTimeString('en-GB');
+                
+                renderToday(familyData);
+                renderCalendar(familyData);
+                renderShopping(familyData);
+                renderChores(familyData);
+                renderMeals(familyData);
+                renderSchool(familyData);
+                renderContacts(familyData);
+                renderBudget(familyData);
+                renderAnnouncements(familyData);
+                renderFamily(familyData);
+            } catch (err) {
+                console.error('Error loading data:', err);
+                ['todayEvents','todayChores','tonightMeal','calendarEvents','shoppingList','choreList','mealPlan','schoolActivities','contactsList','budgetData','announcementsList','familyMembers'].forEach(id => {
+                    showError(id, '⚠️ Could not load data. Pull to refresh.');
+                });
+            }
         }
         
         function addShoppingItem() {
             const item = prompt("What do you need to buy?");
-            if (item) alert("Added: " + item + "\n\n(Full Google Sheets integration coming soon!)");
+            if (item) alert("To add items, edit the Google Sheet directly — changes will appear here within the hour! 📊");
         }
         
         function addChore() {
             const task = prompt("What's the chore?");
-            if (task) alert("Added: " + task + "\n\n(Full Google Sheets integration coming soon!)");
+            if (task) alert("To add chores, edit the Google Sheet directly — changes will appear here within the hour! 📊");
         }
         
         function addAnnouncement() {
             const msg = prompt("What's the announcement?");
-            if (msg) alert("Posted: " + msg + "\n\n(Full Google Sheets integration coming soon!)");
+            if (msg) alert("To add announcements, edit the Google Sheet directly — changes will appear here within the hour! 📊");
         }
         
         // Load data on page load
