@@ -483,5 +483,81 @@
         "Notes": "Year 5 at Pix Brook Academy — Pankhurst Class"
       }
     ]
+  },
+  "📞 Important Contacts": {
+    "headers": [
+      "Name",
+      "Type",
+      "Phone",
+      "Email",
+      "Address",
+      "Notes"
+    ],
+    "rows": [
+      {
+        "Name": "Fairfield Park Lower School",
+        "Type": "Ava's School",
+        "Phone": "",
+        "Email": "",
+        "Address": "Dickens Boulevard, Fairfield Park, Hitchin, SG4 7SS",
+        "Notes": "Year 3 DB — School hours 8:45-3:25"
+      },
+      {
+        "Name": "Pix Brook Academy",
+        "Type": "Ella's School",
+        "Phone": "01462 416243",
+        "Email": "pixbrook@bestacademies.org.uk",
+        "Address": "Arlesey Road, Stotfold, Church End, Central Bedfordshire, SG5 4HB",
+        "Notes": "Year 5 — School hours 8:00-3:00"
+      },
+      {
+        "Name": "BX Dance",
+        "Type": "Dance School",
+        "Phone": "",
+        "Email": "",
+        "Address": "",
+        "Notes": "Ava: Sat 9:15am | Ella: Sat 10:00am | Stretch & Flex: Thu 5:45pm"
+      },
+      {
+        "Name": "Luton Diving Centre",
+        "Type": "Diving",
+        "Phone": "",
+        "Email": "",
+        "Address": "",
+        "Notes": "Ava & Ella: Sat 1:30pm"
+      },
+      {
+        "Name": "North Herts Leisure Centre",
+        "Type": "Swimming",
+        "Phone": "01462 679311",
+        "Email": "",
+        "Address": "Baldock Road, Phoenix Park Estate, Letchworth, SG6 2ER",
+        "Notes": "Ava: Wed 6:30-7:00pm"
+      },
+      {
+        "Name": "Simon Stimson",
+        "Type": "Dad",
+        "Phone": "",
+        "Email": "simon.stimson@gmail.com",
+        "Address": "",
+        "Notes": "Primary contact"
+      },
+      {
+        "Name": "Emma Stimson",
+        "Type": "Mum",
+        "Phone": "",
+        "Email": "clementsonemma@gmail.com",
+        "Address": "",
+        "Notes": "Secondary contact"
+      },
+      {
+        "Name": "PBA Absence Line",
+        "Type": "Ella's School",
+        "Phone": "",
+        "Email": "PBA-Absence@bestacademies.org.uk",
+        "Address": "",
+        "Notes": "Report absences by 8am daily"
+      }
+    ]
   }
 }
