@@ -490,6 +490,14 @@
         "Notes": "Last day before summer holidays!"
       },
       {
+        "Date": "2026-07-18",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
         "Date": "2026-07-20",
         "Time": "All day",
         "Event": "🏫 Training Day - Fairfield Park",
@@ -544,6 +552,102 @@
         "Who": "Ava",
         "Location": "Fairfield Park",
         "Notes": "Last day of school"
+      },
+      {
+        "Date": "2026-07-22",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-25",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-29",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-08-01",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-08-05",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-08-08",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-08-12",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-08-15",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-08-19",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-08-22",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-08-26",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-08-29",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
       }
     ]
   },
