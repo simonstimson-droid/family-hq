@@ -1007,9 +1007,9 @@
         "Name": "Fairfield Park Lower School",
         "Type": "Ava's School",
         "Phone": "01462 830000",
-        "Email": "",
+        "Email": "office@fairfieldparklower.uk",
         "Address": "Dickens Boulevard, Fairfield Park, Hitchin, SG4 7SS",
-        "Notes": "Year 3 DB — School hours 8:45-3:25"
+        "Notes": "Year 3 DB — School hours 8:45-3:25 — Main Office Option 1"
       },
       {
         "Name": "Pix Brook Academy",
@@ -1046,7 +1046,7 @@
       {
         "Name": "Simon Stimson",
         "Type": "Dad",
-        "Phone": "",
+        "Phone": "07787 244460",
         "Email": "simon.stimson@gmail.com",
         "Address": "",
         "Notes": "Primary contact"
@@ -1054,7 +1054,7 @@
       {
         "Name": "Emma Stimson",
         "Type": "Mum",
-        "Phone": "",
+        "Phone": "07876 231657",
         "Email": "clementsonemma@gmail.com",
         "Address": "",
         "Notes": "Secondary contact"
@@ -1066,6 +1066,46 @@
         "Email": "PBA-Absence@bestacademies.org.uk",
         "Address": "",
         "Notes": "Report absences by 8am daily"
+      },
+      {
+        "Name": "Joy Stimson",
+        "Type": "Simon's Mum",
+        "Phone": "07714 331369",
+        "Email": "",
+        "Address": "",
+        "Notes": ""
+      },
+      {
+        "Name": "Chris Stimson",
+        "Type": "Simon's Dad",
+        "Phone": "",
+        "Email": "",
+        "Address": "",
+        "Notes": "Phone TBC"
+      },
+      {
+        "Name": "Ella Stimson",
+        "Type": "Family",
+        "Phone": "07960 219012",
+        "Email": "",
+        "Address": "",
+        "Notes": "Ella's mobile"
+      },
+      {
+        "Name": "Tim Clementson",
+        "Type": "Emma's Dad",
+        "Phone": "07444 508022",
+        "Email": "",
+        "Address": "",
+        "Notes": ""
+      },
+      {
+        "Name": "Katy Clementson",
+        "Type": "Emma's Sister",
+        "Phone": "",
+        "Email": "",
+        "Address": "",
+        "Notes": "Phone TBC"
       }
     ]
   }
