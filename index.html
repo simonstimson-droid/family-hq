@@ -137,6 +137,31 @@
         .event-detail .ed-cal-btn:hover { background: #5a6fd6; }
         .event-detail .ed-close-btn { background: #f0f0f0; color: #666; }
         
+        /* Family member colours */
+        .family-card { border: 2px solid transparent; }
+        .fc-ava { border-color: #c084fc !important; background: #faf5ff !important; }
+        .fc-ava .name { color: #7c3aed; }
+        .fc-ella { border-color: #38bdf8 !important; background: #f0f9ff !important; }
+        .fc-ella .name { color: #0284c7; }
+        .fc-simon { border-color: #64748b !important; background: #f8fafc !important; }
+        .fc-simon .name { color: #334155; }
+        .fc-emma { border-color: #f472b6 !important; background: #fdf2f8 !important; }
+        .fc-emma .name { color: #be185d; }
+        
+        .tag-ava { color: #7c3aed; font-weight: 700; }
+        .tag-ella { color: #0284c7; font-weight: 700; }
+        .tag-simon { color: #475569; font-weight: 700; }
+        .tag-emma { color: #be185d; font-weight: 700; }
+        
+        .event-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+        .event-dot.dot-ava { background: #c084fc; }
+        .event-dot.dot-ella { background: #38bdf8; }
+        .event-dot.dot-simon { background: #64748b; }
+        .event-dot.dot-emma { background: #f472b6; }
+        .event-dot.dot-both { background: linear-gradient(135deg, #c084fc 50%, #38bdf8 50%); }
+        .event-dot.dot-all { background: linear-gradient(135deg, #c084fc 25%, #38bdf8 25% 50%, #f472b6 50% 75%, #64748b 75%); }
+        .event-dot.dot-family { background: #667eea; }
+        
         /* Modal form styles */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 300; justify-content: center; align-items: center; }
         .modal-overlay.show { display: flex; }
@@ -366,7 +391,7 @@
             }
             if (timeStr && timeStr !== 'All day') html += `<div class="ed-row"><span class="ed-icon">🕐</span><span>${timeStr}</span></div>`;
             if (locStr) html += `<div class="ed-row"><span class="ed-icon">📍</span><span>${locStr}</span></div>`;
-            if (whoStr) html += `<div class="ed-row"><span class="ed-icon">👤</span><span>${whoStr}</span></div>`;
+            if (whoStr) html += `<div class="ed-row"><span class="ed-icon">👤</span><span>${colourWho(whoStr)}</span></div>`;
             if (notesStr) html += `<div class="ed-row"><span class="ed-icon">📝</span><span>${notesStr}</span></div>`;
             html += `<div class="ed-actions">`;
             if (calDates) html += `<a href="${gCalUrl}" target="_blank" class="ed-cal-btn">📆 Add to Google Calendar</a>`;
@@ -404,7 +429,7 @@
                         <div class="time">${e.Date ? formatDateStr(e.Date) : ''} ${e.Time || e.time ? '· ' + formatTime(e.Time || e.time) : ''}</div>
                         <div class="title">${e.Event || e.event || e.Title || 'Event'}</div>
                         ${e.Location || e.location ? `<div class="location">📍 ${e.Location || e.location}</div>` : ''}
-                        ${e.Who || e.who ? `<div style="font-size:13px;color:#666;">👤 ${e.Who || e.who}</div>` : ''}
+                        ${e.Who || e.who ? `<div style="font-size:13px;">👤 ${colourWho(e.Who || e.who)}</div>` : ''}
                     </div>
                 `).join('');
                 // Make events clickable
@@ -462,9 +487,11 @@
                     html += `<div class="day-name">${dayNames[d.getDay()===0?6:d.getDay()-1].substring(0,3)}</div>`;
                     dayEvents.slice(0, 4).forEach(e => {
                         const name = (e.Event || e.event || e.Title || '').substring(0, 25);
+                        const who = (e.Who || e.who || '');
+                        const dotCls = who ? nameToDotClass(who) : '';
                         const time = (e.Time || e.time || '').substring(0, 5);
                         const cls = getEventClass(e);
-                        html += `<div class="day-event ${cls}" data-idx="${events.indexOf(e)}">${time ? `<span class="ev-time">${time}</span> ` : ''}${name}</div>`;
+                        html += `<div class="day-event ${cls}" data-idx="${events.indexOf(e)}">${dotCls ? `<span class="event-dot ${dotCls}"></span>` : ''}${time ? `<span class="ev-time">${time}</span> ` : ''}${name}</div>`;
                     });
                     if (dayEvents.length > 4) {
                         html += `<div class="more-link" onclick="showDayEvents('${dateStr}')">+${dayEvents.length - 4} more</div>`;
@@ -518,8 +545,10 @@
                     html += `<div class="day-num">${d}</div>`;
                     dayEvents.slice(0, 3).forEach(e => {
                         const name = (e.Event || e.event || '').replace(/[^\w\s]/g, '').substring(0, 18);
+                        const who = (e.Who || e.who || '');
+                        const dotCls = who ? nameToDotClass(who) : '';
                         const cls = getEventClass(e);
-                        html += `<div class="month-event ${cls}" data-idx="${events.indexOf(e)}">${name}</div>`;
+                        html += `<div class="month-event ${cls}" data-idx="${events.indexOf(e)}">${dotCls ? `<span class="event-dot ${dotCls}"></span>` : ''}${name}</div>`;
                     });
                     if (dayEvents.length > 3) {
                         html += `<div style="font-size:10px;color:#667eea;text-align:center;font-weight:600;margin-top:2px;">+${dayEvents.length - 3} more</div>`;
@@ -555,10 +584,13 @@
             dayEvents.forEach(e => {
                 const cls = getEventClass(e);
                 const colors = {'school':'#10b981','activity':'#06b6d4','holiday':'#f59e0b','':'#667eea'};
+                const who = (e.Who || e.who || '');
+                const dotCls = who ? nameToDotClass(who) : '';
                 html += `<div style="border-left:4px solid ${colors[cls]};background:#f8f9ff;padding:12px;border-radius:0 8px 8px 0;margin-bottom:8px;cursor:pointer;" onclick='showEventDetail(${JSON.stringify(e).replace(/'/g, "\\'")})'>`;
-                html += `<div style="font-weight:600;font-size:15px;">${e.Event || e.event || e.Title || 'Event'}</div>`;
+                html += `<div style="font-weight:600;font-size:15px;">${dotCls ? `<span class="event-dot ${dotCls}"></span>` : ''}${e.Event || e.event || e.Title || 'Event'}</div>`;
                 if (e.Time || e.time) html += `<div style="font-size:13px;color:#666;margin-top:2px;">🕐 ${e.Time || e.time}</div>`;
                 if (e.Location || e.location) html += `<div style="font-size:13px;color:#666;margin-top:2px;">📍 ${e.Location || e.location}</div>`;
+                if (who) html += `<div style="font-size:13px;margin-top:2px;">👤 ${colourWho(who)}</div>`;
                 html += `</div>`;
             });
             
@@ -578,6 +610,44 @@
                 }
             }
             return [];
+        }
+        
+        // ===== FAMILY COLOUR-CODING =====
+        const FAMILY_COLOURS = {
+            'Ava':    { cls: 'ava',    hex: '#c084fc', tag: 'tag-ava',    dot: 'dot-ava' },
+            'Ella':   { cls: 'ella',   hex: '#38bdf8', tag: 'tag-ella',   dot: 'dot-ella' },
+            'Simon':  { cls: 'simon',  hex: '#64748b', tag: 'tag-simon',  dot: 'dot-simon' },
+            'Emma':   { cls: 'emma',   hex: '#f472b6', tag: 'tag-emma',   dot: 'dot-emma' },
+        };
+        
+        function colourWho(whoStr) {
+            if (!whoStr) return '';
+            const w = whoStr.trim();
+            if (w === 'Both' || w === 'Ava & Ella' || w === 'Ava and Ella') {
+                return `<span class="event-dot dot-both"></span><span style="font-weight:600;">${w}</span>`;
+            }
+            if (w === 'Everyone' || w === 'All' || w === 'Family') {
+                return `<span class="event-dot dot-all"></span><span style="font-weight:600;">${w}</span>`;
+            }
+            for (const [name, c] of Object.entries(FAMILY_COLOURS)) {
+                if (w === name || w.startsWith(name)) {
+                    return `<span class="event-dot ${c.dot}"></span><span class="${c.tag}">${w}</span>`;
+                }
+            }
+            return w;
+        }
+        
+        function nameToColourClass(name) {
+            const c = FAMILY_COLOURS[name];
+            return c ? 'fc-' + c.cls : '';
+        }
+        function nameToTagClass(name) {
+            const c = FAMILY_COLOURS[name];
+            return c ? c.tag : '';
+        }
+        function nameToDotClass(name) {
+            const c = FAMILY_COLOURS[name];
+            return c ? c.dot : 'dot-family';
         }
         
         function formatDateStr(dateStr) {
@@ -613,10 +683,10 @@
             if (todayEvents.length) {
                 document.getElementById('todayEvents').innerHTML = todayEvents.map(e => `
                     <div class="event-item">
-                        <div class="time">${formatTime(e.Time || e.time) || 'All day'}</div>
+                        <div class="time"><span class="event-dot ${nameToDotClass(e.Who || e.who)}"></span>${formatTime(e.Time || e.time) || 'All day'}</div>
                         <div class="title">${e.Event || e.event || e.Title || 'Event'}</div>
                         ${e.Location || e.location ? `<div class="location">📍 ${e.Location || e.location}</div>` : ''}
-                        ${e.Who || e.who ? `<div style="font-size:13px;color:#666;">👤 ${e.Who || e.who}</div>` : ''}
+                        ${e.Who || e.who ? `<div style="font-size:13px;">👤 ${colourWho(e.Who || e.who)}</div>` : ''}
                     </div>`).join('');
             } else { showEmpty('todayEvents', 'No events today — enjoy! 🎉'); }
             
@@ -625,7 +695,7 @@
             if (todayChores.length) {
                 document.getElementById('todayChores').innerHTML = todayChores.map(c => `
                     <div class="chore-item"><div>${c.Chore || c.Task || 'Chore'}</div>
-                    <div class="assignee">👤 ${c['Assigned To'] || c.Who || 'Anyone'}</div></div>`).join('');
+                    <div class="assignee">👤 ${colourWho(c['Assigned To'] || c.Who || 'Anyone')}</div></div>`).join('');
             } else { showEmpty('todayChores', 'No chores due today — enjoy! 🎉'); }
             
             const meal = meals.find(m => (m.Day || '').toLowerCase() === todayDay);
@@ -723,9 +793,12 @@
         function renderFamily(data) {
             const m = getSheet('👨');
             if (m.length) {
-                document.getElementById('familyMembers').innerHTML = m.map(x => `
-                    <div class="family-card"><div class="name">${x.Name||'Member'}</div><div class="role">${x.Role||''}</div>
-                    ${x.School?`<div class="role">${x.School}</div>`:''}</div>`).join('');
+                document.getElementById('familyMembers').innerHTML = m.map(x => {
+                    const cls = nameToColourClass(x.Name);
+                    const school = x.Notes || x.School || '';
+                    return `<div class="family-card ${cls}"><div class="name">${x.Name||'Member'}</div><div class="role">${x.Role||''}</div>
+                    ${school?`<div class="role" style="font-size:12px;">${school}</div>`:''}</div>`;
+                }).join('');
             } else { showEmpty('familyMembers', 'No family members added yet'); }
         }
         
