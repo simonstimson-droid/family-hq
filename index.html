@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏠 Family HQ</title>
+    <title>🏠 Stimson Family HQ</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(180deg, #f8f9ff 0%, #f0f4ff 100%); color: #333; min-height: 100vh; }
         
-        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: center; }
-        .header h1 { font-size: 28px; margin-bottom: 5px; }
-        .header .date { opacity: 0.9; font-size: 14px; }
-        .header .update-time { opacity: 0.7; font-size: 12px; margin-top: 4px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #c084fc 100%); color: white; padding: 28px 20px; text-align: center; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); }
+        .header h1 { font-size: 32px; margin-bottom: 4px; position: relative; letter-spacing: -0.5px; }
+        .header h1 .emoji { font-size: 28px; }
+        .header .subtitle { opacity: 0.85; font-size: 14px; font-weight: 500; position: relative; }
+        .header .date { opacity: 0.7; font-size: 13px; margin-top: 4px; position: relative; }
+        .family-pills { display: flex; justify-content: center; gap: 8px; margin-top: 12px; position: relative; }
+        .family-pill { padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); }
+        .family-pill.ava { background: rgba(192,132,252,0.35); }
+        .family-pill.ella { background: rgba(56,189,248,0.35); }
+        .family-pill.simon { background: rgba(100,116,139,0.35); }
+        .family-pill.emma { background: rgba(244,114,182,0.35); }
         
         .tabs { display: flex; overflow-x: auto; background: white; border-bottom: 2px solid #e0e0e0; position: sticky; top: 0; z-index: 100; }
         .tab { padding: 12px 20px; cursor: pointer; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; font-size: 14px; }
@@ -22,14 +30,15 @@
         .panel { display: none; }
         .panel.active { display: block; }
         
-        .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-        .card h2 { font-size: 18px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .card { background: white; border-radius: 16px; padding: 22px; margin-bottom: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04); }
+        .card h2 { font-size: 17px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; font-weight: 700; color: #1e1b4b; }
         
         .event-item, .chore-item, .shopping-item, .announcement-item, .meal-item, .activity-item, .contact-item {
-            padding: 12px; border-left: 4px solid #667eea; background: #f8f9ff; border-radius: 0 8px 8px 0; margin-bottom: 8px;
+            padding: 12px 14px; border-left: 4px solid #667eea; background: #f8f9ff; border-radius: 0 10px 10px 0; margin-bottom: 8px; transition: all 0.15s;
         }
+        .event-item:hover, .chore-item:hover, .shopping-item:hover, .contact-item:hover { transform: translateX(2px); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
         .event-item .time { font-weight: 600; color: #667eea; font-size: 13px; }
-        .event-item .title { font-weight: 500; margin: 4px 0; }
+        .event-item .title { font-weight: 600; margin: 4px 0; font-size: 14px; }
         .event-item .location { font-size: 13px; color: #666; }
         
         .chore-item { border-left-color: #f59e0b; background: #fffbeb; }
@@ -38,30 +47,30 @@
         
         .shopping-item { border-left-color: #10b981; background: #f0fdf4; cursor: pointer; }
         .shopping-item.done { opacity: 0.5; text-decoration: line-through; }
-        .shopping-item .category { font-size: 12px; color: #888; text-transform: uppercase; }
+        .shopping-item .category { font-size: 11px; color: #888; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
         .shopping-item .added-by { font-size: 12px; color: #888; }
         
         .announcement-item { border-left-color: #ef4444; background: #fef2f2; }
-        .announcement-item .from { font-size: 13px; color: #666; }
-        .announcement-item .msg { margin-top: 4px; }
+        .announcement-item .from { font-size: 12px; color: #666; font-weight: 600; }
+        .announcement-item .msg { margin-top: 4px; font-size: 14px; }
         .announcement-item.high { border-left-color: #dc2626; background: #fef2f2; }
         
         .meal-item { border-left-color: #8b5cf6; background: #faf5ff; }
-        .meal-item .day { font-weight: 600; color: #8b5cf6; }
+        .meal-item .day { font-weight: 700; color: #7c3aed; font-size: 13px; }
         
         .activity-item { border-left-color: #06b6d4; background: #f0fdff; }
-        .activity-item .child { font-weight: 600; color: #06b6d4; }
+        .activity-item .child { font-weight: 700; color: #0891b2; }
         .activity-item .details { font-size: 13px; color: #666; margin-top: 2px; }
         
         .contact-item { border-left-color: #64748b; background: #f8fafc; }
-        .contact-item .name { font-weight: 600; }
-        .contact-item .detail { font-size: 13px; color: #666; margin-top: 2px; }
+        .contact-item .name { font-weight: 700; font-size: 15px; }
+        .contact-item .detail { font-size: 13px; color: #555; margin-top: 2px; }
         .contact-item a { color: #667eea; text-decoration: none; }
         .contact-item a:hover { text-decoration: underline; }
-        .contact-item .call-btn { display: inline-block; background: #10b981; color: white; padding: 4px 12px; border-radius: 6px; font-size: 13px; margin-top: 6px; text-decoration: none; }
-        .contact-item .call-btn:hover { background: #059669; }
-        .contact-item .email-btn { display: inline-block; background: #667eea; color: white; padding: 4px 12px; border-radius: 6px; font-size: 13px; margin-top: 6px; margin-left: 4px; text-decoration: none; }
-        .contact-item .email-btn:hover { background: #5a6fd6; }
+        .contact-item .call-btn { display: inline-block; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 5px 14px; border-radius: 8px; font-size: 12px; margin-top: 6px; text-decoration: none; font-weight: 600; }
+        .contact-item .call-btn:hover { transform: scale(1.05); }
+        .contact-item .email-btn { display: inline-block; background: linear-gradient(135deg, #667eea, #5a6fd6); color: white; padding: 5px 14px; border-radius: 8px; font-size: 12px; margin-top: 6px; margin-left: 4px; text-decoration: none; font-weight: 600; }
+        .contact-item .email-btn:hover { transform: scale(1.05); }
         
         .add-btn { background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; margin-top: 10px; }
         .add-btn:hover { background: #5a6fd6; }
@@ -97,34 +106,37 @@
         .cal-nav button:hover { background: #5a6fd6; }
         
         /* Week view calendar */
-        .week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
-        .week-day-header { text-align: center; font-size: 12px; font-weight: 700; color: #999; padding: 6px 2px; text-transform: uppercase; }
-        .week-day { min-height: 120px; background: #f8f9ff; border-radius: 10px; padding: 8px; font-size: 13px; }
-        .week-day.today { background: #eef2ff; border: 2px solid #667eea; }
-        .week-day .day-num { font-weight: 700; color: #667eea; margin-bottom: 4px; text-align: center; font-size: 16px; }
-        .week-day .day-name { font-size: 10px; font-weight: 600; color: #999; text-align: center; margin-bottom: 6px; text-transform: uppercase; }
-        .week-day .day-event { background: #667eea; color: white; padding: 4px 8px; border-radius: 6px; margin-bottom: 3px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
-        .week-day .day-event:hover { opacity: 0.85; }
-        .week-day .day-event .ev-time { font-size: 10px; opacity: 0.85; display: block; }
-        .week-day .day-event.school { background: #10b981; }
-        .week-day .day-event.activity { background: #06b6d4; }
-        .week-day .day-event.holiday { background: #f59e0b; }
-        .week-day.other-month { opacity: 0.3; }
-        .week-day .more-link { font-size: 11px; color: #667eea; text-align: center; margin-top: 2px; cursor: pointer; font-weight: 600; }
+        .week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+        .week-day-header { text-align: center; font-size: 11px; font-weight: 700; color: #999; padding: 4px 2px; text-transform: uppercase; }
+        .week-day { min-height: 140px; background: white; border-radius: 12px; padding: 8px; font-size: 12px; border: 2px solid transparent; box-shadow: 0 1px 4px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+        .week-day.today { border-color: #667eea; background: #f5f3ff; }
+        .week-day .day-num { font-weight: 700; color: #667eea; text-align: center; font-size: 18px; }
+        .week-day .day-name { font-size: 9px; font-weight: 600; color: #999; text-align: center; margin-bottom: 4px; text-transform: uppercase; }
+        .week-day .day-events { flex: 1; overflow: hidden; }
+        .week-day .day-event { color: #555; padding: 3px 6px; border-radius: 4px; margin-bottom: 2px; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; display: flex; align-items: center; gap: 4px; }
+        .week-day .day-event:hover { background: #f0f0f0; }
+        .week-day .day-event .ev-time { font-size: 9px; color: #999; font-weight: 600; }
+        .week-day .day-event.school { background: #ecfdf5; color: #065f46; }
+        .week-day .day-event.activity { background: #f0fdff; color: #0e7490; }
+        .week-day .day-event.holiday { background: #fffbeb; color: #92400e; }
+        .week-day .day-event.general { background: #f8f9ff; color: #4338ca; }
+        .week-day.other-month { opacity: 0.35; }
+        .week-day .more-link { font-size: 10px; color: #667eea; text-align: center; margin-top: 2px; cursor: pointer; font-weight: 600; }
         
         /* Month view */
-        .month-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-        .month-day-header { text-align: center; font-size: 11px; font-weight: 700; color: #999; padding: 6px 2px; text-transform: uppercase; }
-        .month-day { min-height: 90px; background: #f8f9ff; border-radius: 8px; padding: 6px; font-size: 12px; cursor: pointer; }
-        .month-day:hover { background: #eef2ff; }
-        .month-day.today { background: #eef2ff; border: 2px solid #667eea; }
-        .month-day .day-num { font-weight: 700; color: #667eea; text-align: center; font-size: 14px; margin-bottom: 4px; }
-        .month-day .month-event { background: #667eea; color: white; padding: 3px 6px; border-radius: 4px; margin-bottom: 2px; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
-        .month-day .month-event:hover { opacity: 0.85; }
-        .month-day .month-event.school { background: #10b981; }
-        .month-day .month-event.activity { background: #06b6d4; }
-        .month-day .month-event.holiday { background: #f59e0b; }
-        .month-day.other-month { opacity: 0.3; }
+        .month-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+        .month-day-header { text-align: center; font-size: 10px; font-weight: 700; color: #999; padding: 4px 2px; text-transform: uppercase; }
+        .month-day { min-height: 100px; background: white; border-radius: 10px; padding: 6px; font-size: 11px; cursor: pointer; border: 2px solid transparent; box-shadow: 0 1px 4px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+        .month-day:hover { border-color: #c4b5fd; }
+        .month-day.today { border-color: #667eea; background: #f5f3ff; }
+        .month-day .day-num { font-weight: 700; color: #667eea; text-align: center; font-size: 15px; margin-bottom: 2px; }
+        .month-day .month-event { padding: 2px 5px; border-radius: 3px; margin-bottom: 1px; font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; display: flex; align-items: center; gap: 3px; }
+        .month-day .month-event:hover { opacity: 0.8; }
+        .month-day .month-event.school { background: #ecfdf5; color: #065f46; }
+        .month-day .month-event.activity { background: #f0fdff; color: #0e7490; }
+        .month-day .month-event.holiday { background: #fffbeb; color: #92400e; }
+        .month-day .month-event.general { background: #f8f9ff; color: #4338ca; }
+        .month-day.other-month { opacity: 0.35; }
         
         /* Event detail modal */
         .event-detail { padding: 8px 0; }
@@ -191,9 +203,15 @@
 </head>
 <body>
     <div class="header">
-        <h1>🏠 Family HQ</h1>
+        <h1><span class="emoji">🏠</span> Stimson Family HQ</h1>
+        <div class="subtitle">Keeping the family organised, together ✨</div>
         <div class="date" id="currentDate"></div>
-        <div class="update-time" id="updateTime"></div>
+        <div class="family-pills">
+            <span class="family-pill simon">👨 Simon</span>
+            <span class="family-pill emma">👩 Emma</span>
+            <span class="family-pill ava">💜 Ava</span>
+            <span class="family-pill ella">💙 Ella</span>
+        </div>
     </div>
     
     <div class="tabs">
@@ -485,14 +503,16 @@
                     html += `<div class="week-day ${isToday ? 'today' : ''}">`;
                     html += `<div class="day-num">${d.getDate()}</div>`;
                     html += `<div class="day-name">${dayNames[d.getDay()===0?6:d.getDay()-1].substring(0,3)}</div>`;
+                    html += `<div class="day-events">`;
                     dayEvents.slice(0, 4).forEach(e => {
                         const name = (e.Event || e.event || e.Title || '').substring(0, 25);
                         const who = (e.Who || e.who || '');
                         const dotCls = who ? nameToDotClass(who) : '';
                         const time = (e.Time || e.time || '').substring(0, 5);
-                        const cls = getEventClass(e);
-                        html += `<div class="day-event ${cls}" data-idx="${events.indexOf(e)}">${dotCls ? `<span class="event-dot ${dotCls}"></span>` : ''}${time ? `<span class="ev-time">${time}</span> ` : ''}${name}</div>`;
+                        const cls = getEventClass(e) || 'general';
+                        html += `<div class="day-event ${cls}" data-idx="${events.indexOf(e)}">${dotCls ? `<span class="event-dot ${dotCls}"></span>` : ''}${time ? `<span class="ev-time">${time}</span>` : ''} ${name}</div>`;
                     });
+                    html += `</div>`;
                     if (dayEvents.length > 4) {
                         html += `<div class="more-link" onclick="showDayEvents('${dateStr}')">+${dayEvents.length - 4} more</div>`;
                     }
@@ -547,11 +567,11 @@
                         const name = (e.Event || e.event || '').replace(/[^\w\s]/g, '').substring(0, 18);
                         const who = (e.Who || e.who || '');
                         const dotCls = who ? nameToDotClass(who) : '';
-                        const cls = getEventClass(e);
+                        const cls = getEventClass(e) || 'general';
                         html += `<div class="month-event ${cls}" data-idx="${events.indexOf(e)}">${dotCls ? `<span class="event-dot ${dotCls}"></span>` : ''}${name}</div>`;
                     });
                     if (dayEvents.length > 3) {
-                        html += `<div style="font-size:10px;color:#667eea;text-align:center;font-weight:600;margin-top:2px;">+${dayEvents.length - 3} more</div>`;
+                        html += `<div style="font-size:9px;color:#667eea;text-align:center;font-weight:600;margin-top:1px;">+${dayEvents.length - 3}</div>`;
                     }
                     html += '</div>';
                 }
