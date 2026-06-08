@@ -752,6 +752,23 @@
             return r.json();
         }
         
+        // Optimistic local update: add new item to familyData and re-render instantly
+        function localAddItem(sheetEmoji, newItem) {
+            if (!familyData) return;
+            for (const key of Object.keys(familyData)) {
+                if (key.startsWith(sheetEmoji)) {
+                    familyData[key].rows.push(newItem);
+                    break;
+                }
+            }
+            // Re-render the affected panel
+            if (sheetEmoji === '🛒') renderShopping(familyData);
+            else if (sheetEmoji === '✅') renderChores(familyData);
+            else if (sheetEmoji === '🍽️') renderMeals(familyData);
+            else if (sheetEmoji === '📝') renderAnnouncements(familyData);
+            renderToday(familyData);
+        }
+        
         async function addShoppingItem() {
             openModal(`<h3>🛒 Add Shopping Item</h3>
                 <label>Item</label><input type="text" id="s_item" placeholder="e.g. Milk" autofocus>
@@ -763,7 +780,11 @@
                 const data = {Item: document.getElementById('s_item').value, Quantity: document.getElementById('s_qty').value, 'Added by': 'Simon', 'Done ✓': '', Category: document.getElementById('s_cat').value};
                 if (!data.Item) { showToast('Please enter an item',true); b.disabled=false; return; }
                 const r = await apiCall({action:'append', sheet:'🛒 Shopping List', data:JSON.stringify(data)});
-                if (r.success) { showToast('✅ Added!'); closeModal(); setTimeout(()=>loadAllData(),2000); }
+                if (r.success) {
+                    localAddItem('🛒', data);
+                    showToast('✅ Added!');
+                    closeModal();
+                }
                 else { showToast('❌ '+(r.error||'Failed'),true); b.disabled=false; }
             });
         }
@@ -780,7 +801,11 @@
                 const data = {Task: document.getElementById('c_task').value, 'Assigned To': document.getElementById('c_who').value, 'Due Date': '', Frequency: document.getElementById('c_freq').value, 'Done ✓': '', Notes: document.getElementById('c_notes').value};
                 if (!data.Task) { showToast('Please enter a task',true); b.disabled=false; return; }
                 const r = await apiCall({action:'append', sheet:'✅ Chores', data:JSON.stringify(data)});
-                if (r.success) { showToast('✅ Chore added!'); closeModal(); setTimeout(()=>loadAllData(),2000); }
+                if (r.success) {
+                    localAddItem('✅', data);
+                    showToast('✅ Chore added!');
+                    closeModal();
+                }
                 else { showToast('❌ '+(r.error||'Failed'),true); b.disabled=false; }
             });
         }
@@ -795,7 +820,11 @@
                 const data = {Date: todayStr(), From: 'Simon', Message: document.getElementById('a_msg').value, Priority: document.getElementById('a_pri').value};
                 if (!data.Message) { showToast('Please enter a message',true); b.disabled=false; return; }
                 const r = await apiCall({action:'append', sheet:'📝 Announcements', data:JSON.stringify(data)});
-                if (r.success) { showToast('✅ Posted!'); closeModal(); setTimeout(()=>loadAllData(),2000); }
+                if (r.success) {
+                    localAddItem('📝', data);
+                    showToast('✅ Posted!');
+                    closeModal();
+                }
                 else { showToast('❌ '+(r.error||'Failed'),true); b.disabled=false; }
             });
         }
@@ -808,14 +837,26 @@
             openModal(`<h3>🍽️ Weekly Meal Plan</h3>${f}<div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="m_save" onclick="modalSave()">Save All</button></div>`,
             async () => {
                 const b = document.getElementById('m_save'); b.disabled=true; b.textContent='Saving...';
+                const newMeals = [];
                 for (const d of days) {
                     const val = document.getElementById('m_'+d.substring(0,3)).value;
-                    const ex = meals.findIndex(m => m.Day === d);
                     const data = {Day:d, Breakfast:'', Lunch:'', Dinner:val, Notes:''};
+                    const ex = meals.findIndex(m => m.Day === d);
                     if (ex >= 0) await apiCall({action:'update', sheet:'🍽️ Meal Plan', row:String(ex+2), data:JSON.stringify(data)});
                     else if (val) await apiCall({action:'append', sheet:'🍽️ Meal Plan', data:JSON.stringify(data)});
+                    if (val) newMeals.push(data);
                 }
-                showToast('✅ Meal plan updated!'); closeModal(); setTimeout(()=>loadAllData(),2000);
+                // Update local data
+                if (familyData) {
+                    for (const key of Object.keys(familyData)) {
+                        if (key.startsWith('🍽️')) {
+                            familyData[key].rows = newMeals;
+                            break;
+                        }
+                    }
+                    renderMeals(familyData);
+                }
+                showToast('✅ Meal plan updated!'); closeModal();
             });
         }
         
