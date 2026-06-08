@@ -708,6 +708,34 @@
         "Added By": "",
         "Done ✓": "",
         "Category": ""
+      },
+      {
+        "Item": "Prawn Cocktail Crisps",
+        "Quantity": "multipack",
+        "Added By": "",
+        "Done ✓": "",
+        "Category": "Household"
+      },
+      {
+        "Item": "Agave syrup",
+        "Quantity": "",
+        "Added By": "",
+        "Done ✓": "",
+        "Category": "Other"
+      },
+      {
+        "Item": "Butter",
+        "Quantity": "",
+        "Added By": "",
+        "Done ✓": "",
+        "Category": ""
+      },
+      {
+        "Item": "Lemonase",
+        "Quantity": "",
+        "Added By": "",
+        "Done ✓": "",
+        "Category": ""
       }
     ]
   },
@@ -780,7 +808,7 @@
         "Day": "Friday",
         "Breakfast": "",
         "Lunch": "",
-        "Dinner": "",
+        "Dinner": "Charlie Bingham and beers",
         "Notes": ""
       },
       {
@@ -898,6 +926,20 @@
         "Day/Time": "Mon 3:00-4:00pm",
         "Location": "Pix Brook Academy",
         "Notes": "Straight after school"
+      },
+      {
+        "Child": "Ava",
+        "Activity": "Gymnastics",
+        "Day/Time": "Friday",
+        "Location": "6:00 PM",
+        "Notes": "TBC"
+      },
+      {
+        "Child": "Ella",
+        "Activity": "Gymnastics",
+        "Day/Time": "Friday",
+        "Location": "7:00 PM",
+        "Notes": "TBC"
       }
     ]
   },
