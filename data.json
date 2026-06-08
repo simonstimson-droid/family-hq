@@ -694,6 +694,20 @@
         "Added By": "Simon",
         "Done ✓": "",
         "Category": "Test"
+      },
+      {
+        "Item": "salt and vinegar crisps",
+        "Quantity": "multipack",
+        "Added By": "",
+        "Done ✓": "",
+        "Category": "Household"
+      },
+      {
+        "Item": "Test",
+        "Quantity": "1",
+        "Added By": "",
+        "Done ✓": "",
+        "Category": ""
       }
     ]
   },
@@ -714,6 +728,14 @@
         "Frequency": "Once",
         "Done ✓": "",
         "Notes": "🛂 URGENT - expires tomorrow!"
+      },
+      {
+        "Task": "Put Bins Out",
+        "Assigned To": "Simon",
+        "Due Date": "",
+        "Frequency": "Weekly",
+        "Done ✓": "",
+        "Notes": ""
       }
     ]
   },

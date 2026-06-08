@@ -56,6 +56,12 @@
         .contact-item { border-left-color: #64748b; background: #f8fafc; }
         .contact-item .name { font-weight: 600; }
         .contact-item .detail { font-size: 13px; color: #666; margin-top: 2px; }
+        .contact-item a { color: #667eea; text-decoration: none; }
+        .contact-item a:hover { text-decoration: underline; }
+        .contact-item .call-btn { display: inline-block; background: #10b981; color: white; padding: 4px 12px; border-radius: 6px; font-size: 13px; margin-top: 6px; text-decoration: none; }
+        .contact-item .call-btn:hover { background: #059669; }
+        .contact-item .email-btn { display: inline-block; background: #667eea; color: white; padding: 4px 12px; border-radius: 6px; font-size: 13px; margin-top: 6px; margin-left: 4px; text-decoration: none; }
+        .contact-item .email-btn:hover { background: #5a6fd6; }
         
         .add-btn { background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; margin-top: 10px; }
         .add-btn:hover { background: #5a6fd6; }
@@ -77,6 +83,41 @@
         
         .spinner { display: inline-block; animation: spin 1s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
+        
+        /* Calendar view toggle */
+        .view-toggle { display: flex; gap: 8px; margin-bottom: 12px; }
+        .view-toggle button { padding: 6px 16px; border: 2px solid #667eea; background: white; color: #667eea; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; }
+        .view-toggle button.active { background: #667eea; color: white; }
+        
+        /* Week view calendar */
+        .week-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .week-header h3 { font-size: 16px; }
+        .week-nav { display: flex; gap: 8px; }
+        .week-nav button { background: #667eea; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+        .week-nav button:hover { background: #5a6fd6; }
+        
+        .week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+        .week-day-header { text-align: center; font-size: 11px; font-weight: 600; color: #999; padding: 4px; text-transform: uppercase; }
+        .week-day { min-height: 80px; background: #f8f9ff; border-radius: 6px; padding: 4px; font-size: 11px; }
+        .week-day.today { background: #eef2ff; border: 2px solid #667eea; }
+        .week-day .day-num { font-weight: 600; color: #667eea; margin-bottom: 2px; text-align: center; font-size: 13px; }
+        .week-day .day-event { background: #667eea; color: white; padding: 1px 4px; border-radius: 3px; margin-bottom: 1px; font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+        .week-day .day-event.school { background: #10b981; }
+        .week-day .day-event.activity { background: #06b6d4; }
+        .week-day .day-event.holiday { background: #f59e0b; }
+        .week-day.other-month { opacity: 0.3; }
+        
+        /* Month view */
+        .month-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+        .month-day-header { text-align: center; font-size: 10px; font-weight: 600; color: #999; padding: 4px 2px; text-transform: uppercase; }
+        .month-day { min-height: 60px; background: #f8f9ff; border-radius: 4px; padding: 2px; font-size: 10px; cursor: pointer; }
+        .month-day:hover { background: #eef2ff; }
+        .month-day.today { background: #eef2ff; border: 2px solid #667eea; }
+        .month-day .day-num { font-weight: 600; color: #667eea; text-align: center; font-size: 11px; }
+        .month-day .month-event { background: #667eea; color: white; padding: 1px 3px; border-radius: 2px; margin-bottom: 1px; font-size: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .month-day .month-event.school { background: #10b981; }
+        .month-day .month-event.activity { background: #06b6d4; }
+        .month-day.other-month { opacity: 0.3; }
         
         /* Modal form styles */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 300; justify-content: center; align-items: center; }
@@ -101,6 +142,7 @@
             .header h1 { font-size: 22px; }
             .tab { padding: 10px 14px; font-size: 13px; }
             .content { padding: 12px; }
+            .week-day { min-height: 60px; }
         }
     </style>
 </head>
@@ -144,8 +186,13 @@
         <!-- CALENDAR -->
         <div class="panel" id="calendar">
             <div class="card">
-                <h2>📆 Upcoming Events</h2>
-                <div id="calendarEvents"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+                <h2>📆 Family Calendar</h2>
+                <div class="view-toggle">
+                    <button class="active" onclick="setCalView('week')" id="btn-week">Week</button>
+                    <button onclick="setCalView('month')" id="btn-month">Month</button>
+                    <button onclick="setCalView('list')" id="btn-list">List</button>
+                </div>
+                <div id="calendarView"></div>
             </div>
         </div>
         
@@ -220,7 +267,6 @@
     
     <button class="refresh-btn" onclick="loadAllData()" title="Refresh">🔄</button>
     
-    <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
         <div class="modal" id="modalContent"></div>
     </div>
@@ -228,6 +274,8 @@
     
     <script>
         let familyData = null;
+        let calView = 'week';
+        let currentWeekStart = new Date();
         
         // Set current date
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -243,270 +291,402 @@
             });
         });
         
-        // Helper: get today's date as YYYY-MM-DD
-        function getTodayStr() {
-            const d = new Date();
+        // ===== CALENDAR VIEW =====
+        function setCalView(view) {
+            calView = view;
+            document.querySelectorAll('.view-toggle button').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + view).classList.add('active');
+            renderCalendar(familyData);
+        }
+        
+        function getStartOfWeek(d) {
+            const day = d.getDay();
+            const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+            return new Date(d.setDate(diff));
+        }
+        
+        function formatDate(d) {
             return d.toISOString().split('T')[0];
         }
         
-        // Helper: format date
-        function formatDate(dateStr) {
+        function renderCalendar(data) {
+            const events = getSheet('📅');
+            const container = document.getElementById('calendarView');
+            
+            if (calView === 'list') {
+                if (events.length === 0) { container.innerHTML = '<div class="empty">No upcoming events</div>'; return; }
+                container.innerHTML = events.map(e => `
+                    <div class="event-item">
+                        <div class="time">${formatDate(e.Date || e.date || e.Start || '')}</div>
+                        <div class="title">${e.Event || e.event || e.Title || 'Event'}</div>
+                        ${e.Time || e.time ? `<div style="font-size:13px;color:#666;">🕐 ${e.Time || e.time}</div>` : ''}
+                        ${e.Location || e.location ? `<div class="location">📍 ${e.Location || e.location}</div>` : ''}
+                        ${e.Who || e.who ? `<div style="font-size:13px;color:#666;">👤 ${e.Who || e.who}</div>` : ''}
+                    </div>
+                `).join('');
+                return;
+            }
+            
+            const now = new Date();
+            const today = formatDate(now);
+            
+            if (calView === 'week') {
+                const weekStart = getStartOfWeek(new Date(currentWeekStart));
+                const days = [];
+                for (let i = 0; i < 7; i++) {
+                    const d = new Date(weekStart);
+                    d.setDate(d.getDate() + i);
+                    days.push(d);
+                }
+                
+                const dayNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+                const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                
+                let weekEnd = new Date(days[6]);
+                weekEnd.setDate(weekEnd.getDate() + 1);
+                const headerTitle = `${days[0].getDate()} ${monthNames[days[0].getMonth()]} – ${weekEnd.getDate()} ${monthNames[weekEnd.getMonth()]} ${weekEnd.getFullYear()}`;
+                
+                let html = `
+                    <div class="week-header">
+                        <button onclick="currentWeekStart.setDate(currentWeekStart.getDate()-7); renderCalendar(familyData);">◀ Prev</button>
+                        <h3>${headerTitle}</h3>
+                        <button onclick="currentWeekStart.setDate(currentWeekStart.getDate()+7); renderCalendar(familyData);">Next ▶</button>
+                    </div>
+                    <div class="week-grid">
+                `;
+                
+                dayNames.forEach((name, i) => {
+                    html += `<div class="week-day-header">${name}</div>`;
+                });
+                
+                days.forEach(d => {
+                    const dateStr = formatDate(d);
+                    const isToday = dateStr === today;
+                    const dayEvents = events.filter(e => {
+                        const eDate = (e.Date || e.date || e.Start || '').substring(0, 10);
+                        return eDate === dateStr;
+                    });
+                    
+                    html += `<div class="week-day ${isToday ? 'today' : ''}">`;
+                    html += `<div class="day-num">${d.getDate()}</div>`;
+                    dayEvents.slice(0, 3).forEach(e => {
+                        const name = (e.Event || e.event || '').substring(0, 20);
+                        let cls = '';
+                        if (e.Event && (e.Event.includes('School') || e.Event.includes('Training') || e.Event.includes('Term'))) cls = 'school';
+                        else if (e.Event && (e.Event.includes('Dance') || e.Event.includes('Diving') || e.Event.includes('Swim') || e.Event.includes('Drama') || e.Event.includes('Choir') || e.Event.includes('Athletics'))) cls = 'activity';
+                        else if (e.Event && (e.Event.includes('Holiday') || e.Event.includes('Bank'))) cls = 'holiday';
+                        html += `<div class="day-event ${cls}" title="${e.Event || ''}">${name}</div>`;
+                    });
+                    if (dayEvents.length > 3) html += `<div style="font-size:10px;color:#999;text-align:center;">+${dayEvents.length - 3} more</div>`;
+                    html += `</div>`;
+                });
+                
+                html += '</div>';
+                container.innerHTML = html;
+            } else {
+                // Month view
+                const year = now.getFullYear();
+                const month = now.getMonth();
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const startPad = (firstDay.getDay() + 6) % 7; // Monday start
+                const totalDays = lastDay.getDate();
+                
+                const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                const dayNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+                
+                let html = `<div style="text-align:center;font-size:16px;font-weight:600;margin-bottom:12px;">${monthNames[month]} ${year}</div>`;
+                html += '<div class="month-grid">';
+                dayNames.forEach(n => html += `<div class="month-day-header">${n}</div>`);
+                
+                // Previous month padding
+                const prevMonth = new Date(year, month, 0);
+                for (let i = startPad - 1; i >= 0; i--) {
+                    html += `<div class="month-day other-month"><div class="day-num">${prevMonth.getDate() - i}</div></div>`;
+                }
+                
+                // Current month
+                for (let d = 1; d <= totalDays; d++) {
+                    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                    const isToday = dateStr === today;
+                    const dayEvents = events.filter(e => {
+                        const eDate = (e.Date || e.date || e.Start || '').substring(0, 10);
+                        return eDate === dateStr;
+                    });
+                    
+                    html += `<div class="month-day ${isToday ? 'today' : ''}">`;
+                    html += `<div class="day-num">${d}</div>`;
+                    dayEvents.slice(0, 2).forEach(e => {
+                        const name = (e.Event || e.event || '').replace(/[^\w\s]/g, '').substring(0, 15);
+                        let cls = '';
+                        if (e.Event && (e.Event.includes('School') || e.Event.includes('Training') || e.Event.includes('Term'))) cls = 'school';
+                        else if (e.Event && (e.Event.includes('Dance') || e.Event.includes('Diving') || e.Event.includes('Swim'))) cls = 'activity';
+                        html += `<div class="month-event ${cls}">${name}</div>`;
+                    });
+                    html += '</div>';
+                }
+                
+                html += '</div>';
+            }
+        }
+        
+        // ===== RENDER FUNCTIONS =====
+        
+        function getSheet(emoji) {
+            if (!familyData) return [];
+            for (const key of Object.keys(familyData)) {
+                if (key.startsWith(emoji)) {
+                    return (familyData[key].rows || []);
+                }
+            }
+            return [];
+        }
+        
+        function formatDateStr(dateStr) {
             if (!dateStr) return '';
             const d = new Date(dateStr);
             if (isNaN(d.getTime())) return dateStr;
             return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
         }
         
-        // Helper: format time
         function formatTime(timeStr) {
-            if (!timeStr) return '';
-            // Handle HH:MM or HH:MM:SS
+            if (!timeStr || timeStr === 'All day') return timeStr || '';
             const parts = timeStr.split(':');
             if (parts.length >= 2) {
                 const h = parseInt(parts[0]);
-                const m = parts[1];
+                const m = parts[1].substring(0,2);
                 const ampm = h >= 12 ? 'pm' : 'am';
-                const h12 = h % 12 || 12;
-                return `${h12}:${m} ${ampm}`;
+                return `${h % 12 || 12}:${m} ${ampm}`;
             }
             return timeStr;
         }
         
-        // Helper: get sheet data by emoji prefix
-        function getSheet(emoji) {
-            if (!familyData) return [];
-            for (const key of Object.keys(familyData)) {
-                if (key.startsWith(emoji)) {
-                    const sheet = familyData[key];
-                    return sheet.rows || [];
-                }
-            }
-            return [];
-        }
-        
-        // Helper: show error
-        function showError(elementId, message) {
-            document.getElementById(elementId).innerHTML = `<div class="error">${message}</div>`;
-        }
-        
-        // Helper: show empty
-        function showEmpty(elementId, message) {
-            document.getElementById(elementId).innerHTML = `<div class="empty">${message}</div>`;
-        }
+        function showError(id, msg) { document.getElementById(id).innerHTML = `<div class="error">${msg}</div>`; }
+        function showEmpty(id, msg) { document.getElementById(id).innerHTML = `<div class="empty">${msg}</div>`; }
+        function todayStr() { return new Date().toISOString().split('T')[0]; }
         
         function renderToday(data) {
-            const today = getTodayStr();
+            const today = todayStr();
             const events = getSheet('📅');
             const chores = getSheet('✅');
             const meals = getSheet('🍽️');
             
-            // Today's events
-            const todayEvents = events.filter(e => {
-                const date = e.Date || e.date || e.Start || e.start || '';
-                return date.startsWith(today) || date === today;
-            });
-            
-            if (todayEvents.length > 0) {
+            const todayEvents = events.filter(e => (e.Date || e.date || e.Start || '').startsWith(today));
+            if (todayEvents.length) {
                 document.getElementById('todayEvents').innerHTML = todayEvents.map(e => `
                     <div class="event-item">
-                        <div class="time">${formatTime(e.Time || e.time || '') || 'All day'}</div>
-                        <div class="title">${e.Event || e.event || e.Title || e.title || e.Summary || 'Event'}</div>
+                        <div class="time">${formatTime(e.Time || e.time) || 'All day'}</div>
+                        <div class="title">${e.Event || e.event || e.Title || 'Event'}</div>
                         ${e.Location || e.location ? `<div class="location">📍 ${e.Location || e.location}</div>` : ''}
-                    </div>
-                `).join('');
-            } else {
-                showEmpty('todayEvents', 'No events today — enjoy! 🎉');
-            }
+                        ${e.Who || e.who ? `<div style="font-size:13px;color:#666;">👤 ${e.Who || e.who}</div>` : ''}
+                    </div>`).join('');
+            } else { showEmpty('todayEvents', 'No events today — enjoy! 🎉'); }
             
-            // Today's chores
-            const todayChores = chores.filter(c => {
-                const day = (c.Day || c.day || c.Frequency || '').toLowerCase();
-                const todayDay = new Date().toLocaleDateString('en-GB', { weekday: 'long' }).toLowerCase();
-                return day.includes(todayDay) || day.includes('daily') || day.includes('every');
-            });
-            
-            if (todayChores.length > 0) {
+            const todayDay = new Date().toLocaleDateString('en-GB', { weekday: 'long' }).toLowerCase();
+            const todayChores = chores.filter(c => (c.Day || c.Frequency || '').toLowerCase().includes(todayDay) || (c.Frequency || '').toLowerCase().includes('daily'));
+            if (todayChores.length) {
                 document.getElementById('todayChores').innerHTML = todayChores.map(c => `
-                    <div class="chore-item">
-                        <div>${c.Chore || c.chore || c.Task || c.task || 'Chore'}</div>
-                        <div class="assignee">👤 ${c.Assignee || c.assignee || c.Who || 'Anyone'}</div>
-                    </div>
-                `).join('');
-            } else {
-                showEmpty('todayChores', 'No chores due today — enjoy! 🎉');
-            }
+                    <div class="chore-item"><div>${c.Chore || c.Task || 'Chore'}</div>
+                    <div class="assignee">👤 ${c['Assigned To'] || c.Who || 'Anyone'}</div></div>`).join('');
+            } else { showEmpty('todayChores', 'No chores due today — enjoy! 🎉'); }
             
-            // Tonight's meal
-            const todayDay = new Date().toLocaleDateString('en-GB', { weekday: 'long' });
-            const tonightMeal = meals.find(m => {
-                const day = (m.Day || m.day || '').toLowerCase();
-                return day === todayDay.toLowerCase();
-            });
-            
-            if (tonightMeal) {
-                document.getElementById('tonightMeal').innerHTML = `
-                    <div class="meal-item">
-                        <div class="day">${todayDay}</div>
-                        <div>${tonightMeal.Meal || tonightMeal.meal || tonightMeal.Dinner || tonightMeal.dinner || 'TBD'}</div>
-                        ${tonightMeal.Notes || tonightMeal.notes ? `<div style="font-size:13px;color:#666;margin-top:4px;">${tonightMeal.Notes || tonightMeal.notes}</div>` : ''}
-                    </div>
-                `;
-            } else {
-                showEmpty('tonightMeal', 'No meal planned yet — time to decide! 🍽️');
-            }
-        }
-        
-        function renderCalendar(data) {
-            const events = getSheet('📅');
-            if (events.length > 0) {
-                document.getElementById('calendarEvents').innerHTML = events.map(e => `
-                    <div class="event-item">
-                        <div class="time">${formatDate(e.Date || e.date || e.Start || '')}</div>
-                        <div class="title">${e.Event || e.event || e.Title || e.title || e.Summary || 'Event'}</div>
-                        ${e.Time || e.time ? `<div style="font-size:13px;color:#666;">🕐 ${formatTime(e.Time || e.time)}</div>` : ''}
-                        ${e.Location || e.location ? `<div class="location">📍 ${e.Location || e.location}</div>` : ''}
-                        ${e.Notes || e.notes ? `<div style="font-size:13px;color:#666;margin-top:4px;">${e.Notes || e.notes}</div>` : ''}
-                    </div>
-                `).join('');
-            } else {
-                showEmpty('calendarEvents', 'No upcoming events');
-            }
+            const meal = meals.find(m => (m.Day || '').toLowerCase() === todayDay);
+            if (meal) {
+                document.getElementById('tonightMeal').innerHTML = `<div class="meal-item"><div class="day">${todayDay.charAt(0).toUpperCase()+todayDay.slice(1)}</div><div>${meal.Meal || meal.Dinner || 'TBD'}</div></div>`;
+            } else { showEmpty('tonightMeal', 'No meal planned — time to decide! 🍽️'); }
         }
         
         function renderShopping(data) {
             const items = getSheet('🛒');
-            if (items.length > 0) {
+            if (items.length) {
                 document.getElementById('shoppingList').innerHTML = items.map(i => `
                     <div class="shopping-item" onclick="this.classList.toggle('done')">
-                        <div>${i.Item || i.item || i.What || 'Item'}</div>
-                        <div class="category">${i.Category || i.category || ''} ${i.Quantity || i.qty ? '• ' + (i.Quantity || i.qty) : ''}</div>
-                        ${i['Added by'] || i.added_by ? `<div class="added-by">Added by ${i['Added by'] || i.added_by}</div>` : ''}
-                    </div>
-                `).join('');
-            } else {
-                showEmpty('shoppingList', 'Nothing on the list — add what you need! 🛒');
-            }
+                        <div>${i.Item || 'Item'}</div>
+                        <div class="category">${i.Category || ''} ${i.Quantity ? '• '+i.Quantity : ''}</div>
+                        ${i['Added by'] ? `<div class="added-by">Added by ${i['Added by']}</div>` : ''}
+                    </div>`).join('');
+            } else { showEmpty('shoppingList', 'Nothing on the list — add what you need! 🛒'); }
         }
         
         function renderChores(data) {
             const chores = getSheet('✅');
-            if (chores.length > 0) {
+            if (chores.length) {
                 document.getElementById('choreList').innerHTML = chores.map(c => `
-                    <div class="chore-item">
-                        <div>${c.Chore || c.chore || c.Task || c.task || 'Chore'}</div>
-                        <div class="assignee">👤 ${c.Assignee || c.assignee || c.Who || 'Anyone'} • ${c.Frequency || c.frequency || c.Day || 'Weekly'}</div>
-                    </div>
-                `).join('');
-            } else {
-                showEmpty('choreList', 'No chores set yet. Add some to get started! 💪');
-            }
+                    <div class="chore-item"><div>${c.Chore || c.Task || 'Chore'}</div>
+                    <div class="assignee">👤 ${c['Assigned To'] || c.Who || 'Anyone'} • ${c.Frequency || c.Day || 'Weekly'}</div></div>`).join('');
+            } else { showEmpty('choreList', 'No chores set yet. Add some! 💪'); }
         }
         
         function renderMeals(data) {
             const meals = getSheet('🍽️');
-            if (meals.length > 0) {
+            if (meals.length) {
                 document.getElementById('mealPlan').innerHTML = meals.map(m => `
-                    <div class="meal-item">
-                        <div class="day">${m.Day || m.day || 'Day'}</div>
-                        <div>${m.Meal || m.meal || m.Dinner || m.dinner || m.What || 'TBD'}</div>
-                        ${m.Notes || m.notes ? `<div style="font-size:13px;color:#666;margin-top:4px;">${m.Notes || m.notes}</div>` : ''}
-                    </div>
-                `).join('');
-            } else {
-                showEmpty('mealPlan', 'No meals planned yet — start planning! 🍽️');
-            }
+                    <div class="meal-item"><div class="day">${m.Day || 'Day'}</div><div>${m.Meal || m.Dinner || m.What || 'TBD'}</div>
+                    ${m.Notes ? `<div style="font-size:13px;color:#666;margin-top:4px;">${m.Notes}</div>` : ''}</div>`).join('');
+            } else { showEmpty('mealPlan', 'No meals planned yet — start planning! 🍽️'); }
         }
         
         function renderSchool(data) {
             const activities = getSheet('📋');
-            if (activities.length > 0) {
+            if (activities.length) {
                 document.getElementById('schoolActivities').innerHTML = activities.map(a => `
-                    <div class="activity-item">
-                        <div class="child">${a.Child || a.child || a.Who || 'Child'}</div>
-                        <div>${a.Activity || a.activity || a.What || a.Event || 'Activity'}</div>
-                        <div class="details">${a.Day || a.day || ''} ${a.Time || a.time || ''}</div>
-                        ${a.Location || a.location ? `<div class="details">📍 ${a.Location || a.location}</div>` : ''}
-                        ${a.Notes || a.notes ? `<div class="details">${a.Notes || a.notes}</div>` : ''}
-                    </div>
-                `).join('');
-            } else {
-                showEmpty('schoolActivities', 'No school activities listed yet');
-            }
+                    <div class="activity-item"><div class="child">${a.Child || a.Who || 'Child'}</div>
+                    <div>${a.Activity || a.What || 'Activity'}</div>
+                    <div class="details">${a['Day/Time'] || a.Day || ''} ${a.Time || ''}</div>
+                    ${a.Location ? `<div class="details">📍 ${a.Location}</div>` : ''}
+                    ${a.Notes ? `<div class="details">${a.Notes}</div>` : ''}</div>`).join('');
+            } else { showEmpty('schoolActivities', 'No school activities listed yet'); }
         }
         
         function renderContacts(data) {
             const contacts = getSheet('📞');
-            if (contacts.length > 0) {
-                document.getElementById('contactsList').innerHTML = contacts.map(c => `
-                    <div class="contact-item">
-                        <div class="name">${c.Name || c.name || 'Contact'}</div>
-                        ${c.Phone || c.phone ? `<div class="detail">📞 ${c.Phone || c.phone}</div>` : ''}
-                        ${c.Email || c.email ? `<div class="detail">✉️ ${c.Email || c.email}</div>` : ''}
-                        ${c.Address || c.address ? `<div class="detail">📍 ${c.Address || c.address}</div>` : ''}
-                        ${c.Notes || c.notes ? `<div class="detail">${c.Notes || c.notes}</div>` : ''}
-                    </div>
-                `).join('');
-            } else {
-                showEmpty('contactsList', 'No contacts added yet');
-            }
+            if (contacts.length) {
+                document.getElementById('contactsList').innerHTML = contacts.map(c => {
+                    const name = c.Name || c.name || 'Contact';
+                    const phone = c.Phone || c.phone || '';
+                    const email = c.Email || c.email || '';
+                    const address = c.Address || c.address || '';
+                    const notes = c.Notes || c.notes || '';
+                    let h = `<div class="contact-item"><div class="name">${name}</div>`;
+                    if (phone) {
+                        const p = phone.replace(/[^\d+]/g,'');
+                        h += `<div class="detail">📞 <a href="tel:${p}">${phone}</a></div>`;
+                        h += `<a href="tel:${p}" class="call-btn">📱 Call</a>`;
+                    }
+                    if (email) {
+                        h += `<div class="detail">✉️ <a href="mailto:${email}">${email}</a></div>`;
+                        h += `<a href="mailto:${email}" class="email-btn">✉️ Email</a>`;
+                    }
+                    if (address) h += `<div class="detail">📍 ${address}</div>`;
+                    if (notes) h += `<div class="detail">${notes}</div>`;
+                    return h + '</div>';
+                }).join('');
+            } else { showEmpty('contactsList', 'No contacts added yet'); }
         }
         
         function renderBudget(data) {
             const budget = getSheet('💰');
-            if (budget.length > 0) {
+            if (budget.length) {
                 document.getElementById('budgetData').innerHTML = budget.map(b => `
-                    <div style="margin-bottom:12px;">
-                        <div style="display:flex;justify-content:space-between;">
-                            <span>${b.Category || b.category || b.Item || 'Item'}</span>
-                            <span>${b.Amount || b.amount || b.Budget || '£0'}</span>
-                        </div>
-                        <div class="budget-bar"><div class="fill" style="width:${b.Percent || 0}%"></div></div>
-                    </div>
-                `).join('');
-            } else {
-                showEmpty('budgetData', 'No budget items yet');
-            }
+                    <div style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;"><span>${b.Category || b.Item || 'Item'}</span><span>${b.Amount || b.Budget || '£0'}</span></div>
+                    <div class="budget-bar"><div class="fill" style="width:${b.Percent||0}%"></div></div></div>`).join('');
+            } else { showEmpty('budgetData', 'No budget items yet'); }
         }
         
         function renderAnnouncements(data) {
-            const announcements = getSheet('📝');
-            if (announcements.length > 0) {
-                document.getElementById('announcementsList').innerHTML = announcements.map(a => `
-                    <div class="announcement-item ${a.Priority === 'High' || a.priority === 'high' ? 'high' : ''}">
-                        <div class="from">${a.From || a.from || 'Family'} • ${a.Date || a.date || ''}</div>
-                        <div class="msg">${a.Message || a.message || a.Announcement || a.Text || ''}</div>
-                    </div>
-                `).join('');
-            } else {
-                showEmpty('announcementsList', 'No announcements — all quiet! 📢');
-            }
+            const a = getSheet('📝');
+            if (a.length) {
+                document.getElementById('announcementsList').innerHTML = a.map(x => `
+                    <div class="announcement-item ${x.Priority==='High'?'high':''}"><div class="from">${x.From||'Family'} • ${x.Date||''}</div>
+                    <div class="msg">${x.Message||x.Announcement||''}</div></div>`).join('');
+            } else { showEmpty('announcementsList', 'No announcements — all quiet! 📢'); }
         }
         
         function renderFamily(data) {
-            const members = getSheet('👨');
-            if (members.length > 0) {
-                document.getElementById('familyMembers').innerHTML = members.map(m => `
-                    <div class="family-card">
-                        <div class="name">${m.Name || m.name || 'Member'}</div>
-                        <div class="role">${m.Role || m.role || ''}</div>
-                        ${m.School || m.school ? `<div class="role">${m.School || m.school}</div>` : ''}
-                        ${m.Notes || m.notes ? `<div class="role">${m.Notes || m.notes}</div>` : ''}
-                    </div>
-                `).join('');
-            } else {
-                showEmpty('familyMembers', 'No family members added yet');
-            }
+            const m = getSheet('👨');
+            if (m.length) {
+                document.getElementById('familyMembers').innerHTML = m.map(x => `
+                    <div class="family-card"><div class="name">${x.Name||'Member'}</div><div class="role">${x.Role||''}</div>
+                    ${x.School?`<div class="role">${x.School}</div>`:''}</div>`).join('');
+            } else { showEmpty('familyMembers', 'No family members added yet'); }
+        }
+        
+        // ===== API (POST for reliability) =====
+        const API_URL = 'https://script.google.com/macros/s/AKfycbygH631E2jkxhcIZm5F3b2d50XcfmvdekMMrvComv_X5DQBSdCTog5vfimLgZ6haDMk/exec';
+        
+        function showToast(msg, err) {
+            const t = document.getElementById('toast');
+            t.textContent = msg; t.className = 'toast show' + (err?' error':'');
+            setTimeout(() => t.className = 'toast', 3000);
+        }
+        function openModal(html, onSave) {
+            document.getElementById('modalContent').innerHTML = html;
+            document.getElementById('modalOverlay').classList.add('show');
+            window._modalSave = onSave;
+        }
+        function closeModal() { document.getElementById('modalOverlay').classList.remove('show'); window._modalSave = null; }
+        function modalSave() { if (window._modalSave) window._modalSave(); }
+        
+        async function apiCall(params) {
+            const fd = new URLSearchParams();
+            for (const [k,v] of Object.entries(params)) fd.append(k, v);
+            const r = await fetch(API_URL, { method: 'POST', body: fd });
+            return r.json();
+        }
+        
+        async function addShoppingItem() {
+            openModal(`<h3>🛒 Add Shopping Item</h3>
+                <label>Item</label><input type="text" id="s_item" placeholder="e.g. Milk" autofocus>
+                <label>Quantity</label><input type="text" id="s_qty" placeholder="e.g. 2 pints">
+                <label>Category</label><select id="s_cat"><option value="">— None —</option><option>Dairy</option><option>Fruit & Veg</option><option>Meat</option><option>Bakery</option><option>Frozen</option><option>Household</option><option>Admin</option><option>Other</option></select>
+                <div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="s_save" onclick="modalSave()">Add Item</button></div>`,
+            async () => {
+                const b = document.getElementById('s_save'); b.disabled=true; b.textContent='Adding...';
+                const data = {Item: document.getElementById('s_item').value, Quantity: document.getElementById('s_qty').value, 'Added by': 'Simon', 'Done ✓': '', Category: document.getElementById('s_cat').value};
+                if (!data.Item) { showToast('Please enter an item',true); b.disabled=false; return; }
+                const r = await apiCall({action:'append', sheet:'🛒 Shopping List', data:JSON.stringify(data)});
+                if (r.success) { showToast('✅ Added!'); closeModal(); setTimeout(()=>loadAllData(),2000); }
+                else { showToast('❌ '+(r.error||'Failed'),true); b.disabled=false; }
+            });
+        }
+        
+        async function addChore() {
+            openModal(`<h3>✅ Add Chore</h3>
+                <label>Task</label><input type="text" id="c_task" placeholder="e.g. Empty bins" autofocus>
+                <label>Assigned To</label><select id="c_who"><option>Simon</option><option>Emma</option><option>Ava</option><option>Ella</option><option>Everyone</option></select>
+                <label>Frequency</label><select id="c_freq"><option>Once</option><option>Daily</option><option>Weekly</option><option>Monthly</option></select>
+                <label>Notes</label><input type="text" id="c_notes" placeholder="Optional">
+                <div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="c_save" onclick="modalSave()">Add Chore</button></div>`,
+            async () => {
+                const b = document.getElementById('c_save'); b.disabled=true; b.textContent='Adding...';
+                const data = {Task: document.getElementById('c_task').value, 'Assigned To': document.getElementById('c_who').value, 'Due Date': '', Frequency: document.getElementById('c_freq').value, 'Done ✓': '', Notes: document.getElementById('c_notes').value};
+                if (!data.Task) { showToast('Please enter a task',true); b.disabled=false; return; }
+                const r = await apiCall({action:'append', sheet:'✅ Chores', data:JSON.stringify(data)});
+                if (r.success) { showToast('✅ Chore added!'); closeModal(); setTimeout(()=>loadAllData(),2000); }
+                else { showToast('❌ '+(r.error||'Failed'),true); b.disabled=false; }
+            });
+        }
+        
+        async function addAnnouncement() {
+            openModal(`<h3>📝 New Announcement</h3>
+                <label>Message</label><textarea id="a_msg" placeholder="What's the news?" autofocus></textarea>
+                <label>Priority</label><select id="a_pri"><option>Info</option><option>High</option></select>
+                <div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="a_save" onclick="modalSave()">Post</button></div>`,
+            async () => {
+                const b = document.getElementById('a_save'); b.disabled=true; b.textContent='Posting...';
+                const data = {Date: todayStr(), From: 'Simon', Message: document.getElementById('a_msg').value, Priority: document.getElementById('a_pri').value};
+                if (!data.Message) { showToast('Please enter a message',true); b.disabled=false; return; }
+                const r = await apiCall({action:'append', sheet:'📝 Announcements', data:JSON.stringify(data)});
+                if (r.success) { showToast('✅ Posted!'); closeModal(); setTimeout(()=>loadAllData(),2000); }
+                else { showToast('❌ '+(r.error||'Failed'),true); b.disabled=false; }
+            });
+        }
+        
+        async function addMeal() {
+            const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+            const meals = getSheet('🍽️');
+            const map = {}; meals.forEach(m => { if (m.Day) map[m.Day] = m.Meal || m.Dinner || ''; });
+            let f = days.map(d => `<label>${d}</label><input type="text" id="m_${d.substring(0,3)}" placeholder="e.g. Pasta" value="${map[d]||''}">`).join('');
+            openModal(`<h3>🍽️ Weekly Meal Plan</h3>${f}<div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="m_save" onclick="modalSave()">Save All</button></div>`,
+            async () => {
+                const b = document.getElementById('m_save'); b.disabled=true; b.textContent='Saving...';
+                for (const d of days) {
+                    const val = document.getElementById('m_'+d.substring(0,3)).value;
+                    const ex = meals.findIndex(m => m.Day === d);
+                    const data = {Day:d, Breakfast:'', Lunch:'', Dinner:val, Notes:''};
+                    if (ex >= 0) await apiCall({action:'update', sheet:'🍽️ Meal Plan', row:String(ex+2), data:JSON.stringify(data)});
+                    else if (val) await apiCall({action:'append', sheet:'🍽️ Meal Plan', data:JSON.stringify(data)});
+                }
+                showToast('✅ Meal plan updated!'); closeModal(); setTimeout(()=>loadAllData(),2000);
+            });
         }
         
         async function loadAllData() {
             try {
-                const response = await fetch('data.json?' + Date.now());
-                if (!response.ok) throw new Error('Failed to load data');
-                familyData = await response.json();
-                
-                // Show last update time
+                const resp = await fetch('data.json?' + Date.now());
+                if (!resp.ok) throw new Error('Failed');
+                familyData = await resp.json();
                 document.getElementById('updateTime').textContent = 'Last updated: ' + new Date().toLocaleTimeString('en-GB');
-                
                 renderToday(familyData);
                 renderCalendar(familyData);
                 renderShopping(familyData);
@@ -518,212 +698,11 @@
                 renderAnnouncements(familyData);
                 renderFamily(familyData);
             } catch (err) {
-                console.error('Error loading data:', err);
-                ['todayEvents','todayChores','tonightMeal','calendarEvents','shoppingList','choreList','mealPlan','schoolActivities','contactsList','budgetData','announcementsList','familyMembers'].forEach(id => {
-                    showError(id, '⚠️ Could not load data. Pull to refresh.');
-                });
+                console.error(err);
+                ['todayEvents','todayChores','tonightMeal','calendarView','shoppingList','choreList','mealPlan','schoolActivities','contactsList','budgetData','announcementsList','familyMembers'].forEach(id => showError(id, '⚠️ Could not load data. Pull to refresh.'));
             }
         }
         
-        // ===== APPS SCRIPT INTEGRATION =====
-        const API_URL = 'https://script.google.com/macros/s/AKfycbygH631E2jkxhcIZm5F3b2d50XcfmvdekMMrvComv_X5DQBSdCTog5vfimLgZ6haDMk/exec';
-        
-        function showToast(msg, isError) {
-            const t = document.getElementById('toast');
-            t.textContent = msg;
-            t.className = 'toast show' + (isError ? ' error' : '');
-            setTimeout(() => t.className = 'toast', 3000);
-        }
-        
-        function openModal(html, onSave) {
-            document.getElementById('modalContent').innerHTML = html;
-            document.getElementById('modalOverlay').classList.add('show');
-            window._modalSave = onSave;
-        }
-        
-        function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('show');
-            window._modalSave = null;
-        }
-        
-        function modalSave() {
-            if (window._modalSave) window._modalSave();
-        }
-        
-        async function apiCall(params) {
-            const url = API_URL + '?' + new URLSearchParams(params).toString();
-            const resp = await fetch(url);
-            return resp.json();
-        }
-        
-        async function addShoppingItem() {
-            openModal(`
-                <h3>🛒 Add Shopping Item</h3>
-                <label>Item</label>
-                <input type="text" id="s_item" placeholder="e.g. Milk" autofocus>
-                <label>Quantity</label>
-                <input type="text" id="s_qty" placeholder="e.g. 2 pints">
-                <label>Category</label>
-                <select id="s_cat">
-                    <option value="">— None —</option>
-                    <option>Dairy</option><option>Fruit & Veg</option><option>Meat</option>
-                    <option>Bakery</option><option>Frozen</option><option>Household</option>
-                    <option>Admin</option><option>Other</option>
-                </select>
-                <div class="modal-btns">
-                    <button class="cancel" onclick="closeModal()">Cancel</button>
-                    <button class="save" id="s_save" onclick="modalSave()">Add Item</button>
-                </div>
-            `, async () => {
-                const btn = document.getElementById('s_save');
-                btn.disabled = true;
-                btn.textContent = 'Adding...';
-                const data = {
-                    Item: document.getElementById('s_item').value,
-                    Quantity: document.getElementById('s_qty').value,
-                    'Added by': 'Simon',
-                    'Done ✓': '',
-                    Category: document.getElementById('s_cat').value
-                };
-                if (!data.Item) { showToast('Please enter an item', true); btn.disabled = false; return; }
-                const result = await apiCall({action: 'append', sheet: '🛒', data: JSON.stringify(data)});
-                if (result.success) {
-                    showToast('✅ Added to shopping list!');
-                    closeModal();
-                    setTimeout(() => loadAllData(), 2000);
-                } else {
-                    showToast('❌ ' + (result.error || 'Failed'), true);
-                    btn.disabled = false;
-                }
-            });
-        }
-        
-        async function addChore() {
-            openModal(`
-                <h3>✅ Add Chore</h3>
-                <label>Task</label>
-                <input type="text" id="c_task" placeholder="e.g. Empty bins" autofocus>
-                <label>Assigned To</label>
-                <select id="c_who">
-                    <option>Simon</option><option>Emma</option><option>Ava</option><option>Ella</option><option>Everyone</option>
-                </select>
-                <label>Frequency</label>
-                <select id="c_freq">
-                    <option>Once</option><option>Daily</option><option>Weekly</option><option>Monthly</option>
-                </select>
-                <label>Notes</label>
-                <input type="text" id="c_notes" placeholder="Optional">
-                <div class="modal-btns">
-                    <button class="cancel" onclick="closeModal()">Cancel</button>
-                    <button class="save" id="c_save" onclick="modalSave()">Add Chore</button>
-                </div>
-            `, async () => {
-                const btn = document.getElementById('c_save');
-                btn.disabled = true;
-                btn.textContent = 'Adding...';
-                const data = {
-                    Task: document.getElementById('c_task').value,
-                    'Assigned To': document.getElementById('c_who').value,
-                    'Due Date': '',
-                    Frequency: document.getElementById('c_freq').value,
-                    'Done ✓': '',
-                    Notes: document.getElementById('c_notes').value
-                };
-                if (!data.Task) { showToast('Please enter a task', true); btn.disabled = false; return; }
-                const result = await apiCall({action: 'append', sheet: '✅', data: JSON.stringify(data)});
-                if (result.success) {
-                    showToast('✅ Chore added!');
-                    closeModal();
-                    setTimeout(() => loadAllData(), 2000);
-                } else {
-                    showToast('❌ ' + (result.error || 'Failed'), true);
-                    btn.disabled = false;
-                }
-            });
-        }
-        
-        async function addAnnouncement() {
-            openModal(`
-                <h3>📝 New Announcement</h3>
-                <label>Message</label>
-                <textarea id="a_msg" placeholder="What's the news?" autofocus></textarea>
-                <label>Priority</label>
-                <select id="a_pri">
-                    <option>Info</option><option>High</option>
-                </select>
-                <div class="modal-btns">
-                    <button class="cancel" onclick="closeModal()">Cancel</button>
-                    <button class="save" id="a_save" onclick="modalSave()">Post</button>
-                </div>
-            `, async () => {
-                const btn = document.getElementById('a_save');
-                btn.disabled = true;
-                btn.textContent = 'Posting...';
-                const today = new Date().toISOString().split('T')[0];
-                const data = {
-                    Date: today,
-                    From: 'Simon',
-                    Message: document.getElementById('a_msg').value,
-                    Priority: document.getElementById('a_pri').value
-                };
-                if (!data.Message) { showToast('Please enter a message', true); btn.disabled = false; return; }
-                const result = await apiCall({action: 'append', sheet: '📝', data: JSON.stringify(data)});
-                if (result.success) {
-                    showToast('✅ Announcement posted!');
-                    closeModal();
-                    setTimeout(() => loadAllData(), 2000);
-                } else {
-                    showToast('❌ ' + (result.error || 'Failed'), true);
-                    btn.disabled = false;
-                }
-            });
-        }
-        
-        async function addMeal() {
-            // Build day selector with current meals prefilled
-            const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
-            const meals = getSheet('🍽️');
-            const mealMap = {};
-            meals.forEach(m => { if (m.Day) mealMap[m.Day] = m.Meal || m.Dinner || ''; });
-            
-            let fields = days.map(d => {
-                const val = mealMap[d] || '';
-                return `<label>${d}</label><input type="text" id="m_${d.substring(0,3)}" placeholder="e.g. Pasta" value="${val}">`;
-            }).join('');
-            
-            openModal(`
-                <h3>🍽️ Weekly Meal Plan</h3>
-                ${fields}
-                <div class="modal-btns">
-                    <button class="cancel" onclick="closeModal()">Cancel</button>
-                    <button class="save" id="m_save" onclick="modalSave()">Save All</button>
-                </div>
-            `, async () => {
-                const btn = document.getElementById('m_save');
-                btn.disabled = true;
-                btn.textContent = 'Saving...';
-                let errors = 0;
-                for (const d of days) {
-                    const key = `m_${d.substring(0,3)}`;
-                    const val = document.getElementById(key).value;
-                    // Find existing row or append
-                    const existing = meals.findIndex(m => m.Day === d);
-                    if (existing >= 0) {
-                        // Update existing via sheet row number (header is row 1, data starts row 2)
-                        const data = {Day: d, Breakfast: '', Lunch: '', Dinner: val, Notes: ''};
-                        await apiCall({action: 'update', sheet: '🍽️', row: String(existing + 2), data: JSON.stringify(data)});
-                    } else if (val) {
-                        const data = {Day: d, Breakfast: '', Lunch: '', Dinner: val, Notes: ''};
-                        await apiCall({action: 'append', sheet: '🍽️', data: JSON.stringify(data)});
-                    }
-                }
-                showToast('✅ Meal plan updated!');
-                closeModal();
-                setTimeout(() => loadAllData(), 2000);
-            });
-        }
-        
-        // Load data on page load
         loadAllData();
     </script>
 </body>
