@@ -1024,7 +1024,7 @@
                 const resp = await fetch('data.json?' + Date.now());
                 if (!resp.ok) throw new Error('Failed');
                 familyData = await resp.json();
-                document.getElementById('updateTime').textContent = 'Last updated: ' + new Date().toLocaleTimeString('en-GB');
+                // updateTime removed in redesign
                 renderToday(familyData);
                 renderCalendar(familyData);
                 renderShopping(familyData);
