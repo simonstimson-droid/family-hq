@@ -225,6 +225,7 @@
         <div class="tab" data-panel="budget">💰 Budget</div>
         <div class="tab" data-panel="announcements">📝 News</div>
         <div class="tab" data-panel="family">👨‍👩‍👧‍👧 Family</div>
+        <div class="tab" data-panel="emailadd">✉️ Quick Add</div>
     </div>
     
     <div class="content">
@@ -322,6 +323,71 @@
             <div class="card">
                 <h2>👨‍👩‍👧‍👧 Family Members</h2>
                 <div class="family-grid" id="familyMembers"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+        </div>
+        
+        <!-- QUICK ADD VIA EMAIL -->
+        <div class="panel" id="emailadd">
+            <div class="card">
+                <h2>✉️ Quick Add via Email</h2>
+                <p style="color:#666;font-size:14px;margin-bottom:16px;">Anyone in the family can add to the dashboard by sending an email. Forward any email or send a new one to the family HQ address with a simple subject line format.</p>
+                
+                <div style="background:linear-gradient(135deg,#f8f9ff,#faf5ff);border-radius:12px;padding:16px;margin-bottom:12px;border-left:4px solid #667eea;">
+                    <div style="font-weight:700;font-size:15px;margin-bottom:8px;">📬 Step 1: Set up the family email</div>
+                    <div style="font-size:13px;color:#555;">
+                        Create a new Gmail account (e.g. <strong>stimson.family.hq@gmail.com</code></strong>) — or use an existing family email.
+                    </div>
+                </div>
+                
+                <div style="background:linear-gradient(135deg,#f0fdf4,#f0fdff);border-radius:12px;padding:16px;margin-bottom:12px;border-left:4px solid #10b981;">
+                    <div style="font-weight:700;font-size:15px;margin-bottom:8px;">📝 Step 2: Use these subject line formats</div>
+                    <div style="font-size:13px;color:#555;line-height:1.8;">
+                        <strong>🛒 SHOPPING:</strong> Item | Quantity | Category<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Example: <code style="background:#fff;padding:2px 6px;border-radius:4px;">SHOPPING: Milk | 2 pints | Dairy</code><br><br>
+                        <strong>✅ CHORES:</strong> Task | Who | Frequency<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Example: <code style="background:#fff;padding:2px 6px;border-radius:4px;">CHORES: Empty bins | Simon | Weekly</code><br><br>
+                        <strong>📅 EVENT:</strong> What | Date (DD/MM/YYYY) | Time | Who | Location<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Example: <code style="background:#fff;padding:2px 6px;border-radius:4px;">EVENT: Ava dentist | 15/06/2026 | 14:00 | Ava | Hitchin</code><br><br>
+                        <strong>📝 NEWS:</strong> Message | Priority<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Example: <code style="background:#fff;padding:2px 6px;border-radius:4px;">NEWS: Trip payment due | High</code><br><br>
+                        <strong>📞 CONTACT:</strong> Name | Phone | Email | Type | Notes<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Example: <code style="background:#fff;padding:2px 6px;border-radius:4px;">CONTACT: Dr Smith | 01462 123456 | dr@smith.co.uk | Doctor</code><br><br>
+                        <strong>🍽️ MEAL:</strong> Day | What<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Example: <code style="background:#fff;padding:2px 6px;border-radius:4px;">MEAL: Monday | Spaghetti Bolognese</code>
+                    </div>
+                </div>
+                
+                <div style="background:linear-gradient(135deg,#fffbeb,#fef2f2);border-radius:12px;padding:16px;margin-bottom:12px;border-left:4px solid #f59e0b;">
+                    <div style="font-weight:700;font-size:15px;margin-bottom:8px;">⚙️ Step 3: Set up automatic processing</div>
+                    <div style="font-size:13px;color:#555;line-height:1.6;">
+                        <ol style="padding-left:18px;margin:0;">
+                            <li>Go to <strong>script.google.com</strong> and create a new project</li>
+                            <li>Copy the <code style="background:#fff;padding:2px 4px;border-radius:4px;">email_processor.gs</code> script (available in the FamilyHQ repo under scripts/)</li>
+                            <li>Paste it into the script editor</li>
+                            <li>Run <strong>testProcessEmails</strong> first to check it works</li>
+                            <li>Add a trigger: <strong>Edit → Triggers → Add trigger → processEmails → Every 5 minutes</strong></li>
+                            <li>Share the Family HQ spreadsheet with the new Gmail account</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div style="background:linear-gradient(135deg,#eef2ff,#f0f9ff);border-radius:12px;padding:16px;border-left:4px solid #06b6d4;">
+                    <div style="font-weight:700;font-size:15px;margin-bottom:8px;">💡 Tips for the family</div>
+                    <div style="font-size:13px;color:#555;line-height:1:1.6;">
+                        • Use the <strong>subject line</strong> for the command — the email body is ignored<br>
+                        • <strong>SHOPPING</strong> items go straight to the shopping list<br>
+                        • <strong>EVENTS</strong> go to the calendar (dates work in DD/MM/YYYY format)<br>
+                        • <strong>NEWS</strong> appears in the announcements tab<br>
+                        • The system checks every 5 minutes — so items appear quickly!<br>
+                        • Processed emails get a "FamilyHQ" label in Gmail so you can see what's been added
+                    </div>
+                </div>
+                
+                <div style="margin-top:16px;text-align:center;">
+                    <a href="mailto:" onclick="navigator.clipboard.writeText('stimson.family.hq@gmail.com')" style="display:inline-block;background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:10px 24px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px;">
+                        ✉️ Copy Family Email Address
+                    </a>
+                </div>
             </div>
         </div>
     </div>
