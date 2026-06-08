@@ -1030,10 +1030,10 @@
       {
         "Name": "Luton Diving Centre",
         "Type": "Diving",
-        "Phone": "",
+        "Phone": "01582 393230",
         "Email": "",
         "Address": "",
-        "Notes": "Ava & Ella: Sat 1:30pm"
+        "Notes": "Ava & Ella: Sat 1:30pm | Venue: Inspire Luton Sports Village"
       },
       {
         "Name": "North Herts Leisure Centre",
@@ -1106,6 +1106,14 @@
         "Email": "",
         "Address": "",
         "Notes": "Phone TBC"
+      },
+      {
+        "Name": "HBS Revolutions Gymnastics",
+        "Type": "Gymnastics",
+        "Phone": "",
+        "Email": "",
+        "Address": "",
+        "Notes": "Ava: Fri 6pm | Ella: Fri 7pm"
       }
     ]
   }
