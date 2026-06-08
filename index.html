@@ -78,6 +78,25 @@
         .spinner { display: inline-block; animation: spin 1s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         
+        /* Modal form styles */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 300; justify-content: center; align-items: center; }
+        .modal-overlay.show { display: flex; }
+        .modal { background: white; border-radius: 16px; padding: 24px; width: 90%; max-width: 400px; max-height: 80vh; overflow-y: auto; }
+        .modal h3 { margin-bottom: 16px; font-size: 18px; }
+        .modal label { display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 4px; margin-top: 12px; }
+        .modal input, .modal select, .modal textarea { width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: inherit; }
+        .modal input:focus, .modal select:focus, .modal textarea:focus { border-color: #667eea; outline: none; }
+        .modal textarea { resize: vertical; min-height: 60px; }
+        .modal-btns { display: flex; gap: 10px; margin-top: 20px; }
+        .modal-btns button { flex: 1; padding: 12px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
+        .modal-btns .cancel { background: #f0f0f0; color: #666; }
+        .modal-btns .save { background: #667eea; color: white; }
+        .modal-btns .save:hover { background: #5a6fd6; }
+        .modal-btns .save:disabled { background: #ccc; cursor: not-allowed; }
+        .toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 12px 24px; border-radius: 8px; font-size: 14px; z-index: 400; display: none; }
+        .toast.show { display: block; }
+        .toast.error { background: #ef4444; }
+        
         @media (max-width: 600px) {
             .header h1 { font-size: 22px; }
             .tab { padding: 10px 14px; font-size: 13px; }
@@ -153,6 +172,7 @@
             <div class="card">
                 <h2>🍽️ Weekly Meal Plan</h2>
                 <div id="mealPlan"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+                <button class="add-btn" onclick="addMeal()">+ Add / Edit Meal</button>
             </div>
         </div>
         
@@ -199,6 +219,12 @@
     </div>
     
     <button class="refresh-btn" onclick="loadAllData()" title="Refresh">🔄</button>
+    
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+        <div class="modal" id="modalContent"></div>
+    </div>
+    <div class="toast" id="toast"></div>
     
     <script>
         let familyData = null;
@@ -499,19 +525,202 @@
             }
         }
         
-        function addShoppingItem() {
-            const item = prompt("What do you need to buy?");
-            if (item) alert("To add items, edit the Google Sheet directly — changes will appear here within the hour! 📊");
+        // ===== APPS SCRIPT INTEGRATION =====
+        const API_URL = 'https://script.google.com/macros/s/AKfycbygH631E2jkxhcIZm5F3b2d50XcfmvdekMMrvComv_X5DQBSdCTog5vfimLgZ6haDMk/exec';
+        
+        function showToast(msg, isError) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.className = 'toast show' + (isError ? ' error' : '');
+            setTimeout(() => t.className = 'toast', 3000);
         }
         
-        function addChore() {
-            const task = prompt("What's the chore?");
-            if (task) alert("To add chores, edit the Google Sheet directly — changes will appear here within the hour! 📊");
+        function openModal(html, onSave) {
+            document.getElementById('modalContent').innerHTML = html;
+            document.getElementById('modalOverlay').classList.add('show');
+            window._modalSave = onSave;
         }
         
-        function addAnnouncement() {
-            const msg = prompt("What's the announcement?");
-            if (msg) alert("To add announcements, edit the Google Sheet directly — changes will appear here within the hour! 📊");
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('show');
+            window._modalSave = null;
+        }
+        
+        function modalSave() {
+            if (window._modalSave) window._modalSave();
+        }
+        
+        async function apiCall(params) {
+            const url = API_URL + '?' + new URLSearchParams(params).toString();
+            const resp = await fetch(url);
+            return resp.json();
+        }
+        
+        async function addShoppingItem() {
+            openModal(`
+                <h3>🛒 Add Shopping Item</h3>
+                <label>Item</label>
+                <input type="text" id="s_item" placeholder="e.g. Milk" autofocus>
+                <label>Quantity</label>
+                <input type="text" id="s_qty" placeholder="e.g. 2 pints">
+                <label>Category</label>
+                <select id="s_cat">
+                    <option value="">— None —</option>
+                    <option>Dairy</option><option>Fruit & Veg</option><option>Meat</option>
+                    <option>Bakery</option><option>Frozen</option><option>Household</option>
+                    <option>Admin</option><option>Other</option>
+                </select>
+                <div class="modal-btns">
+                    <button class="cancel" onclick="closeModal()">Cancel</button>
+                    <button class="save" id="s_save" onclick="modalSave()">Add Item</button>
+                </div>
+            `, async () => {
+                const btn = document.getElementById('s_save');
+                btn.disabled = true;
+                btn.textContent = 'Adding...';
+                const data = {
+                    Item: document.getElementById('s_item').value,
+                    Quantity: document.getElementById('s_qty').value,
+                    'Added by': 'Simon',
+                    'Done ✓': '',
+                    Category: document.getElementById('s_cat').value
+                };
+                if (!data.Item) { showToast('Please enter an item', true); btn.disabled = false; return; }
+                const result = await apiCall({action: 'append', sheet: '🛒', data: JSON.stringify(data)});
+                if (result.success) {
+                    showToast('✅ Added to shopping list!');
+                    closeModal();
+                    setTimeout(() => loadAllData(), 2000);
+                } else {
+                    showToast('❌ ' + (result.error || 'Failed'), true);
+                    btn.disabled = false;
+                }
+            });
+        }
+        
+        async function addChore() {
+            openModal(`
+                <h3>✅ Add Chore</h3>
+                <label>Task</label>
+                <input type="text" id="c_task" placeholder="e.g. Empty bins" autofocus>
+                <label>Assigned To</label>
+                <select id="c_who">
+                    <option>Simon</option><option>Emma</option><option>Ava</option><option>Ella</option><option>Everyone</option>
+                </select>
+                <label>Frequency</label>
+                <select id="c_freq">
+                    <option>Once</option><option>Daily</option><option>Weekly</option><option>Monthly</option>
+                </select>
+                <label>Notes</label>
+                <input type="text" id="c_notes" placeholder="Optional">
+                <div class="modal-btns">
+                    <button class="cancel" onclick="closeModal()">Cancel</button>
+                    <button class="save" id="c_save" onclick="modalSave()">Add Chore</button>
+                </div>
+            `, async () => {
+                const btn = document.getElementById('c_save');
+                btn.disabled = true;
+                btn.textContent = 'Adding...';
+                const data = {
+                    Task: document.getElementById('c_task').value,
+                    'Assigned To': document.getElementById('c_who').value,
+                    'Due Date': '',
+                    Frequency: document.getElementById('c_freq').value,
+                    'Done ✓': '',
+                    Notes: document.getElementById('c_notes').value
+                };
+                if (!data.Task) { showToast('Please enter a task', true); btn.disabled = false; return; }
+                const result = await apiCall({action: 'append', sheet: '✅', data: JSON.stringify(data)});
+                if (result.success) {
+                    showToast('✅ Chore added!');
+                    closeModal();
+                    setTimeout(() => loadAllData(), 2000);
+                } else {
+                    showToast('❌ ' + (result.error || 'Failed'), true);
+                    btn.disabled = false;
+                }
+            });
+        }
+        
+        async function addAnnouncement() {
+            openModal(`
+                <h3>📝 New Announcement</h3>
+                <label>Message</label>
+                <textarea id="a_msg" placeholder="What's the news?" autofocus></textarea>
+                <label>Priority</label>
+                <select id="a_pri">
+                    <option>Info</option><option>High</option>
+                </select>
+                <div class="modal-btns">
+                    <button class="cancel" onclick="closeModal()">Cancel</button>
+                    <button class="save" id="a_save" onclick="modalSave()">Post</button>
+                </div>
+            `, async () => {
+                const btn = document.getElementById('a_save');
+                btn.disabled = true;
+                btn.textContent = 'Posting...';
+                const today = new Date().toISOString().split('T')[0];
+                const data = {
+                    Date: today,
+                    From: 'Simon',
+                    Message: document.getElementById('a_msg').value,
+                    Priority: document.getElementById('a_pri').value
+                };
+                if (!data.Message) { showToast('Please enter a message', true); btn.disabled = false; return; }
+                const result = await apiCall({action: 'append', sheet: '📝', data: JSON.stringify(data)});
+                if (result.success) {
+                    showToast('✅ Announcement posted!');
+                    closeModal();
+                    setTimeout(() => loadAllData(), 2000);
+                } else {
+                    showToast('❌ ' + (result.error || 'Failed'), true);
+                    btn.disabled = false;
+                }
+            });
+        }
+        
+        async function addMeal() {
+            // Build day selector with current meals prefilled
+            const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+            const meals = getSheet('🍽️');
+            const mealMap = {};
+            meals.forEach(m => { if (m.Day) mealMap[m.Day] = m.Meal || m.Dinner || ''; });
+            
+            let fields = days.map(d => {
+                const val = mealMap[d] || '';
+                return `<label>${d}</label><input type="text" id="m_${d.substring(0,3)}" placeholder="e.g. Pasta" value="${val}">`;
+            }).join('');
+            
+            openModal(`
+                <h3>🍽️ Weekly Meal Plan</h3>
+                ${fields}
+                <div class="modal-btns">
+                    <button class="cancel" onclick="closeModal()">Cancel</button>
+                    <button class="save" id="m_save" onclick="modalSave()">Save All</button>
+                </div>
+            `, async () => {
+                const btn = document.getElementById('m_save');
+                btn.disabled = true;
+                btn.textContent = 'Saving...';
+                let errors = 0;
+                for (const d of days) {
+                    const key = `m_${d.substring(0,3)}`;
+                    const val = document.getElementById(key).value;
+                    // Find existing row or append
+                    const existing = meals.findIndex(m => m.Day === d);
+                    if (existing >= 0) {
+                        // Update existing via sheet row number (header is row 1, data starts row 2)
+                        const data = {Day: d, Breakfast: '', Lunch: '', Dinner: val, Notes: ''};
+                        await apiCall({action: 'update', sheet: '🍽️', row: String(existing + 2), data: JSON.stringify(data)});
+                    } else if (val) {
+                        const data = {Day: d, Breakfast: '', Lunch: '', Dinner: val, Notes: ''};
+                        await apiCall({action: 'append', sheet: '🍽️', data: JSON.stringify(data)});
+                    }
+                }
+                showToast('✅ Meal plan updated!');
+                closeModal();
+                setTimeout(() => loadAllData(), 2000);
+            });
         }
         
         // Load data on page load
