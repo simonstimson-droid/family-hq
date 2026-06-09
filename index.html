@@ -140,7 +140,29 @@
         .month-day .month-event.birthday { background: #fdf2f8; color: #be185d; }
         .month-day.other-month { opacity: 0.3; }
         
-        /* Birthday badge */
+        /* Weather widget */
+        .weather-main { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+        .weather-left { display: flex; align-items: center; gap: 12px; }
+        .weather-icon { font-size: 42px; line-height: 1; }
+        .weather-temp { font-size: 36px; font-weight: 700; color: #1e1b4b; letter-spacing: -1px; }
+        .weather-temp .deg { font-size: 16px; font-weight: 400; vertical-align: top; }
+        .weather-desc { font-size: 13px; color: #666; }
+        .weather-feels { font-size: 12px; color: #999; }
+        .weather-right { text-align: right; font-size: 12px; color: #888; line-height: 1.6; }
+        .weather-forecast { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
+        .weather-forecast::-webkit-scrollbar { height: 4px; }
+        .weather-forecast::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+        .wfore-day { flex: 0 0 auto; text-align: center; padding: 6px 10px; background: #f8f9ff; border-radius: 10px; min-width: 68px; }
+        .wfore-day .wday { font-size: 11px; font-weight: 700; color: #667eea; text-transform: uppercase; }
+        .wfore-day .wicon { font-size: 22px; margin: 2px 0; }
+        .wfore-day .wtemp { font-size: 13px; font-weight: 600; color: #333; }
+        .wfore-day .wtemp-lo { font-size: 12px; color: #999; font-weight: 400; }
+        @media (min-width: 601px) {
+            .weather-icon { font-size: 50px; }
+            .weather-temp { font-size: 42px; }
+            .weather-forecast { gap: 10px; }
+            .wfore-day { min-width: 90px; padding: 8px 14px; }
+        }
         .birthday-badge { display: inline-block; background: linear-gradient(135deg, #f472b6, #c084fc); color: white; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 2px; vertical-align: middle; }
         
         @media (min-width: 601px) {
@@ -255,6 +277,10 @@
     <div class="content">
         <!-- TODAY -->
         <div class="panel active" id="today">
+            <div class="card" id="weatherCard">
+                <h2>🌤️ Weather</h2>
+                <div id="weatherData"><div class="loading"><span class="spinner">⏳</span> Loading weather...</div></div>
+            </div>
             <div class="card">
                 <h2>📅 Today's Events</h2>
                 <div id="todayEvents"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
@@ -1207,6 +1233,78 @@
             });
         }
         
+        // ===== WEATHER (wttr.in — free, no API key) =====
+        const WEATHER_LOC = 'Hitchin,UK'; // closest reliable location
+        
+        const WMO_ICONS = {
+            0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
+            45: '🌫️', 48: '🌫️', 51: '🌦️', 53: '🌦️', 55: '🌧️',
+            61: '🌧️', 63: '🌧️', 65: '🌧️', 66: '🌧️', 67: '🌧️',
+            71: '🌨️', 73: '🌨️', 75: '🌨️', 77: '🌨️',
+            80: '🌦️', 81: '🌧️', 82: '🌧️',
+            85: '🌨️', 86: '🌨️', 95: '⛈️', 96: '⛈️', 99: '⛈️',
+        };
+        
+        const WMO_DESC = {
+            0: 'Clear sky', 1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast',
+            45: 'Foggy', 48: 'Rime fog', 51: 'Light drizzle', 53: 'Drizzle', 55: 'Heavy drizzle',
+            61: 'Rain', 63: 'Rain', 65: 'Heavy rain', 66: 'Freezing rain', 67: 'Freezing rain',
+            71: 'Snow', 73: 'Snow', 75: 'Heavy snow', 77: 'Snow grains',
+            80: 'Showers', 81: 'Showers', 82: 'Heavy showers',
+            85: 'Snow showers', 86: 'Snow showers', 95: 'Thunderstorm', 96: 'Thunderstorm + hail', 99: 'Thunderstorm + hail',
+        };
+        
+        async function loadWeather() {
+            try {
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=51.95&longitude=-0.28&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe/London&forecast_days=4`;
+                const resp = await fetch(url);
+                if (!resp.ok) throw new Error('Weather fetch failed');
+                const d = await resp.json();
+                
+                const cur = d.current;
+                const icon = WMO_ICONS[cur.weather_code] || '🌡️';
+                const desc = WMO_DESC[cur.weather_code] || 'Weather';
+                const feels = cur.apparent_temperature;
+                const humidity = cur.relative_humidity_2m;
+                const wind = cur.wind_speed_10m;
+                
+                let html = `<div class="weather-main">`;
+                html += `<div class="weather-left">`;
+                html += `<span class="weather-icon">${icon}</span>`;
+                html += `<div>`;
+                html += `<div class="weather-temp">${Math.round(cur.temperature_2m)}<span class="deg">°C</span></div>`;
+                html += `<div class="weather-desc">${desc}</div>`;
+                html += `<div class="weather-feels">Feels like ${Math.round(feels)}°C</div>`;
+                html += `</div></div>`;
+                html += `<div class="weather-right">`;
+                html += `💧 ${humidity}%<br>💨 ${wind} km/h`;
+                html += `</div></div>`;
+                
+                // 4-day forecast
+                html += `<div class="weather-forecast">`;
+                const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+                for (let i = 0; i < 4; i++) {
+                    const date = new Date(d.daily.time[i]);
+                    const dayName = i === 0 ? 'Today' : dayNames[date.getDay()];
+                    const wIcon = WMO_ICONS[d.daily.weather_code[i]] || '🌡️';
+                    const hi = Math.round(d.daily.temperature_2m_max[i]);
+                    const lo = Math.round(d.daily.temperature_2m_min[i]);
+                    html += `<div class="wfore-day">`;
+                    html += `<div class="wday">${dayName}</div>`;
+                    html += `<div class="wicon">${wIcon}</div>`;
+                    html += `<div class="wtemp">${hi}°</div>`;
+                    html += `<div class="wtemp-lo">${lo}°</div>`;
+                    html += `</div>`;
+                }
+                html += `</div>`;
+                
+                document.getElementById('weatherData').innerHTML = html;
+            } catch (e) {
+                console.error('Weather error:', e);
+                document.getElementById('weatherData').innerHTML = `<div class="weather-main"><div class="weather-left"><span class="weather-icon">🌡️</span><div><div class="weather-desc">Weather unavailable</div><div class="weather-feels" style="font-size:11px;color:#999;">Hitchin area</div></div></div></div>`;
+            }
+        }
+        
         async function loadAllData() {
             try {
                 const resp = await fetch('data.json?' + Date.now());
@@ -1223,6 +1321,7 @@
                 renderBudget(familyData);
                 renderAnnouncements(familyData);
                 renderFamily(familyData);
+                loadWeather();
             } catch (err) {
                 console.error(err);
                 ['todayEvents','todayChores','tonightMeal','calendarView','shoppingList','choreList','mealPlan','schoolActivities','contactsList','budgetData','announcementsList','familyMembers'].forEach(id => showError(id, '⚠️ Could not load data. Pull to refresh.'));
