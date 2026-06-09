@@ -1183,7 +1183,7 @@
         
         // ===== API (POST for reliability) =====
         const API_URL = 'https://script.google.com/macros/s/AKfycbygH631E2jkxhcIZm5F3b2d50XcfmvdekMMrvComv_X5DQBSdCTog5vfimLgZ6haDMk/exec';
-        const CALENDAR_API_URL = ''; // Set this after deploying calendar_sync.gs as web app
+        const CALENDAR_API_URL = 'https://script.google.com/macros/s/AKfycbzK2EYYKFk4RlDyCCSKYluFlHUoipmS2ch7uzf76sGXe0CwBnJeOh8RGygA-4vqq888fw/exec';
         
         function showToast(msg, err) {
             const t = document.getElementById('toast');
@@ -1209,8 +1209,14 @@
         async function fetchCalendarEvents() {
             if (!CALENDAR_API_URL) return null;
             try {
-                const r = await fetch(CALENDAR_API_URL + '?days=365');
-                return await r.json();
+                // Try POST first (matches doPost with action param)
+                const fd = new URLSearchParams();
+                fd.append('action', 'listEvents');
+                fd.append('days', '365');
+                const r = await fetch(CALENDAR_API_URL, { method: 'POST', body: fd });
+                const data = await r.json();
+                if (Array.isArray(data)) return data;
+                return null;
             } catch(e) {
                 console.error('Calendar sync error:', e);
                 return null;
