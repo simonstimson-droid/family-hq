@@ -165,6 +165,37 @@
         }
         .birthday-badge { display: inline-block; background: linear-gradient(135deg, #f472b6, #c084fc); color: white; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 2px; vertical-align: middle; }
         
+        /* Message board */
+        .msg-item { padding: 12px 14px; border-left: 4px solid #667eea; background: #f8f9ff; border-radius: 0 10px 10px 0; margin-bottom: 8px; }
+        .msg-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+        .msg-from { font-weight: 700; font-size: 13px; }
+        .msg-time { font-size: 11px; color: #999; }
+        .msg-body { font-size: 14px; color: #333; line-height: 1.4; }
+        
+        /* Profile overlay */
+        .profile-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 500; justify-content: center; align-items: flex-start; padding: 20px; overflow-y: auto; }
+        .profile-overlay.show { display: flex; }
+        .profile-card { background: white; border-radius: 20px; width: 100%; max-width: 500px; margin: 20px 0; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .profile-header { padding: 28px 24px 20px; text-align: center; color: white; position: relative; }
+        .profile-header .close-btn { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.25); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .profile-header .close-btn:hover { background: rgba(255,255,255,0.4); }
+        .profile-avatar { font-size: 48px; margin-bottom: 8px; }
+        .profile-name { font-size: 24px; font-weight: 700; margin-bottom: 2px; }
+        .profile-role { font-size: 14px; opacity: 0.85; }
+        .profile-body { padding: 20px 24px; }
+        .profile-section { margin-bottom: 18px; }
+        .profile-section h3 { font-size: 13px; font-weight: 700; color: #667eea; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .profile-event { padding: 8px 12px; background: #f8f9ff; border-radius: 8px; margin-bottom: 4px; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
+        .profile-event .pe-date { font-weight: 600; color: #667eea; font-size: 12px; }
+        .profile-event .pe-what { flex: 1; margin-left: 8px; }
+        .profile-chore { padding: 8px 12px; background: #fffbeb; border-radius: 8px; margin-bottom: 4px; font-size: 13px; }
+        .profile-activity { padding: 8px 12px; background: #f0fdff; border-radius: 8px; margin-bottom: 4px; font-size: 13px; }
+        .profile-info-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+        .profile-info-row:last-child { border-bottom: none; }
+        .profile-info-row .pil { color: #888; }
+        .profile-info-row .pir { font-weight: 500; color: #333; }
+        .profile-empty { color: #999; font-style: italic; font-size: 13px; padding: 8px 0; }
+        
         @media (min-width: 601px) {
             .week-grid { gap: 8px; }
             .week-day { min-height: 160px; padding: 10px; }
@@ -253,10 +284,10 @@
         <div class="subtitle">Keeping the family organised, together ✨</div>
         <div class="date" id="currentDate"></div>
         <div class="family-pills">
-            <span class="family-pill simon">👨 Simon</span>
-            <span class="family-pill emma">👩 Emma</span>
-            <span class="family-pill ava">💜 Ava</span>
-            <span class="family-pill ella">💙 Ella</span>
+            <span class="family-pill simon" onclick="openProfile('Simon')" style="cursor:pointer;">👨 Simon</span>
+            <span class="family-pill emma" onclick="openProfile('Emma')" style="cursor:pointer;">👩 Emma</span>
+            <span class="family-pill ava" onclick="openProfile('Ava')" style="cursor:pointer;">💜 Ava</span>
+            <span class="family-pill ella" onclick="openProfile('Ella')" style="cursor:pointer;">💙 Ella</span>
         </div>
     </div>
     
@@ -270,6 +301,7 @@
         <div class="tab" data-panel="contacts">📞 Contacts</div>
         <div class="tab" data-panel="budget">💰 Budget</div>
         <div class="tab" data-panel="announcements">📝 News</div>
+        <div class="tab" data-panel="messages">💬 Messages</div>
         <div class="tab" data-panel="family">👨‍👩‍👧‍👧 Family</div>
         <div class="tab" data-panel="emailadd">✉️ Quick Add</div>
     </div>
@@ -366,6 +398,25 @@
                 <h2>📝 Family Announcements</h2>
                 <div id="announcementsList"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
                 <button class="add-btn" onclick="addAnnouncement()">+ New Announcement</button>
+            </div>
+        </div>
+        
+        <!-- MESSAGES -->
+        <div class="panel" id="messages">
+            <div class="card">
+                <h2>💬 Family Message Board</h2>
+                <p style="color:#666;font-size:13px;margin-bottom:12px;">Quick messages for the family. Anyone can post!</p>
+                <div id="messagesList"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+                <div style="margin-top:12px;display:flex;gap:8px;align-items:center;">
+                    <select id="msgFrom" style="padding:10px;border:2px solid #e0e0e0;border-radius:8px;font-size:14px;flex:0 0 auto;">
+                        <option value="Simon">👨 Simon</option>
+                        <option value="Emma">👩 Emma</option>
+                        <option value="Ava">💜 Ava</option>
+                        <option value="Ella">💙 Ella</option>
+                    </select>
+                    <input type="text" id="msgText" placeholder="Type a message..." style="flex:1;padding:10px;border:2px solid #e0e0e0;border-radius:8px;font-size:14px;" onkeydown="if(event.key==='Enter')postMessage()">
+                    <button class="add-btn" onclick="postMessage()" style="margin:0;flex:0 0 auto;">Send 💬</button>
+                </div>
             </div>
         </div>
         
@@ -984,12 +1035,78 @@
         }
         
         function renderAnnouncements(data) {
-            const a = getSheet('📝');
+            const a = getSheet('📝').filter(x => (x.Priority || 'Announcement') !== 'Message');
             if (a.length) {
                 document.getElementById('announcementsList').innerHTML = a.map(x => `
                     <div class="announcement-item ${x.Priority==='High'?'high':''}"><div class="from">${x.From||'Family'} • ${x.Date||''}</div>
                     <div class="msg">${x.Message||x.Announcement||''}</div></div>`).join('');
             } else { showEmpty('announcementsList', 'No announcements — all quiet! 📢'); }
+        }
+        
+        function renderMessages(data) {
+            const msgs = getSheet('📝').filter(x => (x.Priority || '') === 'Message');
+            if (msgs.length) {
+                // Sort newest first
+                msgs.sort((a, b) => {
+                    const da = new Date(a.Date || '2000');
+                    const db = new Date(b.Date || '2000');
+                    return db - da;
+                });
+                document.getElementById('messagesList').innerHTML = msgs.slice(0, 50).map(m => {
+                    const from = (m.From || 'Someone').trim();
+                    const fc = FAMILY_COLOURS[from];
+                    const colour = fc ? fc.hex : '#667eea';
+                    const timeAgo = getTimeAgo(m.Date);
+                    return `<div class="msg-item">
+                        <div class="msg-top">
+                            <span class="msg-from" style="color:${colour};">${from}</span>
+                            <span class="msg-time">${timeAgo}</span>
+                        </div>
+                        <div class="msg-body">${m.Message || ''}</div>
+                    </div>`;
+                }).join('');
+            } else { showEmpty('messagesList', 'No messages yet — be the first! 💬'); }
+        }
+        
+        function getTimeAgo(dateStr) {
+            if (!dateStr) return '';
+            const d = new Date(dateStr);
+            if (isNaN(d.getTime())) return dateStr;
+            const now = new Date();
+            const diffMs = now - d;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHrs = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+            if (diffMins < 1) return 'Just now';
+            if (diffMins < 60) return `${diffMins}m ago`;
+            if (diffHrs < 24) return `${diffHrs}h ago`;
+            if (diffDays < 7) return `${diffDays}d ago`;
+            return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+        }
+        
+        async function postMessage() {
+            const from = document.getElementById('msgFrom').value;
+            const text = document.getElementById('msgText').value.trim();
+            if (!text) { showToast('Type a message first!', true); return; }
+            
+            const now = new Date();
+            const dateStr = now.toISOString().split('T')[0];
+            
+            const data = {
+                Date: dateStr,
+                From: from,
+                Message: text,
+                Priority: 'Message'
+            };
+            
+            const r = await apiCall({action:'append', sheet:'📝 Announcements', data:JSON.stringify(data)});
+            if (r.success) {
+                localAddItem('📝', data);
+                document.getElementById('msgText').value = '';
+                showToast('💬 Message posted!');
+            } else {
+                showToast('❌ Failed to post', true);
+            }
         }
         
         function renderFamily(data) {
@@ -1320,6 +1437,7 @@
                 renderContacts(familyData);
                 renderBudget(familyData);
                 renderAnnouncements(familyData);
+                renderMessages(familyData);
                 renderFamily(familyData);
                 loadWeather();
             } catch (err) {
@@ -1329,6 +1447,121 @@
         }
         
         loadAllData();
+        
+        // ===== PROFILE PAGES =====
+        const PROFILE_DATA = {
+            'Simon': { avatar: '👨', gradient: 'linear-gradient(135deg, #64748b, #475569)', role: 'Dad', colour: '#64748b' },
+            'Emma':  { avatar: '👩', gradient: 'linear-gradient(135deg, #f472b6, #ec4899)', role: 'Mum', colour: '#f472b6' },
+            'Ava':   { avatar: '💜', gradient: 'linear-gradient(135deg, #c084fc, #a855f7)', role: 'Daughter (10)', colour: '#c084fc' },
+            'Ella':  { avatar: '💙', gradient: 'linear-gradient(135deg, #38bdf8, #0ea5e9)', role: 'Daughter (10)', colour: '#38bdf8' },
+        };
+        
+        function openProfile(name) {
+            const pd = PROFILE_DATA[name];
+            if (!pd) return;
+            
+            const events = getSheet('📅');
+            const chores = getSheet('✅');
+            const activities = getSheet('📋');
+            const members = getSheet('👨');
+            
+            const memberInfo = members.find(m => m.Name === name) || {};
+            const personEvents = events.filter(e => {
+                const who = (e.Who || e.who || '').toLowerCase();
+                return who.includes(name.toLowerCase()) || who === 'family' || who === 'everyone' || who === 'all';
+            }).sort((a, b) => {
+                const da = new Date(a.Date || '2099');
+                const db = new Date(b.Date || '2099');
+                return da - db;
+            }).slice(0, 8);
+            
+            const personChores = chores.filter(c => {
+                const who = (c['Assigned To'] || c.Who || 'Anyone').toLowerCase();
+                return who.includes(name.toLowerCase()) || who === 'anyone' || who === 'everyone' || who === 'family';
+            });
+            
+            const personActivities = activities.filter(a => {
+                const who = (a.Child || a.Who || '').toLowerCase();
+                return who.includes(name.toLowerCase());
+            });
+            
+            // Upcoming birthdays
+            const bdayEvents = events.filter(e => (e.Event || e.event || '').toLowerCase().includes('birthday'));
+            const myBday = bdayEvents.find(e => (e.Who || e.who || '').toLowerCase().includes(name.toLowerCase()));
+            
+            let html = `<div class="profile-overlay show" id="profileOverlay" onclick="if(event.target===this)closeProfile()">`;
+            html += `<div class="profile-card">`;
+            
+            // Header
+            html += `<div class="profile-header" style="background:${pd.gradient};">`;
+            html += `<button class="close-btn" onclick="closeProfile()">✕</button>`;
+            html += `<div class="profile-avatar">${pd.avatar}</div>`;
+            html += `<div class="profile-name">${name}</div>`;
+            html += `<div class="profile-role">${pd.role}</div>`;
+            html += `</div>`;
+            
+            html += `<div class="profile-body">`;
+            
+            // Info section
+            html += `<div class="profile-section">`;
+            html += `<h3>📋 Info</h3>`;
+            if (memberInfo.Email) html += `<div class="profile-info-row"><span class="pil">Email</span><span class="pir">${memberInfo.Email}</span></div>`;
+            if (memberInfo.Notes) html += `<div class="profile-info-row"><span class="pil">Notes</span><span class="pir">${memberInfo.Notes}</span></div>`;
+            if (myBday) {
+                const bdayDate = new Date((myBday.Date || myBday.Start || '') + 'T00:00:00');
+                const dateStr = bdayDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+                html += `<div class="profile-info-row"><span class="pil">🎂 Birthday</span><span class="pir">${dateStr}</span></div>`;
+            }
+            html += `</div>`;
+            
+            // Upcoming events
+            html += `<div class="profile-section">`;
+            html += `<h3>📅 Upcoming Events</h3>`;
+            if (personEvents.length) {
+                personEvents.forEach(e => {
+                    const dateStr = (e.Date || e.Start || '').substring(0, 10);
+                    const d = new Date(dateStr + 'T00:00:00');
+                    const dateFmt = isNaN(d.getTime()) ? dateStr : d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+                    html += `<div class="profile-event"><span class="pe-date">${dateFmt}</span><span class="pe-what">${e.Event || e.event || 'Event'}</span></div>`;
+                });
+            } else {
+                html += `<div class="profile-empty">No upcoming events</div>`;
+            }
+            html += `</div>`;
+            
+            // Activities
+            if (personActivities.length) {
+                html += `<div class="profile-section">`;
+                html += `<h3>🎯 Activities</h3>`;
+                personActivities.forEach(a => {
+                    html += `<div class="profile-activity"><strong>${a.Activity || a.What || 'Activity'}</strong><br><span style="color:#666;font-size:12px;">${a['Day/Time'] || a.Day || ''} ${a.Time || ''}</span></div>`;
+                });
+                html += `</div>`;
+            }
+            
+            // Chores
+            if (personChores.length) {
+                html += `<div class="profile-section">`;
+                html += `<h3>✅ Chores</h3>`;
+                personChores.forEach(c => {
+                    html += `<div class="profile-chore">${c.Chore || c.Task || 'Chore'} <span style="color:#999;font-size:12px;">(${c.Frequency || c.Day || 'Weekly'})</span></div>`;
+                });
+                html += `</div>`;
+            }
+            
+            html += `</div></div></div>`;
+            
+            // Remove existing overlay if any
+            const existing = document.getElementById('profileOverlay');
+            if (existing) existing.remove();
+            
+            document.body.insertAdjacentHTML('beforeend', html);
+        }
+        
+        function closeProfile() {
+            const overlay = document.getElementById('profileOverlay');
+            if (overlay) overlay.remove();
+        }
     </script>
 </body>
 </html>
