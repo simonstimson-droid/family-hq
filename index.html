@@ -279,6 +279,7 @@
                     <button onclick="setCalView('list')" id="btn-list">List</button>
                 </div>
                 <div id="calendarView"></div>
+                <button class="add-btn" onclick="addEvent()" style="margin-top:12px;">+ Add Event</button>
             </div>
         </div>
         
@@ -499,7 +500,15 @@
                 html += `<div class="ed-row"><span class="ed-icon">📅</span><span>${dateFormatted}</span></div>`;
             }
             if (timeStr && timeStr !== 'All day') html += `<div class="ed-row"><span class="ed-icon">🕐</span><span>${timeStr}</span></div>`;
-            if (locStr) html += `<div class="ed-row"><span class="ed-icon">📍</span><span>${locStr}</span></div>`;
+            if (locStr) {
+                html += `<div class="ed-row"><span class="ed-icon">📍</span><span>${locStr}</span></div>`;
+                const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(locStr)}`;
+                const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(locStr)}`;
+                html += `<div class="ed-actions" style="margin-top:4px;margin-bottom:8px;">`;
+                html += `<a href="${mapsUrl}" target="_blank" class="ed-email-btn" style="background:linear-gradient(135deg,#10b981,#059669);">📍 View on Map</a>`;
+                html += `<a href="${dirUrl}" target="_blank" class="ed-cal-btn" style="background:linear-gradient(135deg,#3b82f6,#2563eb);">🗺️ Directions</a>`;
+                html += `</div>`;
+            }
             if (whoStr) html += `<div class="ed-row"><span class="ed-icon">👤</span><span>${colourWho(whoStr)}</span></div>`;
             if (notesStr) html += `<div class="ed-row"><span class="ed-icon">📝</span><span>${notesStr}</span></div>`;
             html += `<div class="ed-actions">`;
@@ -1065,7 +1074,46 @@
             else if (sheetEmoji === '✅') renderChores(familyData);
             else if (sheetEmoji === '🍽️') renderMeals(familyData);
             else if (sheetEmoji === '📝') renderAnnouncements(familyData);
+            else if (sheetEmoji === '📅') renderCalendar(familyData);
             renderToday(familyData);
+        }
+        
+        async function addEvent() {
+            // Default to today's date
+            const today = new Date();
+            const pad = (n) => String(n).padStart(2, '0');
+            const defaultDate = `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+            
+            openModal(`<h3>📅 Add Event</h3>
+                <label>Event Name</label><input type="text" id="e_title" placeholder="e.g. Ava's dentist appointment" autofocus>
+                <label>Date</label><input type="date" id="e_date" value="${defaultDate}">
+                <label>Time</label><input type="text" id="e_time" placeholder="e.g. 14:30 or All day">
+                <label>Who</label><select id="e_who"><option>Family</option><option>Simon</option><option>Emma</option><option>Ava</option><option>Ella</option><option>Ava &amp; Ella</option><option>Everyone</option></select>
+                <label>Location</label><input type="text" id="e_loc" placeholder="e.g. Arlesey Surgery, or leave blank">
+                <label>Notes</label><input type="text" id="e_notes" placeholder="Optional notes">
+                <div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="e_save" onclick="modalSave()">Add Event</button></div>`,
+            async () => {
+                const b = document.getElementById('e_save'); b.disabled=true; b.textContent='Adding...';
+                const title = document.getElementById('e_title').value.trim();
+                const dateVal = document.getElementById('e_date').value;
+                const timeVal = document.getElementById('e_time').value.trim() || 'All day';
+                const whoVal = document.getElementById('e_who').value;
+                const locVal = document.getElementById('e_loc').value.trim();
+                const notesVal = document.getElementById('e_notes').value.trim();
+                
+                if (!title) { showToast('Please enter an event name',true); b.disabled=false; return; }
+                if (!dateVal) { showToast('Please select a date',true); b.disabled=false; return; }
+                
+                const data = {Date: dateVal, Time: timeVal, Event: title, Who: whoVal, Location: locVal, Notes: notesVal};
+                const r = await apiCall({action:'append', sheet:'📅 Calendar', data:JSON.stringify(data)});
+                if (r.success) {
+                    localAddItem('📅', data);
+                    showToast('✅ Event added!');
+                    closeModal();
+                } else {
+                    showToast('❌ '+(r.error||'Failed'),true); b.disabled=false;
+                }
+            });
         }
         
         async function addShoppingItem() {
