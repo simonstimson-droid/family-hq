@@ -80,7 +80,8 @@
         .error { color: #ef4444; padding: 20px; text-align: center; }
         
         .family-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
-        .family-card { background: #f8f9ff; border-radius: 10px; padding: 16px; text-align: center; }
+        .family-card { background: #f8f9ff; border-radius: 10px; padding: 16px; text-align: center; transition: all 0.15s; }
+        .family-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .family-card .name { font-weight: 600; font-size: 16px; }
         .family-card .role { font-size: 13px; color: #666; }
         
@@ -1119,7 +1120,7 @@
                 m.forEach(x => {
                     const cls = nameToColourClass(x.Name);
                     const school = x.Notes || x.School || '';
-                    html += `<div class="family-card ${cls}"><div class="name">${x.Name||'Member'}</div><div class="role">${x.Role||''}</div>
+                    html += `<div class="family-card ${cls}" style="cursor:pointer;" onclick="openProfile('${x.Name}')"><div class="name">${x.Name||'Member'}</div><div class="role">${x.Role||''}</div>
                     ${school?`<div class="role" style="font-size:12px;">${school}</div>`:''}</div>`;
                 });
             }
