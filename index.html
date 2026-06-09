@@ -41,13 +41,16 @@
         .event-item .title { font-weight: 600; margin: 4px 0; font-size: 14px; }
         .event-item .location { font-size: 13px; color: #666; }
         
-        .chore-item { border-left-color: #f59e0b; background: #fffbeb; }
-        .chore-item.done { opacity: 0.5; text-decoration: line-through; border-left-color: #10b981; }
-        .chore-item .assignee { font-size: 13px; color: #666; }
+        /* Chore day badges */
+        .chore-day-badge { display: inline-block; background: #667eea; color: white; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; margin-right: 6px; text-transform: uppercase; vertical-align: middle; }
+        .chore-item { border-left-color: #f59e0b; background: #fffbeb; cursor: pointer; }
+        .chore-item:hover { background: #fef3c7; }
+        .chore-item.done { opacity: 0.45; text-decoration: line-through; border-left-color: #10b981; background: #f0fdf4; }
+        .chore-item .assignee { font-size: 12px; color: #666; }
         
         .shopping-item { border-left-color: #10b981; background: #f0fdf4; cursor: pointer; }
         .shopping-item.done { opacity: 0.5; text-decoration: line-through; }
-        .shopping-item .category { font-size: 11px; color: #888; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+        .shopping-item .category { font-size: 12px; color: #888; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
         .shopping-item .added-by { font-size: 12px; color: #888; }
         
         .announcement-item { border-left-color: #ef4444; background: #fef2f2; }
@@ -168,7 +171,15 @@
         }
         .birthday-badge { display: inline-block; background: linear-gradient(135deg, #f472b6, #c084fc); color: white; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 2px; vertical-align: middle; }
         
-        /* Message board */
+        /* Todo items */
+        .todo-item { padding: 10px 14px; border-left: 4px solid #f59e0b; background: #fffbeb; border-radius: 0 10px 10px 0; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.15s; }
+        .todo-item:hover { background: #fef3c7; }
+        .todo-item.done { opacity: 0.45; text-decoration: line-through; border-left-color: #10b981; background: #f0fdf4; }
+        .todo-item .todo-check { font-size: 18px; flex-shrink: 0; }
+        .todo-item .todo-text { flex: 1; font-size: 14px; color: #333; }
+        .todo-item .todo-who { font-size: 11px; color: #888; flex-shrink: 0; }
+        .todo-item .todo-del { font-size: 14px; color: #ef4444; cursor: pointer; opacity: 0.4; flex-shrink: 0; }
+        .todo-item .todo-del:hover { opacity: 1; }
         .msg-item { padding: 12px 14px; border-left: 4px solid #667eea; background: #f8f9ff; border-radius: 0 10px 10px 0; margin-bottom: 8px; }
         .msg-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
         .msg-from { font-weight: 700; font-size: 13px; }
@@ -305,6 +316,7 @@
         <div class="tab" data-panel="budget">💰 Budget</div>
         <div class="tab" data-panel="announcements">📝 News</div>
         <div class="tab" data-panel="messages">💬 Messages</div>
+        <div class="tab" data-panel="todo">📌 To-Do</div>
         <div class="tab" data-panel="family">👨‍👩‍👧‍👧 Family</div>
         <div class="tab" data-panel="emailadd">✉️ Quick Add</div>
     </div>
@@ -419,6 +431,27 @@
                     </select>
                     <input type="text" id="msgText" placeholder="Type a message..." style="flex:1;padding:10px;border:2px solid #e0e0e0;border-radius:8px;font-size:14px;" onkeydown="if(event.key==='Enter')postMessage()">
                     <button class="add-btn" onclick="postMessage()" style="margin:0;flex:0 0 auto;">Send 💬</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TODO -->
+        <div class="panel" id="todo">
+            <div class="card">
+                <h2>📌 Family To-Do List</h2>
+                <p style="color:#666;font-size:13px;margin-bottom:12px;">One-off tasks and reminders. Tick them off when done!</p>
+                <div id="todoList"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+                <div style="margin-top:12px;display:flex;gap:8px;align-items:center;">
+                    <input type="text" id="todoText" placeholder="Add a task..." style="flex:1;padding:10px;border:2px solid #e0e0e0;border-radius:8px;font-size:14px;" onkeydown="if(event.key==='Enter')addTodo()">
+                    <select id="todoWho" style="padding:10px;border:2px solid #e0e0e0;border-radius:8px;font-size:14px;flex:0 0 auto;">
+                        <option value="">No one</option>
+                        <option value="Simon">👨 Simon</option>
+                        <option value="Emma">👩 Emma</option>
+                        <option value="Ava">💜 Ava</option>
+                        <option value="Ella">💙 Ella</option>
+                        <option value="Everyone">👨‍👩‍👧‍👧 Everyone</option>
+                    </select>
+                    <button class="add-btn" onclick="addTodo()" style="margin:0;flex:0 0 auto;">+ Add</button>
                 </div>
             </div>
         </div>
@@ -903,7 +936,11 @@
             } else { showEmpty('todayEvents', 'No events today — enjoy! 🎉'); }
             
             const todayDay = new Date().toLocaleDateString('en-GB', { weekday: 'long' }).toLowerCase();
-            const todayChores = chores.filter(c => (c.Day || c.Frequency || '').toLowerCase().includes(todayDay) || (c.Frequency || '').toLowerCase().includes('daily'));
+            const todayChores = chores.filter(c => {
+                const day = (c.Day || '').toLowerCase();
+                const freq = (c.Frequency || '').toLowerCase();
+                return day === todayDay || (!day && freq === 'weekly') || freq === 'daily';
+            });
             if (todayChores.length) {
                 document.getElementById('todayChores').innerHTML = todayChores.map(c => `
                     <div class="chore-item"><div>${c.Chore || c.Task || 'Chore'}</div>
@@ -987,9 +1024,34 @@
         function renderChores(data) {
             const chores = getSheet('✅');
             if (chores.length) {
-                document.getElementById('choreList').innerHTML = chores.map(c => `
-                    <div class="chore-item"><div>${c.Chore || c.Task || 'Chore'}</div>
-                    <div class="assignee">👤 ${c['Assigned To'] || c.Who || 'Anyone'} • ${c.Frequency || c.Day || 'Weekly'}</div></div>`).join('');
+                document.getElementById('choreList').innerHTML = chores.map((c, idx) => {
+                    const done = (c['Done ✓'] || '').toString().trim() !== '';
+                    const day = (c.Day || '').trim();
+                    const dayShort = day ? day.substring(0, 3) : '';
+                    const todayDay = new Date().toLocaleDateString('en-GB', { weekday: 'long' }).substring(0, 3);
+                    const isToday = dayShort.toLowerCase() === todayDay.toLowerCase();
+                    return `<div class="chore-item${done ? ' done' : ''}" data-idx="${idx}" style="border-left-color:${done ? '#10b981' : '#f59e0b'};background:${done ? '#f0fdf4' : (isToday ? '#fff7ed' : '#fffbeb')};${isToday ? 'border:2px solid #f59e0b;border-left:4px solid ' + (done ? '#10b981' : '#f59e0b') + ';' : ''}">
+                        ${dayShort ? `<span class="chore-day-badge">${dayShort}</span>` : ''}
+                        <div style="display:inline;vertical-align:middle;">${c.Chore || c.Task || 'Chore'}</div>
+                        <div class="assignee">👤 ${colourWho(c['Assigned To'] || c.Who || 'Anyone')}${c.Frequency !== 'Weekly' ? ` • <span class="freq">${c.Frequency}</span>` : ''}</div>
+                    </div>`;
+                }).join('');
+                // Click to toggle done
+                document.querySelectorAll('#choreList .chore-item').forEach(el => {
+                    el.addEventListener('click', () => {
+                        const chores2 = getSheet('✅');
+                        const idx = parseInt(el.dataset.idx);
+                        const c = chores2[idx];
+                        if (!c) return;
+                        const newDone = (c['Done ✓'] || '').toString().trim() ? '' : '✓';
+                        c['Done ✓'] = newDone;
+                        el.classList.toggle('done');
+                        el.style.borderLeftColor = newDone ? '#10b981' : '#f59e0b';
+                        el.style.background = newDone ? '#f0fdf4' : '#fffbeb';
+                        // Update in sheet
+                        apiCall({action:'update', sheet:'✅ Chores', row:String(idx+2), data:JSON.stringify(c)}).catch(()=>{});
+                    });
+                });
             } else { showEmpty('choreList', 'No chores set yet. Add some! 💪'); }
         }
         
@@ -1050,7 +1112,7 @@
         }
         
         function renderAnnouncements(data) {
-            const a = getSheet('📝').filter(x => (x.Priority || 'Announcement') !== 'Message');
+            const a = getSheet('📝').filter(x => (x.Priority || 'Announcement') !== 'Message' && (x.Priority || '') !== 'Todo');
             if (a.length) {
                 document.getElementById('announcementsList').innerHTML = a.map(x => `
                     <div class="announcement-item ${x.Priority==='High'?'high':''}"><div class="from">${x.From||'Family'} • ${x.Date||''}</div>
@@ -1122,6 +1184,91 @@
             } else {
                 showToast('❌ Failed to post', true);
             }
+        }
+        
+        // ===== TODO LIST =====
+        function renderTodos(data) {
+            const todos = getSheet('📝').filter(x => (x.Priority || '') === 'Todo');
+            if (todos.length) {
+                // Sort: incomplete first, then by date
+                todos.sort((a, b) => {
+                    const da = new Date(a.Date || '2099');
+                    const db = new Date(b.Date || '2099');
+                    return da - db;
+                });
+                document.getElementById('todoList').innerHTML = todos.map((t, idx) => {
+                    const done = (t.Done ✓ || '').toString().trim() !== '';
+                    const who = (t.Who || t['Assigned To'] || '').trim();
+                    const fc = who ? FAMILY_COLOURS[who] : null;
+                    const dotHtml = fc ? `<span class="event-dot ${fc.dot}"></span>` : '';
+                    return `<div class="todo-item${done ? ' done' : ''}" data-idx="${idx}">
+                        <span class="todo-check">${done ? '✅' : '⬜'}</span>
+                        <span class="todo-text">${dotHtml}${t.Message || ''}</span>
+                        ${who ? `<span class="todo-who">${who}</span>` : ''}
+                        <span class="todo-del" onclick="deleteTodo(${idx}, event)">✕</span>
+                    </div>`;
+                }).join('');
+                // Click to toggle done
+                document.querySelectorAll('#todoList .todo-item').forEach(el => {
+                    el.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('todo-del')) return;
+                        const todos2 = getSheet('📝').filter(x => (x.Priority || '') === 'Todo');
+                        const idx = parseInt(el.dataset.idx);
+                        const t = todos2[idx];
+                        if (!t) return;
+                        const newDone = (t['Done ✓'] || '').toString().trim() ? '' : '✓';
+                        t['Done ✓'] = newDone;
+                        el.classList.toggle('done');
+                        el.querySelector('.todo-check').textContent = newDone ? '✅' : '⬜';
+                        const annIdx = familyData['📝 Announcements'].rows.indexOf(t);
+                        if (annIdx >= 0) {
+                            apiCall({action:'update', sheet:'📝 Announcements', row:String(annIdx+2), data:JSON.stringify(t)}).catch(()=>{});
+                        }
+                    });
+                });
+            } else { showEmpty('todoList', 'No to-dos! Add one above 📌'); }
+        }
+        
+        async function addTodo() {
+            const text = document.getElementById('todoText').value.trim();
+            const who = document.getElementById('todoWho').value;
+            if (!text) { showToast('Enter a task first!', true); return; }
+            
+            const now = new Date();
+            const dateStr = now.toISOString().split('T')[0];
+            
+            const data = {
+                Date: dateStr,
+                From: 'Family',
+                Message: text,
+                Priority: 'Todo',
+                Who: who,
+                'Done ✓': ''
+            };
+            
+            const r = await apiCall({action:'append', sheet:'📝 Announcements', data:JSON.stringify(data)});
+            if (r.success) {
+                localAddItem('📝', data);
+                document.getElementById('todoText').value = '';
+                showToast('📌 Task added!');
+            } else {
+                showToast('❌ Failed to add', true);
+            }
+        }
+        
+        async function deleteTodo(idx, e) {
+            e.stopPropagation();
+            const todos = getSheet('📝').filter(x => (x.Priority || '') === 'Todo');
+            const t = todos[idx];
+            if (!t) return;
+            
+            // Find in familyData and remove
+            const rows = familyData['📝 Announcements'].rows;
+            const realIdx = rows.indexOf(t);
+            if (realIdx >= 0) rows.splice(realIdx, 1);
+            
+            renderTodos(familyData);
+            showToast('🗑️ Task deleted');
         }
         
         function renderFamily(data) {
@@ -1363,12 +1510,13 @@
             openModal(`<h3>✅ Add Chore</h3>
                 <label>Task</label><input type="text" id="c_task" placeholder="e.g. Empty bins" autofocus>
                 <label>Assigned To</label><select id="c_who"><option>Simon</option><option>Emma</option><option>Ava</option><option>Ella</option><option>Everyone</option></select>
-                <label>Frequency</label><select id="c_freq"><option>Once</option><option>Daily</option><option>Weekly</option><option>Monthly</option></select>
+                <label>Day</label><select id="c_day"><option value="">Any day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select>
+                <label>Frequency</label><select id="c_freq"><option>Weekly</option><option>Once</option><option>Daily</option><option>Monthly</option></select>
                 <label>Notes</label><input type="text" id="c_notes" placeholder="Optional">
                 <div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="c_save" onclick="modalSave()">Add Chore</button></div>`,
             async () => {
                 const b = document.getElementById('c_save'); b.disabled=true; b.textContent='Adding...';
-                const data = {Task: document.getElementById('c_task').value, 'Assigned To': document.getElementById('c_who').value, 'Due Date': '', Frequency: document.getElementById('c_freq').value, 'Done ✓': '', Notes: document.getElementById('c_notes').value};
+                const data = {Task: document.getElementById('c_task').value, 'Assigned To': document.getElementById('c_who').value, Day: document.getElementById('c_day').value, 'Due Date': '', Frequency: document.getElementById('c_freq').value, 'Done ✓': '', Notes: document.getElementById('c_notes').value};
                 if (!data.Task) { showToast('Please enter a task',true); b.disabled=false; return; }
                 const r = await apiCall({action:'append', sheet:'✅ Chores', data:JSON.stringify(data)});
                 if (r.success) {
@@ -1518,6 +1666,7 @@
                 renderBudget(familyData);
                 renderAnnouncements(familyData);
                 renderMessages(familyData);
+                renderTodos(familyData);
                 renderFamily(familyData);
                 loadWeather();
                 

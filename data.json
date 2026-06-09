@@ -819,7 +819,8 @@
         "Due Date": "2026-06-08",
         "Frequency": "Once",
         "Done \u2713": "",
-        "Notes": "\ud83d\udec2 URGENT - expires tomorrow!"
+        "Notes": "\ud83d\udec2 URGENT - expires tomorrow!",
+        "Day": ""
       },
       {
         "Task": "Put Bins Out",
@@ -827,7 +828,8 @@
         "Due Date": "",
         "Frequency": "Weekly",
         "Done \u2713": "",
-        "Notes": ""
+        "Notes": "",
+        "Day": ""
       }
     ]
   },
@@ -1046,31 +1048,41 @@
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "Welcome to Family HQ! \ud83c\udf89",
-        "Priority": "Info"
+        "Priority": "Info",
+        "Who": "",
+        "Done \u2713": ""
       },
       {
         "Date": "2026-06-08",
         "From": "Simon",
         "Message": "\u26a0\ufe0f URGENT: Passport renewals needed for Simon + Emma!\nExpiry: 9 June (TOMORROW!)",
-        "Priority": "\ud83d\udd34 URGENT"
+        "Priority": "\ud83d\udd34 URGENT",
+        "Who": "",
+        "Done \u2713": ""
       },
       {
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "\ud83d\udccb PBA Bulletin wc 8 June:\n\u2022 Where's Wally Day: 26 June\n\u2022 Year 5 Yoga: 23-24 June\n\u2022 Creative Arts Festival: 8-9 July\n\u2022 Sports Day: 10 July\n\u2022 End of Term: 17 July",
-        "Priority": "\ud83d\udccc Important"
+        "Priority": "\ud83d\udccc Important",
+        "Who": "",
+        "Done \u2713": ""
       },
       {
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "\ud83d\udcc5 TERM DATES:\n\u2022 Early May BH: 4 May\n\u2022 Late May BH: 25 May\n\u2022 PBA End of Term: 17 July\n\u2022 Fairfield Park End of Term: 22 July\n\u2022 FP Training Days: 13 Apr, 20 July\n\u2022 PBA Training Days: 20 July",
-        "Priority": "\ud83d\udccc Important"
+        "Priority": "\ud83d\udccc Important",
+        "Who": "",
+        "Done \u2713": ""
       },
       {
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "Ava's school fete 14 June, 11-2pm",
-        "Priority": "Info"
+        "Priority": "Info",
+        "Who": "",
+        "Done \u2713": ""
       }
     ]
   },
