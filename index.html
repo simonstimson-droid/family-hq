@@ -1627,10 +1627,10 @@
                 
                 // 4-day forecast
                 html += `<div class="weather-forecast">`;
-                const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+                const shortDayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
                 for (let i = 0; i < 4; i++) {
                     const date = new Date(d.daily.time[i]);
-                    const dayName = i === 0 ? 'Today' : dayNames[date.getDay()];
+                    const dayName = i === 0 ? 'Today' : shortDayNames[date.getDay()];
                     const wIcon = WMO_ICONS[d.daily.weather_code[i]] || '🌡️';
                     const hi = Math.round(d.daily.temperature_2m_max[i]);
                     const lo = Math.round(d.daily.temperature_2m_min[i]);
