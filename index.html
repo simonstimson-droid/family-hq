@@ -1183,6 +1183,7 @@
         
         // ===== API (POST for reliability) =====
         const API_URL = 'https://script.google.com/macros/s/AKfycbygH631E2jkxhcIZm5F3b2d50XcfmvdekMMrvComv_X5DQBSdCTog5vfimLgZ6haDMk/exec';
+        const CALENDAR_API_URL = ''; // Set this after deploying calendar_sync.gs as web app
         
         function showToast(msg, err) {
             const t = document.getElementById('toast');
@@ -1202,6 +1203,58 @@
             for (const [k,v] of Object.entries(params)) fd.append(k, v);
             const r = await fetch(API_URL, { method: 'POST', body: fd });
             return r.json();
+        }
+        
+        // ===== GOOGLE CALENDAR SYNC =====
+        async function fetchCalendarEvents() {
+            if (!CALENDAR_API_URL) return null;
+            try {
+                const r = await fetch(CALENDAR_API_URL + '?days=365');
+                return await r.json();
+            } catch(e) {
+                console.error('Calendar sync error:', e);
+                return null;
+            }
+        }
+        
+        async function createCalendarEvent(data) {
+            if (!CALENDAR_API_URL) return { error: 'Calendar API not configured' };
+            const fd = new URLSearchParams();
+            fd.append('action', 'createEvent');
+            for (const [k,v] of Object.entries(data)) fd.append(k, v || '');
+            const r = await fetch(CALENDAR_API_URL, { method: 'POST', body: fd });
+            return r.json();
+        }
+        
+        /** Merge calendar events into familyData, deduplicating by date+event name */
+        function mergeCalendarEvents(calEvents) {
+            if (!calEvents || !Array.isArray(calEvents)) return;
+            const sheetEvents = familyData['📅 Calendar']?.rows || [];
+            const existingKeys = new Set(sheetEvents.map(e => (e.Date || '') + '|' + (e.Event || '').toLowerCase()));
+            
+            let added = 0;
+            calEvents.forEach(ce => {
+                if (ce.Source === 'calendar') {
+                    const key = (ce.Date || '') + '|' + (ce.Event || '').toLowerCase();
+                    if (!existingKeys.has(key)) {
+                        // Add calendar event to sheet data
+                        familyData['📅 Calendar'].rows.push({
+                            Date: ce.Date,
+                            Time: ce.Time,
+                            Event: ce.Event,
+                            Who: ce.Who,
+                            Location: ce.Location,
+                            Notes: ce.Notes
+                        });
+                        existingKeys.add(key);
+                        added++;
+                    }
+                }
+            });
+            
+            if (added > 0) {
+                console.log(`📅 Merged ${added} events from Google Calendar`);
+            }
         }
         
         // Optimistic local update: add new item to familyData and re-render instantly
@@ -1252,6 +1305,12 @@
                 const r = await apiCall({action:'append', sheet:'📅 Calendar', data:JSON.stringify(data)});
                 if (r.success) {
                     localAddItem('📅', data);
+                    // Also create in Google Calendar (non-blocking)
+                    if (CALENDAR_API_URL) {
+                        createCalendarEvent({ date: dateVal, time: timeVal, event: title, who: whoVal, location: locVal, notes: notesVal })
+                            .then(cr => { if (cr.success) console.log('📅 Synced to Google Calendar'); })
+                            .catch(() => {});
+                    }
                     showToast('✅ Event added!');
                     closeModal();
                 } else {
@@ -1441,6 +1500,16 @@
                 renderMessages(familyData);
                 renderFamily(familyData);
                 loadWeather();
+                
+                // Also fetch from Google Calendar and merge
+                const calEvents = await fetchCalendarEvents();
+                if (calEvents && calEvents.length) {
+                    mergeCalendarEvents(calEvents);
+                    // Re-render to show merged events
+                    renderToday(familyData);
+                    renderCalendar(familyData);
+                    renderFamily(familyData);
+                }
             } catch (err) {
                 console.error(err);
                 ['todayEvents','todayChores','tonightMeal','calendarView','shoppingList','choreList','mealPlan','schoolActivities','contactsList','budgetData','announcementsList','familyMembers'].forEach(id => showError(id, '⚠️ Could not load data. Pull to refresh.'));
