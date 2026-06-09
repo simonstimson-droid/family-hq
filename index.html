@@ -819,13 +819,69 @@
         function renderShopping(data) {
             const items = getSheet('🛒');
             if (items.length) {
-                document.getElementById('shoppingList').innerHTML = items.map(i => `
-                    <div class="shopping-item" onclick="this.classList.toggle('done')">
-                        <div>${i.Item || 'Item'}</div>
-                        <div class="category">${i.Category || ''} ${i.Quantity ? '• '+i.Quantity : ''}</div>
-                        ${i['Added by'] ? `<div class="added-by">Added by ${i['Added by']}</div>` : ''}
-                    </div>`).join('');
+                document.getElementById('shoppingList').innerHTML = items.map((i, idx) => {
+                    const done = (i['Done ✓'] || i.Done || '').toString().trim() !== '';
+                    return `<div class="shopping-item${done ? ' done' : ''}" id="shop-${idx}">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+                            <div style="flex:1;min-width:0;">
+                                <div style="font-size:14px;font-weight:500;">${i.Item || 'Item'}</div>
+                                <div class="category">${i.Category || ''} ${i.Quantity ? '• '+i.Quantity : ''}</div>
+                                ${i['Added by'] ? `<div class="added-by">Added by ${i['Added by']}</div>` : ''}
+                            </div>
+                            <div style="display:flex;gap:4px;flex-shrink:0;">
+                                <button onclick="toggleShoppingDone(${idx}, this)" style="background:none;border:none;cursor:pointer;font-size:18px;padding:2px 6px;border-radius:6px;" title="Toggle done">${done ? '✅' : '⬜'}</button>
+                                <button onclick="deleteShoppingItem(${idx}, this)" style="background:none;border:none;cursor:pointer;font-size:16px;padding:2px 6px;border-radius:6px;color:#ef4444;" title="Delete">✕</button>
+                            </div>
+                        </div>
+                    </div>`;
+                }).join('');
             } else { showEmpty('shoppingList', 'Nothing on the list — add what you need! 🛒'); }
+        }
+        
+        async function toggleShoppingDone(idx, btn) {
+            const items = getSheet('🛒');
+            const item = items[idx];
+            if (!item) return;
+            
+            const doneVal = (item['Done ✓'] || item.Done || '').toString().trim();
+            const newDone = doneVal ? '' : '✓';
+            
+            // Optimistic UI update
+            item['Done ✓'] = newDone;
+            item.Done = newDone;
+            renderShopping(familyData);
+            
+            // Update in sheet
+            try {
+                await apiCall({action:'update', sheet:'🛒 Shopping List', row:String(idx+2), data:JSON.stringify({...item, 'Done ✓': newDone})});
+            } catch(e) { console.error('Failed to update done status', e); }
+        }
+        
+        async function deleteShoppingItem(idx, btn) {
+            if (!confirm('Delete this item?')) return;
+            
+            const items = getSheet('🛒');
+            const item = items[idx];
+            if (!item) return;
+            
+            // Optimistic local removal
+            if (familyData) {
+                for (const key of Object.keys(familyData)) {
+                    if (key.startsWith('🛒')) {
+                        familyData[key].rows.splice(idx, 1);
+                        break;
+                    }
+                }
+            }
+            renderShopping(familyData);
+            showToast('🗑️ Item deleted');
+            
+            // Delete from sheet by clearing the row (we can't truly delete without a dedicated endpoint)
+            try {
+                const emptyRow = {};
+                for (const k of Object.keys(item)) emptyRow[k] = '';
+                await apiCall({action:'update', sheet:'🛒 Shopping List', row:String(idx+2), data:JSON.stringify(emptyRow)});
+            } catch(e) { console.error('Failed to clear row in sheet', e); }
         }
         
         function renderChores(data) {

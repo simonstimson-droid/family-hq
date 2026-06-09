@@ -1,5 +1,5 @@
 {
-  "📅 Calendar": {
+  "\ud83d\udcc5 Calendar": {
     "headers": [
       "Date",
       "Time",
@@ -12,7 +12,7 @@
       {
         "Date": "2026-04-13",
         "Time": "All day",
-        "Event": "🏫 Training Day - Fairfield Park",
+        "Event": "\ud83c\udfeb Training Day - Fairfield Park",
         "Who": "Ava",
         "Location": "",
         "Notes": "School closed for pupils"
@@ -20,7 +20,7 @@
       {
         "Date": "2026-05-04",
         "Time": "All day",
-        "Event": "🏦 Early May Bank Holiday",
+        "Event": "\ud83c\udfe6 Early May Bank Holiday",
         "Who": "Both",
         "Location": "",
         "Notes": "All schools closed"
@@ -28,7 +28,7 @@
       {
         "Date": "2026-05-25",
         "Time": "All day",
-        "Event": "🏦 Late May Bank Holiday",
+        "Event": "\ud83c\udfe6 Late May Bank Holiday",
         "Who": "Both",
         "Location": "",
         "Notes": "All schools closed"
@@ -36,7 +36,7 @@
       {
         "Date": "2026-06-08",
         "Time": "All day",
-        "Event": "🛂 Apply for passport renewal",
+        "Event": "\ud83d\udec2 Apply for passport renewal",
         "Who": "Simon & Emma",
         "Location": "",
         "Notes": "URGENT - expires tomorrow!"
@@ -52,7 +52,7 @@
       {
         "Date": "2026-06-09",
         "Time": "All day",
-        "Event": "🛂 Passports expire!",
+        "Event": "\ud83d\udec2 Passports expire!",
         "Who": "Simon & Emma",
         "Location": "",
         "Notes": "Last valid day"
@@ -116,10 +116,10 @@
       {
         "Date": "2026-06-14",
         "Time": "11:00-14:00",
-        "Event": "🎪 Fairfield Park Summer Fete",
+        "Event": "\ud83c\udfaa Fairfield Park Summer Fete",
         "Who": "Ava's School",
         "Location": "Fairfield Park",
-        "Notes": "PTA event £1 entry"
+        "Notes": "PTA event \u00a31 entry"
       },
       {
         "Date": "2026-06-15",
@@ -140,7 +140,7 @@
       {
         "Date": "2026-06-17",
         "Time": "08:00-09:00",
-        "Event": "🎓 Father's Breakfast",
+        "Event": "\ud83c\udf93 Father's Breakfast",
         "Who": "Ava Year 3 DB",
         "Location": "Fairfield Park",
         "Notes": "Last day of school"
@@ -204,7 +204,7 @@
       {
         "Date": "2026-06-23",
         "Time": "All day",
-        "Event": "🧘 Year 5 Yoga Day 1",
+        "Event": "\ud83e\uddd8 Year 5 Yoga Day 1",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": "Comfortable clothes, bare feet, water bottle"
@@ -220,7 +220,7 @@
       {
         "Date": "2026-06-24",
         "Time": "All day",
-        "Event": "🧘 Year 5 Yoga Day 2",
+        "Event": "\ud83e\uddd8 Year 5 Yoga Day 2",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": "Comfortable clothes, bare feet, water bottle"
@@ -252,10 +252,10 @@
       {
         "Date": "2026-06-26",
         "Time": "All day",
-        "Event": "🎪 Where's Wally Day",
+        "Event": "\ud83c\udfaa Where's Wally Day",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
-        "Notes": "Dress up! £1.50 via MCAS"
+        "Notes": "Dress up! \u00a31.50 via MCAS"
       },
       {
         "Date": "2026-06-27",
@@ -364,7 +364,7 @@
       {
         "Date": "2026-07-08",
         "Time": "All day",
-        "Event": "🎨 Creative Arts Festival",
+        "Event": "\ud83c\udfa8 Creative Arts Festival",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": "Whole school event"
@@ -396,7 +396,7 @@
       {
         "Date": "2026-07-10",
         "Time": "All day",
-        "Event": "🏃 Sports Day (Yrs 5-10)",
+        "Event": "\ud83c\udfc3 Sports Day (Yrs 5-10)",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": ""
@@ -468,7 +468,7 @@
       {
         "Date": "2026-07-17",
         "Time": "All day",
-        "Event": "📅 End of Term - PBA",
+        "Event": "\ud83d\udcc5 End of Term - PBA",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": "Last day of school"
@@ -476,7 +476,7 @@
       {
         "Date": "2026-07-17",
         "Time": "All day",
-        "Event": "📅 End of Term - PBA",
+        "Event": "\ud83d\udcc5 End of Term - PBA",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": "Last day of school"
@@ -484,7 +484,7 @@
       {
         "Date": "2026-07-17",
         "Time": "All day",
-        "Event": "🏫 End of Term - Both Schools",
+        "Event": "\ud83c\udfeb End of Term - Both Schools",
         "Who": "Ava & Ella",
         "Location": "",
         "Notes": "Last day before summer holidays!"
@@ -500,7 +500,7 @@
       {
         "Date": "2026-07-20",
         "Time": "All day",
-        "Event": "🏫 Training Day - Fairfield Park",
+        "Event": "\ud83c\udfeb Training Day - Fairfield Park",
         "Who": "Ava",
         "Location": "",
         "Notes": "School closed for pupils"
@@ -508,7 +508,7 @@
       {
         "Date": "2026-07-20",
         "Time": "All day",
-        "Event": "🏫 Training Day - PBA",
+        "Event": "\ud83c\udfeb Training Day - PBA",
         "Who": "Ella",
         "Location": "",
         "Notes": "School closed for pupils"
@@ -516,7 +516,7 @@
       {
         "Date": "2026-07-20",
         "Time": "All day",
-        "Event": "🏫 Training Day - Fairfield Park",
+        "Event": "\ud83c\udfeb Training Day - Fairfield Park",
         "Who": "Ava",
         "Location": "",
         "Notes": "School closed for pupils"
@@ -524,7 +524,7 @@
       {
         "Date": "2026-07-20",
         "Time": "All day",
-        "Event": "🏫 Training Day - PBA",
+        "Event": "\ud83c\udfeb Training Day - PBA",
         "Who": "Ella",
         "Location": "",
         "Notes": "School closed for pupils"
@@ -532,7 +532,7 @@
       {
         "Date": "2026-07-20",
         "Time": "All day",
-        "Event": "🏫 Training Day - Both Schools",
+        "Event": "\ud83c\udfeb Training Day - Both Schools",
         "Who": "Ava & Ella",
         "Location": "",
         "Notes": "Staff training - children off"
@@ -540,7 +540,7 @@
       {
         "Date": "2026-07-21",
         "Time": "All day",
-        "Event": "📅 End of Term - Fairfield Park",
+        "Event": "\ud83d\udcc5 End of Term - Fairfield Park",
         "Who": "Ava",
         "Location": "Fairfield Park",
         "Notes": "Ava effectively finishes 17 July (training day 20 July)"
@@ -548,7 +548,7 @@
       {
         "Date": "2026-07-22",
         "Time": "All day",
-        "Event": "📅 End of Term - Fairfield Park",
+        "Event": "\ud83d\udcc5 End of Term - Fairfield Park",
         "Who": "Ava",
         "Location": "Fairfield Park",
         "Notes": "Last day of school"
@@ -651,12 +651,12 @@
       }
     ]
   },
-  "🛒 Shopping List": {
+  "\ud83d\uded2 Shopping List": {
     "headers": [
       "Item",
       "Quantity",
       "Added By",
-      "Done ✓",
+      "Done \u2713",
       "Category"
     ],
     "rows": [
@@ -664,88 +664,88 @@
         "Item": "Passport photos (x2)",
         "Quantity": "2",
         "Added By": "Simon",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Category": "Admin"
       },
       {
         "Item": "Milk",
         "Quantity": "2 pints",
         "Added By": "Simon",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Category": "Dairy"
       },
       {
         "Item": "Bread",
         "Quantity": "1 loaf",
         "Added By": "Simon",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Category": "Bakery"
       },
       {
         "Item": "Bin bags",
         "Quantity": "1 roll",
         "Added By": "Simon",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Category": "Household"
       },
       {
         "Item": "Test item from dashboard",
         "Quantity": "1",
         "Added By": "Simon",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Category": "Test"
       },
       {
         "Item": "salt and vinegar crisps",
         "Quantity": "multipack",
         "Added By": "",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Category": "Household"
       },
       {
         "Item": "Test",
         "Quantity": "1",
         "Added By": "",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Category": ""
       },
       {
         "Item": "Prawn Cocktail Crisps",
         "Quantity": "multipack",
         "Added By": "",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Category": "Household"
       },
       {
         "Item": "Agave syrup",
         "Quantity": "",
         "Added By": "",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Category": "Other"
       },
       {
         "Item": "Butter",
         "Quantity": "",
         "Added By": "",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Category": ""
       },
       {
         "Item": "Lemonase",
         "Quantity": "",
         "Added By": "",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Category": ""
       }
     ]
   },
-  "✅ Chores": {
+  "\u2705 Chores": {
     "headers": [
       "Task",
       "Assigned To",
       "Due Date",
       "Frequency",
-      "Done ✓",
+      "Done \u2713",
       "Notes"
     ],
     "rows": [
@@ -754,20 +754,20 @@
         "Assigned To": "Simon & Emma",
         "Due Date": "2026-06-08",
         "Frequency": "Once",
-        "Done ✓": "",
-        "Notes": "🛂 URGENT - expires tomorrow!"
+        "Done \u2713": "",
+        "Notes": "\ud83d\udec2 URGENT - expires tomorrow!"
       },
       {
         "Task": "Put Bins Out",
         "Assigned To": "Simon",
         "Due Date": "",
         "Frequency": "Weekly",
-        "Done ✓": "",
+        "Done \u2713": "",
         "Notes": ""
       }
     ]
   },
-  "🍽️ Meal Plan": {
+  "\ud83c\udf7d\ufe0f Meal Plan": {
     "headers": [
       "Day",
       "Breakfast",
@@ -827,7 +827,7 @@
       }
     ]
   },
-  "📋 School & Activities": {
+  "\ud83d\udccb School & Activities": {
     "headers": [
       "Child",
       "Activity",
@@ -841,14 +841,14 @@
         "Activity": "School",
         "Day/Time": "Mon-Fri 8:45-3:25",
         "Location": "Fairfield Park",
-        "Notes": "Dickens Boulevard, Hitchin, SG4 7SS — Year 3 DB"
+        "Notes": "Dickens Boulevard, Hitchin, SG4 7SS \u2014 Year 3 DB"
       },
       {
         "Child": "Ella",
         "Activity": "School",
         "Day/Time": "Mon-Fri 8:00-3:00",
         "Location": "Pix Brook Academy",
-        "Notes": "Arlesey Road, Stotfold, SG5 4HB — Year 5, Pankhurst Class"
+        "Notes": "Arlesey Road, Stotfold, SG5 4HB \u2014 Year 5, Pankhurst Class"
       },
       {
         "Child": "Ava",
@@ -862,14 +862,14 @@
         "Activity": "Summer Fete",
         "Day/Time": "Sun 14 Jun 11:00",
         "Location": "Fairfield Park",
-        "Notes": "PTA event £1 entry"
+        "Notes": "PTA event \u00a31 entry"
       },
       {
         "Child": "Ella",
         "Activity": "Where's Wally Day",
         "Day/Time": "Fri 26 Jun",
         "Location": "Pix Brook Academy",
-        "Notes": "Dress up as Wally character, £1.50 via MCAS"
+        "Notes": "Dress up as Wally character, \u00a31.50 via MCAS"
       },
       {
         "Child": "Ava",
@@ -890,14 +890,14 @@
         "Activity": "Stretch & Flex (BX Dance)",
         "Day/Time": "Thu 5:45pm",
         "Location": "BX Dance",
-        "Notes": "Weekly class — both attend"
+        "Notes": "Weekly class \u2014 both attend"
       },
       {
         "Child": "Ava & Ella",
         "Activity": "Diving",
         "Day/Time": "Sat 1:30pm",
         "Location": "Luton Diving Centre",
-        "Notes": "Weekly class — both attend"
+        "Notes": "Weekly class \u2014 both attend"
       },
       {
         "Child": "Ava",
@@ -943,7 +943,7 @@
       }
     ]
   },
-  "💰 Budget": {
+  "\ud83d\udcb0 Budget": {
     "headers": [],
     "rows": [
       [
@@ -956,7 +956,7 @@
       ]
     ]
   },
-  "📝 Announcements": {
+  "\ud83d\udcdd Announcements": {
     "headers": [
       "Date",
       "From",
@@ -967,26 +967,26 @@
       {
         "Date": "2026-06-06",
         "From": "Simon",
-        "Message": "Welcome to Family HQ! 🎉",
+        "Message": "Welcome to Family HQ! \ud83c\udf89",
         "Priority": "Info"
       },
       {
         "Date": "2026-06-08",
         "From": "Simon",
-        "Message": "⚠️ URGENT: Passport renewals needed for Simon + Emma!\nExpiry: 9 June (TOMORROW!)",
-        "Priority": "🔴 URGENT"
+        "Message": "\u26a0\ufe0f URGENT: Passport renewals needed for Simon + Emma!\nExpiry: 9 June (TOMORROW!)",
+        "Priority": "\ud83d\udd34 URGENT"
       },
       {
         "Date": "2026-06-06",
         "From": "Simon",
-        "Message": "📋 PBA Bulletin wc 8 June:\n• Where's Wally Day: 26 June\n• Year 5 Yoga: 23-24 June\n• Creative Arts Festival: 8-9 July\n• Sports Day: 10 July\n• End of Term: 17 July",
-        "Priority": "📌 Important"
+        "Message": "\ud83d\udccb PBA Bulletin wc 8 June:\n\u2022 Where's Wally Day: 26 June\n\u2022 Year 5 Yoga: 23-24 June\n\u2022 Creative Arts Festival: 8-9 July\n\u2022 Sports Day: 10 July\n\u2022 End of Term: 17 July",
+        "Priority": "\ud83d\udccc Important"
       },
       {
         "Date": "2026-06-06",
         "From": "Simon",
-        "Message": "📅 TERM DATES:\n• Early May BH: 4 May\n• Late May BH: 25 May\n• PBA End of Term: 17 July\n• Fairfield Park End of Term: 22 July\n• FP Training Days: 13 Apr, 20 July\n• PBA Training Days: 20 July",
-        "Priority": "📌 Important"
+        "Message": "\ud83d\udcc5 TERM DATES:\n\u2022 Early May BH: 4 May\n\u2022 Late May BH: 25 May\n\u2022 PBA End of Term: 17 July\n\u2022 Fairfield Park End of Term: 22 July\n\u2022 FP Training Days: 13 Apr, 20 July\n\u2022 PBA Training Days: 20 July",
+        "Priority": "\ud83d\udccc Important"
       },
       {
         "Date": "2026-06-06",
@@ -996,7 +996,7 @@
       }
     ]
   },
-  "👨‍👩‍👧‍👧 Family Members": {
+  "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Family Members": {
     "headers": [
       "Name",
       "Role",
@@ -1031,11 +1031,11 @@
         "Role": "Daughter (10)",
         "Email": "",
         "Phone": "",
-        "Notes": "Year 5 at Pix Brook Academy — Pankhurst Class"
+        "Notes": "Year 5 at Pix Brook Academy \u2014 Pankhurst Class"
       }
     ]
   },
-  "📞 Important Contacts": {
+  "\ud83d\udcde Important Contacts": {
     "headers": [
       "Name",
       "Type",
@@ -1051,7 +1051,7 @@
         "Phone": "01462 830000",
         "Email": "office@fairfieldparklower.uk",
         "Address": "Dickens Boulevard, Fairfield Park, Hitchin, SG4 7SS",
-        "Notes": "Year 3 DB — School hours 8:45-3:25 — Main Office Option 1"
+        "Notes": "Year 3 DB \u2014 School hours 8:45-3:25 \u2014 Main Office Option 1"
       },
       {
         "Name": "Pix Brook Academy",
@@ -1059,7 +1059,7 @@
         "Phone": "01462 416243",
         "Email": "pixbrook@bestacademies.org.uk",
         "Address": "Arlesey Road, Stotfold, Church End, Central Bedfordshire, SG5 4HB",
-        "Notes": "Year 5 — School hours 8:00-3:00"
+        "Notes": "Year 5 \u2014 School hours 8:00-3:00"
       },
       {
         "Name": "BX Dance",
@@ -1156,6 +1156,14 @@
         "Email": "hbsrevolutions@hitchinboys.co.uk",
         "Address": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
         "Notes": "Ava: Fri 6pm | Ella: Fri 7pm"
+      },
+      {
+        "Name": "Larksfield & Arlesey Medical Practice",
+        "Type": "Doctor / GP Surgery",
+        "Phone": "01462 732200",
+        "Email": "",
+        "Address": "Arlesey Road, Stotfold, Hitchin, SG5 4HB",
+        "Notes": "Branch: Arlesey Medical Centre, High Street, Arlesey, SG15 6SN"
       }
     ]
   }
