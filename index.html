@@ -1197,7 +1197,7 @@
                     return da - db;
                 });
                 document.getElementById('todoList').innerHTML = todos.map((t, idx) => {
-                    const done = (t.Done ✓ || '').toString().trim() !== '';
+                    const done = (t['Done ✓'] || '').toString().trim() !== '';
                     const who = (t.Who || t['Assigned To'] || '').trim();
                     const fc = who ? FAMILY_COLOURS[who] : null;
                     const dotHtml = fc ? `<span class="event-dot ${fc.dot}"></span>` : '';
