@@ -1264,5 +1264,90 @@
         "Notes": "Sat Nav: MK42 7DN. Ava's physio appointments."
       }
     ]
+  },
+  "📌 To-Do": {
+    "headers": [
+      "Task",
+      "Assigned To",
+      "Due Date",
+      "Priority",
+      "Done",
+      "Notes",
+      "Created"
+    ],
+    "rows": [
+      {
+        "Task": "Apply for passport renewal",
+        "Assigned To": "Simon & Emma",
+        "Due Date": "2026-06-08",
+        "Priority": "🔴 High",
+        "Done": "",
+        "Notes": "URGENT - expires tomorrow!",
+        "Created": "2026-06-08"
+      },
+      {
+        "Task": "Order new school shoes for Ella",
+        "Assigned To": "Emma",
+        "Due Date": "2026-06-20",
+        "Priority": "🟡 Medium",
+        "Done": "",
+        "Notes": "Check uniform shop sizes",
+        "Created": "2026-06-06"
+      },
+      {
+        "Task": "Wash swimming kits",
+        "Assigned To": "Simon",
+        "Due Date": "",
+        "Priority": "🟢 Low",
+        "Done": "",
+        "Notes": "Both Ava + Ella kits for next week",
+        "Created": "2026-06-09"
+      },
+      {
+        "Task": "Book summer holiday activities",
+        "Assigned To": "Emma",
+        "Due Date": "2026-06-15",
+        "Priority": "🟡 Medium",
+        "Done": "",
+        "Notes": "Research local holiday clubs",
+        "Created": "2026-06-06"
+      },
+      {
+        "Task": "Check Ava's bike tyres",
+        "Assigned To": "Simon",
+        "Due Date": "",
+        "Priority": "🟢 Low",
+        "Done": "",
+        "Notes": "Pump up if flat",
+        "Created": "2026-06-06"
+      },
+      {
+        "Task": "Confirm HBS gymnastics dates",
+        "Assigned To": "Emma",
+        "Due Date": "2026-06-30",
+        "Priority": "🟡 Medium",
+        "Done": "",
+        "Notes": "Ava Fri 6pm, Ella Fri 7pm — check summer schedule",
+        "Created": "2026-06-06"
+      },
+      {
+        "Task": "Buy birthday present for Ella",
+        "Assigned To": "Simon",
+        "Due Date": "2026-09-15",
+        "Priority": "🔴 High",
+        "Done": "",
+        "Notes": "Ella's birthday Sept 20!",
+        "Created": "2026-06-06"
+      },
+      {
+        "Task": "Sort out old clothes for charity",
+        "Assigned To": "Emma",
+        "Due Date": "",
+        "Priority": "🟢 Low",
+        "Done": "",
+        "Notes": "Both girls — outgrown items",
+        "Created": "2026-06-06"
+      }
+    ]
   }
 }
