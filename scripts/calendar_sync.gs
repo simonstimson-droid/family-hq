@@ -35,6 +35,9 @@ function doPost(e) {
       case 'listSheetEvents':
         result = listSheetEvents();
         break;
+      case 'deleteEvent':
+        result = deleteCalendarEvent(body.eventId);
+        break;
       default:
         result = { error: 'Unknown action: ' + action };
     }
@@ -185,6 +188,25 @@ function createCalendarEvent(body) {
   }
   
   return { success: true };
+}
+
+/**
+ * Delete event from Google Calendar by ID
+ */
+function deleteCalendarEvent(eventId) {
+  if (!eventId) return { error: 'No eventId provided' };
+  try {
+    const calendar = CalendarApp.getCalendarById('family17800354474891822339@group.calendar.google.com');
+    if (!calendar) return { error: 'Calendar not found' };
+    const event = calendar.getEventById(eventId);
+    if (event) {
+      event.deleteEvent();
+      return { success: true };
+    }
+    return { error: 'Event not found: ' + eventId };
+  } catch (err) {
+    return { error: err.message };
+  }
 }
 
 /**
