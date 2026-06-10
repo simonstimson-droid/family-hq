@@ -1682,6 +1682,20 @@
         
         loadAllData();
         
+        // ===== CALENDAR EVENT DELETION =====
+        async function deleteCalendarEvent(eventId) {
+            if (!CALENDAR_API_URL || !eventId) return;
+            try {
+                const body = JSON.stringify({ action: 'deleteEvent', eventId: eventId });
+                const r = await fetch(CALENDAR_API_URL, { method: 'POST', body: body, headers: { 'Content-Type': 'application/json' } });
+                const data = await r.json();
+                return data.success;
+            } catch(e) {
+                console.error('Delete calendar event error:', e);
+                return false;
+            }
+        }
+
         // ===== PROFILE PAGES =====
         const PROFILE_DATA = {
             'Simon': { avatar: '👨', gradient: 'linear-gradient(135deg, #64748b, #475569)', role: 'Dad', colour: '#64748b' },
