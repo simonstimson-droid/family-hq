@@ -294,6 +294,41 @@
         .modal-btns .save { background: #667eea; color: white; }
         .modal-btns .save:hover { background: #5a6fd6; }
         .modal-btns .save:disabled { background: #ccc; cursor: not-allowed; }
+        /* Chore rewards */
+        .chore-points { display: inline-block; background: linear-gradient(135deg, #f59e0b, #f97316); color: white; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-left: 6px; vertical-align: middle; }
+        .chore-diff { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; margin-right: 6px; text-transform: uppercase; vertical-align: middle; }
+        .chore-diff-easy { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+        .chore-diff-medium { background: #fef3c7; color: #d97706; border: 1px solid #fde68a; }
+        .chore-diff-hard { background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; }
+        .chore-done-btn { font-size: 16px; cursor: pointer; background: none; border: none; padding: 2px 4px; }
+        .chore-done-btn:hover { transform: scale(1.2); }
+        
+        .leaderboard { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+        .lb-card { flex: 1; min-width: 140px; background: linear-gradient(135deg, #f8f9ff, #faf5ff); border-radius: 14px; padding: 16px; text-align: center; border: 2px solid #e0e0e0; }
+        .lb-card.ava-card { border-color: #c084fc; background: linear-gradient(135deg, #faf5ff, #f3e8ff); }
+        .lb-card.ella-card { border-color: #38bdf8; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); }
+        .lb-name { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+        .lb-points { font-size: 28px; font-weight: 800; color: #f59e0b; }
+        .lb-points-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+        .lb-streak { font-size: 12px; color: #666; margin-top: 4px; }
+        
+        .rewards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 12px; }
+        .reward-card { background: white; border-radius: 12px; padding: 14px; text-align: center; border: 2px solid #e0e0e0; transition: all 0.15s; }
+        .reward-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .reward-card.affordable { border-color: #f59e0b; }
+        .reward-emoji { font-size: 28px; margin-bottom: 6px; }
+        .reward-name { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+        .reward-cost { font-size: 12px; color: #f59e0b; font-weight: 700; }
+        .reward-buy-btn { margin-top: 8px; background: linear-gradient(135deg, #f59e0b, #f97316); color: white; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; }
+        .reward-buy-btn:hover { transform: scale(1.05); }
+        .reward-buy-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+        
+        .points-history { margin-top: 12px; max-height: 200px; overflow-y: auto; }
+        .ph-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #f8f9ff; border-radius: 8px; margin-bottom: 4px; font-size: 13px; }
+        .ph-item .ph-points { font-weight: 700; color: #f59e0b; }
+        .ph-item .ph-points.negative { color: #ef4444; }
+        .ph-item .ph-date { font-size: 11px; color: #999; }
+        
         .toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 12px 24px; border-radius: 8px; font-size: 14px; z-index: 400; display: none; }
         .toast.show { display: block; }
         .toast.error { background: #ef4444; }
@@ -381,9 +416,21 @@
         <!-- CHORES -->
         <div class="panel" id="chores">
             <div class="card">
+                <h2>🏆 Chore Rewards</h2>
+                <div class="leaderboard" id="leaderboard"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+            <div class="card">
+                <h2>🎁 Rewards Store</h2>
+                <div class="rewards-grid" id="rewardsStore"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+            <div class="card">
                 <h2>✅ Family Chores</h2>
                 <div id="choreList"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
                 <button class="add-btn" onclick="addChore()">+ Add Chore</button>
+            </div>
+            <div class="card">
+                <h2>📊 Points History</h2>
+                <div class="points-history" id="pointsHistory"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
         </div>
         
@@ -1043,29 +1090,42 @@
                     const dayShort = day ? day.substring(0, 3) : '';
                     const todayDay = new Date().toLocaleDateString('en-GB', { weekday: 'long' }).substring(0, 3);
                     const isToday = dayShort.toLowerCase() === todayDay.toLowerCase();
+                    const diff = c.Difficulty || c.difficulty || 'Medium';
+                    const pts = POINTS[diff] || 10;
+                    const diffClass = diff.toLowerCase();
+                    const fc = FAMILY_COLOURS[(c['Assigned To'] || c.Who || '').trim()];
+                    const assigneeColour = fc ? fc.hex : '#666';
                     return `<div class="chore-item${done ? ' done' : ''}" data-idx="${idx}" style="border-left-color:${done ? '#10b981' : '#f59e0b'};background:${done ? '#f0fdf4' : (isToday ? '#fff7ed' : '#fffbeb')};${isToday ? 'border:2px solid #f59e0b;border-left:4px solid ' + (done ? '#10b981' : '#f59e0b') + ';' : ''}">
                         ${dayShort ? `<span class="chore-day-badge">${dayShort}</span>` : ''}
-                        <div style="display:inline;vertical-align:middle;">${c.Chore || c.Task || 'Chore'}</div>
-                        <div class="assignee">👤 ${colourWho(c['Assigned To'] || c.Who || 'Anyone')}${c.Frequency !== 'Weekly' ? ` • <span class="freq">${c.Frequency}</span>` : ''}</div>
+                        <span class="chore-diff chore-diff-${diffClass}">${diff}</span>
+                        ${!done ? `<button class="chore-done-btn" onclick="completeChoreWithPoints(${idx}, event)" title="Mark done — earn ${pts} pts">⬜</button>` : '<span style="margin-left:4px;">✅</span>'}
+                        <div style="display:inline;vertical-align:middle;margin-left:4px;">${c.Chore || c.Task || 'Chore'}</div>
+                        <span class="chore-points">+${pts}</span>
+                        <div class="assignee" style="color:${assigneeColour};">👤 ${colourWho(c['Assigned To'] || c.Who || 'Anyone')}${c.Frequency !== 'Weekly' ? ` • <span class="freq">${c.Frequency}</span>` : ''}</div>
                     </div>`;
                 }).join('');
-                // Click to toggle done
+                // Click to toggle done (for items without the button)
                 document.querySelectorAll('#choreList .chore-item').forEach(el => {
-                    el.addEventListener('click', () => {
+                    el.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('chore-done-btn')) return;
                         const chores2 = getSheet('✅');
                         const idx = parseInt(el.dataset.idx);
-                        const c = chores2[idx];
-                        if (!c) return;
-                        const newDone = (c['Done ✓'] || '').toString().trim() ? '' : '✓';
-                        c['Done ✓'] = newDone;
-                        el.classList.toggle('done');
-                        el.style.borderLeftColor = newDone ? '#10b981' : '#f59e0b';
-                        el.style.background = newDone ? '#f0fdf4' : '#fffbeb';
-                        // Update in sheet
-                        apiCall({action:'update', sheet:'✅ Chores', row:String(idx+2), data:JSON.stringify(c)}).catch(()=>{});
+                        completeChoreWithPoints(idx);
                     });
                 });
             } else { showEmpty('choreList', 'No chores set yet. Add some! 💪'); }
+        }
+
+        function completeChore(index) {
+            const chores = getSheet('✅');
+            const c = chores[index];
+            if (!c) return;
+            const newDone = (c['Done ✓'] || '').toString().trim() ? '' : '✓';
+            c['Done ✓'] = newDone;
+            // Update in sheet
+            apiCall({action:'update', sheet:'✅ Chores', row:String(index+2), data:JSON.stringify(c)}).catch(()=>{});
+            // Re-render
+            renderChoresWithRewards(familyData);
         }
         
         function renderMeals(data) {
@@ -1450,7 +1510,7 @@
             }
             // Re-render the affected panel
             if (sheetEmoji === '🛒') renderShopping(familyData);
-            else if (sheetEmoji === '✅') renderChores(familyData);
+            else if (sheetEmoji === '✅') renderChoresWithRewards(familyData);
             else if (sheetEmoji === '🍽️') renderMeals(familyData);
             else if (sheetEmoji === '📝') renderAnnouncements(familyData);
             else if (sheetEmoji === '📅') renderCalendar(familyData);
@@ -1526,12 +1586,13 @@
                 <label>Task</label><input type="text" id="c_task" placeholder="e.g. Empty bins" autofocus>
                 <label>Assigned To</label><select id="c_who"><option>Simon</option><option>Emma</option><option>Ava</option><option>Ella</option><option>Everyone</option></select>
                 <label>Day</label><select id="c_day"><option value="">Any day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select>
+                <label>Difficulty</label><select id="c_diff"><option value="Easy">Easy (+5 pts)</option><option value="Medium" selected>Medium (+10 pts)</option><option value="Hard">Hard (+15 pts)</option></select>
                 <label>Frequency</label><select id="c_freq"><option>Weekly</option><option>Once</option><option>Daily</option><option>Monthly</option></select>
                 <label>Notes</label><input type="text" id="c_notes" placeholder="Optional">
                 <div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="c_save" onclick="modalSave()">Add Chore</button></div>`,
             async () => {
                 const b = document.getElementById('c_save'); b.disabled=true; b.textContent='Adding...';
-                const data = {Task: document.getElementById('c_task').value, 'Assigned To': document.getElementById('c_who').value, Day: document.getElementById('c_day').value, 'Due Date': '', Frequency: document.getElementById('c_freq').value, 'Done ✓': '', Notes: document.getElementById('c_notes').value};
+                const data = {Task: document.getElementById('c_task').value, 'Assigned To': document.getElementById('c_who').value, Day: document.getElementById('c_day').value, Difficulty: document.getElementById('c_diff').value, 'Due Date': '', Frequency: document.getElementById('c_freq').value, 'Done ✓': '', Notes: document.getElementById('c_notes').value};
                 if (!data.Task) { showToast('Please enter a task',true); b.disabled=false; return; }
                 const r = await apiCall({action:'append', sheet:'✅ Chores', data:JSON.stringify(data)});
                 if (r.success) {
@@ -1727,7 +1788,7 @@
                 renderToday(familyData);
                 renderCalendar(familyData);
                 renderShopping(familyData);
-                renderChores(familyData);
+                renderChoresWithRewards(familyData);
                 renderMeals(familyData);
                 renderSchool(familyData);
                 renderContacts(familyData);
@@ -1882,6 +1943,204 @@
         function closeProfile() {
             const overlay = document.getElementById('profileOverlay');
             if (overlay) overlay.remove();
+        }
+
+        // ===== CHORE REWARDS SYSTEM =====
+        const POINTS = { 'Easy': 5, 'Medium': 10, 'Hard': 15 };
+        const DEFAULT_REWARDS = [
+            { name: 'Extra Screen Time', emoji: '📱', cost: 20 },
+            { name: 'Choose Dinner', emoji: '🍕', cost: 15 },
+            { name: 'Movie Pick', emoji: '🎬', cost: 25 },
+            { name: 'Sweet Treat', emoji: '🍫', cost: 10 },
+            { name: 'Late Bedtime', emoji: '🌙', cost: 30 },
+            { name: 'Park Trip', emoji: '🛝', cost: 20 },
+            { name: 'Art Supplies', emoji: '🎨', cost: 25 },
+            { name: 'Small Toy', emoji: '🧸', cost: 35 },
+        ];
+
+        function getChorePoints(chore) {
+            const diff = chore.Difficulty || chore.difficulty || 'Medium';
+            return POINTS[diff] || 10;
+        }
+
+        function getPointsBalance() {
+            try {
+                const stored = localStorage.getItem('familyhq_points');
+                return stored ? JSON.parse(stored) : { 'Ava': 0, 'Ella': 0, 'Simon': 0, 'Emma': 0 };
+            } catch(e) {
+                return { 'Ava': 0, 'Ella': 0, 'Simon': 0, 'Emma': 0 };
+            }
+        }
+
+        function savePointsBalance(balance) {
+            localStorage.setItem('familyhq_points', JSON.stringify(balance));
+        }
+
+        function getPointsHistory() {
+            try {
+                const stored = localStorage.getItem('familyhq_points_history');
+                return stored ? JSON.parse(stored) : [];
+            } catch(e) { return []; }
+        }
+
+        function addPointsHistory(name, points, reason) {
+            const history = getPointsHistory();
+            history.unshift({ name, points, reason, date: new Date().toISOString() });
+            // Keep last 50 entries
+            if (history.length > 50) history.length = 50;
+            localStorage.setItem('familyhq_points_history', JSON.stringify(history));
+        }
+
+        function renderLeaderboard() {
+            const el = document.getElementById('leaderboard');
+            if (!el) return;
+            const balance = getPointsBalance();
+            const kids = ['Ava', 'Ella'].sort((a, b) => (balance[b] || 0) - (balance[a] || 0));
+            
+            let html = '';
+            kids.forEach(name => {
+                const pts = balance[name] || 0;
+                const cssClass = name.toLowerCase() + '-card';
+                const colour = FAMILY_COLOURS[name] ? FAMILY_COLOURS[name].hex : '#666';
+                html += `<div class="lb-card ${cssClass}">`;
+                html += `<div class="lb-name" style="color:${colour};">${name === 'Ava' ? '💜' : '💙'} ${name}</div>`;
+                html += `<div class="lb-points">${pts}</div>`;
+                html += `<div class="lb-points-label">points</div>`;
+                html += `</div>`;
+            });
+            el.innerHTML = html;
+        }
+
+        function renderRewards() {
+            const el = document.getElementById('rewardsStore');
+            if (!el) return;
+            const balance = getPointsBalance();
+            const rewards = getRewards();
+            
+            let html = '';
+            rewards.forEach((r, i) => {
+                const canAfford = (balance['Ava'] || 0) >= r.cost || (balance['Ella'] || 0) >= r.cost;
+                html += `<div class="reward-card ${canAfford ? 'affordable' : ''}">`;
+                html += `<div class="reward-emoji">${r.emoji}</div>`;
+                html += `<div class="reward-name">${r.name}</div>`;
+                html += `<div class="reward-cost">${r.cost} pts</div>`;
+                html += `<button class="reward-buy-btn" onclick="buyReward(${i})" ${!canAfford ? 'disabled' : ''}>Redeem</button>`;
+                html += `</div>`;
+            });
+            el.innerHTML = html;
+        }
+
+        function getRewards() {
+            try {
+                const stored = localStorage.getItem('familyhq_rewards');
+                return stored ? JSON.parse(stored) : DEFAULT_REWARDS;
+            } catch(e) { return DEFAULT_REWARDS; }
+        }
+
+        function buyReward(index) {
+            const rewards = getRewards();
+            const reward = rewards[index];
+            if (!reward) return;
+            
+            // Show a modal asking who is buying
+            let html = `<div style="text-align:center;">`;
+            html += `<div style="font-size:48px;margin-bottom:12px;">${reward.emoji}</div>`;
+            html += `<h3 style="margin-bottom:4px;">${reward.name}</h3>`;
+            html += `<p style="color:#888;margin-bottom:16px;">Cost: ${reward.cost} points</p>`;
+            html += `<p style="font-weight:600;margin-bottom:8px;">Who is redeeming this?</p>`;
+            html += `<div style="display:flex;gap:8px;justify-content:center;">`;
+            html += `<button onclick="confirmBuy(${index},'Ava')" style="padding:10px 20px;border:2px solid #c084fc;border-radius:8px;background:white;color:#7c3aed;font-weight:600;cursor:pointer;">💜 Ava</button>`;
+            html += `<button onclick="confirmBuy(${index},'Ella')" style="padding:10px 20px;border:2px solid #38bdf8;border-radius:8px;background:white;color:#0284c7;font-weight:600;cursor:pointer;">💙 Ella</button>`;
+            html += `</div>`;
+            html += `<button onclick="closeModal()" style="margin-top:12px;padding:8px 16px;border:none;background:#f0f0f0;border-radius:6px;color:#666;cursor:pointer;">Cancel</button>`;
+            html += `</div>`;
+            openModal(html, null);
+        }
+
+        function confirmBuy(index, name) {
+            const rewards = getRewards();
+            const reward = rewards[index];
+            const balance = getPointsBalance();
+            
+            if ((balance[name] || 0) < reward.cost) {
+                showToast(`${name} doesn't have enough points!`, true);
+                return;
+            }
+            
+            balance[name] = (balance[name] || 0) - reward.cost;
+            savePointsBalance(balance);
+            addPointsHistory(name, -reward.cost, `Redeemed: ${reward.emoji} ${reward.name}`);
+            closeModal();
+            showToast(`${name} redeemed ${reward.emoji} ${reward.name}! -${reward.cost} pts`);
+            renderLeaderboard();
+            renderRewards();
+            renderPointsHistory();
+        }
+
+        function renderPointsHistory() {
+            const el = document.getElementById('pointsHistory');
+            if (!el) return;
+            const history = getPointsHistory();
+            
+            if (!history.length) {
+                el.innerHTML = '<div style="text-align:center;color:#999;padding:12px;">No point activity yet</div>';
+                return;
+            }
+            
+            let html = '';
+            history.slice(0, 20).forEach(h => {
+                const pts = h.points;
+                const sign = pts >= 0 ? '+' : '';
+                const d = new Date(h.date);
+                const dateStr = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+                html += `<div class="ph-item">`;
+                html += `<span><strong style="color:${FAMILY_COLOURS[h.name] ? FAMILY_COLOURS[h.name].hex : '#333'}">${h.name}</strong> — ${h.reason}</span>`;
+                html += `<span style="text-align:right;">`;
+                html += `<span class="ph-points ${pts < 0 ? 'negative' : ''}">${sign}${pts}</span>`;
+                html += `<span class="ph-date"> ${dateStr}</span>`;
+                html += `</span></div>`;
+            });
+            el.innerHTML = html;
+        }
+
+        function renderChoresWithRewards(data) {
+            renderChores(data);
+            renderLeaderboard();
+            renderRewards();
+            renderPointsHistory();
+        }
+
+        function showToast(msg, isError) {
+            const t = document.getElementById('toast');
+            if (!t) return;
+            t.textContent = msg;
+            t.className = 'show' + (isError ? ' error' : '');
+            setTimeout(() => { t.className = ''; }, 3000);
+        }
+
+        // Override the completeChore to also award points
+        const _origCompleteChore = completeChore;
+        function completeChoreWithPoints(index) {
+            const chore = getSheet('✅')[index];
+            if (chore) {
+                const who = chore['Assigned To'] || chore.Who || 'Anyone';
+                const pts = getChorePoints(chore);
+                const kids = ['Ava', 'Ella'];
+                
+                // If assigned to a kid, award points
+                if (kids.includes(who)) {
+                    const balance = getPointsBalance();
+                    balance[who] = (balance[who] || 0) + pts;
+                    savePointsBalance(balance);
+                    addPointsHistory(who, pts, `Completed: ${chore.Chore || chore.Task || 'Chore'}`);
+                    showToast(`${who} earned +${pts} points! 🎉`);
+                    renderLeaderboard();
+                    renderRewards();
+                    renderPointsHistory();
+                }
+            }
+            // Call original
+            _origCompleteChore(index);
         }
     </script>
 </body>
