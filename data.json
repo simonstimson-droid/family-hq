@@ -306,14 +306,6 @@
         "Notes": ""
       },
       {
-        "Date": "2026-07-01",
-        "Time": "11:00",
-        "Event": "🏥 NHS Physiotherapy - Sarah Salter",
-        "Who": "Ava",
-        "Location": "Child Development Centre, Hill Rise, Kempston, Bedford MK42 7EB",
-        "Notes": "Bring shorts and vest top. Call 01234 310278 to rearrange if unwell."
-      },
-      {
         "Date": "2026-07-02",
         "Time": "17:45-18:30",
         "Event": "Stretch & Flex",
@@ -484,6 +476,14 @@
       {
         "Date": "2026-07-17",
         "Time": "All day",
+        "Event": "📅 End of Term - PBA",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Last day of school"
+      },
+      {
+        "Date": "2026-07-17",
+        "Time": "All day",
         "Event": "🏫 End of Term - Both Schools",
         "Who": "Ava & Ella",
         "Location": "",
@@ -496,6 +496,22 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
+      },
+      {
+        "Date": "2026-07-20",
+        "Time": "All day",
+        "Event": "🏫 Training Day - Fairfield Park",
+        "Who": "Ava",
+        "Location": "",
+        "Notes": "School closed for pupils"
+      },
+      {
+        "Date": "2026-07-20",
+        "Time": "All day",
+        "Event": "🏫 Training Day - PBA",
+        "Who": "Ella",
+        "Location": "",
+        "Notes": "School closed for pupils"
       },
       {
         "Date": "2026-07-20",
@@ -602,14 +618,6 @@
         "Notes": ""
       },
       {
-        "Date": "2026-08-17",
-        "Time": "All day",
-        "Event": "🎂 Ava's Birthday",
-        "Who": "Ava",
-        "Location": "",
-        "Notes": "Turning 11!"
-      },
-      {
         "Date": "2026-08-19",
         "Time": "18:30-19:00",
         "Event": "Swimming - Ava",
@@ -640,6 +648,14 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
+      },
+      {
+        "Date": "2026-08-17",
+        "Time": "All day",
+        "Event": "🎂 Ava's Birthday",
+        "Who": "Ava",
+        "Location": "",
+        "Notes": "Turning 11!"
       },
       {
         "Date": "2026-09-20",
@@ -696,6 +712,22 @@
         "Who": "Emma",
         "Location": "",
         "Notes": ""
+      },
+      {
+        "Date": "2026-07-01",
+        "Time": "11:00",
+        "Event": "🏥 NHS Physiotherapy - Sarah Salter",
+        "Who": "Ava",
+        "Location": "Child Development Centre, Hill Rise, Kempston, Bedford MK42 7EB",
+        "Notes": "Bring shorts + vest top. Call 01234 310278 if unwell. Sat Nav: MK42 7DN"
+      },
+      {
+        "Date": "2026-07-15",
+        "Time": "14:00",
+        "Event": "🧪 Test Event - Dashboard Sync",
+        "Who": "Simon",
+        "Location": "Home",
+        "Notes": "Testing calendar sync"
       }
     ]
   },
@@ -740,21 +772,21 @@
         "Item": "Test item from dashboard",
         "Quantity": "1",
         "Added By": "Simon",
-        "Done ✓": "",
+        "Done ✓": "✓",
         "Category": "Test"
       },
       {
         "Item": "salt and vinegar crisps",
         "Quantity": "multipack",
         "Added By": "",
-        "Done ✓": "",
+        "Done ✓": "✓",
         "Category": "Household"
       },
       {
         "Item": "Test",
         "Quantity": "1",
         "Added By": "",
-        "Done ✓": "",
+        "Done ✓": "✓",
         "Category": ""
       },
       {
@@ -782,7 +814,7 @@
         "Item": "Lemonase",
         "Quantity": "",
         "Added By": "",
-        "Done ✓": "",
+        "Done ✓": "✓",
         "Category": ""
       }
     ]
@@ -803,8 +835,7 @@
         "Due Date": "2026-06-08",
         "Frequency": "Once",
         "Done ✓": "",
-        "Notes": "🛂 URGENT - expires tomorrow!",
-        "Day": ""
+        "Notes": "🛂 URGENT - expires tomorrow!"
       },
       {
         "Task": "Put Bins Out",
@@ -812,8 +843,7 @@
         "Due Date": "",
         "Frequency": "Weekly",
         "Done ✓": "",
-        "Notes": "",
-        "Day": ""
+        "Notes": ""
       }
     ]
   },
@@ -1032,41 +1062,49 @@
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "Welcome to Family HQ! 🎉",
-        "Priority": "Info",
-        "Who": "",
-        "Done ✓": ""
+        "Priority": "Info"
       },
       {
         "Date": "2026-06-08",
         "From": "Simon",
         "Message": "⚠️ URGENT: Passport renewals needed for Simon + Emma!\nExpiry: 9 June (TOMORROW!)",
-        "Priority": "🔴 URGENT",
-        "Who": "",
-        "Done ✓": ""
+        "Priority": "🔴 URGENT"
       },
       {
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "📋 PBA Bulletin wc 8 June:\n• Where's Wally Day: 26 June\n• Year 5 Yoga: 23-24 June\n• Creative Arts Festival: 8-9 July\n• Sports Day: 10 July\n• End of Term: 17 July",
-        "Priority": "📌 Important",
-        "Who": "",
-        "Done ✓": ""
+        "Priority": "📌 Important"
       },
       {
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "📅 TERM DATES:\n• Early May BH: 4 May\n• Late May BH: 25 May\n• PBA End of Term: 17 July\n• Fairfield Park End of Term: 22 July\n• FP Training Days: 13 Apr, 20 July\n• PBA Training Days: 20 July",
-        "Priority": "📌 Important",
-        "Who": "",
-        "Done ✓": ""
+        "Priority": "📌 Important"
       },
       {
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "Ava's school fete 14 June, 11-2pm",
-        "Priority": "Info",
-        "Who": "",
-        "Done ✓": ""
+        "Priority": "Info"
+      },
+      {
+        "Date": "2026-06-09",
+        "From": "Simon",
+        "Message": "This is great",
+        "Priority": "Message"
+      },
+      {
+        "Date": "2026-06-09",
+        "From": "Simon",
+        "Message": "is this working?",
+        "Priority": "Message"
+      },
+      {
+        "Date": "2026-06-09",
+        "From": "Simon",
+        "Message": "is this working?",
+        "Priority": "Message"
       }
     ]
   },
@@ -1248,105 +1286,12 @@
         "Notes": "Branch surgery: High Street, Arlesey, SG15 6SN"
       },
       {
-        "Name": "Child Development Centre (NHS Bedfordshire Hospitals)",
-        "Type": "Physiotherapy Department",
-        "Phone": "01234 310278",
-        "Email": "bhn-tr.cdcpaediatricphysios@nhs.net",
-        "Address": "Hill Rise, Kempston, Bedford, MK42 7EB",
-        "Notes": "Sat Nav: MK42 7DN. Ava's physio appointments. Call or email to rearrange if unwell."
-      },
-      {
         "Name": "NHS Child Development Centre (Physiotherapy)",
         "Type": "Hospital",
         "Phone": "01234 310278",
         "Email": "bhn-tr.cdcpaediatricphysios@nhs.net",
         "Address": "Hill Rise, Kempston, Bedford, MK42 7EB",
         "Notes": "Sat Nav: MK42 7DN. Ava's physio appointments."
-      }
-    ]
-  },
-  "📌 To-Do": {
-    "headers": [
-      "Task",
-      "Assigned To",
-      "Due Date",
-      "Priority",
-      "Done",
-      "Notes",
-      "Created"
-    ],
-    "rows": [
-      {
-        "Task": "Apply for passport renewal",
-        "Assigned To": "Simon & Emma",
-        "Due Date": "2026-06-08",
-        "Priority": "🔴 High",
-        "Done": "",
-        "Notes": "URGENT - expires tomorrow!",
-        "Created": "2026-06-08"
-      },
-      {
-        "Task": "Order new school shoes for Ella",
-        "Assigned To": "Emma",
-        "Due Date": "2026-06-20",
-        "Priority": "🟡 Medium",
-        "Done": "",
-        "Notes": "Check uniform shop sizes",
-        "Created": "2026-06-06"
-      },
-      {
-        "Task": "Wash swimming kits",
-        "Assigned To": "Simon",
-        "Due Date": "",
-        "Priority": "🟢 Low",
-        "Done": "",
-        "Notes": "Both Ava + Ella kits for next week",
-        "Created": "2026-06-09"
-      },
-      {
-        "Task": "Book summer holiday activities",
-        "Assigned To": "Emma",
-        "Due Date": "2026-06-15",
-        "Priority": "🟡 Medium",
-        "Done": "",
-        "Notes": "Research local holiday clubs",
-        "Created": "2026-06-06"
-      },
-      {
-        "Task": "Check Ava's bike tyres",
-        "Assigned To": "Simon",
-        "Due Date": "",
-        "Priority": "🟢 Low",
-        "Done": "",
-        "Notes": "Pump up if flat",
-        "Created": "2026-06-06"
-      },
-      {
-        "Task": "Confirm HBS gymnastics dates",
-        "Assigned To": "Emma",
-        "Due Date": "2026-06-30",
-        "Priority": "🟡 Medium",
-        "Done": "",
-        "Notes": "Ava Fri 6pm, Ella Fri 7pm — check summer schedule",
-        "Created": "2026-06-06"
-      },
-      {
-        "Task": "Buy birthday present for Ella",
-        "Assigned To": "Simon",
-        "Due Date": "2026-09-15",
-        "Priority": "🔴 High",
-        "Done": "",
-        "Notes": "Ella's birthday Sept 20!",
-        "Created": "2026-06-06"
-      },
-      {
-        "Task": "Sort out old clothes for charity",
-        "Assigned To": "Emma",
-        "Due Date": "",
-        "Priority": "🟢 Low",
-        "Done": "",
-        "Notes": "Both girls — outgrown items",
-        "Created": "2026-06-06"
       }
     ]
   }
