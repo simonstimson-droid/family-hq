@@ -1594,35 +1594,27 @@
         }
         
         async function addTodo() {
-            openModal(`<h3>📌 Add Todo</h3>
-                <label>Task</label><input type="text" id="td_task" placeholder="e.g. Buy milk" autofocus>
-                <label>Assigned To</label><select id="td_who"><option>Family</option><option>Simon</option><option>Emma</option><option>Ava</option><option>Ella</option></select>
-                <label>Due Date</label><input type="date" id="td_due">
-                <label>Priority</label><select id="td_priority"><option value="🟢 Low">🟢 Low</option><option value="🟡 Medium" selected>🟡 Medium</option><option value="🔴 High">🔴 High</option></select>
-                <label>Notes</label><input type="text" id="td_notes" placeholder="Optional notes">
-                <div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="td_save" onclick="modalSave()">Add Todo</button></div>`,
-            async () => {
-                const b = document.getElementById('td_save'); b.disabled=true; b.textContent='Adding...';
-                const task = document.getElementById('td_task').value.trim();
-                if (!task) { showToast('Please enter a task',true); b.disabled=false; return; }
-                const data = {
-                    Task: task,
-                    'Assigned To': document.getElementById('td_who').value,
-                    'Due Date': document.getElementById('td_due').value,
-                    Priority: document.getElementById('td_priority').value,
-                    'Done': '',
-                    Notes: document.getElementById('td_notes').value,
-                    Created: new Date().toISOString().split('T')[0]
-                };
-                const r = await apiCall({action:'append', sheet:'📌 To-Do', data:JSON.stringify(data)});
-                if (r.success) {
-                    localAddItem('📌', data);
-                    showToast('✅ Todo added!');
-                    closeModal();
-                } else {
-                    showToast('❌ '+(r.error||'Failed'),true); b.disabled=false;
-                }
-            });
+            const taskInput = document.getElementById('todoText');
+            const whoSelect = document.getElementById('todoWho');
+            const task = taskInput.value.trim();
+            if (!task) { showToast('Please enter a task', true); return; }
+            const data = {
+                Task: task,
+                'Assigned To': whoSelect ? whoSelect.value : '',
+                'Due Date': '',
+                Priority: '🟡 Medium',
+                'Done': '',
+                Notes: '',
+                Created: new Date().toISOString().split('T')[0]
+            };
+            const r = await apiCall({action:'append', sheet:'📌 To-Do', data:JSON.stringify(data)});
+            if (r.success) {
+                localAddItem('📌', data);
+                taskInput.value = '';
+                showToast('✅ Todo added!');
+            } else {
+                showToast('❌ '+(r.error||'Failed'), true);
+            }
         }
         
         async function toggleTodoDone(idx) {
