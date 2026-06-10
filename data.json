@@ -306,6 +306,14 @@
         "Notes": ""
       },
       {
+        "Date": "2026-07-01",
+        "Time": "11:00",
+        "Event": "🏥 NHS Physiotherapy - Sarah Salter",
+        "Who": "Ava",
+        "Location": "Child Development Centre, Hill Rise, Kempston, Bedford MK42 7EB",
+        "Notes": "Bring shorts and vest top. Call 01234 310278 to rearrange if unwell."
+      },
+      {
         "Date": "2026-07-02",
         "Time": "17:45-18:30",
         "Event": "Stretch & Flex",
@@ -476,14 +484,6 @@
       {
         "Date": "2026-07-17",
         "Time": "All day",
-        "Event": "📅 End of Term - PBA",
-        "Who": "Ella",
-        "Location": "Pix Brook Academy",
-        "Notes": "Last day of school"
-      },
-      {
-        "Date": "2026-07-17",
-        "Time": "All day",
         "Event": "🏫 End of Term - Both Schools",
         "Who": "Ava & Ella",
         "Location": "",
@@ -496,22 +496,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-07-20",
-        "Time": "All day",
-        "Event": "🏫 Training Day - Fairfield Park",
-        "Who": "Ava",
-        "Location": "",
-        "Notes": "School closed for pupils"
-      },
-      {
-        "Date": "2026-07-20",
-        "Time": "All day",
-        "Event": "🏫 Training Day - PBA",
-        "Who": "Ella",
-        "Location": "",
-        "Notes": "School closed for pupils"
       },
       {
         "Date": "2026-07-20",
@@ -618,6 +602,14 @@
         "Notes": ""
       },
       {
+        "Date": "2026-08-17",
+        "Time": "All day",
+        "Event": "🎂 Ava's Birthday",
+        "Who": "Ava",
+        "Location": "",
+        "Notes": "Turning 11!"
+      },
+      {
         "Date": "2026-08-19",
         "Time": "18:30-19:00",
         "Event": "Swimming - Ava",
@@ -648,14 +640,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-08-17",
-        "Time": "All day",
-        "Event": "🎂 Ava's Birthday",
-        "Who": "Ava",
-        "Location": "",
-        "Notes": "Turning 11!"
       },
       {
         "Date": "2026-09-20",
@@ -756,21 +740,21 @@
         "Item": "Test item from dashboard",
         "Quantity": "1",
         "Added By": "Simon",
-        "Done ✓": "✓",
+        "Done ✓": "",
         "Category": "Test"
       },
       {
         "Item": "salt and vinegar crisps",
         "Quantity": "multipack",
         "Added By": "",
-        "Done ✓": "✓",
+        "Done ✓": "",
         "Category": "Household"
       },
       {
         "Item": "Test",
         "Quantity": "1",
         "Added By": "",
-        "Done ✓": "✓",
+        "Done ✓": "",
         "Category": ""
       },
       {
@@ -798,7 +782,7 @@
         "Item": "Lemonase",
         "Quantity": "",
         "Added By": "",
-        "Done ✓": "✓",
+        "Done ✓": "",
         "Category": ""
       }
     ]
@@ -819,7 +803,8 @@
         "Due Date": "2026-06-08",
         "Frequency": "Once",
         "Done ✓": "",
-        "Notes": "🛂 URGENT - expires tomorrow!"
+        "Notes": "🛂 URGENT - expires tomorrow!",
+        "Day": ""
       },
       {
         "Task": "Put Bins Out",
@@ -827,7 +812,8 @@
         "Due Date": "",
         "Frequency": "Weekly",
         "Done ✓": "",
-        "Notes": ""
+        "Notes": "",
+        "Day": ""
       }
     ]
   },
@@ -1046,49 +1032,41 @@
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "Welcome to Family HQ! 🎉",
-        "Priority": "Info"
+        "Priority": "Info",
+        "Who": "",
+        "Done ✓": ""
       },
       {
         "Date": "2026-06-08",
         "From": "Simon",
         "Message": "⚠️ URGENT: Passport renewals needed for Simon + Emma!\nExpiry: 9 June (TOMORROW!)",
-        "Priority": "🔴 URGENT"
+        "Priority": "🔴 URGENT",
+        "Who": "",
+        "Done ✓": ""
       },
       {
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "📋 PBA Bulletin wc 8 June:\n• Where's Wally Day: 26 June\n• Year 5 Yoga: 23-24 June\n• Creative Arts Festival: 8-9 July\n• Sports Day: 10 July\n• End of Term: 17 July",
-        "Priority": "📌 Important"
+        "Priority": "📌 Important",
+        "Who": "",
+        "Done ✓": ""
       },
       {
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "📅 TERM DATES:\n• Early May BH: 4 May\n• Late May BH: 25 May\n• PBA End of Term: 17 July\n• Fairfield Park End of Term: 22 July\n• FP Training Days: 13 Apr, 20 July\n• PBA Training Days: 20 July",
-        "Priority": "📌 Important"
+        "Priority": "📌 Important",
+        "Who": "",
+        "Done ✓": ""
       },
       {
         "Date": "2026-06-06",
         "From": "Simon",
         "Message": "Ava's school fete 14 June, 11-2pm",
-        "Priority": "Info"
-      },
-      {
-        "Date": "2026-06-09",
-        "From": "Simon",
-        "Message": "This is great",
-        "Priority": "Message"
-      },
-      {
-        "Date": "2026-06-09",
-        "From": "Simon",
-        "Message": "is this working?",
-        "Priority": "Message"
-      },
-      {
-        "Date": "2026-06-09",
-        "From": "Simon",
-        "Message": "is this working?",
-        "Priority": "Message"
+        "Priority": "Info",
+        "Who": "",
+        "Done ✓": ""
       }
     ]
   },
@@ -1268,6 +1246,22 @@
         "Email": "",
         "Address": "Arlesey Road, Stotfold, Hitchin, SG5 4HB",
         "Notes": "Branch surgery: High Street, Arlesey, SG15 6SN"
+      },
+      {
+        "Name": "Child Development Centre (NHS Bedfordshire Hospitals)",
+        "Type": "Physiotherapy Department",
+        "Phone": "01234 310278",
+        "Email": "bhn-tr.cdcpaediatricphysios@nhs.net",
+        "Address": "Hill Rise, Kempston, Bedford, MK42 7EB",
+        "Notes": "Sat Nav: MK42 7DN. Ava's physio appointments. Call or email to rearrange if unwell."
+      },
+      {
+        "Name": "NHS Child Development Centre (Physiotherapy)",
+        "Type": "Hospital",
+        "Phone": "01234 310278",
+        "Email": "bhn-tr.cdcpaediatricphysios@nhs.net",
+        "Address": "Hill Rise, Kempston, Bedford, MK42 7EB",
+        "Notes": "Sat Nav: MK42 7DN. Ava's physio appointments."
       }
     ]
   }
