@@ -353,54 +353,84 @@ def format_reminder_message(reminders):
 
 def generate_weekend_summary(events, start_date):
     """Generate a weekend summary for the coming week (Mon-Sun)."""
-    # Group events by day
-    days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    return generate_period_summary(events, start_date, 7, "Weekend Summary", "📅")
+
+
+def generate_week_ahead_summary(events, start_date):
+    """Generate a week-ahead summary (next 14 days, grouped by week)."""
+    return generate_period_summary(events, start_date, 14, "Week Ahead", "📆")
+
+
+def generate_month_ahead_summary(events, start_date):
+    """Generate a month-ahead summary (next 30 days, grouped by week)."""
+    return generate_period_summary(events, start_date, 30, "Month Ahead", "🗓️")
+
+
+def generate_period_summary(events, start_date, num_days, title, emoji):
+    """Generate a period summary for the given number of days from start_date."""
+    from collections import defaultdict
     
-    # Create a dict for each day
-    day_events = {day: [] for day in days_of_week}
+    # Group events by ISO week
+    week_groups = defaultdict(list)
+    week_labels = {}
     
     for event in events:
         event_date = event["start"].date() if isinstance(event["start"], datetime) else event["start"]
-        day_name = days_of_week[event_date.weekday()]
-        if day_name in day_events:
-            day_events[day_name].append(event)
+        if event_date < start_date:
+            continue
+        if (event_date - start_date).days >= num_days:
+            continue
+        
+        # Get ISO week number
+        iso_year, iso_week, _ = event_date.isocalendar()
+        week_key = (iso_year, iso_week)
+        
+        if week_key not in week_labels:
+            # Label: "Week of Mon 15 Jun"
+            week_start = event_date - timedelta(days=event_date.weekday())
+            week_labels[week_key] = week_start.strftime("Week of %a %d %b")
+        
+        week_groups[week_key].append((event_date, event))
+    
+    if not week_groups:
+        return f"🏠 *Family HQ — {title}*\n\nNo events found for the next {num_days} days! 🎉"
     
     # Build the summary
     lines = []
-    lines.append("*📅 Weekend Summary — Week Ahead*")
+    lines.append(f"*{emoji} {title} — Next {num_days} Days*")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     
-    # Start from the upcoming Monday
-    today = date.today()
-    days_until_monday = (0 - today.weekday()) % 7
-    if days_until_monday == 0:
-        start_date = today
-    else:
-        start_date = today + timedelta(days=days_until_monday)
-    
-    for i in range(7):
-        current_date = start_date + timedelta(days=i)
-        day_name = days_of_week[current_date.weekday()]
-        date_str = current_date.strftime("%a %d %b")
-        
-        day_list = day_events[day_name]
-        if not day_list:
-            continue
-            
-        lines.append(f"\n*{day_name} {date_str}*")
+    for week_key in sorted(week_groups.keys()):
+        week_events = week_groups[week_key]
+        lines.append(f"\n*{week_labels[week_key]}*")
         lines.append("  ────────────────────")
         
-        # Sort events by time
-        day_list.sort(key=lambda e: e["start"] if isinstance(e["start"], datetime) else 
-                     datetime.combine(e["start"], datetime.min.time()))
+        # Sort by date then time
+        def sort_key(x):
+            d = x[0]
+            t = x[1]["start"]
+            if isinstance(t, datetime):
+                # Make offset-naive for comparison
+                if t.tzinfo is not None:
+                    t = t.replace(tzinfo=None)
+                return (d, t.hour, t.minute)
+            return (d, 0, 0)
         
-        for event in day_list:
+        week_events.sort(key=sort_key)
+        
+        current_date = None
+        for event_date, event in week_events:
+            # Print date header if new day
+            if event_date != current_date:
+                current_date = event_date
+                day_name = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][event_date.weekday()]
+                lines.append(f"\n  *{day_name} {event_date.strftime('%d %b')}*")
+            
             time_str = event["start"].strftime("%H:%M") if isinstance(event["start"], datetime) else "All day"
-            title = event["title"][:30] + ("..." if len(event["title"]) > 30 else "")
+            title_text = event["title"][:35] + ("..." if len(event["title"]) > 35 else "")
             person = detect_person(event["title"], event.get("description", ""))
             kit = detect_kit_needs(event["title"], event.get("description", ""))
             
-            # Person emoji
             person_emoji = ""
             if person == "Ava":
                 person_emoji = "💜 "
@@ -411,25 +441,23 @@ def generate_weekend_summary(events, start_date):
             elif person == "Emma":
                 person_emoji = "👩 "
             
-            lines.append(f"  • {person_emoji}{time_str} — {title}")
+            lines.append(f"    • {person_emoji}{time_str} — {title_text}")
             
-            # Add location if short
-            if event.get("location") and len(event["location"]) < 20:
-                lines.append(f"    📍 {event['location']}")
+            if event.get("location") and len(event["location"]) < 25:
+                lines.append(f"      📍 {event['location']}")
             
-            # Add kit if any
             if kit:
-                kit_items = ", ".join(kit["kit"][:2])  # Just first 2 items for brevity
+                kit_items = ", ".join(kit["kit"][:2])
                 if len(kit["kit"]) > 2:
                     kit_items += f" +{len(kit['kit'])-2} more"
-                lines.append(f"    {kit['emoji']} {kit_items}")
+                lines.append(f"      {kit['emoji']} {kit_items}")
     
-    # Add a note about checking tonight
     lines.append("")
-    lines.append("💡 *Tip:* Check tomorrow's reminders at 7am for any last-minute changes!")
+    lines.append("💡 *Tip:* Check daily reminders at 7am for kit details and last-minute changes!")
     
-    header = "🏠 *Family HQ — Weekend Summary*"
-    date_range = f"{start_date.strftime('%d %b')} — {(start_date + timedelta(days=6)).strftime('%d %b %Y')}"
+    header = f"🏠 *Family HQ — {title}*"
+    end_date = start_date + timedelta(days=num_days - 1)
+    date_range = f"{start_date.strftime('%d %b')} — {end_date.strftime('%d %b %Y')}"
     return f"{header}\n{date_range}\n\n" + "\n".join(lines)
 
 
@@ -441,37 +469,51 @@ def main():
     parser.add_argument("--send", action="store_true", help="Send via Telegram")
     parser.add_argument("--preview", action="store_true", help="Preview only (don't save)")
     parser.add_argument("--weekend", action="store_true", help="Weekend summary for coming week (Mon-Sun)")
+    parser.add_argument("--week-ahead", action="store_true", help="Week-ahead summary (next 14 days)")
+    parser.add_argument("--month-ahead", action="store_true", help="Month-ahead summary (next 30 days)")
     args = parser.parse_args()
     
     print(f"🔍 Fetching events...")
-    if args.weekend:
-        # For weekend summary, get next 7 days starting from upcoming Monday
+    if args.weekend or args.week_ahead or args.month_ahead:
+        # For summary modes, fetch from upcoming Monday
         today = date.today()
-        days_until_monday = (0 - today.weekday()) % 7  # Monday is 0
-        if days_until_monday == 0:  # Today is Monday
+        days_until_monday = (0 - today.weekday()) % 7
+        if days_until_monday == 0:
             start_date = today
         else:
             start_date = today + timedelta(days=days_until_monday)
-        # Get 7 days from Monday
-        events = get_all_events(7)
-        # Filter to only events from start_date onwards
+        
+        # Determine how many days to fetch
+        if args.month_ahead:
+            fetch_days = 30
+        elif args.week_ahead:
+            fetch_days = 14
+        else:
+            fetch_days = 7
+        
+        events = get_all_events(fetch_days)
         filtered_events = []
         for e in events:
             event_date = e["start"].date() if isinstance(e["start"], datetime) else e["start"]
             if event_date >= start_date:
                 filtered_events.append(e)
         events = filtered_events
-        print(f"  📅 Got {len(events)} events for week starting {start_date}")
+        print(f"  📅 Got {len(events)} events for period starting {start_date}")
     else:
         events = get_all_events(args.days)
+        start_date = None
     
     if not events:
         print("No events found!")
         return
     
-    print(f"🧠 Generating {'weekend summary' if args.weekend else 'smart reminders'}...")
+    print(f"🧠 Generating summary...")
     if args.weekend:
         message = generate_weekend_summary(events, start_date)
+    elif args.week_ahead:
+        message = generate_week_ahead_summary(events, start_date)
+    elif args.month_ahead:
+        message = generate_month_ahead_summary(events, start_date)
     else:
         reminders = generate_reminders(events, args.days)
         message = format_reminder_message(reminders)
@@ -482,8 +524,7 @@ def main():
     
     if args.send:
         # Save to file for the cron job to pick up
-        if args.weekend:
-            # For weekend summary, count total events
+        if args.weekend or args.week_ahead or args.month_ahead:
             reminder_count = len(events)
         else:
             reminder_count = len(reminders)
