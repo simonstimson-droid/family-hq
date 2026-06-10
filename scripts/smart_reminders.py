@@ -13,7 +13,8 @@ Usage:
 import json
 import sys
 import argparse
-from datetime import datetime, timedelta, date
+from datetime import datetime, timedelta, date, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 # Add hermes tools to path for API calls
@@ -27,6 +28,21 @@ TOKEN_FILE = HOME / ".hermes" / "profiles" / "home" / "google_token.json"
 DATA_FILE = HOME / "FamilyHQ" / "data.json"
 
 CALENDAR_ID = "family17800354474891822339@group.calendar.google.com"
+
+# Timezone for display (UK — auto handles GMT/BST)
+LOCAL_TZ = ZoneInfo("Europe/London")
+
+
+def to_local(dt):
+    """Convert a datetime to local timezone for display.
+    Handles both offset-naive (assumed UTC) and offset-aware datetimes."""
+    if dt is None:
+        return None
+    if isinstance(dt, date) and not isinstance(dt, datetime):
+        return dt  # date-only, no conversion needed
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(LOCAL_TZ)
 
 # Activity → kit required mapping
 KIT_REMINDERS = {
@@ -155,7 +171,7 @@ def fetch_calendar_events(days=7):
             "title": item.get("summary", ""),
             "description": item.get("description", ""),
             "location": item.get("location", ""),
-            "start": dt,
+            "start": to_local(dt),
             "end": item.get("end", {}).get("dateTime", ""),
         })
     
@@ -275,7 +291,7 @@ def generate_reminders(events, days=2):
             "person": person,
             "location": location,
             "kit": kit,
-            "time": event["start"].strftime("%H:%M") if isinstance(event["start"], datetime) else "All day",
+            "time": to_local(event["start"]).strftime("%H:%M") if isinstance(event["start"], datetime) else "All day",
         }
         
         reminders.append(reminder)
@@ -410,9 +426,7 @@ def generate_period_summary(events, start_date, num_days, title, emoji):
             d = x[0]
             t = x[1]["start"]
             if isinstance(t, datetime):
-                # Make offset-naive for comparison
-                if t.tzinfo is not None:
-                    t = t.replace(tzinfo=None)
+                t = to_local(t)
                 return (d, t.hour, t.minute)
             return (d, 0, 0)
         
@@ -426,7 +440,7 @@ def generate_period_summary(events, start_date, num_days, title, emoji):
                 day_name = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][event_date.weekday()]
                 lines.append(f"\n  *{day_name} {event_date.strftime('%d %b')}*")
             
-            time_str = event["start"].strftime("%H:%M") if isinstance(event["start"], datetime) else "All day"
+            time_str = to_local(event["start"]).strftime("%H:%M") if isinstance(event["start"], datetime) else "All day"
             title_text = event["title"][:35] + ("..." if len(event["title"]) > 35 else "")
             person = detect_person(event["title"], event.get("description", ""))
             kit = detect_kit_needs(event["title"], event.get("description", ""))
