@@ -41,7 +41,20 @@
         .event-item .title { font-weight: 600; margin: 4px 0; font-size: 14px; }
         .event-item .location { font-size: 13px; color: #666; }
         
-        /* Chore day badges */
+        /* Todo items */
+        .todo-item { border-left-color: #6366f1; background: #eef2ff; cursor: pointer; }
+        .todo-item:hover { background: #e0e7ff; }
+        .todo-item.done { opacity: 0.45; text-decoration: line-through; border-left-color: #10b981; background: #f0fdf4; }
+        .todo-item .todo-priority { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; text-transform: uppercase; }
+        .todo-item .todo-priority-high { background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5; }
+        .todo-item .todo-priority-medium { background: #fefce8; color: #ca8a04; border: 1px solid #fde68a; }
+        .todo-item .todo-priority-low { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+        .todo-item .todo-due { font-size: 11px; color: #666; background: #f1f5f9; padding: 1px 6px; border-radius: 4px; }
+        .todo-item .todo-overdue { font-size: 10px; font-weight: 700; color: #dc2626; background: #fef2f2; padding: 1px 6px; border-radius: 4px; }
+        .todo-item .todo-check { font-size: 16px; cursor: pointer; }
+        .todo-item .todo-delete { font-size: 14px; color: #999; cursor: pointer; }
+        .todo-item .todo-delete:hover { color: #ef4444; }
+        .todo-item .assignee { font-size: 12px; color: #666; }
         .chore-day-badge { display: inline-block; background: #667eea; color: white; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; margin-right: 6px; text-transform: uppercase; vertical-align: middle; }
         .chore-item { border-left-color: #f59e0b; background: #fffbeb; cursor: pointer; }
         .chore-item:hover { background: #fef3c7; }
@@ -1188,12 +1201,19 @@
         
         // ===== TODO LIST =====
         function renderTodos(data) {
-            const todos = getSheet('📝').filter(x => (x.Priority || '') === 'Todo');
+            const todos = getSheet('📌');
             if (todos.length) {
-                // Sort: incomplete first, then by date
+                // Sort: incomplete first, then by priority, then by date
+                const priorityOrder = { '🔴 High': 0, '🟡 Medium': 1, '🟢 Low': 2, '': 3 };
                 todos.sort((a, b) => {
-                    const da = new Date(a.Date || '2099');
-                    const db = new Date(b.Date || '2099');
+                    const doneA = (a['Done'] || '').toString().trim() !== '';
+                    const doneB = (b['Done'] || '').toString().trim() || '';
+                    if (doneA !== doneB) return doneA ? 1 : -1;
+                    const pa = priorityOrder[a.Priority] || 3;
+                    const pb = priorityOrder[b.Priority] || 3;
+                    if (pa !== pb) return pa - pb;
+                    const da = new Date(a['Due Date'] || '2099');
+                    const db = new Date(b['Due Date'] || '2099');
                     return da - db;
                 });
                 document.getElementById('todoList').innerHTML = todos.map((t, idx) => {
@@ -1571,6 +1591,67 @@
                 }
                 showToast('✅ Meal plan updated!'); closeModal();
             });
+        }
+        
+        async function addTodo() {
+            openModal(`<h3>📌 Add Todo</h3>
+                <label>Task</label><input type="text" id="td_task" placeholder="e.g. Buy milk" autofocus>
+                <label>Assigned To</label><select id="td_who"><option>Family</option><option>Simon</option><option>Emma</option><option>Ava</option><option>Ella</option></select>
+                <label>Due Date</label><input type="date" id="td_due">
+                <label>Priority</label><select id="td_priority"><option value="🟢 Low">🟢 Low</option><option value="🟡 Medium" selected>🟡 Medium</option><option value="🔴 High">🔴 High</option></select>
+                <label>Notes</label><input type="text" id="td_notes" placeholder="Optional notes">
+                <div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="td_save" onclick="modalSave()">Add Todo</button></div>`,
+            async () => {
+                const b = document.getElementById('td_save'); b.disabled=true; b.textContent='Adding...';
+                const task = document.getElementById('td_task').value.trim();
+                if (!task) { showToast('Please enter a task',true); b.disabled=false; return; }
+                const data = {
+                    Task: task,
+                    'Assigned To': document.getElementById('td_who').value,
+                    'Due Date': document.getElementById('td_due').value,
+                    Priority: document.getElementById('td_priority').value,
+                    'Done': '',
+                    Notes: document.getElementById('td_notes').value,
+                    Created: new Date().toISOString().split('T')[0]
+                };
+                const r = await apiCall({action:'append', sheet:'📌 To-Do', data:JSON.stringify(data)});
+                if (r.success) {
+                    localAddItem('📌', data);
+                    showToast('✅ Todo added!');
+                    closeModal();
+                } else {
+                    showToast('❌ '+(r.error||'Failed'),true); b.disabled=false;
+                }
+            });
+        }
+        
+        async function toggleTodoDone(idx) {
+            const todos = getSheet('📌');
+            const t = todos[idx];
+            if (!t) return;
+            const newDone = (t['Done'] || '').toString().trim() ? '' : '✓';
+            t['Done'] = newDone;
+            const el = document.querySelector(`.todo-item[data-idx="${idx}"]`);
+            if (el) {
+                el.classList.toggle('done');
+                el.querySelector('.todo-check').textContent = newDone ? '✅' : '⬜';
+            }
+            apiCall({action:'update', sheet:'📌 To-Do', row:String(idx+2), data:JSON.stringify(t)}).catch(()=>{});
+        }
+        
+        async function deleteTodo(idx) {
+            if (!confirm('Delete this todo?')) return;
+            const todos = getSheet('📌');
+            const t = todos[idx];
+            if (!t) return;
+            const r = await apiCall({action:'delete', sheet:'📌 To-Do', row:String(idx+2)});
+            if (r.success) {
+                todos.splice(idx, 1);
+                renderTodos(familyData);
+                showToast('🗑️ Todo deleted');
+            } else {
+                showToast('❌ '+(r.error||'Failed'),true);
+            }
         }
         
         // ===== WEATHER (wttr.in — free, no API key) =====
