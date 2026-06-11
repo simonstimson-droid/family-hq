@@ -35,6 +35,14 @@
       },
       {
         "Date": "2026-06-08",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-08",
         "Time": "All day",
         "Event": "🛂 Apply for passport renewal",
         "Who": "Simon & Emma",
@@ -42,11 +50,11 @@
         "Notes": "URGENT - expires tomorrow!"
       },
       {
-        "Date": "2026-06-08",
-        "Time": "15:00-16:00",
-        "Event": "Athletics - Ella",
-        "Who": "Ella",
-        "Location": "Pix Brook Academy",
+        "Date": "2026-06-09",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
         "Notes": ""
       },
       {
@@ -58,19 +66,19 @@
         "Notes": "Last valid day"
       },
       {
-        "Date": "2026-06-09",
-        "Time": "16:00-17:00",
-        "Event": "Drama Kids - Ava",
-        "Who": "Ava",
-        "Location": "Fairfield Park Lower School",
-        "Notes": ""
-      },
-      {
         "Date": "2026-06-10",
         "Time": "18:30-19:00",
         "Event": "Swimming - Ava",
         "Who": "Ava",
         "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-11",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
         "Notes": ""
       },
       {
@@ -83,10 +91,26 @@
       },
       {
         "Date": "2026-06-11",
-        "Time": "15:00-16:00",
-        "Event": "Choir - Ella",
+        "Time": "17:45-18:30",
+        "Event": "Ava Beavers",
+        "Who": "Ava",
+        "Location": "Fairfield Community Hall",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-12",
+        "Time": "18:00-19:00",
+        "Event": "🤸 Gymnastics - Ava",
+        "Who": "Ava",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-12",
+        "Time": "19:00-20:00",
+        "Event": "🤸 Gymnastics - Ella",
         "Who": "Ella",
-        "Location": "Pix Brook Academy",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
         "Notes": ""
       },
       {
@@ -130,6 +154,14 @@
         "Notes": ""
       },
       {
+        "Date": "2026-06-15",
+        "Time": "18:15-19:00",
+        "Event": "Ella Brownies",
+        "Who": "Ella",
+        "Location": "Stotfold Girl Guide Centre",
+        "Notes": ""
+      },
+      {
         "Date": "2026-06-16",
         "Time": "16:00-17:00",
         "Event": "Drama Kids - Ava",
@@ -155,6 +187,14 @@
       },
       {
         "Date": "2026-06-18",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-18",
         "Time": "17:45-18:30",
         "Event": "Stretch & Flex",
         "Who": "Ava & Ella",
@@ -163,10 +203,26 @@
       },
       {
         "Date": "2026-06-18",
-        "Time": "15:00-16:00",
-        "Event": "Choir - Ella",
+        "Time": "17:45-18:30",
+        "Event": "Ava Beavers",
+        "Who": "Ava",
+        "Location": "Fairfield Community Hall",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-19",
+        "Time": "18:00-19:00",
+        "Event": "🤸 Gymnastics - Ava",
+        "Who": "Ava",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-19",
+        "Time": "19:00-20:00",
+        "Event": "🤸 Gymnastics - Ella",
         "Who": "Ella",
-        "Location": "Pix Brook Academy",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
         "Notes": ""
       },
       {
@@ -202,12 +258,12 @@
         "Notes": ""
       },
       {
-        "Date": "2026-06-23",
-        "Time": "All day",
-        "Event": "🧘 Year 5 Yoga Day 1",
+        "Date": "2026-06-22",
+        "Time": "18:15-19:00",
+        "Event": "Ella Brownies",
         "Who": "Ella",
-        "Location": "Pix Brook Academy",
-        "Notes": "Comfortable clothes, bare feet, water bottle"
+        "Location": "Stotfold Girl Guide Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-06-23",
@@ -218,9 +274,9 @@
         "Notes": ""
       },
       {
-        "Date": "2026-06-24",
+        "Date": "2026-06-23",
         "Time": "All day",
-        "Event": "🧘 Year 5 Yoga Day 2",
+        "Event": "🧘 Year 5 Yoga Day 1",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": "Comfortable clothes, bare feet, water bottle"
@@ -234,6 +290,22 @@
         "Notes": ""
       },
       {
+        "Date": "2026-06-24",
+        "Time": "All day",
+        "Event": "🧘 Year 5 Yoga Day 2",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Comfortable clothes, bare feet, water bottle"
+      },
+      {
+        "Date": "2026-06-25",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
         "Date": "2026-06-25",
         "Time": "17:45-18:30",
         "Event": "Stretch & Flex",
@@ -243,10 +315,26 @@
       },
       {
         "Date": "2026-06-25",
-        "Time": "15:00-16:00",
-        "Event": "Choir - Ella",
+        "Time": "17:45-18:30",
+        "Event": "Ava Beavers",
+        "Who": "Ava",
+        "Location": "Fairfield Community Hall",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-26",
+        "Time": "18:00-19:00",
+        "Event": "🤸 Gymnastics - Ava",
+        "Who": "Ava",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-06-26",
+        "Time": "19:00-20:00",
+        "Event": "🤸 Gymnastics - Ella",
         "Who": "Ella",
-        "Location": "Pix Brook Academy",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
         "Notes": ""
       },
       {
@@ -290,6 +378,14 @@
         "Notes": ""
       },
       {
+        "Date": "2026-06-29",
+        "Time": "18:15-19:00",
+        "Event": "Ella Brownies",
+        "Who": "Ella",
+        "Location": "Stotfold Girl Guide Centre",
+        "Notes": ""
+      },
+      {
         "Date": "2026-06-30",
         "Time": "16:00-17:00",
         "Event": "Drama Kids - Ava",
@@ -299,10 +395,26 @@
       },
       {
         "Date": "2026-07-01",
+        "Time": "11:00",
+        "Event": "🏥 NHS Physiotherapy - Sarah Salter",
+        "Who": "Ava",
+        "Location": "Child Development Centre, Hill Rise, Kempston, Bedford MK42 7EB",
+        "Notes": "Bring shorts + vest top. Call 01234 310278 if unwell. Sat Nav: MK42 7DN"
+      },
+      {
+        "Date": "2026-07-01",
         "Time": "18:30-19:00",
         "Event": "Swimming - Ava",
         "Who": "Ava",
         "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-02",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
         "Notes": ""
       },
       {
@@ -315,10 +427,26 @@
       },
       {
         "Date": "2026-07-02",
-        "Time": "15:00-16:00",
-        "Event": "Choir - Ella",
+        "Time": "17:45-18:30",
+        "Event": "Ava Beavers",
+        "Who": "Ava",
+        "Location": "Fairfield Community Hall",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-03",
+        "Time": "18:00-19:00",
+        "Event": "🤸 Gymnastics - Ava",
+        "Who": "Ava",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-03",
+        "Time": "19:00-20:00",
+        "Event": "🤸 Gymnastics - Ella",
         "Who": "Ella",
-        "Location": "Pix Brook Academy",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
         "Notes": ""
       },
       {
@@ -354,11 +482,27 @@
         "Notes": ""
       },
       {
+        "Date": "2026-07-06",
+        "Time": "18:15-19:00",
+        "Event": "Ella Brownies",
+        "Who": "Ella",
+        "Location": "Stotfold Girl Guide Centre",
+        "Notes": ""
+      },
+      {
         "Date": "2026-07-07",
         "Time": "16:00-17:00",
         "Event": "Drama Kids - Ava",
         "Who": "Ava",
         "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-08",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
         "Notes": ""
       },
       {
@@ -370,11 +514,11 @@
         "Notes": "Whole school event"
       },
       {
-        "Date": "2026-07-08",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
-        "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
+        "Date": "2026-07-09",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
         "Notes": ""
       },
       {
@@ -386,11 +530,19 @@
         "Notes": ""
       },
       {
-        "Date": "2026-07-09",
-        "Time": "15:00-16:00",
-        "Event": "Choir - Ella",
+        "Date": "2026-07-10",
+        "Time": "18:00-19:00",
+        "Event": "🤸 Gymnastics - Ava",
+        "Who": "Ava",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-10",
+        "Time": "19:00-20:00",
+        "Event": "🤸 Gymnastics - Ella",
         "Who": "Ella",
-        "Location": "Pix Brook Academy",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
         "Notes": ""
       },
       {
@@ -451,14 +603,6 @@
       },
       {
         "Date": "2026-07-16",
-        "Time": "17:45-18:30",
-        "Event": "Stretch & Flex",
-        "Who": "Ava & Ella",
-        "Location": "BX Dance",
-        "Notes": ""
-      },
-      {
-        "Date": "2026-07-16",
         "Time": "15:00-16:00",
         "Event": "Choir - Ella",
         "Who": "Ella",
@@ -466,12 +610,28 @@
         "Notes": ""
       },
       {
+        "Date": "2026-07-16",
+        "Time": "17:45-18:30",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
         "Date": "2026-07-17",
-        "Time": "All day",
-        "Event": "📅 End of Term - PBA",
+        "Time": "18:00-19:00",
+        "Event": "🤸 Gymnastics - Ava",
+        "Who": "Ava",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-17",
+        "Time": "19:00-20:00",
+        "Event": "🤸 Gymnastics - Ella",
         "Who": "Ella",
-        "Location": "Pix Brook Academy",
-        "Notes": "Last day of school"
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
+        "Notes": ""
       },
       {
         "Date": "2026-07-17",
@@ -516,22 +676,6 @@
       {
         "Date": "2026-07-20",
         "Time": "All day",
-        "Event": "🏫 Training Day - Fairfield Park",
-        "Who": "Ava",
-        "Location": "",
-        "Notes": "School closed for pupils"
-      },
-      {
-        "Date": "2026-07-20",
-        "Time": "All day",
-        "Event": "🏫 Training Day - PBA",
-        "Who": "Ella",
-        "Location": "",
-        "Notes": "School closed for pupils"
-      },
-      {
-        "Date": "2026-07-20",
-        "Time": "All day",
         "Event": "🏫 Training Day - Both Schools",
         "Who": "Ava & Ella",
         "Location": "",
@@ -547,6 +691,14 @@
       },
       {
         "Date": "2026-07-22",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-22",
         "Time": "All day",
         "Event": "📅 End of Term - Fairfield Park",
         "Who": "Ava",
@@ -554,11 +706,19 @@
         "Notes": "Last day of school"
       },
       {
-        "Date": "2026-07-22",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
+        "Date": "2026-07-24",
+        "Time": "18:00-19:00",
+        "Event": "🤸 Gymnastics - Ava",
         "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-24",
+        "Time": "19:00-20:00",
+        "Event": "🤸 Gymnastics - Ella",
+        "Who": "Ella",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
         "Notes": ""
       },
       {
@@ -575,6 +735,22 @@
         "Event": "Swimming - Ava",
         "Who": "Ava",
         "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-31",
+        "Time": "18:00-19:00",
+        "Event": "🤸 Gymnastics - Ava",
+        "Who": "Ava",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
+        "Notes": ""
+      },
+      {
+        "Date": "2026-07-31",
+        "Time": "19:00-20:00",
+        "Event": "🤸 Gymnastics - Ella",
+        "Who": "Ella",
+        "Location": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
         "Notes": ""
       },
       {
@@ -618,6 +794,14 @@
         "Notes": ""
       },
       {
+        "Date": "2026-08-17",
+        "Time": "All day",
+        "Event": "🎂 Ava's Birthday",
+        "Who": "Ava",
+        "Location": "",
+        "Notes": "Turning 11!"
+      },
+      {
         "Date": "2026-08-19",
         "Time": "18:30-19:00",
         "Event": "Swimming - Ava",
@@ -648,14 +832,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-08-17",
-        "Time": "All day",
-        "Event": "🎂 Ava's Birthday",
-        "Who": "Ava",
-        "Location": "",
-        "Notes": "Turning 11!"
       },
       {
         "Date": "2026-09-20",
@@ -712,22 +888,6 @@
         "Who": "Emma",
         "Location": "",
         "Notes": ""
-      },
-      {
-        "Date": "2026-07-01",
-        "Time": "11:00",
-        "Event": "🏥 NHS Physiotherapy - Sarah Salter",
-        "Who": "Ava",
-        "Location": "Child Development Centre, Hill Rise, Kempston, Bedford MK42 7EB",
-        "Notes": "Bring shorts + vest top. Call 01234 310278 if unwell. Sat Nav: MK42 7DN"
-      },
-      {
-        "Date": "2026-07-15",
-        "Time": "14:00",
-        "Event": "🧪 Test Event - Dashboard Sync",
-        "Who": "Simon",
-        "Location": "Home",
-        "Notes": "Testing calendar sync"
       }
     ]
   },
