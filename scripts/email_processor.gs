@@ -2,7 +2,7 @@
  * Stimson Family HQ - Email-to-Sheet Processor
  * 
  * SETUP INSTRUCTIONS:
- * 1. Create a new Gmail account (e.g. stimson.family.hq@gmail.com)
+ * 1. Create a new Gmail account (e.g. stimsonfamilyhq@gmail.com)
  * 2. Go to script.google.com and create a new project
  * 3. Paste this code into the script editor
  * 4. Set up a trigger: Edit -> Current project's triggers -> Add trigger
