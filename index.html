@@ -433,7 +433,8 @@
     </div>
     
     <div class="tabs">
-        <div class="tab active" data-panel="today">📅 Today</div>
+        <div class="tab" data-panel="today">📅 Today</div>
+        <div class="tab active" data-panel="home">🏠 Home</div>
         <div class="tab" data-panel="calendar">📆 Calendar</div>
         <div class="tab" data-panel="shopping">🛒 Shopping</div>
         <div class="tab" data-panel="chores">✅ Chores</div>
@@ -450,7 +451,47 @@
     
     <div class="content">
         <!-- TODAY -->
-        <div class="panel active" id="today">
+                <div class="panel active" id="home">
+            <!-- Home Status Card -->
+            <div class="card" id="homeStatus">
+                <h2>🏠 Home Status</h2>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+                    <div style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:12px;padding:14px;text-align:center;border:1px solid #bbf7d0">
+                        <div style="font-size:24px">🟢</div>
+                        <div style="font-weight:700;font-size:13px;color:#166534">Home Assistant</div>
+                        <div id="haStatus" style="font-size:11px;color:#16a34a;margin-top:2px">Checking...</div>
+                    </div>
+                    <a href="http://192.168.64.2:8123" target="_blank" id="haLink" style="text-decoration:none;color:inherit">
+                        <div style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:12px;padding:14px;text-align:center;border:1px solid #93c5fd;cursor:pointer;transition:all 0.15s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                            <div style="font-size:24px">⚡</div>
+                            <div style="font-weight:700;font-size:13px;color:#1e40af">Open HA</div>
+                            <div style="font-size:11px;color:#3b82f6;margin-top:2px">192.168.64.2:8123</div>
+                        </div>
+                    </a>
+                </div>
+                <div id="haDevices" style="font-size:13px;color:#666">Loading devices...</div>
+            </div>
+            <!-- Sonos Now Playing -->
+            <div class="card" id="nowPlaying">
+                <h2>🎵 Now Playing</h2>
+                <div id="nowPlayingData"><div class="loading"><span class="spinner">⏳</span> Checking Sonos...</div></div>
+            </div>
+            <!-- Echo Announcement -->
+            <div class="card">
+                <h2>📢 Echo Announcement</h2>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                    <input type="text" id="announceMsg" placeholder="Type a message to announce..." style="flex:1;min-width:200px;padding:10px 14px;border:2px solid #e0e7ff;border-radius:10px;font-size:14px;outline:none;transition:border-color 0.15s" onfocus="this.style.border-color='#6366f1'" onblur="this.style.border-color='#e0e7ff'">
+                    <button onclick="sendAnnounce()" style="padding:10px 18px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;border:none;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;transition:all 0.15s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">📢 Send</button>
+                </div>
+                <div id="announceStatus" style="margin-top:8px;font-size:13px;color:#666"></div>
+            </div>
+            <!-- Calendar Preview -->
+            <div class="card" id="homeCalendar">
+                <h2>📅 Up Next</h2>
+                <div id="homeCalendarData"><div class="loading"><span class="spinner">⏳</span> Loading events...</div></div>
+            </div>
+        </div>
+<div class="panel" id="today">
             <div class="card" id="weatherCard">
                 <h2>🌤️ Weather</h2>
                 <div id="weatherData"><div class="loading"><span class="spinner">⏳</span> Loading weather...</div></div>
@@ -2385,6 +2426,191 @@
             // Call original
             _origCompleteChore(index);
         }
-    </script>
+    
+    // ========== HOME PANEL ==========
+    const HA_URL = 'http://192.168.64.2:8123';
+    const HA_TOKEN = 'YOUR_LONG_LIVED_ACCESS_TOKEN'; // Will be set via settings
+
+    function initHomePanel() {
+        checkHAStatus();
+        loadNowPlaying();
+        loadHomeCalendar();
+        // Auto-refresh every 30s
+        setInterval(() => { checkHAStatus(); loadNowPlaying(); }, 30000);
+    }
+
+    async function checkHAStatus() {
+        const statusEl = document.getElementById('haStatus');
+        const devicesEl = document.getElementById('haDevices');
+        const linkEl = document.getElementById('haLink');
+        try {
+            const r = await fetch(HA_URL + '/api/', { signal: AbortSignal.timeout(3000) });
+            if (r.ok) {
+                statusEl.textContent = 'Connected ✓';
+                statusEl.style.color = '#16a34a';
+                // Try to get states if token is set
+                if (HA_TOKEN && HA_TOKEN !== 'YOUR_LONG_LIVED_ACCESS_TOKEN') {
+                    const sr = await fetch(HA_URL + '/api/states', {
+                        headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
+                        signal: AbortSignal.timeout(5000)
+                    });
+                    if (sr.ok) {
+                        const states = await sr.json();
+                        const mediaPlayers = states.filter(e => e.entity_id.startsWith('media_player')).slice(0, 6);
+                        const switches = states.filter(e => e.entity_id.startsWith('switch.') && e.state === 'on').slice(0, 8);
+                        let html = '';
+                        if (switches.length > 0) {
+                            html += '<div style="margin-bottom:6px"><strong>⚡ Switches On:</strong> ' + switches.map(s => s.attributes.friendly_name || s.entity_id).join(', ') + '</div>';
+                        }
+                        if (mediaPlayers.length > 0) {
+                            html += '<div><strong>🔊 Media:</strong> ' + mediaPlayers.map(m => {
+                                const name = m.attributes.friendly_name || m.entity_id;
+                                return m.state === 'playing' ? name + ' 🎵' : name;
+                            }).join(', ') + '</div>';
+                        }
+                        if (!html) html = 'No active devices';
+                        devicesEl.innerHTML = html;
+                    } else {
+                        devicesEl.textContent = 'Token invalid — check settings';
+                    }
+                } else {
+                    devicesEl.innerHTML = '<span style="color:#93c5fd">Set your HA token in <a href="#" onclick="switchTab(\'settings\');return false" style="color:#3b82f6">Settings</a> to see devices</span>';
+                    linkEl.href = HA_URL;
+                }
+            } else {
+                statusEl.textContent = 'Unreachable';
+                statusEl.style.color = '#dc2626';
+                devicesEl.textContent = 'Cannot connect to Home Assistant';
+            }
+        } catch(e) {
+            statusEl.textContent = 'Offline';
+            statusEl.style.color = '#dc2626';
+            devicesEl.textContent = 'VM may be unreachable (are you on home WiFi?)';
+            linkEl.href = '#';
+        }
+    }
+
+    async function loadNowPlaying() {
+        const el = document.getElementById('nowPlayingData');
+        if (!HA_TOKEN || HA_TOKEN === 'YOUR_LONG_LIVED_ACCESS_TOKEN') {
+            el.innerHTML = '<span style="color:#93c5fd">Connect HA token to see now playing</span>';
+            return;
+        }
+        try {
+            const r = await fetch(HA_URL + '/api/states', {
+                headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
+                signal: AbortSignal.timeout(5000)
+            });
+            if (!r.ok) { el.innerHTML = '<span style="color:#dc2626">Error loading</span>'; return; }
+            const states = await r.json();
+            const playing = states.filter(s =>
+                s.entity_id.startsWith('media_player') &&
+                (s.state === 'playing' || s.state === 'paused')
+            );
+            if (playing.length === 0) {
+                el.innerHTML = '<div style="text-align:center;padding:20px;color:#94a3b8">🔇 Nothing playing</div>';
+                return;
+            }
+            el.innerHTML = playing.map(p => {
+                const name = p.attributes.friendly_name || p.entity_id;
+                const artist = p.attributes.media_artist || '';
+                const title = p.attributes.media_title || '';
+                const album = p.attributes.media_album_name || '';
+                const isPlaying = p.state === 'playing';
+                const img = p.attributes.entity_picture_local || p.attributes.entity_picture;
+                const imgHtml = img ? `<img src="${HA_URL + img}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0" onerror="this.style.display='none'">` : '';
+                return `<div style="display:flex;gap:12px;align-items:center;padding:10px;background:${isPlaying ? '#f0fdf4' : '#f8fafc'};border-radius:10px;margin-bottom:8px;border:1px solid ${isPlaying ? '#bbf7d0' : '#e2e8f0'}">
+                    ${imgHtml}
+                    <div style="flex:1;min-width:0">
+                        <div style="font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${title || name}</div>
+                        ${artist ? `<div style="font-size:13px;color:#64748b">${artist}</div>` : ''}
+                        ${album && album !== title ? `<div style="font-size:12px;color:#94a3b8">${album}</div>` : ''}
+                        <div style="font-size:11px;color:${isPlaying ? '#16a34a' : '#94a3b8'};margin-top:2px">${isPlaying ? '▶ Playing' : '⏸ Paused'} · ${name}</div>
+                    </div>
+                </div>`;
+            }).join('');
+        } catch(e) {
+            el.innerHTML = '<span style="color:#dc2626">Cannot reach HA</span>';
+        }
+    }
+
+    async function sendAnnounce() {
+        const msg = document.getElementById('announceMsg').value.trim();
+        const statusEl = document.getElementById('announceStatus');
+        if (!msg) { statusEl.textContent = '⚠️ Type a message first'; return; }
+        if (!HA_TOKEN || HA_TOKEN === 'YOUR_LONG_LIVED_ACCESS_TOKEN') {
+            statusEl.textContent = '⚠️ Set HA token in Settings first';
+            return;
+        }
+        statusEl.textContent = '📢 Sending...';
+        try {
+            // Get all media_player entities
+            const sr = await fetch(HA_URL + '/api/states', {
+                headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
+                signal: AbortSignal.timeout(5000)
+            });
+            const states = await sr.json();
+            const players = states.filter(s => s.entity_id.startsWith('media_player'));
+            let sent = 0;
+            for (const p of players) {
+                const r = await fetch(HA_URL + '/api/services/tts/google_translate_say', {
+                    method: 'POST',
+                    headers: { 'Authorization': 'Bearer ' + HA_TOKEN, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        entity_id: p.entity_id,
+                        message: msg,
+                        cache: false
+                    })
+                });
+                if (r.ok) sent++;
+            }
+            if (sent > 0) {
+                statusEl.textContent = `✅ Announced to ${sent} device(s): "${msg}"`;
+                document.getElementById('announceMsg').value = '';
+            } else {
+                statusEl.textContent = '⚠️ No Echo/Sonos devices found';
+            }
+        } catch(e) {
+            statusEl.textContent = '❌ Error: ' + e.message;
+        }
+    }
+
+    async function loadHomeCalendar() {
+        const el = document.getElementById('homeCalendarData');
+        if (!window._events || !_events.length) {
+            el.innerHTML = '<div style="color:#94a3b8;text-align:center;padding:10px">No upcoming events</div>';
+            return;
+        }
+        const now = new Date();
+        const upcoming = _events
+            .filter(e => new Date(e.date) >= now)
+            .slice(0, 5);
+        if (!upcoming.length) {
+            el.innerHTML = '<div style="color:#94a3b8;text-align:center;padding:10px">No upcoming events</div>';
+            return;
+        }
+        el.innerHTML = upcoming.map(e => {
+            const date = new Date(e.date);
+            const days = Math.ceil((date - now) / 86400000);
+            const when = days === 0 ? 'Today' : days === 1 ? 'Tomorrow' : days < 7 ? date.toLocaleDateString('en-GB',{weekday:'short'}) : date.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+            return `<div style="padding:8px 10px;background:#f8f9ff;border-radius:8px;margin-bottom:6px;border-left:3px solid #667eea;display:flex;justify-content:space-between;align-items:center">
+                <div>
+                    <div style="font-weight:600;font-size:13px">${e.title}</div>
+                    ${e.location ? `<div style="font-size:11px;color:#64748b">📍 ${e.location}</div>` : ''}
+                </div>
+                <div style="font-size:12px;color:#667eea;font-weight:600;text-align:right">${when}${e.time ? ' ' + e.time : ''}</div>
+            </div>`;
+        }).join('');
+    }
+
+    // Auto-load home panel on page load
+    document.addEventListener('DOMContentLoaded', initHomePanel);
+    // Also load when tab is clicked
+    const origSwitchTab = switchTab;
+    function switchTab(panel) {
+        origSwitchTab(panel);
+        if (panel === 'home') initHomePanel();
+    }
+</script>
 </body>
 </html>
