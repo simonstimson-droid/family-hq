@@ -339,8 +339,87 @@
             .content { padding: 12px; }
         }
     </style>
+<style>
+        /* ===== PIN GATE ===== */
+        #pinGate {
+            position: fixed; inset: 0; z-index: 9999;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #c084fc 100%);
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 20px;
+            transition: opacity 0.4s ease;
+        }
+        #pinGate.hidden { opacity: 0; pointer-events: none; }
+        .pin-box {
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(20px);
+            border-radius: 24px; padding: 40px 36px; text-align: center;
+            border: 1px solid rgba(255,255,255,0.2); max-width: 360px; width: 90%;
+        }
+        .pin-box .pin-icon { font-size: 48px; margin-bottom: 12px; }
+        .pin-box h2 { color: white; font-size: 22px; margin-bottom: 6px; }
+        .pin-box p { color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 24px; }
+        .pin-dots { display: flex; gap: 14px; justify-content: center; margin-bottom: 24px; }
+        .pin-dot {
+            width: 18px; height: 18px; border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.5); background: transparent;
+            transition: all 0.2s;
+        }
+        .pin-dot.filled { background: white; border-color: white; transform: scale(1.15); }
+        .pin-dot.error { border-color: #ef4444; background: rgba(239,68,68,0.3); animation: shake 0.4s; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+        .pin-keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .pin-key {
+            padding: 14px 0; font-size: 22px; font-weight: 600;
+            background: rgba(255,255,255,0.15); color: white;
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 14px;
+            cursor: pointer; transition: all 0.15s;
+        }
+        .pin-key:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
+        .pin-key:active { transform: scale(0.95); }
+        .pin-key.action { font-size: 14px; background: rgba(255,255,255,0.1); }
+        .pin-forgot {
+            margin-top: 16px; color: rgba(255,255,255,0.5); font-size: 12px;
+            cursor: pointer; text-decoration: underline;
+        }
+        .pin-forgot:hover { color: rgba(255,255,255,0.8); }
+        .pin-error-msg {
+            color: #fecaca; font-size: 13px; margin-top: 8px; min-height: 20px;
+        }
+        .pin-attempts {
+            color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 4px;
+        }
+    </style>
 </head>
 <body>
+    <!-- ===== PIN GATE OVERLAY ===== -->
+    <div id="pinGate">
+        <div class="pin-box">
+            <div class="pin-icon">🔐</div>
+            <h2>Family HQ Access</h2>
+            <p>Enter your 4-digit PIN to continue</p>
+            <div class="pin-dots" id="pinDots"></div>
+            <div class="pin-error-msg" id="pinError"></div>
+            <div class="pin-attempts" id="pinAttempts"></div>
+            <div class="pin-keypad">
+                <button class="pin-key" data-key="1">1</button>
+                <button class="pin-key" data-key="2">2</button>
+                <button class="pin-key" data-key="3">3</button>
+                <button class="pin-key" data-key="4">4</button>
+                <button class="pin-key" data-key="5">5</button>
+                <button class="pin-key" data-key="6">6</button>
+                <button class="pin-key" data-key="7">7</button>
+                <button class="pin-key" data-key="8">8</button>
+                <button class="pin-key" data-key="9">9</button>
+                <button class="pin-key action" data-key="clear">⌫</button>
+                <button class="pin-key" data-key="0">0</button>
+                <button class="pin-key action" data-key="forgot">Forgot?</button>
+            </div>
+        </div>
+    </div>
+
     <div class="header">
         <h1><span class="emoji">🏠</span> Stimson Family HQ</h1>
         <div class="subtitle">Keeping the family organised, together ✨</div>
@@ -587,17 +666,181 @@
                     </a>
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <button class="refresh-btn" onclick="loadAllData()" title="Refresh">🔄</button>
-    
-    <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
-        <div class="modal" id="modalContent"></div>
-    </div>
-    <div class="toast" id="toast"></div>
-    
-    <script>
+            </div>
+            </div>
+
+            <button class="refresh-btn" onclick="loadAllData()" title="Refresh">🔄</button>
+
+            <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+            <div class="modal" id="modalContent"></div>
+            </div>
+            <div class="toast" id="toast"></div>
+
+            <!-- ===== PIN GATE LOGIC ===== -->
+            <script>
+            // ===== PIN GATE LOGIC =====
+            const PIN_GATE_STORAGE_KEY = 'familyHQ_pinGate';
+            const DEFAULT_PIN = '1234'; // Change this via settings if needed
+            const MAX_ATTEMPTS = 3;
+            const LOCKOUT_TIME = 30 * 1000; // 30 seconds
+
+            let pinAttempts = 0;
+            let lockoutUntil = 0;
+
+            const pinGate = document.getElementById('pinGate');
+            const pinDots = document.getElementById('pinDots');
+            const pinError = document.getElementById('pinError');
+            const pinAttemptsEl = document.getElementById('pinAttempts');
+            let currentPin = '';
+
+            // Check if PIN is already set and valid
+            function checkPinGate() {
+                const stored = localStorage.getItem(PIN_GATE_STORAGE_KEY);
+                const now = Date.now();
+
+                // If in lockout, show error
+                if (now < lockoutUntil) {
+                    showLockout();
+                    return;
+                }
+
+                // If PIN already verified for this session, hide gate
+                if (sessionStorage.getItem('familyHQ_pinVerified')) {
+                    hidePinGate();
+                    return;
+                }
+
+                // If no stored PIN, set default
+                if (!stored) {
+                    localStorage.setItem(PIN_GATE_STORAGE_KEY, DEFAULT_PIN);
+                }
+
+                // Show PIN gate
+                showPinGate();
+            }
+
+            function showLockout() {
+                const minutesLeft = Math.ceil((lockoutUntil - Date.now()) / 60000);
+                const secondsLeft = Math.ceil((lockoutUntil - Date.now()) / 1000) % 60;
+                pinGate.classList.remove('hidden');
+                pinError.textContent = `Too many attempts. Try again in ${minutesLeft}m ${secondsLeft}s`;
+                pinAttemptsEl.textContent = '';
+                // Clear PIN input during lockout
+                currentPin = '';
+                updatePinDisplay();
+            }
+
+            function showPinGate() {
+            pinGate.classList.remove('hidden');
+            currentPin = '';
+            updatePinDisplay();
+            pinError.textContent = '';
+            pinAttemptsEl.textContent = '';
+            }
+
+            function hidePinGate() {
+            pinGate.classList.add('hidden');
+            // Mark as verified for this session
+            sessionStorage.setItem('familyHQ_pinVerified', 'true');
+            }
+
+            function updatePinDisplay() {
+            pinDots.innerHTML = '';
+            for (let i = 0; i < 4; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'pin-dot';
+                if (i < currentPin.length) {
+                    dot.classList.add('filled');
+                }
+                pinDots.appendChild(dot);
+            }
+            }
+
+            function addPinDigit(digit) {
+            if (currentPin.length >= 4) return;
+            currentPin += digit;
+            updatePinDisplay();
+
+            if (currentPin.length === 4) {
+                verifyPin();
+            }
+            }
+
+            function clearPin() {
+            currentPin = '';
+            updatePinDisplay();
+            pinError.textContent = '';
+            pinAttemptsEl.textContent = '';
+            }
+
+            function verifyPin() {
+            const storedPin = localStorage.getItem(PIN_GATE_STORAGE_KEY);
+            if (currentPin === storedPin) {
+                // Correct PIN
+                hidePinGate();
+            } else {
+                // Wrong PIN
+                pinAttempts++;
+                pinError.textContent = 'Incorrect PIN';
+                pinAttemptsEl.textContent = `Attempt ${pinAttempts}/${MAX_ATTEMPTS}`;
+                    
+                // Shake animation for dots
+                document.querySelectorAll('.pin-dot').forEach(dot => {
+                    dot.classList.add('error');
+                    setTimeout(() => dot.classList.remove('error'), 400);
+                });
+
+                if (pinAttempts >= MAX_ATTEMPTS) {
+                    // Lockout
+                    lockoutUntil = Date.now() + LOCKOUT_TIME;
+                    pinAttemptsEl.textContent = `Too many attempts. Try again in ${Math.ceil(LOCKOUT_TIME/1000)}s`;
+                    setTimeout(() => {
+                        pinAttempts = 0;
+                        pinAttemptsEl.textContent = '';
+                        pinError.textContent = '';
+                    }, LOCKOUT_TIME);
+                }
+
+                setTimeout(clearPin, 1000);
+            }
+            }
+
+            // Event listeners for keypad
+            document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('pin-key')) {
+                const key = e.target.dataset.key;
+                if (key === 'clear') {
+                    clearPin();
+                } else if (key === 'forgot') {
+                    // Clear stored PIN and reset
+                    localStorage.removeItem(PIN_GATE_STORAGE_KEY);
+                    sessionStorage.removeItem('familyHQ_pinVerified');
+                    clearPin();
+                    pinError.textContent = 'PIN reset to default (1234)';
+                } else {
+                    addPinDigit(key);
+                }
+            }
+            });
+
+            // Allow number keys on keyboard
+            document.addEventListener('keydown', (e) => {
+            if (!pinGate || pinGate.classList.contains('hidden')) return;
+                
+            if (e.key >= '0' && e.key <= '9') {
+                addPinDigit(e.key);
+            } else if (e.key === 'Backspace') {
+                clearPin();
+            } else if (e.key === 'Enter') {
+                if (currentPin.length === 4) verifyPin();
+            }
+            });
+
+            // Initialize PIN gate on load
+            document.addEventListener('DOMContentLoaded', checkPinGate);
+            </script>
+
+            <script>
         let familyData = null;
         let calView = 'week';
         let calDate = new Date(); // central date for both week and month views
