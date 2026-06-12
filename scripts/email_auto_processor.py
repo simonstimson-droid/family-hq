@@ -83,11 +83,12 @@ def get_or_create_label(token):
     return result.get("id")
 
 def get_unread_emails(token, label_id=None):
-    """Get unread emails in the family inbox."""
-    # Search for unread emails NOT already processed
-    query = f"is:unread to:{FAMILY_EMAIL}"
-    if label_id:
-        query += f" -label:{PROCESSED_LABEL}"
+    """Get emails in the family inbox that haven't been processed yet.
+    Checks both unread emails AND read emails without the processed label
+    (to catch forwarded emails which Gmail auto-marks as read)."""
+    # Search for emails to family inbox that don't have the processed label
+    # This catches both unread emails AND forwarded emails (which are auto-read)
+    query = f"to:{FAMILY_EMAIL} -label:{PROCESSED_LABEL}"
     
     result = gmail_api_request("GET", f"messages?maxResults=10&q={urllib.parse.quote(query)}", token=token)
     if "error" in result:
@@ -122,9 +123,11 @@ def get_header(headers, name):
 
 def classify_email(subject, body, sender):
     """Figure out what type of dashboard item this email is about."""
-    text = f"{subject} {body}".lower()
+    # Strip Fwd: prefix for classification
+    clean_subject = re.sub(r"^(fwd|fw):\s*", "", subject, flags=re.IGNORECASE).strip()
+    text = f"{clean_subject} {body}".lower()
     
-    # Check for explicit format prefixes
+    # Check for explicit format prefixes (on original subject)
     if subject.upper().startswith("SHOPPING:") or "shopping" in subject.lower():
         return "shopping"
     if subject.upper().startswith("EVENT:") or subject.upper().startswith("CALENDAR:"):
@@ -141,12 +144,12 @@ def classify_email(subject, body, sender):
         return "todo"
     
     # Natural language detection
-    calendar_keywords = ["appointment", "dentist", "doctor", "meeting", "party", "pick up", "school trip", "event", "on ", "next ", "at ", "pm", "am"]
+    calendar_keywords = ["appointment", "dentist", "doctor", "meeting", "party", "pick up", "school trip", "event", "on ", "next ", "at ", "pm", "am", "colour run", "sports day", "summer fete", "fete", "trip", "visit", "parents evening", "concert", "performance", "assembly"]
     shopping_keywords = ["buy", "shopping", "milk", "bread", "eggs", "get some", "need", "add to list", "shopping list", "groceries"]
     chore_keywords = ["chore", "clean", "tidy", "hoover", "wash", "homework", "practice", "take out", "feed"]
     meal_keywords = ["dinner", "lunch", "breakfast", "meal", "cook", "recipe", "spaghetti", "pizza", "chicken", "pasta"]
     contact_keywords = ["contact", "phone number", "add to contacts", "number is"]
-    announcement_keywords = ["announcement", "news", "reminder", "don't forget", "important", "note that"]
+    announcement_keywords = ["announcement", "news", "reminder", "don't forget", "important", "note that", "school", "academy", "bulletin", "newsletter", "update", "dear families", "pupils", "year 5", "year 3", "pta"]
     
     scores = {
         "calendar": sum(1 for k in calendar_keywords if k in text),
@@ -277,12 +280,28 @@ def parse_contact(subject, body):
 
 def parse_announcement(subject, body):
     """Parse announcement from email."""
-    text = subject + "\n" + body
-    title = subject.replace("NEWS:", "").replace("ANNOUNCEMENT:", "").strip()
+    # Strip Fwd:/Fw: prefix
+    clean_subject = re.sub(r"^(fwd|fw):\s*", "", subject, flags=re.IGNORECASE).strip()
+    title = clean_subject.replace("NEWS:", "").replace("ANNOUNCEMENT:", "").strip()
     if not title:
-        # Use first line of body
-        title = body.strip().split("\n")[0][:100] if body.strip() else "New announcement"
-    return {"title": title, "body": body.strip()[:500]}
+        # Use first meaningful line of body (skip forwarded headers)
+        for line in body.strip().split("\n"):
+            line = line.strip()
+            if line and not line.startswith(">") and not line.startswith("From:") and not line.startswith("Date:") and not line.startswith("Subject:") and not line.startswith("To:") and not line.startswith("Reply-To:") and line != "Sent from my iPhone" and not line.startswith("Begin forwarded message"):
+                title = line[:100]
+                break
+        if not title:
+            title = "New announcement"
+    # Clean up body: remove forwarded email headers
+    clean_body = body.strip()
+    # Try to extract just the forwarded content
+    fwd_match = re.search(r"Begin forwarded message:(.+)", clean_body, re.DOTALL | re.IGNORECASE)
+    if fwd_match:
+        clean_body = fwd_match.group(1).strip()
+    # Remove quoted lines (starting with >)
+    clean_lines = [l for l in clean_body.split("\n") if not l.strip().startswith(">")]
+    clean_body = "\n".join(clean_lines).strip()[:500]
+    return {"title": title, "body": clean_body}
 
 def parse_todo(subject, body):
     """Parse todo from email."""
