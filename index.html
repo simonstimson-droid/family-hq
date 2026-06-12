@@ -491,8 +491,8 @@
     </div>
     
     <div class="tabs">
-        <div class="tab" data-panel="today">📅 Today</div>
-        <div class="tab active" data-panel="home">🏠 Home</div>
+        <div class="tab active" data-panel="today">📅 Today</div>
+        <div class="tab" data-panel="home">🏠 Home</div>
         <div class="tab" data-panel="calendar">📆 Calendar</div>
         <div class="tab" data-panel="shopping">🛒 Shopping</div>
         <div class="tab" data-panel="chores">✅ Chores</div>
@@ -509,7 +509,43 @@
     
     <div class="content">
         <!-- TODAY -->
-                <div class="panel active" id="home">
+        <div class="panel active" id="today">
+            <div class="card" id="nextEventCard">
+                <div id="nextEventData"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+            <div class="card" id="weatherCard">
+                <h2>🌤️ Weather</h2>
+                <div id="weatherData"><div class="loading"><span class="spinner">⏳</span> Loading weather...</div></div>
+            </div>
+            <div class="card">
+                <h2>📅 Today's Events</h2>
+                <div id="todayEvents"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+            <div class="card">
+                <h2>✅ Today's Chores</h2>
+                <div id="todayChores"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+            <div class="card">
+                <h2>🍽️ Tonight's Dinner</h2>
+                <div id="tonightMeal"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+            <div class="card">
+                <h2>📌 Quick Add To-Do</h2>
+                <div style="display:flex;gap:8px;align-items:center;">
+                    <input type="text" id="quickTodoInput" placeholder="e.g. Call the dentist..." style="flex:1;padding:10px 14px;border:2px solid #e0e7ff;border-radius:10px;font-size:14px;outline:none;" onfocus="this.style.border-color='#6366f1'" onblur="this.style.border-color='#e0e7ff'" onkeydown="if(event.key==='Enter')quickAddTodo()">
+                    <select id="quickTodoWho" style="padding:10px;border:2px solid #e0e7ff;border-radius:10px;font-size:13px;outline:none;">
+                        <option value="Simon">👨 Simon</option>
+                        <option value="Emma">👩 Emma</option>
+                        <option value="Ava">💜 Ava</option>
+                        <option value="Ella">💙 Ella</option>
+                    </select>
+                    <button onclick="quickAddTodo()" style="background:#6366f1;color:white;border:none;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">+ Add</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- HOME -->
+        <div class="panel" id="home">
             <!-- Home Status Card -->
             <div class="card" id="homeStatus">
                 <h2>🏠 Home Status</h2>
@@ -547,27 +583,6 @@
             <div class="card" id="homeCalendar">
                 <h2>📅 Up Next</h2>
                 <div id="homeCalendarData"><div class="loading"><span class="spinner">⏳</span> Loading events...</div></div>
-            </div>
-        </div>
-<div class="panel" id="today">
-            <div class="card" id="nextEventCard">
-                <div id="nextEventData"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
-            </div>
-            <div class="card" id="weatherCard">
-                <h2>🌤️ Weather</h2>
-                <div id="weatherData"><div class="loading"><span class="spinner">⏳</span> Loading weather...</div></div>
-            </div>
-            <div class="card">
-                <h2>📅 Today's Events</h2>
-                <div id="todayEvents"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
-            </div>
-            <div class="card">
-                <h2>✅ Today's Chores</h2>
-                <div id="todayChores"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
-            </div>
-            <div class="card">
-                <h2>🍽️ Tonight's Dinner</h2>
-                <div id="tonightMeal"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
         </div>
         
@@ -949,7 +964,8 @@
             <script>
         let familyData = null;
         let calView = 'week';
-        let calDate = new Date(); // central date for both week and month views
+        let calDate = new Date();
+        const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format for date comparisons
         
         // Set current date
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -1935,10 +1951,41 @@
         function renderAnnouncements(data) {
             const a = getSheet('📝').filter(x => (x.Priority || 'Announcement') !== 'Message' && (x.Priority || '') !== 'Todo');
             if (a.length) {
-                document.getElementById('announcementsList').innerHTML = a.map(x => `
-                    <div class="announcement-item ${x.Priority==='High'?'high':''}"><div class="from">${x.From||'Family'} • ${x.Date||''}</div>
-                    <div class="msg">${x.Message||x.Announcement||''}</div></div>`).join('');
+                // Sort newest first
+                a.sort((a, b) => new Date(b.Date || '2000') - new Date(a.Date || '2000'));
+                document.getElementById('announcementsList').innerHTML = a.map((x, idx) => `
+                    <div class="announcement-item ${x.Priority==='High'?'high':''}">
+                        <div class="from">${x.From||'Family'} • ${x.Date||''}
+                            <span style="margin-left:8px;cursor:pointer;color:#999;font-size:14px;" onclick="deleteAnnouncementItem(${idx}, event)" title="Delete">✕</span>
+                        </div>
+                        <div class="msg">${x.Message||x.Announcement||''}</div>
+                    </div>`).join('');
             } else { showEmpty('announcementsList', 'No announcements — all quiet! 📢'); }
+        }
+        
+        async function deleteAnnouncementItem(idx, event) {
+            event.stopPropagation();
+            if (!confirm('Delete this announcement?')) return;
+            const a = getSheet('📝').filter(x => (x.Priority || 'Announcement') !== 'Message' && (x.Priority || '') !== 'Todo');
+            a.sort((a, b) => new Date(b.Date || '2000') - new Date(a.Date || '2000'));
+            const item = a[idx];
+            if (!item) return;
+            if (familyData) {
+                for (const key of Object.keys(familyData)) {
+                    if (key.startsWith('📝')) {
+                        const rowIdx = familyData[key].rows.findIndex(r => r === item);
+                        if (rowIdx >= 0) {
+                            familyData[key].rows.splice(rowIdx, 1);
+                            try {
+                                await apiCall({action:'delete', sheet:'📝 Announcements', row:String(rowIdx + 2)});
+                            } catch(e) { console.error('Failed to delete announcement row', e); }
+                        }
+                        break;
+                    }
+                }
+            }
+            renderAnnouncements(familyData);
+            showToast('🗑️ Announcement deleted');
         }
         
         function renderMessages(data) {
@@ -1950,7 +1997,7 @@
                     const db = new Date(b.Date || '2000');
                     return db - da;
                 });
-                document.getElementById('messagesList').innerHTML = msgs.slice(0, 50).map(m => {
+                document.getElementById('messagesList').innerHTML = msgs.slice(0, 50).map((m, idx) => {
                     const from = (m.From || 'Someone').trim();
                     const fc = FAMILY_COLOURS[from];
                     const colour = fc ? fc.hex : '#667eea';
@@ -1959,11 +2006,39 @@
                         <div class="msg-top">
                             <span class="msg-from" style="color:${colour};">${from}</span>
                             <span class="msg-time">${timeAgo}</span>
+                            <span style="margin-left:auto;cursor:pointer;color:#999;font-size:14px;" onclick="deleteMessageItem(${idx}, event)" title="Delete">✕</span>
                         </div>
                         <div class="msg-body">${m.Message || ''}</div>
                     </div>`;
                 }).join('');
             } else { showEmpty('messagesList', 'No messages yet — be the first! 💬'); }
+        }
+        
+        async function deleteMessageItem(idx, event) {
+            event.stopPropagation();
+            if (!confirm('Delete this message?')) return;
+            const msgs = getSheet('📝').filter(x => (x.Priority || '') === 'Message');
+            msgs.sort((a, b) => new Date(b.Date || '2000') - new Date(a.Date || '2000'));
+            const item = msgs[idx];
+            if (!item) return;
+            // Remove from familyData
+            if (familyData) {
+                for (const key of Object.keys(familyData)) {
+                    if (key.startsWith('📝')) {
+                        const rowIdx = familyData[key].rows.findIndex(r => r === item);
+                        if (rowIdx >= 0) {
+                            familyData[key].rows.splice(rowIdx, 1);
+                            // Delete from sheet
+                            try {
+                                await apiCall({action:'delete', sheet:'📝 Announcements', row:String(rowIdx + 2)});
+                            } catch(e) { console.error('Failed to delete message row', e); }
+                        }
+                        break;
+                    }
+                }
+            }
+            renderMessages(familyData);
+            showToast('🗑️ Message deleted');
         }
         
         function getTimeAgo(dateStr) {
@@ -2623,7 +2698,9 @@
             const memberInfo = members.find(m => m.Name === name) || {};
             const personEvents = events.filter(e => {
                 const who = (e.Who || e.who || '').toLowerCase();
-                return who.includes(name.toLowerCase()) || who === 'family' || who === 'everyone' || who === 'all';
+                const date = (e.Date || e.Start || '').substring(0, 10);
+                const isUpcoming = date >= today;
+                return (who.includes(name.toLowerCase()) || who === 'family' || who === 'everyone' || who === 'all') && isUpcoming;
             }).sort((a, b) => {
                 const da = new Date(a.Date || '2099');
                 const db = new Date(b.Date || '2099');
