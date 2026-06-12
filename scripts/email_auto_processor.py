@@ -215,9 +215,33 @@ def parse_calendar(subject, body):
     loc_match = re.search(r"(?:at|in|@)\s+([A-Z][A-Za-z\s]+?)(?:\n|$|\d)", text)
     location = loc_match.group(1).strip() if loc_match else ""
     
-    if date or start_time:
-        return {"title": title, "date": date, "start": start_time, "end": "", "location": location}
-    return None
+    # Look for day-of-week patterns (e.g. "next Thursday", "on Friday")
+    day_match = re.search(r"(?:on|this|next)\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)", text, re.IGNORECASE)
+    day_str = day_match.group(1).capitalize() if day_match else ""
+    
+    # If we found a day name but no date, try to calculate the date
+    if day_str and not date:
+        from datetime import datetime, timedelta
+        days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        target_day = days.index(day_str)
+        today = datetime.now()
+        days_ahead = (target_day - today.weekday()) % 7
+        if days_ahead == 0:
+            days_ahead = 7  # Next week if today
+        next_date = today + timedelta(days=days_ahead)
+        date = next_date.strftime("%Y-%m-%d")
+    
+    # Always return an event — even without date/time (user can fill in later)
+    # But add a note if details are missing
+    notes = ""
+    if not date and not start_time:
+        notes = "⚠️ Date/time not found in email — please check original email for details"
+    elif not date:
+        notes = "⚠️ Date not found — please check original email"
+    elif not start_time:
+        notes = "⚠️ Time not found — please check original email"
+    
+    return {"title": title, "date": date, "start": start_time, "end": "", "location": location, "notes": notes}
 
 def parse_chore(subject, body):
     """Parse chore from email."""
@@ -397,9 +421,11 @@ def main():
         elif category == "calendar":
             parsed = parse_calendar(subject, body)
             if parsed:
-                row = [parsed["title"], parsed["date"], parsed["start"], parsed["end"], parsed["location"], "", "email"]
+                row = [parsed["title"], parsed["date"], parsed["start"], parsed["end"], parsed["location"], parsed.get("notes", ""), "email"]
                 success = append_to_sheet("📅 Calendar", row, token)
                 detail_msg = f"📅 Added event '{parsed['title']}' to Calendar"
+                if parsed.get("notes"):
+                    detail_msg += f" ({parsed['notes']})"
         
         elif category == "chore":
             parsed = parse_chore(subject, body)
