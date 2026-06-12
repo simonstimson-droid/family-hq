@@ -3103,11 +3103,19 @@
             return;
         }
         try {
-            const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(HA_URL + '/api/states');
-            const r = await fetch(proxyUrl, {
-                headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
-                signal: AbortSignal.timeout(8000)
-            });
+            let r;
+            try {
+                r = await fetch(HA_URL + '/api/states', {
+                    headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
+                    signal: AbortSignal.timeout(4000)
+                });
+            } catch(e) {
+                const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(HA_URL + '/api/states');
+                r = await fetch(proxyUrl, {
+                    headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
+                    signal: AbortSignal.timeout(8000)
+                });
+            }
             if (!r.ok) { el.innerHTML = '<span style="color:#dc2626">Error loading</span>'; return; }
             const states = await r.json();
             const playing = states.filter(s =>
@@ -3152,16 +3160,24 @@
         statusEl.textContent = '📢 Sending...';
         try {
             // Get all media_player entities
-            const proxyStates = 'https://corsproxy.io/?' + encodeURIComponent(HA_URL + '/api/states');
-            const sr = await fetch(proxyStates, {
-                headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
-                signal: AbortSignal.timeout(8000)
-            });
+            let sr;
+            try {
+                sr = await fetch(HA_URL + '/api/states', {
+                    headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
+                    signal: AbortSignal.timeout(4000)
+                });
+            } catch(e) {
+                const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(HA_URL + '/api/states');
+                sr = await fetch(proxyUrl, {
+                    headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
+                    signal: AbortSignal.timeout(8000)
+                });
+            }
             const states = await sr.json();
             const players = states.filter(s => s.entity_id.startsWith('media_player'));
             let sent = 0;
             for (const p of players) {
-                const proxyTTS = 'https://corsproxy.io/?' + encodeURIComponent(HA_URL + '/api/services/tts/google_translate_say');
+                const proxyTTS = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(HA_URL + '/api/services/tts/google_translate_say');
                 const r = await fetch(proxyTTS, {
                     method: 'POST',
                     headers: { 'Authorization': 'Bearer ' + HA_TOKEN, 'Content-Type': 'application/json' },
