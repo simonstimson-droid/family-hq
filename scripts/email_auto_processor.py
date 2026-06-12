@@ -18,7 +18,7 @@ from pathlib import Path
 
 # ---- Config ----
 FAMILY_EMAIL = "stimsonfamilyhq@gmail.com"
-SHEET_ID = "1zYs5s66J2nyv-LmaZWBL2Tzhu5vicrkOq3nDC58LSFXA"
+SHEET_ID = "1zYs5s66J2nyv-LmaZWBL2Tzhu5vicrkOq3nDC5LSFXA"
 TOKEN_PATH = Path("/Users/simonstimson/.hermes/profiles/home/google_token.json")
 PROCESSED_LABEL = "FamilyHQ_Processed"
 ALLOWED_SENDERS = [
@@ -520,14 +520,14 @@ def main():
         if category == "shopping":
             parsed = parse_shopping(subject, body)
             if parsed:
-                row = [parsed["item"], parsed["quantity"], parsed["category"], "", parsed["added_by"]]
+                row = [parsed["item"], parsed["quantity"], parsed["added_by"], "", parsed["category"]]
                 success = append_to_sheet("🛒 Shopping List", row, token)
                 detail_msg = f"🛒 Added '{parsed['item']}' to Shopping List"
         
         elif category == "calendar":
             parsed = parse_calendar(subject, body)
             if parsed:
-                row = [parsed["title"], parsed["date"], parsed["start"], parsed["end"], parsed["location"], parsed.get("notes", ""), "email"]
+                row = [parsed["date"], parsed["start"], parsed["title"], "email", parsed["location"], parsed.get("notes", "")]
                 success = append_to_sheet("📅 Calendar", row, token)
                 detail_msg = f"📅 Added event '{parsed['title']}' to Calendar"
                 if parsed.get("notes"):
@@ -536,28 +536,28 @@ def main():
         elif category == "chore":
             parsed = parse_chore(subject, body)
             if parsed:
-                row = [parsed["person"], parsed["task"], parsed["difficulty"], parsed["points"], "", "Active", "email"]
+                row = [parsed["task"], parsed["person"], "", "Once", "", ""]
                 success = append_to_sheet("✅ Chores", row, token)
                 detail_msg = f"✅ Added chore '{parsed['task']}' for {parsed['person']}"
         
         elif category == "meal":
             parsed = parse_meal(subject, body)
             if parsed:
-                row = [parsed["day"], parsed["meal"], "", "email"]
-                success = append_to_sheet("🍽️ Meals", row, token)
+                row = [parsed["day"], "", "", parsed["meal"], ""]
+                success = append_to_sheet("🍽️ Meal Plan", row, token)
                 detail_msg = f"🍽️ Added meal '{parsed['meal']}' for {parsed['day']}"
         
         elif category == "contact":
             parsed = parse_contact(subject, body)
             if parsed:
-                row = [parsed["name"], parsed["phone"], parsed["notes"], "email"]
-                success = append_to_sheet("📇 Important Contacts", row, token)
+                row = [parsed["name"], "Contact", parsed["phone"], "", "", parsed["notes"]]
+                success = append_to_sheet("📞 Important Contacts", row, token)
                 detail_msg = f"📞 Added contact '{parsed['name']}'"
         
         elif category == "announcement":
             parsed = parse_announcement(subject, body)
-            row = [parsed["title"], parsed["body"], datetime.now().strftime("%Y-%m-%d"), "email"]
-            success = append_to_sheet("📝 News", row, token)
+            row = [datetime.now().strftime("%Y-%m-%d"), "email", parsed["title"] + (": " + parsed["body"][:200] if parsed["body"] else ""), "Info"]
+            success = append_to_sheet("📝 Announcements", row, token)
             detail_msg = f"📝 Added announcement: '{parsed['title']}'"
         
         elif category == "todo":
