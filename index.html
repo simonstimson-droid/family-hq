@@ -2970,15 +2970,18 @@
         const devicesEl = document.getElementById('haDevices');
         const linkEl = document.getElementById('haLink');
         try {
-            const r = await fetch(HA_URL + '/api/', { signal: AbortSignal.timeout(3000) });
+            // Use a CORS proxy since GitHub Pages (HTTPS) can't fetch HTTP directly
+            const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(HA_URL + '/api/');
+            const r = await fetch(proxyUrl, { signal: AbortSignal.timeout(5000) });
             if (r.ok) {
                 statusEl.textContent = 'Connected ✓';
                 statusEl.style.color = '#16a34a';
                 // Try to get states if token is set
                 if (HA_TOKEN && HA_TOKEN !== 'YOUR_LONG_LIVED_ACCESS_TOKEN') {
-                    const sr = await fetch(HA_URL + '/api/states', {
+                    const proxyStates = 'https://corsproxy.io/?' + encodeURIComponent(HA_URL + '/api/states');
+                    const sr = await fetch(proxyStates, {
                         headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
-                        signal: AbortSignal.timeout(5000)
+                        signal: AbortSignal.timeout(8000)
                     });
                     if (sr.ok) {
                         const states = await sr.json();
@@ -3023,9 +3026,10 @@
             return;
         }
         try {
-            const r = await fetch(HA_URL + '/api/states', {
+            const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(HA_URL + '/api/states');
+            const r = await fetch(proxyUrl, {
                 headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
-                signal: AbortSignal.timeout(5000)
+                signal: AbortSignal.timeout(8000)
             });
             if (!r.ok) { el.innerHTML = '<span style="color:#dc2626">Error loading</span>'; return; }
             const states = await r.json();
@@ -3071,15 +3075,17 @@
         statusEl.textContent = '📢 Sending...';
         try {
             // Get all media_player entities
-            const sr = await fetch(HA_URL + '/api/states', {
+            const proxyStates = 'https://corsproxy.io/?' + encodeURIComponent(HA_URL + '/api/states');
+            const sr = await fetch(proxyStates, {
                 headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
-                signal: AbortSignal.timeout(5000)
+                signal: AbortSignal.timeout(8000)
             });
             const states = await sr.json();
             const players = states.filter(s => s.entity_id.startsWith('media_player'));
             let sent = 0;
             for (const p of players) {
-                const r = await fetch(HA_URL + '/api/services/tts/google_translate_say', {
+                const proxyTTS = 'https://corsproxy.io/?' + encodeURIComponent(HA_URL + '/api/services/tts/google_translate_say');
+                const r = await fetch(proxyTTS, {
                     method: 'POST',
                     headers: { 'Authorization': 'Bearer ' + HA_TOKEN, 'Content-Type': 'application/json' },
                     body: JSON.stringify({
