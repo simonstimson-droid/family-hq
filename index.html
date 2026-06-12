@@ -61,10 +61,44 @@
         .chore-item.done { opacity: 0.45; text-decoration: line-through; border-left-color: #10b981; background: #f0fdf4; }
         .chore-item .assignee { font-size: 12px; color: #666; }
         
-        .shopping-item { border-left-color: #10b981; background: #f0fdf4; cursor: pointer; }
-        .shopping-item.done { opacity: 0.5; text-decoration: line-through; }
+        .shopping-item { border-left-color: #10b981; background: #f0fdf4; cursor: pointer; transition: all 0.15s; }
+        .shopping-item:hover { transform: translateX(2px); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .shopping-item.done { opacity: 0.45; text-decoration: line-through; background: #f0fdf4; border-left-color: #86efac; }
         .shopping-item .category { font-size: 12px; color: #888; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
         .shopping-item .added-by { font-size: 12px; color: #888; }
+        
+        /* Shopping filter bar */
+        .shop-filter-bar { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; padding-bottom: 10px; border-bottom: 1px solid #e5e7eb; }
+        .shop-filter-btn { padding: 6px 12px; border: 1.5px solid #e5e7eb; background: white; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; color: #666; transition: all 0.15s; white-space: nowrap; }
+        .shop-filter-btn:hover { border-color: #10b981; color: #10b981; background: #f0fdf4; }
+        .shop-filter-btn.active { background: #10b981; color: white; border-color: #10b981; }
+        .shop-filter-cat { font-size: 11px !important; }
+        .shop-filter-divider { width: 1px; background: #e5e7eb; margin: 0 2px; align-self: stretch; }
+        
+        /* Category badge on items */
+        .shop-cat-badge { display: inline-flex; align-items: center; gap: 3px; font-size: 10px; font-weight: 700; color: white; padding: 2px 7px; border-radius: 10px; margin-right: 4px; flex-shrink: 0; }
+        .shop-qty { display: inline-block; font-size: 11px; color: #888; background: #f0f0f0; padding: 1px 6px; border-radius: 8px; font-weight: 600; }
+        .shop-no-results { text-align: center; padding: 24px; color: #999; font-style: italic; }
+        /* Shopping bought animation */
+        .shopping-item.buying { transition: all 0.3s ease; opacity: 0.5; transform: translateX(8px); }
+        .shopping-item.bought { transition: all 0.4s ease; opacity: 0.45; text-decoration: line-through; }
+        /* Next event countdown */
+        .next-event-card { background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border-radius: 14px; padding: 16px; margin-bottom: 12px; border: 2px solid #86efac; }
+        .next-event-label { font-size: 11px; font-weight: 700; color: #16a34a; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .next-event-name { font-size: 16px; font-weight: 700; color: #166534; margin-bottom: 4px; }
+        .next-event-time { font-size: 28px; font-weight: 800; color: #1580d9; letter-spacing: -0.5px; }
+        .next-event-time .countdown-unit { font-size: 13px; font-weight: 600; color: #666; }
+        .next-event-who { font-size: 12px; color: #666; margin-top: 4px; }
+        .next-event-none { color: #999; font-style: italic; padding: 12px; text-align: center; }
+        
+        /* Empty state illustrations */
+        .empty { color: #999; font-style: italic; padding: 32px 20px; text-align: center; }
+        .empty::before { display: block; font-size: 36px; margin-bottom: 8px; }
+        
+        /* Last updated indicator */
+        .last-updated { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 11px; color: #999; background: rgba(255,255,255,0.9); padding: 4px 12px; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); z-index: 150; display: none; }
+        .last-updated.show { display: block; }
+        @media (max-width: 600px) { .last-updated { bottom: 14px; font-size: 10px; } }
         
         .announcement-item { border-left-color: #ef4444; background: #fef2f2; }
         .announcement-item .from { font-size: 12px; color: #666; font-weight: 600; }
@@ -148,6 +182,7 @@
         .week-day .day-name { font-size: 9px; font-weight: 600; color: #999; text-align: center; margin-bottom: 3px; text-transform: uppercase; }
         .week-day .day-events { flex: 1; overflow: hidden; }
         .week-day .day-event { color: #555; padding: 3px 5px; border-radius: 4px; margin-bottom: 2px; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; display: flex; align-items: center; gap: 3px; line-height: 1.3; }
+        .week-day .day-event .ev-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; display: inline-block; }
         .week-day .day-event:hover { background: #f0f0f0; }
         .week-day .day-event .ev-time { font-size: 9px; color: #999; font-weight: 600; }
         .week-day .day-event.school { background: #ecfdf5; color: #065f46; }
@@ -328,6 +363,11 @@
         .lb-points { font-size: 28px; font-weight: 800; color: #f59e0b; }
         .lb-points-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
         .lb-streak { font-size: 12px; color: #666; margin-top: 4px; }
+        /* Chore streaks */
+        .chore-streak { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 700; color: #f59e0b; margin-left: 6px; }
+        .chore-streak .fire { font-size: 14px; }
+        .lb-streak-badge { display: inline-flex; align-items: center; gap: 3px; background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-top: 4px; }
+        .streak-display { font-size: 12px; color: #92400e; }
         
         .rewards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 12px; }
         .reward-card { background: white; border-radius: 12px; padding: 14px; text-align: center; border: 2px solid #e0e0e0; transition: all 0.15s; }
@@ -446,6 +486,7 @@
             <span class="family-pill emma" onclick="openProfile('Emma')" style="cursor:pointer;">👩 Emma</span>
             <span class="family-pill ava" onclick="openProfile('Ava')" style="cursor:pointer;">💜 Ava</span>
             <span class="family-pill ella" onclick="openProfile('Ella')" style="cursor:pointer;">💙 Ella</span>
+        <div class="last-updated" id="lastUpdated"></div>
         </div>
     </div>
     
@@ -509,6 +550,9 @@
             </div>
         </div>
 <div class="panel" id="today">
+            <div class="card" id="nextEventCard">
+                <div id="nextEventData"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
             <div class="card" id="weatherCard">
                 <h2>🌤️ Weather</h2>
                 <div id="weatherData"><div class="loading"><span class="spinner">⏳</span> Loading weather...</div></div>
@@ -1280,7 +1324,22 @@
         }
         
         function showError(id, msg) { document.getElementById(id).innerHTML = `<div class="error">${msg}</div>`; }
-        function showEmpty(id, msg) { document.getElementById(id).innerHTML = `<div class="empty">${msg}</div>`; }
+        function showEmpty(id, msg) { document.getElementById(id).innerHTML = `<div class="empty" style="padding:32px 20px;text-align:center;color:#999;font-style:italic;"><div style="font-size:36px;margin-bottom:8px;opacity:0.5">${getEmptyEmoji(msg)}</div>${msg}</div>`; }
+        function getEmptyEmoji(msg) {
+            if (msg.includes('shopping') || msg.includes('list')) return '🛒';
+            if (msg.includes('chore')) return '🧹';
+            if (msg.includes('meal') || msg.includes('plan')) return '🍽️';
+            if (msg.includes('event') || msg.includes('calendar')) return '📅';
+            if (msg.includes('todo') || msg.includes('To-Do')) return '📌';
+            if (msg.includes('message')) return '💬';
+            if (msg.includes('contact')) return '📞';
+            if (msg.includes('budget')) return '💰';
+            if (msg.includes('news') || msg.includes('announcement')) return '📝';
+            if (msg.includes('family')) return '👨‍👩‍👧‍👧';
+            if (msg.includes('school')) return '📋';
+            return '🏠';
+        }
+        
         function todayStr() { return new Date().toISOString().split('T')[0]; }
         
         function renderToday(data) {
@@ -1288,6 +1347,7 @@
             const events = getSheet('📅');
             const chores = getSheet('✅');
             const meals = getSheet('🍽️');
+            const now = new Date();
             
             const todayEvents = events.filter(e => (e.Date || e.date || e.Start || '').startsWith(today));
             if (todayEvents.length) {
@@ -1299,6 +1359,76 @@
                         ${e.Who || e.who ? `<div style="font-size:13px;">👤 ${colourWho(e.Who || e.who)}</div>` : ''}
                     </div>`).join('');
             } else { showEmpty('todayEvents', 'No events today — enjoy! 🎉'); }
+            
+            // Next event countdown
+            const nextEventCard = document.getElementById('nextEventCard');
+            const nextEventData = document.getElementById('nextEventData');
+            if (nextEventCard && nextEventData) {
+                // Find next upcoming event (today or future, starting from now)
+                const upcoming = events
+                    .filter(e => {
+                        const d = (e.Date || e.date || e.Start || '').substring(0, 10);
+                        return d >= today;
+                    })
+                    .sort((a, b) => {
+                        const da = (a.Date || a.date || a.Start || '').localeCompare(b.Date || b.date || b.Start || '');
+                        if (da !== 0) return da;
+                        return (a.Time || a.time || '').localeCompare(b.Time || b.time || '');
+                    });
+                
+                let nextEv = null;
+                for (const ev of upcoming) {
+                    const evDate = (ev.Date || ev.date || ev.Start || '').substring(0, 10);
+                    const evTime = ev.Time || ev.time || '';
+                    if (evDate > today) { nextEv = ev; break; }
+                    // If it's today, check if the event is still upcoming
+                    if (evDate === today && evTime && evTime !== 'All day') {
+                        const [h, m] = evTime.split(':').map(Number);
+                        const evDateTime = new Date();
+                        evDateTime.setHours(h, m || 0, 0, 0);
+                        if (evDateTime > now) { nextEv = ev; break; }
+                    } else if (evDate === today) {
+                        nextEv = ev; break; // all-day event today
+                    }
+                    if (!nextEv && evDate > today) { nextEv = ev; }
+                }
+                
+                if (nextEv) {
+                    const evDate = (nextEv.Date || nextEv.date || nextEv.Start || '').substring(0, 10);
+                    const evTime = nextEv.Time || nextEv.time || '';
+                    const whoVal = nextEv.Who || nextEv.who || '';
+                    
+                    let countdown = '';
+                    if (evTime && evTime !== 'All day') {
+                        const [h, m] = evTime.split(':').map(Number);
+                        const evDateTime = new Date(evDate);
+                        evDateTime.setHours(h, m || 0, 0, 0);
+                        const diffMs = evDateTime - now;
+                        if (diffMs > 0) {
+                            const diffMins = Math.floor(diffMs / 60000);
+                            const diffHours = Math.floor(diffMins / 60);
+                            const remainingMins = diffMins % 60;
+                            if (diffHours > 0) {
+                                countdown = `<div class="next-event-time">${diffHours}<span class="countdown-unit">h</span> ${remainingMins}<span class="countdown-unit">m</span></div>`;
+                            } else {
+                                countdown = `<div class="next-event-time">${remainingMins}<span class="countdown-unit">m</span></div>`;
+                            }
+                        }
+                    }
+                    
+                    const dotCls = whoVal ? nameToDotClass(whoVal) : '';
+                    nextEventData.innerHTML = `
+                        <div class="next-event-card">
+                            <div class="next-event-label">⏰ Next up</div>
+                            <div class="next-event-name">${dotCls ? `<span class="event-dot ${dotCls}"></span>` : ''}${nextEv.Event || nextEv.event || nextEv.Title || 'Event'}</div>
+                            ${countdown}
+                            <div class="next-event-who">${evTime && evTime !== 'All day' ? '🕐 ' + evTime : '📅 All day'}${whoVal ? ' · 👤 ' + whoVal : ''}${nextEv.Location || nextEv.location ? ' · 📍 ' + (nextEv.Location || nextEv.location) : ''}</div>
+                        </div>`;
+                    nextEventCard.style.display = 'block';
+                } else {
+                    nextEventCard.style.display = 'none';
+                }
+            }
             
             const todayDay = new Date().toLocaleDateString('en-GB', { weekday: 'long' }).toLowerCase();
             const todayChores = chores.filter(c => {
@@ -1313,22 +1443,75 @@
             } else { showEmpty('todayChores', 'No chores due today — enjoy! 🎉'); }
             
             const meal = meals.find(m => (m.Day || '').toLowerCase() === todayDay);
-            if (meal) {
-                document.getElementById('tonightMeal').innerHTML = `<div class="meal-item"><div class="day">${todayDay.charAt(0).toUpperCase()+todayDay.slice(1)}</div><div>${meal.Meal || meal.Dinner || 'TBD'}</div></div>`;
+            const todayDayName = todayDay.charAt(0).toUpperCase() + todayDay.slice(1);
+            if (meal && meal.Dinner) {
+                const hasNotes = meal.Notes && meal.Notes.trim();
+                document.getElementById('tonightMeal').innerHTML = `
+                    <div style="background:linear-gradient(135deg,#faf5ff,#f3e8ff);border-radius:14px;padding:18px;border:2px solid #c4b5fd;text-align:center;">
+                        <div style="font-size:11px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">🌙 Tonight — ${todayDayName}</div>
+                        <div style="font-size:20px;font-weight:700;color:#1e1b4b;margin-bottom:4px;">🍽️ ${meal.Dinner}</div>
+                        ${hasNotes ? `<div style="font-size:13px;color:#7c3aed;background:#f5f3ff;padding:6px 12px;border-radius:8px;display:inline-block;margin-top:4px;">📝 ${meal.Notes}</div>` : ''}
+                        <div style="margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+                            ${meal.Breakfast ? `<span style="font-size:12px;color:#999;">🌅 ${meal.Breakfast}</span>` : ''}
+                            ${meal.Lunch ? `<span style="font-size:12px;color:#999;">☀️ ${meal.Lunch}</span>` : ''}
+                        </div>
+                    </div>`;
+            } else if (meal) {
+                document.getElementById('tonightMeal').innerHTML = `
+                    <div style="background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:14px;padding:16px;border:2px solid #f59e0b;text-align:center;">
+                        <div style="font-size:13px;font-weight:600;color:#92400e;">🍽️ No dinner planned for tonight</div>
+                        <div style="font-size:12px;color:#a16207;margin-top:4px;">Tap to add to the meal plan!</div>
+                    </div>`;
             } else { showEmpty('tonightMeal', 'No meal planned — time to decide! 🍽️'); }
         }
         
         function renderShopping(data) {
             const items = getSheet('🛒');
-            if (items.length) {
-                document.getElementById('shoppingList').innerHTML = items.map((i, idx) => {
-                    const done = (i['Done ✓'] || i.Done || '').toString().trim() !== '';
+            if (!items.length) { showEmpty('shoppingList', 'Nothing on the list — add what you need! 🛒'); return; }
+            
+            // Sort: undone first, done items at bottom
+            const sorted = items.map((item, idx) => ({ item, idx, done: (item['Done ✓'] || item.Done || '').toString().trim() !== '' }))
+                .sort((a, b) => (a.done === b.done ? a.idx - b.idx : a.done ? 1 : -1));
+            
+            // Stats
+            const total = items.length;
+            const doneCount = items.filter(i => (i['Done ✓'] || i.Done || '').toString().trim() !== '').length;
+            constcats = {};
+            items.forEach(i => { const c = i.Category || 'Other'; cats[c] = (cats[c]||0) + 1; });
+            
+            // Active filter
+            const activeFilter = window._shopFilter || 'all';
+            
+            const filterBar = `<div class="shop-filter-bar">
+                <button class="shop-filter-btn${activeFilter==='all'?' active':''}" onclick="setShopFilter('all')">All (${total})</button>
+                <button class="shop-filter-btn${activeFilter==='todo'?' active':''}" onclick="setShopFilter('todo')">To Buy (${total - doneCount})</button>
+                <button class="shop-filter-btn${activeFilter==='done'?' active':''}" onclick="setShopFilter('done')">Done (${doneCount})</button>
+                ${Object.keys(cats).length > 1 ? `<div class="shop-filter-divider"></div>` + Object.keys(cats).map(c => `<button class="shop-filter-btn shop-filter-cat${activeFilter===c?' active':''}" onclick="setShopFilter('${c.replace(/'/g,"\\'")}')" style="font-size:11px">${catEmoji(c)} ${c}</button>`).join('') : ''}
+            </div>`;
+            
+            const catBadgeColors = {
+                'Dairy': '#3b82f6', 'Fruit & Veg': '#22c55e', 'Meat': '#ef4444',
+                'Bakery': '#f59e0b', 'Frozen': '#06b6d4', 'Household': '#8b5cf6',
+                'Admin': '#6b7280', 'Other': '#94a3b8'
+            };
+            
+            const html = sorted
+                .filter(s => {
+                    if (activeFilter === 'todo') return !s.done;
+                    if (activeFilter === 'done') return s.done;
+                    if (activeFilter === 'all') return true;
+                    return (s.item.Category || 'Other') === activeFilter;
+                })
+                .map(({ item, idx, done }) => {
+                    const cat = item.Category || '';
+                    const badgeColor = catBadgeColors[cat] || '#94a3b8';
+                    const qty = item.Quantity ? `<span class="shop-qty">${item.Quantity}</span>` : '';
+                    const catBadge = cat ? `<span class="shop-cat-badge" style="background:${badgeColor}">${catEmoji(cat)} ${cat}</span>` : '';
                     return `<div class="shopping-item${done ? ' done' : ''}" id="shop-${idx}">
                         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
                             <div style="flex:1;min-width:0;">
-                                <div style="font-size:14px;font-weight:500;">${i.Item || 'Item'}</div>
-                                <div class="category">${i.Category || ''} ${i.Quantity ? '• '+i.Quantity : ''}</div>
-                                ${i['Added by'] ? `<div class="added-by">Added by ${i['Added by']}</div>` : ''}
+                                <div style="font-size:14px;font-weight:500;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">${catBadge}${item.Item || 'Item'} ${qty}</div>
+                                ${item['Added by'] ? `<div class="added-by">Added by ${item['Added by']}</div>` : ''}
                             </div>
                             <div style="display:flex;gap:4px;flex-shrink:0;">
                                 <button onclick="toggleShoppingDone(${idx}, this)" style="background:none;border:none;cursor:pointer;font-size:18px;padding:2px 6px;border-radius:6px;" title="Toggle done">${done ? '✅' : '⬜'}</button>
@@ -1337,7 +1520,20 @@
                         </div>
                     </div>`;
                 }).join('');
-            } else { showEmpty('shoppingList', 'Nothing on the list — add what you need! 🛒'); }
+            
+            const noResults = (!html && activeFilter !== 'all') ? `<div class="shop-no-results">No items match this filter 🔍</div>` : '';
+            
+            document.getElementById('shoppingList').innerHTML = filterBar + html + noResults;
+        }
+        
+        function catEmoji(cat) {
+            const m = {'Dairy':'🥛','Fruit & Veg':'🥕','Meat':'🥩','Bakery':'🍞','Frozen':'🧊','Household':'🧹','Admin':'📋','Other':'📦'};
+            return m[cat] || '📦';
+        }
+        
+        function setShopFilter(f) {
+            window._shopFilter = f;
+            renderShopping(familyData);
         }
         
         async function toggleShoppingDone(idx, btn) {
@@ -1353,10 +1549,9 @@
             item.Done = newDone;
             renderShopping(familyData);
             
-            // Update in sheet
+            // Update in sheet  
             try {
-                await apiCall({action:'update', sheet:'🛒 Shopping List', row:String(idx+2), data:JSON.stringify({...item, 'Done ✓': newDone})});
-            } catch(e) { console.error('Failed to update done status', e); }
+                await apiCall({action:'update', sheet:} catch(e) { console.error('Failed to update done status', e); }
         }
         
         async function deleteShoppingItem(idx, btn) {
@@ -1575,6 +1770,75 @@
             openMealEditor(new Date().getDay() === 0 ? 6 : new Date().getDay() - 1);
         }
         
+        async function suggestShoppingFromMeals() {
+            const meals = getSheet('🍽️');
+            const shopping = getSheet('🛒');
+            const existingItems = new Set(shopping.map(s => (s.Item || '').toLowerCase().trim()));
+            const mealIngredients = {};
+            const addIng = (meal, ing) => {
+                const key = ing.toLowerCase();
+                if (!existingItems.has(key)) {
+                    if (!mealIngredients[ing]) mealIngredients[ing] = [];
+                    mealIngredients[ing].push(meal);
+                }
+            };
+            meals.forEach(m => {
+                const all = [m.Breakfast, m.Lunch, m.Dinner].filter(Boolean).join(' ').toLowerCase();
+                const mealName = m.Dinner || m.Lunch || m.Breakfast || '';
+                if (all.includes('spaghetti') || all.includes('pasta')) { addIng(mealName, 'Pasta'); addIng(mealName, 'Tomato sauce'); }
+                if (all.includes('bolognese') || all.includes('mince')) { addIng(mealName, 'Beef mince'); addIng(mealName, 'Onion'); }
+                if (all.includes('curry')) { addIng(mealName, 'Curry paste'); addIng(mealName, 'Rice'); }
+                if (all.includes('chicken')) { addIng(mealName, 'Chicken'); }
+                if (all.includes('fish finger') || all.includes('fish')) { addIng(mealName, 'Fish fingers'); addIng(mealName, 'Peas'); }
+                if (all.includes('sandwich') || all.includes('sandwiches')) { addIng(mealName, 'Bread'); addIng(mealName, 'Butter'); }
+                if (all.includes('cereal')) { addIng(mealName, 'Cereal'); }
+                if (all.includes('toast')) { addIng(mealName, 'Bread'); }
+                if (all.includes('mushroom')) { addIng(mealName, 'Mushrooms'); }
+                if (all.includes('wrap')) { addIng(mealName, 'Wraps'); }
+                if (all.includes('salad')) { addIng(mealName, 'Salad'); }
+                if (all.includes('chip') || all.includes('chips')) { addIng(mealName, 'Chips'); }
+                if (all.includes('rice')) { addIng(mealName, 'Rice'); }
+                if (all.includes('milk')) { addIng(mealName, 'Milk'); }
+                if (all.includes('jam')) { addIng(mealName, 'Jam'); }
+                if (all.includes('porridge')) { addIng(mealName, 'Oats'); addIng(mealName, 'Milk'); }
+                if (all.includes('egg')) { addIng(mealName, 'Eggs'); }
+                if (all.includes('bacon') || all.includes('sausage')) { addIng(mealName, 'Bacon'); }
+                if (all.includes('bean')) { addIng(mealName, 'Baked beans'); }
+                if (all.includes('soup')) { addIng(mealName, 'Soup'); }
+            });
+            const suggestions = Object.keys(mealIngredients);
+            if (suggestions.length === 0) {
+                showToast('🛒 Shopping list looks covered for this week!', true);
+                return;
+            }
+            const listHtml = suggestions.map(s => `<li style="padding:4px 0;">${s} <span style="color:#999;font-size:11px;">(${mealIngredients[s].join(', ')})</span></li>`).join('');
+            openModal(`<h3>🛒 Suggested Items</h3>
+                <p style="font-size:13px;color:#666;margin-bottom:12px;">From this week's meal plan, you might need:</p>
+                <ul style="font-size:13px;margin-bottom:16px;max-height:200px;overflow-y:auto;">${listHtml}</ul>
+                <div class="modal-btns">
+                    <button class="cancel" onclick="closeModal()">Cancel</button>
+                    <button class="save" id="mealShopSaveBtn" onclick="modalSave()">Add to Shopping</button>
+                </div>`,
+            async () => {
+                const btn = document.getElementById('mealShopSaveBtn');
+                btn.disabled = true; btn.textContent = 'Adding...';
+                let added = 0;
+                for (const item of suggestions) {
+                    const cat = item.includes('Milk') || item.includes('Butter') ? 'Dairy' : 
+                                item.includes('Pasta') || item.includes('Rice') || item.includes('Bread') || item.includes('Wrap') || item.includes('Oats') ? 'Bakery' :
+                                item.includes('Chicken') || item.includes('Mince') || item.includes('Fish') || item.includes('Bacon') || item.includes('Sausage') || item.includes('Egg') ? 'Meat' :
+                                item.includes('Peas') || item.includes('Onion') || item.includes('Mushroom') || item.includes('Salad') ? 'Fruit & Veg' : 'Other';
+                    const data = { Item: item, Quantity: '', 'Added by': 'Simon', 'Done ✓': '', Category: cat };
+                    try {
+                        const r = await apiCall({action:'append', sheet:'🛒 Shopping List', data:JSON.stringify(data)});
+                        if (r.success) { localAddItem('🛒', data); added++; }
+                    } catch(e) { console.error('Failed', item, e); }
+                }
+                closeModal();
+                showToast(`✅ Added ${added} items to shopping!`);
+            });
+        }
+        
         function renderSchool(data) {
             const activities = getSheet('📋');
             if (activities.length) {
@@ -1616,9 +1880,54 @@
         function renderBudget(data) {
             const budget = getSheet('💰');
             if (budget.length) {
-                document.getElementById('budgetData').innerHTML = budget.map(b => `
+                // Calculate monthly summary
+                const now = new Date();
+                const thisMonth = now.getMonth();
+                const thisYear = now.getFullYear();
+                let monthSpend = 0;
+                let monthBudget = 0;
+                
+                budget.forEach(b => {
+                    const amt = parseFloat((b.Amount || '0').replace(/[£,]/g, '')) || 0;
+                    const date = b.Date ? new Date(b.Date) : null;
+                    const isThisMonth = date && date.getMonth() === thisMonth && date.getFullYear() === thisYear;
+                    const type = (b.Type || '').toLowerCase();
+                    if (isThisMonth) {
+                        if (type === 'budget' || type === 'income') monthBudget += amt;
+                        else monthSpend += amt;
+                    }
+                });
+                
+                const monthName = now.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+                const remaining = monthBudget - monthSpend;
+                const pct = monthBudget > 0 ? Math.min(100, Math.round((monthSpend / monthBudget) * 100)) : 0;
+                const barColor = pct > 90 ? '#ef4444' : pct > 70 ? '#f59e0b' : '#10b981';
+                
+                const summaryHtml = `
+                    <div style="background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border-radius:14px;padding:16px;margin-bottom:16px;border:2px solid #86efac;">
+                        <div style="font-size:11px;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">📊 ${monthName} Summary</div>
+                        <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+                            <span style="font-size:13px;color:#666;">Spent</span>
+                            <span style="font-size:18px;font-weight:700;color:#166534;">£${monthSpend.toFixed(2)}</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                            <span style="font-size:13px;color:#666;">Budget</span>
+                            <span style="font-size:14px;font-weight:600;color:#666;">£${monthBudget.toFixed(2)}</span>
+                        </div>
+                        <div class="budget-bar" style="height:10px;background:#e5e7eb;border-radius:5px;overflow:hidden;margin-bottom:6px;">
+                            <div style="width:${pct}%;height:100%;background:${barColor};border-radius:5px;transition:width 0.3s;"></div>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;font-size:12px;">
+                            <span style="color:${remaining >= 0 ? '#16a34a' : '#dc2626'};font-weight:600;">${remaining >= 0 ? '✅ £' + remaining.toFixed(2) + ' left' : '⚠️ £' + Math.abs(remaining).toFixed(2) + ' over'}</span>
+                            <span style="color:#999;">${pct}% used</span>
+                        </div>
+                    </div>`;
+                
+                const itemsHtml = budget.map(b => `
                     <div style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;"><span>${b.Category || b.Item || 'Item'}</span><span>${b.Amount || b.Budget || '£0'}</span></div>
                     <div class="budget-bar"><div class="fill" style="width:${b.Percent||0}%"></div></div></div>`).join('');
+                
+                document.getElementById('budgetData').innerHTML = summaryHtml + itemsHtml;
             } else { showEmpty('budgetData', 'No budget items yet'); }
         }
         
@@ -1745,6 +2054,25 @@
                     });
                 });
             } else { showEmpty('todoList', 'No to-dos! Add one above 📌'); }
+        }
+
+        async function quickAddTodo() {
+            const input = document.getElementById('quickTodoInput');
+            const whoSel = document.getElementById('quickTodoWho');
+            const text = input.value.trim();
+            if (!text) { showToast('Please enter a task', true); return; }
+            const who = whoSel ? whoSel.value : 'Simon';
+            const data = { Message: text, 'Assigned To': who, Priority: '🟡 Medium', 'Due Date': '', 'Done ✓': '' };
+            try {
+                const r = await apiCall({action:'append', sheet:'📌 To-Do', data:JSON.stringify(data)});
+                if (r.success) {
+                    localAddItem('📌', data);
+                    input.value = '';
+                    showToast('✅ Added!');
+                } else {
+                    showToast('❌ Failed', true);
+                }
+            } catch(e) { showToast('❌ Failed', true); }
         }
         
         async function addTodo() {
@@ -2004,10 +2332,11 @@
                 <label>Item</label><input type="text" id="s_item" placeholder="e.g. Milk" autofocus>
                 <label>Quantity</label><input type="text" id="s_qty" placeholder="e.g. 2 pints">
                 <label>Category</label><select id="s_cat"><option value="">— None —</option><option>Dairy</option><option>Fruit & Veg</option><option>Meat</option><option>Bakery</option><option>Frozen</option><option>Household</option><option>Admin</option><option>Other</option></select>
+                <label>Added by</label><select id="s_who"><option value="Simon">👨 Simon</option><option value="Emma">👩 Emma</option><option value="Ava">💜 Ava</option><option value="Ella">💙 Ella</option></select>
                 <div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="s_save" onclick="modalSave()">Add Item</button></div>`,
             async () => {
                 const b = document.getElementById('s_save'); b.disabled=true; b.textContent='Adding...';
-                const data = {Item: document.getElementById('s_item').value, Quantity: document.getElementById('s_qty').value, 'Added by': 'Simon', 'Done ✓': '', Category: document.getElementById('s_cat').value};
+                const data = {Item: document.getElementById('s_item').value, Quantity: document.getElementById('s_qty').value, 'Added by': document.getElementById('s_who').value, 'Done ✓': '', Category: document.getElementById('s_cat').value};
                 if (!data.Item) { showToast('Please enter an item',true); b.disabled=false; return; }
                 const r = await apiCall({action:'append', sheet:'🛒 Shopping List', data:JSON.stringify(data)});
                 if (r.success) {
@@ -2246,6 +2575,11 @@
                     renderCalendar(familyData);
                     renderFamily(familyData);
                 }
+            // Update "last refreshed" timestamp
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
+                const el = document.getElementById('lastUpdated');
+                if (el) { el.textContent = `🕐 Last updated: ${timeStr}`; el.classList.add('show'); }
             } catch (err) {
                 console.error(err);
                 ['todayEvents','todayChores','tonightMeal','calendarView','shoppingList','choreList','mealPlan','schoolActivities','contactsList','budgetData','announcementsList','familyMembers'].forEach(id => showError(id, '⚠️ Could not load data. Pull to refresh.'));
@@ -2433,20 +2767,57 @@
             const el = document.getElementById('leaderboard');
             if (!el) return;
             const balance = getPointsBalance();
+            const streaks = getChoreStreaks();
             const kids = ['Ava', 'Ella'].sort((a, b) => (balance[b] || 0) - (balance[a] || 0));
             
             let html = '';
             kids.forEach(name => {
                 const pts = balance[name] || 0;
+                const streak = streaks[name] || 0;
                 const cssClass = name.toLowerCase() + '-card';
                 const colour = FAMILY_COLOURS[name] ? FAMILY_COLOURS[name].hex : '#666';
                 html += `<div class="lb-card ${cssClass}">`;
                 html += `<div class="lb-name" style="color:${colour};">${name === 'Ava' ? '💜' : '💙'} ${name}</div>`;
                 html += `<div class="lb-points">${pts}</div>`;
                 html += `<div class="lb-points-label">points</div>`;
+                if (streak >= 2) {
+                    html += `<div class="lb-streak-badge"><span class="fire">🔥</span> ${streak}-week streak!</div>`;
+                } else {
+                    html += `<div class="lb-streak">Keep going! 💪</div>`;
+                }
                 html += `</div>`;
             });
             el.innerHTML = html;
+        }
+        
+        function getChoreStreaks() {
+            // Calculate streaks from points history
+            const history = getPointsHistory();
+            const streaks = { Ava: 0, Ella: 0 };
+            const lastWeek = new Date();
+            lastWeek.setDate(lastWeek.getDate() - 7);
+            
+            // Group by week
+            const weeks = {};
+            history.forEach(h => {
+                if (!h.name || !FAMILY_COLOURS[h.name]) return;
+                const d = new Date(h.date);
+                const weekKey = Math.floor((d - new Date(d.getFullYear(), 0, 1)) / (7 * 24 * 60 * 60 * 1000));
+                if (!weeks[h.name]) weeks[h.name] = new Set();
+                weeks[h.name].add(weekKey);
+            });
+            
+            // Count consecutive weeks with activity
+            const currentWeek = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 1)) / (7 * 24 * 60 * 60 * 1000));
+            ['Ava', 'Ella'].forEach(name => {
+                let streak = 0;
+                for (let w = currentWeek; w >= 0; w--) {
+                    if (weeks[name] && weeks[name].has(w)) streak++;
+                    else break;
+                }
+                streaks[name] = streak;
+            });
+            return streaks;
         }
 
         function renderRewards() {
