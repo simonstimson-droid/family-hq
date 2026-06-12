@@ -74,6 +74,23 @@
         .meal-item { border-left-color: #8b5cf6; background: #faf5ff; }
         .meal-item .day { font-weight: 700; color: #7c3aed; font-size: 13px; }
         
+        /* Meal Plan Grid */
+        .meal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+        .meal-day { background: #faf5ff; border-radius: 12px; padding: 12px; cursor: pointer; border: 2px solid transparent; transition: all 0.15s; }
+        .meal-day:hover { border-color: #8b5cf6; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(139,92,246,0.15); }
+        .meal-day.today { border-color: #8b5cf6; background: #f5f3ff; }
+        .meal-day-header { font-weight: 700; font-size: 13px; color: #7c3aed; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
+        .today-badge { font-size: 9px; background: #8b5cf6; color: white; padding: 2px 6px; border-radius: 8px; font-weight: 600; }
+        .meal-slot { display: flex; align-items: center; gap: 6px; padding: 4px 0; border-bottom: 1px solid #f3e8ff; }
+        .meal-slot:last-child { border-bottom: none; }
+        .meal-slot.darker { background: rgba(139,92,246,0.05); margin: 0 -12px; padding: 4px 12px; }
+        .meal-label { font-size: 14px; flex-shrink: 0; }
+        .meal-val { font-size: 13px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .meal-val .empty { color: #c4b5fd; font-style: italic; }
+        .meal-stats { margin-top: 10px; font-size: 12px; color: #999; text-align: center; }
+        @media (max-width: 700px) { .meal-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 400px) { .meal-grid { grid-template-columns: 1fr; } }
+        
         .activity-item { border-left-color: #06b6d4; background: #f0fdff; }
         .activity-item .child { font-weight: 700; color: #0891b2; }
         .activity-item .details { font-size: 13px; color: #666; margin-top: 2px; }
@@ -558,8 +575,12 @@
         <div class="panel" id="meals">
             <div class="card">
                 <h2>🍽️ Weekly Meal Plan</h2>
+                <p style="color:#666;font-size:13px;margin-bottom:12px;">Click any meal to edit it. Changes save automatically.</p>
                 <div id="mealPlan"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
-                <button class="add-btn" onclick="addMeal()">+ Add / Edit Meal</button>
+                <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+                    <button class="add-btn" onclick="openMealEditor()">✏️ Edit Full Week</button>
+                    <button class="add-btn" style="background:linear-gradient(135deg,#10b981,#059669)" onclick="quickAddMeal()">+ Quick Add</button>
+                </div>
             </div>
         </div>
         
@@ -1412,13 +1433,146 @@
             renderChoresWithRewards(familyData);
         }
         
+        // ===== MEAL PLAN =====
+        let _mealEditIdx = -1;
+
         function renderMeals(data) {
             const meals = getSheet('🍽️');
-            if (meals.length) {
-                document.getElementById('mealPlan').innerHTML = meals.map(m => `
-                    <div class="meal-item"><div class="day">${m.Day || 'Day'}</div><div>${m.Meal || m.Dinner || m.What || 'TBD'}</div>
-                    ${m.Notes ? `<div style="font-size:13px;color:#666;margin-top:4px;">${m.Notes}</div>` : ''}</div>`).join('');
-            } else { showEmpty('mealPlan', 'No meals planned yet — start planning! 🍽️'); }
+            const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+            // Build a map: day -> {Breakfast, Lunch, Dinner, Notes}
+            const map = {};
+            meals.forEach(m => {
+                if (m.Day) map[m.Day] = { Breakfast: m.Breakfast || '', Lunch: m.Lunch || '', Dinner: m.Dinner || '', Notes: m.Notes || '' };
+            });
+            
+            let html = '<div class="meal-grid">';
+            days.forEach((d, i) => {
+                const m = map[d] || { Breakfast: '', Lunch: '', Dinner: '', Notes: '' };
+                const isToday = new Date().toLocaleDateString('en-GB', {weekday:'long'}) === d;
+                html += `<div class="meal-day${isToday ? ' today' : ''}" onclick="openMealEditor(${i})">`;
+                html += `<div class="meal-day-header">${d}${isToday ? ' <span class="today-badge">Today</span>' : ''}</div>`;
+                html += `<div class="meal-slot"><span class="meal-label">🌅</span><span class="meal-val">${m.Breakfast || '<span class="empty">—</span>'}</span></div>`;
+                html += `<div class="meal-slot"><span class="meal-label">☀️</span><span class="meal-val">${m.Lunch || '<span class="empty">—</span>'}</span></div>`;
+                html += `<div class="meal-slot dinner"><span class="meal-label">🌙</span><span class="meal-val">${m.Dinner || '<span class="empty">—</span>'}</span></div>`;
+                html += `</div>`;
+            });
+            html += '</div>';
+            
+            // Meal stats
+            const filled = days.filter(d => map[d] && (map[d].Breakfast || map[d].Lunch || map[d].Dinner)).length;
+            html += `<div class="meal-stats">${filled}/7 days planned • Click any day to edit</div>`;
+            
+            document.getElementById('mealPlan').innerHTML = html;
+        }
+
+        function openMealEditor(dayIdx) {
+            const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+            const meals = getSheet('🍽️');
+            const d = days[dayIdx];
+            const existing = meals.find(m => m.Day === d) || { Breakfast: '', Lunch: '', Dinner: '', Notes: '' };
+            
+            openModal(`<h3>🍽️ ${d}</h3>
+                <label>🌅 Breakfast</label><input type="text" id="meal_breakfast" placeholder="e.g. Cereal & toast" value="${existing.Breakfast || ''}" autofocus>
+                <label>☀️ Lunch</label><input type="text" id="meal_lunch" placeholder="e.g. Sandwiches" value="${existing.Lunch || ''}">
+                <label>🌙 Dinner</label><input type="text" id="meal_dinner" placeholder="e.g. Spaghetti Bolognese" value="${existing.Dinner || ''}">
+                <label>📝 Notes</label><input type="text" id="meal_notes" placeholder="e.g. Ava doesn't eat mushrooms" value="${existing.Notes || ''}">
+                <input type="hidden" id="meal_day" value="${d}">
+                <div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="meal_save_btn" onclick="modalSave()">💾 Save</button></div>`,
+            async () => {
+                const btn = document.getElementById('meal_save_btn');
+                btn.disabled = true; btn.textContent = 'Saving...';
+                const day = document.getElementById('meal_day').value;
+                const breakfast = document.getElementById('meal_breakfast').value.trim();
+                const lunch = document.getElementById('meal_lunch').value.trim();
+                const dinner = document.getElementById('meal_dinner').value.trim();
+                const notes = document.getElementById('meal_notes').value.trim();
+                
+                const data = { Day: day, Breakfast: breakfast, Lunch: lunch, Dinner: dinner, Notes: notes };
+                const existingIdx = meals.findIndex(m => m.Day === day);
+                
+                try {
+                    if (existingIdx >= 0) {
+                        await apiCall({ action: 'update', sheet: '🍽️ Meal Plan', row: String(existingIdx + 2), data: JSON.stringify(data) });
+                    } else {
+                        await apiCall({ action: 'append', sheet: '🍽️ Meal Plan', data: JSON.stringify(data) });
+                    }
+                    localAddItem('🍽️', data);
+                    // Update the specific day's data in familyData
+                    if (familyData) {
+                        for (const key of Object.keys(familyData)) {
+                            if (key.startsWith('🍽️')) {
+                                if (existingIdx >= 0) {
+                                    familyData[key].rows[existingIdx] = data;
+                                } else {
+                                    familyData[key].rows.push(data);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    renderMeals(familyData);
+                    showToast(`✅ ${d} updated!`);
+                    closeModal();
+                } catch(e) {
+                    showToast('❌ Failed to save', true);
+                    btn.disabled = false; btn.textContent = '💾 Save';
+                }
+            });
+        }
+
+        function quickAddMeal() {
+            const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+            const today = new Date().toLocaleDateString('en-GB', {weekday:'long'});
+            const defaultDay = days.indexOf(today) >= 0 ? today : 'Monday';
+            
+            openModal(`<h3>🍽️ Quick Add Meal</h3>
+                <label>Day</label><select id="qa_day">${days.map(d => `<option value="${d}" ${d===defaultDay?'selected':''}>${d}</option>`).join('')}</select>
+                <label>Meal</label><input type="text" id="qa_meal" placeholder="e.g. Chicken curry & rice" autofocus>
+                <label>Meal type</label><select id="qa_type"><option value="Dinner">🌙 Dinner</option><option value="Lunch">☀️ Lunch</option><option value="Breakfast">🌅 Breakfast</option></select>
+                <div class="modal-btns"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" id="qa_save_btn" onclick="modalSave()">➕ Add</button></div>`,
+            async () => {
+                const btn = document.getElementById('qa_save_btn');
+                btn.disabled = true; btn.textContent = 'Saving...';
+                const day = document.getElementById('qa_day').value;
+                const meal = document.getElementById('qa_meal').value.trim();
+                const type = document.getElementById('qa_type').value;
+                if (!meal) { showToast('Please enter a meal', true); btn.disabled = false; return; }
+                
+                const meals = getSheet('🍽️');
+                const existingIdx = meals.findIndex(m => m.Day === day);
+                const data = { Day: day, Breakfast: '', Lunch: '', Dinner: '', Notes: '' };
+                if (existingIdx >= 0) {
+                    Object.assign(data, meals[existingIdx]);
+                }
+                data[type] = meal;
+                
+                try {
+                    if (existingIdx >= 0) {
+                        await apiCall({ action: 'update', sheet: '🍽️ Meal Plan', row: String(existingIdx + 2), data: JSON.stringify(data) });
+                    } else {
+                        await apiCall({ action: 'append', sheet: '🍽️ Meal Plan', data: JSON.stringify(data) });
+                    }
+                    if (familyData) {
+                        for (const key of Object.keys(familyData)) {
+                            if (key.startsWith('🍽️')) {
+                                if (existingIdx >= 0) familyData[key].rows[existingIdx] = data;
+                                else familyData[key].rows.push(data);
+                                break;
+                            }
+                        }
+                    }
+                    renderMeals(familyData);
+                    showToast(`✅ Added to ${day}!`);
+                    closeModal();
+                } catch(e) {
+                    showToast('❌ Failed to save', true);
+                    btn.disabled = false; btn.textContent = '➕ Add';
+                }
+            });
+        }
+
+        async function addMeal() {
+            openMealEditor(new Date().getDay() === 0 ? 6 : new Date().getDay() - 1);
         }
         
         function renderSchool(data) {
