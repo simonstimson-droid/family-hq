@@ -1549,9 +1549,10 @@
             item.Done = newDone;
             renderShopping(familyData);
             
-            // Update in sheet  
+            // Update in sheet
             try {
-                await apiCall({action:'update', sheet:} catch(e) { console.error('Failed to update done status', e); }
+                await apiCall({action:'update', sheet:'🛒 Shopping List', row:String(idx+2), data:JSON.stringify({...item, 'Done ✓': newDone})});
+            } catch(e) { console.error('Failed to update done status', e); }
         }
         
         async function deleteShoppingItem(idx, btn) {
