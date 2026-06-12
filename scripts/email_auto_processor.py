@@ -185,7 +185,7 @@ def parse_shopping(subject, body):
     return None
 
 def parse_calendar(subject, body):
-    """Parse calendar event from email."""
+    """Parse calendar event from email, including forwarded email headers."""
     text = subject + "\n" + body
     
     # Try structured format: EVENT: Title | Date | Start | End | Location
@@ -196,50 +196,125 @@ def parse_calendar(subject, body):
             "date": m.group(2),
             "start": m.group(3),
             "end": m.group(4) or "",
-            "location": (m.group(5) or "").strip()
+            "location": (m.group(5) or "").strip(),
+            "notes": ""
         }
     
     # Natural language: extract the title (strip Fwd: prefix)
     title = re.sub(r"^(fwd|fw):\s*", "", subject, flags=re.IGNORECASE).strip()
     title = title.replace("EVENT:", "").replace("CALENDAR:", "").strip() or "New Event"
     
-    # Look for date patterns
+    # === Extract info from forwarded email headers ===
+    # Look for "From:" header to get original sender (often the school)
+    fwd_from = re.search(r">\s*From:\s*(.+?)(?:\n|$)", body)
+    original_sender = fwd_from.group(1).strip() if fwd_from else ""
+    
+    # Look for "Date:" header in forwarded content
+    fwd_date = re.search(r">\s*Date:\s*(.+?)(?:\n|$)", body)
+    original_date_str = fwd_date.group(1).strip() if fwd_date else ""
+    
+    # Look for "Subject:" header in forwarded content
+    fwd_subject = re.search(r">\s*Subject:\s*(.+?)(?:\n|$)", body)
+    original_subject = fwd_subject.group(1).strip() if fwd_subject else ""
+    
+    # Use forwarded subject if main subject is just "Fwd: ..."
+    if original_subject and subject.lower().startswith("fwd:"):
+        title = original_subject
+    
+    # === Extract date from body and forwarded headers ===
+    date = ""
+    start_time = ""
+    location = ""
+    notes_parts = []
+    
+    # Try ISO date format first (YYYY-MM-DD)
     date_match = re.search(r"(\d{4}-\d{2}-\d{2})", text)
-    date = date_match.group(1) if date_match else ""
+    if date_match:
+        date = date_match.group(1)
     
-    # Look for time patterns
-    time_match = re.search(r"(\d{1,2}:\d{2})\s*(am|pm)?", text, re.IGNORECASE)
-    start_time = time_match.group(0).strip() if time_match else ""
+    # Try UK date formats: "25 June 2026", "25th June 2026", "25/06/2026", "25-06-2026"
+    if not date:
+        uk_date = re.search(r"(\d{1,2})(?:st|nd|rd|th)?\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{4})", text, re.IGNORECASE)
+        if uk_date:
+            from datetime import datetime
+            d = int(uk_date.group(1))
+            month_names = ["january","february","march","april","may","june","july","august","september","october","november","december"]
+            m = month_names.index(uk_date.group(2).lower()) + 1
+            y = int(uk_date.group(3))
+            date = f"{y}-{m:02d}-{d:02d}"
     
-    # Look for location
-    loc_match = re.search(r"(?:at|in|@)\s+([A-Z][A-Za-z\s]+?)(?:\n|$|\d)", text)
-    location = loc_match.group(1).strip() if loc_match else ""
+    # Try short UK date: "25/06/2026" or "25-06-2026"
+    if not date:
+        short_date = re.search(r"(\d{1,2})[/\-](\d{1,2})[/\-](\d{4})", text)
+        if short_date:
+            d, m, y = int(short_date.group(1)), int(short_date.group(2)), int(short_date.group(3))
+            if d > 12:  # DD/MM/YYYY
+                date = f"{y}-{m:02d}-{d:02d}"
+            elif m > 12:  # MM/DD/YYYY unlikely but handle
+                date = f"{y}-{d:02d}-{m:02d}"
+            else:
+                date = f"{y}-{m:02d}-{d:02d}"  # Assume DD/MM/YYYY for UK
+    
+    # Try to parse date from forwarded email header (e.g. "Date: 12 June 2026 at 09:48:39 BST")
+    if not date and original_date_str:
+        header_date = re.search(r"(\d{1,2})\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{4})", original_date_str, re.IGNORECASE)
+        if header_date:
+            from datetime import datetime
+            d = int(header_date.group(1))
+            month_names = ["january","february","march","april","may","june","july","august","september","october","november","december"]
+            m = month_names.index(header_date.group(2).lower()) + 1
+            y = int(header_date.group(3))
+            date = f"{y}-{m:02d}-{d:02d}"
+            notes_parts.append(f"Date from email header — may be send date, not event date")
+    
+    # Look for time patterns (e.g. "2pm", "14:00", "2:30pm")
+    time_match = re.search(r"(\d{1,2})(?::(\d{2}))?\s*(am|pm)?", text, re.IGNORECASE)
+    if time_match:
+        hour = int(time_match.group(1))
+        minute = time_match.group(2) or "00"
+        ampm = time_match.group(3)
+        if ampm and ampm.lower() == "pm" and hour < 12:
+            hour += 12
+        elif ampm and ampm.lower() == "am" and hour == 12:
+            hour = 0
+        start_time = f"{hour:02d}:{minute}"
+    
+    # Look for location patterns
+    loc_patterns = [
+        r"(?:at|in|@)\s+([A-Z][A-Za-z\s]+?)(?:\n|$|\d)",
+        r"(?:venue|where|held at)[:\s]+([A-Z][A-Za-z\s]+?)(?:\n|$)",
+        r"(?:location)[:\s]+([A-Z][A-Za-z\s]+?)(?:\n|$)",
+    ]
+    for pattern in loc_patterns:
+        loc_match = re.search(pattern, text, re.IGNORECASE)
+        if loc_match:
+            location = loc_match.group(1).strip()
+            break
     
     # Look for day-of-week patterns (e.g. "next Thursday", "on Friday")
-    day_match = re.search(r"(?:on|this|next)\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)", text, re.IGNORECASE)
-    day_str = day_match.group(1).capitalize() if day_match else ""
+    if not date:
+        day_match = re.search(r"(?:on|this|next)\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)", text, re.IGNORECASE)
+        if day_match:
+            from datetime import datetime, timedelta
+            day_str = day_match.group(1).capitalize()
+            days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+            target_day = days.index(day_str)
+            today = datetime.now()
+            days_ahead = (target_day - today.weekday()) % 7
+            if days_ahead == 0:
+                days_ahead = 7
+            next_date = today + timedelta(days=days_ahead)
+            date = next_date.strftime("%Y-%m-%d")
     
-    # If we found a day name but no date, try to calculate the date
-    if day_str and not date:
-        from datetime import datetime, timedelta
-        days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-        target_day = days.index(day_str)
-        today = datetime.now()
-        days_ahead = (target_day - today.weekday()) % 7
-        if days_ahead == 0:
-            days_ahead = 7  # Next week if today
-        next_date = today + timedelta(days=days_ahead)
-        date = next_date.strftime("%Y-%m-%d")
-    
-    # Always return an event — even without date/time (user can fill in later)
-    # But add a note if details are missing
-    notes = ""
+    # Build notes
     if not date and not start_time:
-        notes = "⚠️ Date/time not found in email — please check original email for details"
+        notes_parts.insert(0, "⚠️ Date/time not found — please check original email/attachment for details")
     elif not date:
-        notes = "⚠️ Date not found — please check original email"
+        notes_parts.insert(0, "⚠️ Date not found — please check original email")
     elif not start_time:
-        notes = "⚠️ Time not found — please check original email"
+        notes_parts.insert(0, "⚠️ Time not found — please check original email")
+    
+    notes = " | ".join(notes_parts)
     
     return {"title": title, "date": date, "start": start_time, "end": "", "location": location, "notes": notes}
 
