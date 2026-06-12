@@ -11,17 +11,19 @@ import sys
 import os
 import base64
 import subprocess
+import urllib.request
+import urllib.parse
 from datetime import datetime, timedelta
 from pathlib import Path
 
 # ---- Config ----
 FAMILY_EMAIL = "stimsonfamilyhq@gmail.com"
 SHEET_ID = "1zYs5s66J2nyv-LmaZWBL2Tzhu5vicrkOq3nDC58LSFXA"
-TOKEN_PATH = Path.home() / ".hermes/profiles/home/google_token.json"
+TOKEN_PATH = Path("/Users/simonstimson/.hermes/profiles/home/google_token.json")
 PROCESSED_LABEL = "FamilyHQ_Processed"
 ALLOWED_SENDERS = [
     "simon.stimson@gmail.com",
-    # Add Emma's email when known
+    "clementsonemma@gmail.com",
 ]
 
 # ---- Load token ----
