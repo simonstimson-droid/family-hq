@@ -199,8 +199,9 @@ def parse_calendar(subject, body):
             "location": (m.group(5) or "").strip()
         }
     
-    # Try to extract date/time from natural language
-    title = subject.replace("EVENT:", "").replace("CALENDAR:", "").strip() or "New Event"
+    # Natural language: extract the title (strip Fwd: prefix)
+    title = re.sub(r"^(fwd|fw):\s*", "", subject, flags=re.IGNORECASE).strip()
+    title = title.replace("EVENT:", "").replace("CALENDAR:", "").strip() or "New Event"
     
     # Look for date patterns
     date_match = re.search(r"(\d{4}-\d{2}-\d{2})", text)
@@ -280,7 +281,7 @@ def parse_contact(subject, body):
 
 def parse_announcement(subject, body):
     """Parse announcement from email."""
-    # Strip Fwd:/Fw: prefix
+    # Strip Fwd:/Fw: prefix and clean subject
     clean_subject = re.sub(r"^(fwd|fw):\s*", "", subject, flags=re.IGNORECASE).strip()
     title = clean_subject.replace("NEWS:", "").replace("ANNOUNCEMENT:", "").strip()
     if not title:
