@@ -226,17 +226,39 @@ def parse_calendar(subject, body):
     start_time = ""
     location = ""
     notes_parts = []
+    # Clean body for date/time searching: remove forwarded email header lines
+    # This prevents matching the email's own send date as the event date
+    clean_text_for_dates = body
+    # Remove "Sent from my iPhone" line (single line only)
+    clean_text_for_dates = re.sub(r"^Sent from my iPhone\s*$", "", clean_text_for_dates, flags=re.MULTILINE | re.IGNORECASE)
+    # Remove forwarded header lines (lines starting with > that contain From:, Date:, Subject:, To:, Reply-To:)
+    clean_text_for_dates = re.sub(r"^>\s*(From|Date|Subject|To|Reply-To|Cc|Bcc):.*$", "", clean_text_for_dates, flags=re.MULTILINE | re.IGNORECASE)
+    # Remove the "Begin forwarded message:" line itself
+    clean_text_for_dates = re.sub(r"^.*Begin forwarded message:.*$", "", clean_text_for_dates, flags=re.MULTILINE | re.IGNORECASE)
+    # Remove any remaining blank lines at the start
+    clean_text_for_dates = clean_text_for_dates.lstrip()
+    clean_text_for_dates = subject + "\n" + clean_text_for_dates
+    
+    # Try to parse date from forwarded email header (e.g. "Date: 12 June 2026 at 09:48:39 BST")
+    header_date_str = ""
+    if original_date_str:
+        header_date = re.search(r"(\d{1,2})\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{4})", original_date_str, re.IGNORECASE)
+        if header_date:
+            d = int(header_date.group(1))
+            month_names = ["january","february","march","april","may","june","july","august","september","october","november","december"]
+            m = month_names.index(header_date.group(2).lower()) + 1
+            y = int(header_date.group(3))
+            header_date_str = f"{y}-{m:02d}-{d:02d}"
     
     # Try ISO date format first (YYYY-MM-DD)
-    date_match = re.search(r"(\d{4}-\d{2}-\d{2})", text)
+    date_match = re.search(r"(\d{4}-\d{2}-\d{2})", clean_text_for_dates)
     if date_match:
         date = date_match.group(1)
     
-    # Try UK date formats: "25 June 2026", "25th June 2026", "25/06/2026", "25-06-2026"
+    # Try UK date formats: "25 June 2026", "25th June 2026"
     if not date:
-        uk_date = re.search(r"(\d{1,2})(?:st|nd|rd|th)?\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{4})", text, re.IGNORECASE)
+        uk_date = re.search(r"(\d{1,2})(?:st|nd|rd|th)?\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{4})", clean_text_for_dates, re.IGNORECASE)
         if uk_date:
-            from datetime import datetime
             d = int(uk_date.group(1))
             month_names = ["january","february","march","april","may","june","july","august","september","october","november","december"]
             m = month_names.index(uk_date.group(2).lower()) + 1
@@ -245,39 +267,48 @@ def parse_calendar(subject, body):
     
     # Try short UK date: "25/06/2026" or "25-06-2026"
     if not date:
-        short_date = re.search(r"(\d{1,2})[/\-](\d{1,2})[/\-](\d{4})", text)
+        short_date = re.search(r"(\d{1,2})[/\-](\d{1,2})[/\-](\d{4})", clean_text_for_dates)
         if short_date:
             d, m, y = int(short_date.group(1)), int(short_date.group(2)), int(short_date.group(3))
             if d > 12:  # DD/MM/YYYY
                 date = f"{y}-{m:02d}-{d:02d}"
-            elif m > 12:  # MM/DD/YYYY unlikely but handle
+            elif m > 12:
                 date = f"{y}-{d:02d}-{m:02d}"
             else:
-                date = f"{y}-{m:02d}-{d:02d}"  # Assume DD/MM/YYYY for UK
+                date = f"{y}-{m:02d}-{d:02d}"
     
-    # Try to parse date from forwarded email header (e.g. "Date: 12 June 2026 at 09:48:39 BST")
-    if not date and original_date_str:
-        header_date = re.search(r"(\d{1,2})\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{4})", original_date_str, re.IGNORECASE)
-        if header_date:
-            from datetime import datetime
-            d = int(header_date.group(1))
-            month_names = ["january","february","march","april","may","june","july","august","september","october","november","december"]
-            m = month_names.index(header_date.group(2).lower()) + 1
-            y = int(header_date.group(3))
-            date = f"{y}-{m:02d}-{d:02d}"
-            notes_parts.append(f"Date from email header — may be send date, not event date")
+    # If no date found in body text, fall back to email header date (with warning)
+    if not date and header_date_str:
+        date = header_date_str
+        notes_parts.append("⚠️ Date is from email header (send date) — actual event date may differ, check attachment")
     
-    # Look for time patterns (e.g. "2pm", "14:00", "2:30pm")
-    time_match = re.search(r"(\d{1,2})(?::(\d{2}))?\s*(am|pm)?", text, re.IGNORECASE)
-    if time_match:
-        hour = int(time_match.group(1))
-        minute = time_match.group(2) or "00"
-        ampm = time_match.group(3)
-        if ampm and ampm.lower() == "pm" and hour < 12:
-            hour += 12
-        elif ampm and ampm.lower() == "am" and hour == 12:
-            hour = 0
-        start_time = f"{hour:02d}:{minute}"
+    # Look for time patterns — be more specific to avoid matching years like 2026
+    time_patterns = [
+        (r"(\d{1,2}):(\d{2})\s*(am|pm)", "ampm"),      # 2:30pm
+        (r"(\d{1,2})\s*(am|pm)", "ampm_short"),          # 2pm
+        (r"(?<!\d)(\d{1,2}):(\d{2})(?!\s*(am|pm|\w))", "24h"),  # 14:30 (no am/pm)
+    ]
+    for pattern, kind in time_patterns:
+        time_match = re.search(pattern, clean_text_for_dates, re.IGNORECASE)
+        if time_match:
+            groups = time_match.groups()
+            if kind == "ampm":
+                hour, minute, ampm = int(groups[0]), groups[1], groups[2]
+                if ampm.lower() == "pm" and hour < 12: hour += 12
+                elif ampm.lower() == "am" and hour == 12: hour = 0
+                start_time = f"{hour:02d}:{minute}"
+                break
+            elif kind == "ampm_short":
+                hour, ampm = int(groups[0]), groups[1]
+                if ampm.lower() == "pm" and hour < 12: hour += 12
+                elif ampm.lower() == "am" and hour == 12: hour = 0
+                start_time = f"{hour:02d}:00"
+                break
+            elif kind == "24h":
+                hour, minute = int(groups[0]), int(groups[1])
+                if 0 <= hour <= 23 and 0 <= minute <= 59:
+                    start_time = f"{hour:02d}:{minute}"
+                    break
     
     # Look for location patterns
     loc_patterns = [
