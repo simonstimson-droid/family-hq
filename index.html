@@ -250,8 +250,10 @@
         .msg-from { font-weight: 700; font-size: 13px; }
         .msg-time { font-size: 11px; color: #999; }
         .msg-body { font-size: 14px; color: #333; line-height: 1.4; }
-        
-        /* Profile overlay */
+        .del-btn { background: none; border: none; cursor: pointer; font-size: 14px; padding: 2px 6px; border-radius: 6px; transition: background 0.15s; opacity: 0.4; }
+        .del-btn:hover { background: #fee2e2; opacity: 1; }
+        .msg-item:hover .del-btn, .announcement-item:hover .del-btn { opacity: 0.7; }
+                /* Profile overlay */
         .profile-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 500; justify-content: center; align-items: flex-start; padding: 20px; overflow-y: auto; }
         .profile-overlay.show { display: flex; }
         .profile-card { background: white; border-radius: 20px; width: 100%; max-width: 500px; margin: 20px 0; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
@@ -491,8 +493,8 @@
     </div>
     
     <div class="tabs">
-        <div class="tab" data-panel="today">📅 Today</div>
-        <div class="tab active" data-panel="home">🏠 Home</div>
+        <div class="tab active" data-panel="today">📅 Today</div>
+        <div class="tab" data-panel="home">🏠 Home</div>
         <div class="tab" data-panel="calendar">📆 Calendar</div>
         <div class="tab" data-panel="shopping">🛒 Shopping</div>
         <div class="tab" data-panel="chores">✅ Chores</div>
@@ -509,7 +511,7 @@
     
     <div class="content">
         <!-- TODAY -->
-                <div class="panel active" id="home">
+                <div class="panel" id="home">
             <!-- Home Status Card -->
             <div class="card" id="homeStatus">
                 <h2>🏠 Home Status</h2>
@@ -549,7 +551,7 @@
                 <div id="homeCalendarData"><div class="loading"><span class="spinner">⏳</span> Loading events...</div></div>
             </div>
         </div>
-<div class="panel" id="today">
+<div class="panel active" id="today">
             <div class="card" id="nextEventCard">
                 <div id="nextEventData"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
@@ -1934,8 +1936,8 @@
         function renderAnnouncements(data) {
             const a = getSheet('📝').filter(x => (x.Priority || 'Announcement') !== 'Message' && (x.Priority || '') !== 'Todo');
             if (a.length) {
-                document.getElementById('announcementsList').innerHTML = a.map(x => `
-                    <div class="announcement-item ${x.Priority==='High'?'high':''}"><div class="from">${x.From||'Family'} • ${x.Date||''}</div>
+                document.getElementById('announcementsList').innerHTML = a.map((x, i) => `
+                    <div class="announcement-item ${x.Priority==='High'?'high':''}" data-idx="${i}"><div class="from">${x.From||'Family'} • ${x.Date||''} <button class="del-btn" onclick="deleteNews(${i})" title="Delete">🗑️</button></div>
                     <div class="msg">${x.Message||x.Announcement||''}</div></div>`).join('');
             } else { showEmpty('announcementsList', 'No announcements — all quiet! 📢'); }
         }
@@ -1954,15 +1956,45 @@
                     const fc = FAMILY_COLOURS[from];
                     const colour = fc ? fc.hex : '#667eea';
                     const timeAgo = getTimeAgo(m.Date);
-                    return `<div class="msg-item">
+                    return `<div class="msg-item" data-idx="${msgs.indexOf(m)}">
                         <div class="msg-top">
                             <span class="msg-from" style="color:${colour};">${from}</span>
                             <span class="msg-time">${timeAgo}</span>
+                            <button class="del-btn" onclick="deleteMessage(${msgs.indexOf(m)})" title="Delete">🗑️</button>
                         </div>
                         <div class="msg-body">${m.Message || ''}</div>
                     </div>`;
                 }).join('');
             } else { showEmpty('messagesList', 'No messages yet — be the first! 💬'); }
+        }
+
+        function deleteMessage(idx) {
+            if (!confirm('Delete this message?')) return;
+            const msgs = getSheet('📝').filter(x => (x.Priority || '') === 'Message');
+            msgs.sort((a, b) => { const da = new Date(a.Date || '2000'); const db = new Date(b.Date || '2000'); return db - da; });
+            const item = msgs[idx];
+            if (item && item._row) {
+                apiCall({ action: 'delete', sheet: '📝 Announcements', row: String(item._row) });
+                const sheet = familyData['📝 Announcements'];
+                if (sheet && sheet.rows) {
+                    sheet.rows = sheet.rows.filter(r => r._row !== item._row);
+                }
+                renderMessages(familyData);
+            }
+        }
+
+        function deleteNews(idx) {
+            if (!confirm('Delete this announcement?')) return;
+            const a = getSheet('📝').filter(x => (x.Priority || 'Announcement') !== 'Message' && (x.Priority || '') !== 'Todo');
+            const item = a[idx];
+            if (item && item._row) {
+                apiCall({ action: 'delete', sheet: '📝 Announcements', row: String(item._row) });
+                const sheet = familyData['📝 Announcements'];
+                if (sheet && sheet.rows) {
+                    sheet.rows = sheet.rows.filter(r => r._row !== item._row);
+                }
+                renderAnnouncements(familyData);
+            }
         }
         
         function getTimeAgo(dateStr) {
@@ -3130,12 +3162,12 @@
 
     // Auto-load home panel on page load
     document.addEventListener('DOMContentLoaded', initHomePanel);
-    // Also load when tab is clicked
-    const origSwitchTab = switchTab;
-    function switchTab(panel) {
-        origSwitchTab(panel);
-        if (panel === 'home') initHomePanel();
-    }
+    // Also load when home tab is clicked — hook into tab click
+    document.querySelectorAll('.tab').forEach(t => {
+        t.addEventListener('click', () => {
+            if (t.dataset.panel === 'home') initHomePanel();
+        });
+    });
 </script>
 </body>
 </html>
