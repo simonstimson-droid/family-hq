@@ -491,8 +491,8 @@
     </div>
     
     <div class="tabs">
-        <div class="tab active" data-panel="today">📅 Today</div>
-        <div class="tab" data-panel="home">🏠 Home</div>
+        <div class="tab" data-panel="today">📅 Today</div>
+        <div class="tab active" data-panel="home">🏠 Home</div>
         <div class="tab" data-panel="calendar">📆 Calendar</div>
         <div class="tab" data-panel="shopping">🛒 Shopping</div>
         <div class="tab" data-panel="chores">✅ Chores</div>
@@ -509,43 +509,7 @@
     
     <div class="content">
         <!-- TODAY -->
-        <div class="panel active" id="today">
-            <div class="card" id="nextEventCard">
-                <div id="nextEventData"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
-            </div>
-            <div class="card" id="weatherCard">
-                <h2>🌤️ Weather</h2>
-                <div id="weatherData"><div class="loading"><span class="spinner">⏳</span> Loading weather...</div></div>
-            </div>
-            <div class="card">
-                <h2>📅 Today's Events</h2>
-                <div id="todayEvents"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
-            </div>
-            <div class="card">
-                <h2>✅ Today's Chores</h2>
-                <div id="todayChores"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
-            </div>
-            <div class="card">
-                <h2>🍽️ Tonight's Dinner</h2>
-                <div id="tonightMeal"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
-            </div>
-            <div class="card">
-                <h2>📌 Quick Add To-Do</h2>
-                <div style="display:flex;gap:8px;align-items:center;">
-                    <input type="text" id="quickTodoInput" placeholder="e.g. Call the dentist..." style="flex:1;padding:10px 14px;border:2px solid #e0e7ff;border-radius:10px;font-size:14px;outline:none;" onfocus="this.style.border-color='#6366f1'" onblur="this.style.border-color='#e0e7ff'" onkeydown="if(event.key==='Enter')quickAddTodo()">
-                    <select id="quickTodoWho" style="padding:10px;border:2px solid #e0e7ff;border-radius:10px;font-size:13px;outline:none;">
-                        <option value="Simon">👨 Simon</option>
-                        <option value="Emma">👩 Emma</option>
-                        <option value="Ava">💜 Ava</option>
-                        <option value="Ella">💙 Ella</option>
-                    </select>
-                    <button onclick="quickAddTodo()" style="background:#6366f1;color:white;border:none;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">+ Add</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- HOME -->
-        <div class="panel" id="home">
+                <div class="panel active" id="home">
             <!-- Home Status Card -->
             <div class="card" id="homeStatus">
                 <h2>🏠 Home Status</h2>
@@ -583,6 +547,27 @@
             <div class="card" id="homeCalendar">
                 <h2>📅 Up Next</h2>
                 <div id="homeCalendarData"><div class="loading"><span class="spinner">⏳</span> Loading events...</div></div>
+            </div>
+        </div>
+<div class="panel" id="today">
+            <div class="card" id="nextEventCard">
+                <div id="nextEventData"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+            <div class="card" id="weatherCard">
+                <h2>🌤️ Weather</h2>
+                <div id="weatherData"><div class="loading"><span class="spinner">⏳</span> Loading weather...</div></div>
+            </div>
+            <div class="card">
+                <h2>📅 Today's Events</h2>
+                <div id="todayEvents"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+            <div class="card">
+                <h2>✅ Today's Chores</h2>
+                <div id="todayChores"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+            </div>
+            <div class="card">
+                <h2>🍽️ Tonight's Dinner</h2>
+                <div id="tonightMeal"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
         </div>
         
@@ -964,8 +949,7 @@
             <script>
         let familyData = null;
         let calView = 'week';
-        let calDate = new Date();
-        const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format for date comparisons
+        let calDate = new Date(); // central date for both week and month views
         
         // Set current date
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -1492,7 +1476,7 @@
             // Stats
             const total = items.length;
             const doneCount = items.filter(i => (i['Done ✓'] || i.Done || '').toString().trim() !== '').length;
-            const cats = {};
+            constcats = {};
             items.forEach(i => { const c = i.Category || 'Other'; cats[c] = (cats[c]||0) + 1; });
             
             // Active filter
@@ -1565,10 +1549,9 @@
             item.Done = newDone;
             renderShopping(familyData);
             
-            // Update in sheet
+            // Update in sheet  
             try {
-                await apiCall({action:'update', sheet:'🛒 Shopping List', row:String(idx+2), data:JSON.stringify({...item, 'Done ✓': newDone})});
-            } catch(e) { console.error('Failed to update done status', e); }
+                await apiCall({action:'update', sheet:} catch(e) { console.error('Failed to update done status', e); }
         }
         
         async function deleteShoppingItem(idx, btn) {
@@ -1951,41 +1934,10 @@
         function renderAnnouncements(data) {
             const a = getSheet('📝').filter(x => (x.Priority || 'Announcement') !== 'Message' && (x.Priority || '') !== 'Todo');
             if (a.length) {
-                // Sort newest first
-                a.sort((a, b) => new Date(b.Date || '2000') - new Date(a.Date || '2000'));
-                document.getElementById('announcementsList').innerHTML = a.map((x, idx) => `
-                    <div class="announcement-item ${x.Priority==='High'?'high':''}">
-                        <div class="from">${x.From||'Family'} • ${x.Date||''}
-                            <span style="margin-left:8px;cursor:pointer;color:#999;font-size:14px;" onclick="deleteAnnouncementItem(${idx}, event)" title="Delete">✕</span>
-                        </div>
-                        <div class="msg">${x.Message||x.Announcement||''}</div>
-                    </div>`).join('');
+                document.getElementById('announcementsList').innerHTML = a.map(x => `
+                    <div class="announcement-item ${x.Priority==='High'?'high':''}"><div class="from">${x.From||'Family'} • ${x.Date||''}</div>
+                    <div class="msg">${x.Message||x.Announcement||''}</div></div>`).join('');
             } else { showEmpty('announcementsList', 'No announcements — all quiet! 📢'); }
-        }
-        
-        async function deleteAnnouncementItem(idx, event) {
-            event.stopPropagation();
-            if (!confirm('Delete this announcement?')) return;
-            const a = getSheet('📝').filter(x => (x.Priority || 'Announcement') !== 'Message' && (x.Priority || '') !== 'Todo');
-            a.sort((a, b) => new Date(b.Date || '2000') - new Date(a.Date || '2000'));
-            const item = a[idx];
-            if (!item) return;
-            if (familyData) {
-                for (const key of Object.keys(familyData)) {
-                    if (key.startsWith('📝')) {
-                        const rowIdx = familyData[key].rows.findIndex(r => r === item);
-                        if (rowIdx >= 0) {
-                            familyData[key].rows.splice(rowIdx, 1);
-                            try {
-                                await apiCall({action:'delete', sheet:'📝 Announcements', row:String(rowIdx + 2)});
-                            } catch(e) { console.error('Failed to delete announcement row', e); }
-                        }
-                        break;
-                    }
-                }
-            }
-            renderAnnouncements(familyData);
-            showToast('🗑️ Announcement deleted');
         }
         
         function renderMessages(data) {
@@ -1997,7 +1949,7 @@
                     const db = new Date(b.Date || '2000');
                     return db - da;
                 });
-                document.getElementById('messagesList').innerHTML = msgs.slice(0, 50).map((m, idx) => {
+                document.getElementById('messagesList').innerHTML = msgs.slice(0, 50).map(m => {
                     const from = (m.From || 'Someone').trim();
                     const fc = FAMILY_COLOURS[from];
                     const colour = fc ? fc.hex : '#667eea';
@@ -2006,39 +1958,11 @@
                         <div class="msg-top">
                             <span class="msg-from" style="color:${colour};">${from}</span>
                             <span class="msg-time">${timeAgo}</span>
-                            <span style="margin-left:auto;cursor:pointer;color:#999;font-size:14px;" onclick="deleteMessageItem(${idx}, event)" title="Delete">✕</span>
                         </div>
                         <div class="msg-body">${m.Message || ''}</div>
                     </div>`;
                 }).join('');
             } else { showEmpty('messagesList', 'No messages yet — be the first! 💬'); }
-        }
-        
-        async function deleteMessageItem(idx, event) {
-            event.stopPropagation();
-            if (!confirm('Delete this message?')) return;
-            const msgs = getSheet('📝').filter(x => (x.Priority || '') === 'Message');
-            msgs.sort((a, b) => new Date(b.Date || '2000') - new Date(a.Date || '2000'));
-            const item = msgs[idx];
-            if (!item) return;
-            // Remove from familyData
-            if (familyData) {
-                for (const key of Object.keys(familyData)) {
-                    if (key.startsWith('📝')) {
-                        const rowIdx = familyData[key].rows.findIndex(r => r === item);
-                        if (rowIdx >= 0) {
-                            familyData[key].rows.splice(rowIdx, 1);
-                            // Delete from sheet
-                            try {
-                                await apiCall({action:'delete', sheet:'📝 Announcements', row:String(rowIdx + 2)});
-                            } catch(e) { console.error('Failed to delete message row', e); }
-                        }
-                        break;
-                    }
-                }
-            }
-            renderMessages(familyData);
-            showToast('🗑️ Message deleted');
         }
         
         function getTimeAgo(dateStr) {
@@ -2698,9 +2622,7 @@
             const memberInfo = members.find(m => m.Name === name) || {};
             const personEvents = events.filter(e => {
                 const who = (e.Who || e.who || '').toLowerCase();
-                const date = (e.Date || e.Start || '').substring(0, 10);
-                const isUpcoming = date >= today;
-                return (who.includes(name.toLowerCase()) || who === 'family' || who === 'everyone' || who === 'all') && isUpcoming;
+                return who.includes(name.toLowerCase()) || who === 'family' || who === 'everyone' || who === 'all';
             }).sort((a, b) => {
                 const da = new Date(a.Date || '2099');
                 const db = new Date(b.Date || '2099');
@@ -3032,7 +2954,7 @@
     
     // ========== HOME PANEL ==========
     const HA_URL = 'http://192.168.64.2:8123';
-    const HA_TOKEN='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI0NTZhYWZlM2M1YWU0ZDYxYmUzZWQ0ZDdiM2UxNzQxYiIsImlhdCI6MTc4MTMwNDU1OSwiZXhwIjoyMDk2NjY0NTU5fQ.8_-BJ11BPNQeSSBcmm46txwOAqLhbzJT9Ty2l6zH9Ag';; // Will be set via settings
+    const HA_TOKEN = 'YOUR_LONG_LIVED_ACCESS_TOKEN'; // Will be set via settings
 
     function initHomePanel() {
         checkHAStatus();
@@ -3047,18 +2969,15 @@
         const devicesEl = document.getElementById('haDevices');
         const linkEl = document.getElementById('haLink');
         try {
-            // Use a CORS proxy since GitHub Pages (HTTPS) can't fetch HTTP directly
-            const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(HA_URL + '/api/');
-            const r = await fetch(proxyUrl, { signal: AbortSignal.timeout(5000) });
+            const r = await fetch(HA_URL + '/api/', { signal: AbortSignal.timeout(3000) });
             if (r.ok) {
                 statusEl.textContent = 'Connected ✓';
                 statusEl.style.color = '#16a34a';
                 // Try to get states if token is set
                 if (HA_TOKEN && HA_TOKEN !== 'YOUR_LONG_LIVED_ACCESS_TOKEN') {
-                    const proxyStates = 'https://corsproxy.io/?' + encodeURIComponent(HA_URL + '/api/states');
-                    const sr = await fetch(proxyStates, {
+                    const sr = await fetch(HA_URL + '/api/states', {
                         headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
-                        signal: AbortSignal.timeout(8000)
+                        signal: AbortSignal.timeout(5000)
                     });
                     if (sr.ok) {
                         const states = await sr.json();
@@ -3103,19 +3022,10 @@
             return;
         }
         try {
-            let r;
-            try {
-                r = await fetch(HA_URL + '/api/states', {
-                    headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
-                    signal: AbortSignal.timeout(4000)
-                });
-            } catch(e) {
-                const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(HA_URL + '/api/states');
-                r = await fetch(proxyUrl, {
-                    headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
-                    signal: AbortSignal.timeout(8000)
-                });
-            }
+            const r = await fetch(HA_URL + '/api/states', {
+                headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
+                signal: AbortSignal.timeout(5000)
+            });
             if (!r.ok) { el.innerHTML = '<span style="color:#dc2626">Error loading</span>'; return; }
             const states = await r.json();
             const playing = states.filter(s =>
@@ -3160,25 +3070,15 @@
         statusEl.textContent = '📢 Sending...';
         try {
             // Get all media_player entities
-            let sr;
-            try {
-                sr = await fetch(HA_URL + '/api/states', {
-                    headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
-                    signal: AbortSignal.timeout(4000)
-                });
-            } catch(e) {
-                const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(HA_URL + '/api/states');
-                sr = await fetch(proxyUrl, {
-                    headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
-                    signal: AbortSignal.timeout(8000)
-                });
-            }
+            const sr = await fetch(HA_URL + '/api/states', {
+                headers: { 'Authorization': 'Bearer ' + HA_TOKEN },
+                signal: AbortSignal.timeout(5000)
+            });
             const states = await sr.json();
             const players = states.filter(s => s.entity_id.startsWith('media_player'));
             let sent = 0;
             for (const p of players) {
-                const proxyTTS = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(HA_URL + '/api/services/tts/google_translate_say');
-                const r = await fetch(proxyTTS, {
+                const r = await fetch(HA_URL + '/api/services/tts/google_translate_say', {
                     method: 'POST',
                     headers: { 'Authorization': 'Bearer ' + HA_TOKEN, 'Content-Type': 'application/json' },
                     body: JSON.stringify({
