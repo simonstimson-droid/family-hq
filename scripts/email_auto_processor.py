@@ -24,6 +24,7 @@ PROCESSED_LABEL = "FamilyHQ_Processed"
 ALLOWED_SENDERS = [
     "simon.stimson@gmail.com",
     "clementsonemma@gmail.com",
+    "eclementson@hotmail.com",
 ]
 
 # ---- Load token ----
