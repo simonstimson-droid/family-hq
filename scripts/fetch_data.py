@@ -55,8 +55,8 @@ for name in SHEETS:
         if values and len(values) > 1:
             headers = values[0]
             rows = []
-            for row in values[1:]:
-                row_dict = {}
+            for row_idx, row in enumerate(values[1:], start=2):
+                row_dict = {"_row": row_idx}
                 for i, h in enumerate(headers):
                     row_dict[h] = row[i] if i < len(row) else ""
                 rows.append(row_dict)
