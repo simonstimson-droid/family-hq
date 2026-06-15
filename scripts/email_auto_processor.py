@@ -33,10 +33,36 @@ def load_token():
         return json.load(f)
 
 def get_access_token():
-    """Get a valid access token, refreshing if needed."""
-    import urllib.request, urllib.parse
+    """Get a valid access token, refreshing if expired."""
+    import urllib.request, urllib.parse, ssl
+    from datetime import datetime, timezone, timedelta
     tok = load_token()
-    # Try to use the token directly first
+    # Check if token is expired
+    expiry_str = tok.get('expiry', '')
+    if expiry_str:
+        try:
+            exp_dt = datetime.fromisoformat(expiry_str)
+            now = datetime.now(timezone.utc)
+            if exp_dt <= now:
+                # Token expired — refresh it silently
+                params = {
+                    'client_id': tok['client_id'],
+                    'client_secret': tok['client_secret'],
+                    'refresh_token': tok['refresh_token'],
+                    'grant_type': 'refresh_token'
+                }
+                data = urllib.parse.urlencode(params).encode()
+                req = urllib.request.Request('https://oauth2.googleapis.com/token', data=data, method='POST')
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    result = json.loads(resp.read())
+                tok['access_token'] = result['access_token']
+                tok['token'] = result['access_token']
+                tok['expires_in'] = result.get('expires_in', 3599)
+                tok['expiry'] = (now + timedelta(seconds=tok['expires_in'])).isoformat()
+                with open(TOKEN_PATH, 'w') as f:
+                    json.dump(tok, f, indent=2)
+        except Exception as e:
+            print(f"Token refresh failed: {e}", flush=True)
     return tok.get("access_token") or tok.get("token")
 
 def gmail_api_request(method, path, data=None, token=None):
@@ -459,16 +485,21 @@ def append_to_sheet(sheet_name, row_data, token):
     return "error" not in result
 
 def label_email(msg_id, label_id, token):
-    """Add a label to an email to mark it as processed."""
-    gmail_api_request(
+    """Add a label to an email to mark it as processed.
+    Returns True on success, False on failure (e.g. insufficient scopes)."""
+    result = gmail_api_request(
         "POST",
         f"messages/{msg_id}/modify",
         {"addLabelIds": [label_id], "removeLabelIds": ["UNREAD"]},
         token=token
     )
+    if "error" in result:
+        print(f"    ⚠️ Could not label email as processed: {result['error']}")
+        return False
+    return True
 
 def main():
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] Family HQ Email Processor starting...")
+    # Silent startup — only output if something happens
     
     token = get_access_token()
     if not token:
@@ -484,7 +515,7 @@ def main():
     # Get unread emails
     emails = get_unread_emails(token, label_id)
     if not emails:
-        print("No new emails to process")
+        # Silent exit — nothing to process
         sys.exit(0)
     
     print(f"Found {len(emails)} unread email(s)")
