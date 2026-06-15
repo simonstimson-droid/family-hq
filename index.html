@@ -1909,6 +1909,7 @@
                             await apiCall({ action: 'append', sheet: '🍽️ Meal Plan', data: JSON.stringify(data) });
                             localAddItem('🍽️', data);
                         }
+                        renderMeals(familyData);
                         showToast(`✅ ${d} ${mealType} saved!`);
                     } catch(e) {
                         showToast('❌ Failed to save', true);
@@ -2466,7 +2467,7 @@
 
         // ===== TODO LIST =====
         function renderTodos(data) {
-            const todos = getSheet('📌');
+            const todos = getSheet('📝').filter(x => (x.Priority || '') === 'Todo');
             if (todos.length) {
                 // Sort: incomplete first, then by priority, then by date
                 const priorityOrder = { '🔴 High': 0, '🟡 Medium': 1, '🟢 Low': 2, '': 3 };
@@ -2520,11 +2521,13 @@
             const text = input.value.trim();
             if (!text) { showToast('Please enter a task', true); return; }
             const who = whoSel ? whoSel.value : 'Simon';
-            const data = { Message: text, 'Assigned To': who, Priority: '🟡 Medium', 'Due Date': '', 'Done ✓': '' };
+            const now = new Date();
+            const dateStr = now.toISOString().split('T')[0];
+            const data = { Date: dateStr, From: 'Family', Message: text, Priority: 'Todo', Who: who, 'Done ✓': '' };
             try {
-                const r = await apiCall({action:'append', sheet:'📌 To-Do', data:JSON.stringify(data)});
+                const r = await apiCall({action:'append', sheet:'📝 Announcements', data:JSON.stringify(data)});
                 if (r.success) {
-                    localAddItem('📌', data);
+                    localAddItem('📝', data);
                     input.value = '';
                     showToast('✅ Added!');
                 } else {
@@ -2739,7 +2742,7 @@
             if (sheetEmoji === '🛒') renderShopping(familyData);
             else if (sheetEmoji === '✅') renderChoresWithRewards(familyData);
             else if (sheetEmoji === '🍽️') renderMeals(familyData);
-            else if (sheetEmoji === '📝') renderAnnouncements(familyData);
+            else if (sheetEmoji === '📝') { renderAnnouncements(familyData); renderTodos(familyData); }
             else if (sheetEmoji === '📅') renderCalendar(familyData);
             renderToday(familyData);
         }
@@ -2880,59 +2883,6 @@
                 }
                 showToast('✅ Meal plan updated!'); closeModal();
             });
-        }
-        
-        async function addTodo() {
-            const taskInput = document.getElementById('todoText');
-            const whoSelect = document.getElementById('todoWho');
-            const task = taskInput.value.trim();
-            if (!task) { showToast('Please enter a task', true); return; }
-            const data = {
-                Task: task,
-                'Assigned To': whoSelect ? whoSelect.value : '',
-                'Due Date': '',
-                Priority: '🟡 Medium',
-                'Done': '',
-                Notes: '',
-                Created: new Date().toISOString().split('T')[0]
-            };
-            const r = await apiCall({action:'append', sheet:'📌 To-Do', data:JSON.stringify(data)});
-            if (r.success) {
-                localAddItem('📌', data);
-                taskInput.value = '';
-                showToast('✅ Todo added!');
-            } else {
-                showToast('❌ '+(r.error||'Failed'), true);
-            }
-        }
-        
-        async function toggleTodoDone(idx) {
-            const todos = getSheet('📌');
-            const t = todos[idx];
-            if (!t) return;
-            const newDone = (t['Done'] || '').toString().trim() ? '' : '✓';
-            t['Done'] = newDone;
-            const el = document.querySelector(`.todo-item[data-idx="${idx}"]`);
-            if (el) {
-                el.classList.toggle('done');
-                el.querySelector('.todo-check').textContent = newDone ? '✅' : '⬜';
-            }
-            apiCall({action:'update', sheet:'📌 To-Do', row:String(idx+2), data:JSON.stringify(t)}).catch(()=>{});
-        }
-        
-        async function deleteTodo(idx) {
-            if (!confirm('Delete this todo?')) return;
-            const todos = getSheet('📌');
-            const t = todos[idx];
-            if (!t) return;
-            const r = await apiCall({action:'delete', sheet:'📌 To-Do', row:String(idx+2)});
-            if (r.success) {
-                todos.splice(idx, 1);
-                renderTodos(familyData);
-                showToast('🗑️ Todo deleted');
-            } else {
-                showToast('❌ '+(r.error||'Failed'),true);
-            }
         }
         
         // ===== WEATHER (wttr.in — free, no API key) =====
