@@ -2248,11 +2248,40 @@
         
         function renderAnnouncements(data) {
             const a = getSheet('📝').filter(x => (x.Priority || 'Announcement') !== 'Message' && (x.Priority || '') !== 'Todo');
-            if (a.length) {
-                document.getElementById('announcementsList').innerHTML = a.map((x, i) => `
-                    <div class="announcement-item ${x.Priority==='High'?'high':''}" data-idx="${i}"><div class="from">${x.From||'Family'} • ${x.Date||''} <button class="del-btn" onclick="deleteNews(${i})" title="Delete">🗑️</button></div>
-                    <div class="msg">${x.Message||x.Announcement||''}</div></div>`).join('');
-            } else { showEmpty('announcementsList', 'No announcements — all quiet! 📢'); }
+            const el = document.getElementById('announcementsList');
+            if (!el) return;
+            if (!a.length) { showEmpty('announcementsList', 'No announcements — all quiet! 📢'); return; }
+            // Sort newest first
+            a.sort((x, y) => (y.Date || '').localeCompare(x.Date || ''));
+            const priorityIcons = {'🔴 URGENT': '🔴', '📌 Important': '📌', 'Info': 'ℹ️'};
+            const priorityBorders = {'🔴 URGENT': '#ef4444', '📌 Important': '#f59e0b', 'Info': '#93c5fd'};
+            const priorityBg = {'🔴 URGENT': '#fef2f2', '📌 Important': '#fffbeb', 'Info': '#f8fafc'};
+            let html = '';
+            let lastDate = '';
+            a.forEach((x, i) => {
+                const p = x.Priority || 'Info';
+                const icon = priorityIcons[p] || 'ℹ️';
+                const border = priorityBorders[p] || '#93c5fd';
+                const bg = priorityBg[p] || '#f8fafc';
+                const msg = (x.Message || x.Announcement || '').trim();
+                const isLong = msg.length > 200;
+                const shortMsg = isLong ? msg.substring(0, 200) + '…' : msg;
+                const dateStr = x.Date || '';
+                // Date separator
+                if (dateStr !== lastDate) {
+                    html += `<div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin:16px 0 8px 0;padding-top:8px;border-top:1px solid #e2e8f0;">📅 ${dateStr}</div>`;
+                    lastDate = dateStr;
+                }
+                html += `<div style="background:${bg};border-left:4px solid ${border};border-radius:10px;padding:14px;margin-bottom:8px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="font-size:12px;font-weight:600;color:#475569;">${icon} ${x.From || 'Family'}</span>
+                        <button onclick="deleteNews(${i})" style="background:none;border:none;cursor:pointer;font-size:14px;opacity:0.5;" title="Delete">🗑️</button>
+                    </div>
+                    <div style="font-size:14px;color:#1e293b;line-height:1.6;white-space:pre-wrap;" id="newsMsg_${i}">${isLong ? shortMsg : msg}</div>
+                    ${isLong ? `<button onclick="var el=document.getElementById('newsMsg_${i}');el.innerHTML=el.nextElementSibling.getAttribute('data-full');el.nextElementSibling.remove();" style="background:none;border:none;color:#3b82f6;font-size:12px;cursor:pointer;margin-top:4px;padding:0;">Read more ›</button><span data-full="${msg.replace(/"/g,'&quot;')}" style="display:none;"></span>` : ''}
+                </div>`;
+            });
+            el.innerHTML = html;
         }
         
         function renderMessages(data) {
