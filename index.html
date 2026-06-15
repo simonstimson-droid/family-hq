@@ -1608,31 +1608,30 @@
                     </div>`;
             } else { showEmpty('tonightMeal', 'No meal planned — time to decide! 🍽️'); }
             
-            // Latest message from Announcements
+            // Latest family message
             const announcements = getSheet('📝');
             const msgEl = document.getElementById('latestMessage');
             if (msgEl) {
-                if (announcements.length) {
+                // Filter to family messages only (Priority = 'Message')
+                const familyMsgs = announcements.filter(a => (a.Priority || '') === 'Message');
+                if (familyMsgs.length) {
                     // Sort by date descending, take the newest
-                    const sorted = [...announcements].sort((a, b) => (b.Date || '').localeCompare(a.Date || ''));
+                    const sorted = [...familyMsgs].sort((a, b) => (b.Date || '').localeCompare(a.Date || ''));
                     const latest = sorted[0];
                     const dateStr = latest.Date || '';
                     const fromStr = latest.From || 'Unknown';
                     const msgStr = latest.Message || '';
-                    const priority = latest.Priority || '';
-                    const priorityColors = {'Info': '#3b82f6', 'Important': '#f59e0b', 'Urgent': '#ef4444', 'Message': '#8b5cf6', 'Todo': '#10b981'};
-                    const pColor = priorityColors[priority] || '#6b7280';
                     msgEl.innerHTML = `
                         <div style="background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border-radius:14px;padding:16px;border:2px solid #bae6fd;">
                             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                                <span style="font-size:11px;font-weight:700;color:#0369a1;text-transform:uppercase;letter-spacing:0.5px;">📬 ${fromStr}</span>
-                                <span style="font-size:10px;font-weight:600;color:${pColor};background:${pColor}15;padding:2px 8px;border-radius:6px;">${priority || 'Info'}</span>
+                                <span style="font-size:11px;font-weight:700;color:#0369a1;text-transform:uppercase;letter-spacing:0.5px;">💬 ${fromStr}</span>
+                                <span style="font-size:10px;font-weight:600;color:#8b5cf6;background:#ede9fe;padding:2px 8px;border-radius:6px;">Message</span>
                             </div>
                             <div style="font-size:14px;color:#1e293b;line-height:1.5;">${msgStr}</div>
                             ${dateStr ? `<div style="font-size:11px;color:#94a3b8;margin-top:8px;">📅 ${dateStr}</div>` : ''}
                         </div>`;
                 } else {
-                    msgEl.innerHTML = `<div style="color:#94a3b8;font-size:13px;text-align:center;padding:12px;">No messages yet 📭</div>`;
+                    msgEl.innerHTML = `<div style="color:#94a3b8;font-size:13px;text-align:center;padding:12px;">No family messages yet 💬</div>`;
                 }
             }
         }
@@ -2070,38 +2069,89 @@
                 if (all.includes('bacon') || all.includes('sausage')) { addIng(mealName, 'Bacon'); }
                 if (all.includes('bean')) { addIng(mealName, 'Baked beans'); }
                 if (all.includes('soup')) { addIng(mealName, 'Soup'); }
+                if (all.includes('pizza')) { addIng(mealName, 'Pizza base'); addIng(mealName, 'Cheese'); }
+                if (all.includes('fajita')) { addIng(mealName, 'Fajita kit'); addIng(mealName, 'Chicken'); }
+                if (all.includes('roast')) { addIng(mealName, 'Chicken'); addIng(mealName, 'Potatoes'); addIng(mealName, 'Veg'); }
+                if (all.includes('pancake')) { addIng(mealName, 'Pancake mix'); addIng(mealName, 'Syrup'); }
+                if (all.includes('croissant')) { addIng(mealName, 'Croissants'); }
+                if (all.includes('jacket potato') || all.includes('jacket')) { addIng(mealName, 'Potatoes'); addIng(mealName, 'Beans'); }
+                if (all.includes('full english') || all.includes('full english')) { addIng(mealName, 'Bacon'); addIng(mealName, 'Sausages'); addIng(mealName, 'Eggs'); addIng(mealName, 'Beans'); addIng(mealName, 'Bread'); }
+                if (all.includes('garlic bread')) { addIng(mealName, 'Garlic bread'); }
+                if (all.includes('fruit')) { addIng(mealName, 'Fruit'); }
+                if (all.includes('yoghurt') || all.includes('yogurt')) { addIng(mealName, 'Yoghurt'); }
+                if (all.includes('crisp')) { addIng(mealName, 'Crisps'); }
+                if (all.includes('roll')) { addIng(mealName, 'Rolls'); }
             });
             const suggestions = Object.keys(mealIngredients);
             if (suggestions.length === 0) {
                 showToast('🛒 Shopping list looks covered for this week!', true);
                 return;
             }
-            const listHtml = suggestions.map(s => `<li style="padding:4px 0;">${s} <span style="color:#999;font-size:11px;">(${mealIngredients[s].join(', ')})</span></li>`).join('');
-            openModal(`<h3>🛒 Suggested Items</h3>
-                <p style="font-size:13px;color:#666;margin-bottom:12px;">From this week's meal plan, you might need:</p>
-                <ul style="font-size:13px;margin-bottom:16px;max-height:200px;overflow-y:auto;">${listHtml}</ul>
-                <div class="modal-btns">
-                    <button class="cancel" onclick="closeModal()">Cancel</button>
-                    <button class="save" id="mealShopSaveBtn" onclick="modalSave()">Add to Shopping</button>
-                </div>`,
-            async () => {
-                const btn = document.getElementById('mealShopSaveBtn');
-                btn.disabled = true; btn.textContent = 'Adding...';
-                let added = 0;
-                for (const item of suggestions) {
-                    const cat = item.includes('Milk') || item.includes('Butter') ? 'Dairy' : 
-                                item.includes('Pasta') || item.includes('Rice') || item.includes('Bread') || item.includes('Wrap') || item.includes('Oats') ? 'Bakery' :
-                                item.includes('Chicken') || item.includes('Mince') || item.includes('Fish') || item.includes('Bacon') || item.includes('Sausage') || item.includes('Egg') ? 'Meat' :
-                                item.includes('Peas') || item.includes('Onion') || item.includes('Mushroom') || item.includes('Salad') ? 'Fruit & Veg' : 'Other';
-                    const data = { Item: item, Quantity: '', 'Added by': 'Simon', 'Done ✓': '', Category: cat };
-                    try {
-                        const r = await apiCall({action:'append', sheet:'🛒 Shopping List', data:JSON.stringify(data)});
-                        if (r.success) { localAddItem('🛒', data); added++; }
-                    } catch(e) { console.error('Failed', item, e); }
+            // Build checkbox list — all ticked by default
+            const listHtml = suggestions.map((s, i) => `
+                <label style="display:flex;align-items:center;gap:10px;padding:8px 0;cursor:pointer;border-bottom:1px solid #f1f5f9;">
+                    <input type="checkbox" id="shopSugg_${i}" checked style="width:18px;height:18px;accent-color:#10b981;">
+                    <span style="font-size:14px;flex:1;">${s}</span>
+                    <span style="font-size:11px;color:#94a3b8;">${mealIngredients[s].join(', ')}</span>
+                </label>`).join('');
+            const modalId = 'autoShopModal';
+            document.body.insertAdjacentHTML('beforeend', `
+                <div class="modal-overlay show" id="${modalId}" onclick="if(event.target===this)closeAutoShop()">
+                    <div class="modal" style="max-width:420px;">
+                        <h3>🛒 Auto-Shop Suggestions</h3>
+                        <p style="font-size:13px;color:#666;margin-bottom:8px;">From this week's meal plan. Untick anything you don't need:</p>
+                        <div style="max-height:50vh;overflow-y:auto;margin-bottom:12px;" id="autoShopList">${listHtml}</div>
+                        <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;">
+                            <button onclick="document.querySelectorAll('#autoShopList input[type=checkbox]').forEach(c=>c.checked=true)" style="font-size:12px;padding:4px 10px;border:1px solid #e2e8f0;border-radius:6px;background:#f8fafc;cursor:pointer;">✓ Tick all</button>
+                            <button onclick="document.querySelectorAll('#autoShopList input[type=checkbox]').forEach(c=>c.checked=false)" style="font-size:12px;padding:4px 10px;border:1px solid #e2e8f0;border-radius:6px;background:#f8fafc;cursor:pointer;">✗ Untick all</button>
+                        </div>
+                        <div class="modal-btns">
+                            <button class="cancel" onclick="closeAutoShop()">Cancel</button>
+                            <button class="save" id="autoShopSaveBtn" onclick="closeAutoShop(true)">Add to Shopping</button>
+                        </div>
+                    </div>
+                </div>`);
+            // Store suggestions for the save handler
+            window._autoShopSuggestions = suggestions;
+            window._autoShopIngredients = mealIngredients;
+        }
+
+        function closeAutoShop(doSave) {
+            const suggestions = window._autoShopSuggestions || [];
+            const ingredients = window._autoShopIngredients || {};
+            // Read checkboxes BEFORE removing modal
+            if (doSave) {
+                const checked = [];
+                suggestions.forEach((s, i) => {
+                    const cb = document.getElementById(`shopSugg_${i}`);
+                    if (cb && cb.checked) checked.push(s);
+                });
+                if (checked.length > 0) {
+                    addAutoShopItems(checked, ingredients);
+                } else {
+                    showToast('ℹ️ No items selected', true);
                 }
-                closeModal();
-                showToast(`✅ Added ${added} items to shopping!`);
-            });
+            }
+            const modal = document.getElementById('autoShopModal');
+            if (modal) modal.remove();
+            window._autoShopSuggestions = null;
+            window._autoShopIngredients = null;
+        }
+
+        async function addAutoShopItems(items, ingredients) {
+            let added = 0;
+            for (const item of items) {
+                const cat = item.includes('Milk') || item.includes('Butter') ? 'Dairy' :
+                            item.includes('Pasta') || item.includes('Rice') || item.includes('Bread') || item.includes('Wrap') || item.includes('Oats') || item.includes('Cereal') ? 'Bakery' :
+                            item.includes('Chicken') || item.includes('Mince') || item.includes('Fish') || item.includes('Bacon') || item.includes('Sausage') || item.includes('Egg') || item.includes('Beef') ? 'Meat' :
+                            item.includes('Peas') || item.includes('Onion') || item.includes('Mushroom') || item.includes('Salad') || item.includes('Potato') || item.includes('Veg') || item.includes('Fruit') ? 'Fruit & Veg' : 'Other';
+                const data = { Item: item, Quantity: '', 'Added by': 'Auto-Shop', 'Done ✓': '', Category: cat };
+                try {
+                    const r = await apiCall({action:'append', sheet:'🛒 Shopping List', data:JSON.stringify(data)});
+                    if (r.success) { localAddItem('🛒', data); added++; }
+                } catch(e) { console.error('Failed', item, e); }
+            }
+            showToast(`✅ Added ${added} items to shopping!`);
         }
         
         function renderSchool(data) {
