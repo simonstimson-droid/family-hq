@@ -2560,12 +2560,14 @@
             };
             
             const r = await apiCall({action:'append', sheet:'📝 Announcements', data:JSON.stringify(data)});
-            if (r.success) {
+            console.log('addTodo API response:', r);
+            if (r && r.success) {
                 localAddItem('📝', data);
                 document.getElementById('todoText').value = '';
                 showToast('📌 Task added!');
             } else {
-                showToast('❌ Failed to add', true);
+                console.error('addTodo failed:', r);
+                showToast('❌ Failed to add' + (r?.error ? ': ' + r.error : ''), true);
             }
         }
         
@@ -2682,8 +2684,13 @@
         async function apiCall(params) {
             const fd = new URLSearchParams();
             for (const [k,v] of Object.entries(params)) fd.append(k, v);
-            const r = await fetch(API_URL, { method: 'POST', body: fd });
-            return r.json();
+            try {
+                const r = await fetch(API_URL, { method: 'POST', body: fd });
+                return r.json();
+            } catch(e) {
+                console.error('apiCall network error:', e, params);
+                return { success: false, error: e.message };
+            }
         }
         
         // ===== GOOGLE CALENDAR SYNC =====
