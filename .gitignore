@@ -3,3 +3,7 @@ __pycache__/
 .env
 node_modules/
 .DS_Store
+update_ha_token.py
+update_token.py
+update_ha_token.py
+update_token.py
