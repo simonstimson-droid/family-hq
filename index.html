@@ -1478,7 +1478,7 @@
             // Stats
             const total = items.length;
             const doneCount = items.filter(i => (i['Done ✓'] || i.Done || '').toString().trim() !== '').length;
-            constcats = {};
+            const cats = {};
             items.forEach(i => { const c = i.Category || 'Other'; cats[c] = (cats[c]||0) + 1; });
             
             // Active filter
