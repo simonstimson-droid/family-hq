@@ -3410,6 +3410,7 @@
         const linkEl = document.getElementById('haLink');
         try {
             const r = await fetch(HA_URL + '/api/', { signal: AbortSignal.timeout(3000) });
+            console.log('HA status response:', r.status, r.ok);
             if (r.ok) {
                 statusEl.textContent = 'Connected ✓';
                 statusEl.style.color = '#16a34a';
@@ -3448,6 +3449,7 @@
                 devicesEl.textContent = 'Cannot connect to Home Assistant';
             }
         } catch(e) {
+            console.error('HA connection error:', e.name, e.message);
             statusEl.textContent = 'Offline';
             statusEl.style.color = '#dc2626';
             devicesEl.innerHTML = 'VM may be unreachable — are you on home WiFi?<br><span style="font-size:11px;color:#94a3b8;">Note: HA is HTTP-only, so browser may block from HTTPS pages.<br>Open HA directly: <a href="http://192.168.64.2:8123" style="color:#3b82f6;">192.168.64.2:8123</a></span>';
