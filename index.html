@@ -2317,7 +2317,10 @@
             msgs.sort((a, b) => { const da = new Date(a.Date || '2000'); const db = new Date(b.Date || '2000'); return db - da; });
             const item = msgs[idx];
             if (item && item._row) {
-                apiCall({ action: 'delete', sheet: '📝 Announcements', row: String(item._row) });
+                // Clear the row in the sheet (delete not supported via API, so we blank it)
+                const emptyRow = {};
+                for (const k of Object.keys(item)) emptyRow[k] = '';
+                apiCall({ action: 'update', sheet: '📝 Announcements', row: String(item._row), data: JSON.stringify(emptyRow) });
                 const sheet = familyData['📝 Announcements'];
                 if (sheet && sheet.rows) {
                     sheet.rows = sheet.rows.filter(r => r._row !== item._row);
@@ -2331,7 +2334,10 @@
             const a = getSheet('📝').filter(x => (x.Priority || 'Announcement') !== 'Message' && (x.Priority || '') !== 'Todo');
             const item = a[idx];
             if (item && item._row) {
-                apiCall({ action: 'delete', sheet: '📝 Announcements', row: String(item._row) });
+                // Clear the row in the sheet (delete not supported via API, so we blank it)
+                const emptyRow = {};
+                for (const k of Object.keys(item)) emptyRow[k] = '';
+                apiCall({ action: 'update', sheet: '📝 Announcements', row: String(item._row), data: JSON.stringify(emptyRow) });
                 const sheet = familyData['📝 Announcements'];
                 if (sheet && sheet.rows) {
                     sheet.rows = sheet.rows.filter(r => r._row !== item._row);
@@ -2568,12 +2574,19 @@
             const todos = getSheet('📝').filter(x => (x.Priority || '') === 'Todo');
             const t = todos[idx];
             if (!t) return;
-            
+
+            // Clear the row in the sheet
+            if (t._row) {
+                const emptyRow = {};
+                for (const k of Object.keys(t)) emptyRow[k] = '';
+                apiCall({ action: 'update', sheet: '📝 Announcements', row: String(t._row), data: JSON.stringify(emptyRow) });
+            }
+
             // Find in familyData and remove
             const rows = familyData['📝 Announcements'].rows;
             const realIdx = rows.indexOf(t);
             if (realIdx >= 0) rows.splice(realIdx, 1);
-            
+
             renderTodos(familyData);
             showToast('🗑️ Task deleted');
         }
