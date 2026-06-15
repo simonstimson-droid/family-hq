@@ -56,6 +56,12 @@
         .todo-item .todo-delete:hover { color: #ef4444; }
         .todo-item .assignee { font-size: 12px; color: #666; }
         .chore-day-badge { display: inline-block; background: #667eea; color: white; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; margin-right: 6px; text-transform: uppercase; vertical-align: middle; }
+        .chore-day-group { margin-bottom: 14px; }
+        .chore-day-header { font-size: 13px; font-weight: 700; color: #667eea; padding: 6px 0 4px; border-bottom: 2px solid #e0e7ff; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        .chore-day-header .day-icon { font-size: 16px; }
+        .chore-day-header .day-count { font-size: 11px; color: #999; font-weight: 400; }
+        .chore-day-header.today-group { color: #f59e0b; border-bottom-color: #fde68a; }
+        .chore-day-group-empty { color: #999; font-style: italic; font-size: 12px; padding: 4px 0; }
         .chore-item { border-left-color: #f59e0b; background: #fffbeb; cursor: pointer; }
         .chore-item:hover { background: #fef3c7; }
         .chore-item.done { opacity: 0.45; text-decoration: line-through; border-left-color: #10b981; background: #f0fdf4; }
@@ -124,6 +130,9 @@
         .meal-stats { margin-top: 10px; font-size: 12px; color: #999; text-align: center; }
         @media (max-width: 700px) { .meal-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 400px) { .meal-grid { grid-template-columns: 1fr; } }
+        
+        .meal-inline-input { width:100%;border:none;background:transparent;font-size:13px;font-family:inherit;outline:none;padding:0;color:#333; }
+        .meal-inline-input:focus { border-bottom:2px solid #8b5cf6; }
         
         .activity-item { border-left-color: #06b6d4; background: #f0fdff; }
         .activity-item .child { font-weight: 700; color: #0891b2; }
@@ -307,6 +316,36 @@
         .event-detail .ed-cal-btn { background: #667eea; color: white; }
         .event-detail .ed-cal-btn:hover { background: #5a6fd6; }
         .event-detail .ed-close-btn { background: #f0f0f0; color: #666; }
+        
+        /* Day events modal */
+        .day-modal { padding: 4px 0; }
+        .day-modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; gap: 10px; }
+        .day-modal-date { font-size: 18px; font-weight: 700; color: #1e1b4b; }
+        .day-modal-today-badge { background: #667eea; color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 10px; letter-spacing: 0.5px; }
+        .day-modal-count { font-size: 13px; color: #999; margin-bottom: 12px; }
+        .day-modal-empty { text-align: center; padding: 32px 16px; color: #999; font-style: italic; }
+        .day-modal-events { max-height: 55vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .day-modal-event { display: flex; align-items: stretch; background: white; border-radius: 12px; margin-bottom: 8px; overflow: hidden; cursor: pointer; transition: all 0.15s; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.06); }
+        .day-modal-event:hover { transform: translateX(2px); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .day-modal-event:active { transform: scale(0.98); }
+        .dme-color { width: 5px; flex-shrink: 0; }
+        .dme-body { flex: 1; padding: 12px 14px; min-width: 0; }
+        .dme-top { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+        .dme-emoji { font-size: 16px; flex-shrink: 0; }
+        .dme-title { font-weight: 600; font-size: 15px; color: #1e1b4b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .dme-details { display: flex; flex-wrap: wrap; gap: 6px; }
+        .dme-detail { font-size: 12px; color: #666; background: #f1f5f9; padding: 2px 8px; border-radius: 6px; }
+        .dme-notes { font-size: 12px; color: #888; margin-top: 4px; font-style: italic; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .dme-arrow { display: flex; align-items: center; padding: 0 12px; color: #ccc; font-size: 22px; flex-shrink: 0; }
+        .day-modal-actions { margin-top: 16px; }
+        .day-modal-close { width: 100%; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; background: #f0f0f0; color: #555; }
+        .day-modal-close:hover { background: #e0e0e0; }
+        @media (max-width: 600px) {
+            .day-modal-date { font-size: 16px; }
+            .day-modal-events { max-height: 65vh; }
+            .dme-title { font-size: 14px; }
+            .dme-detail { font-size: 11px; }
+        }
         
         /* Family member colours */
         .family-card { border: 2px solid transparent; }
@@ -621,11 +660,65 @@
         <div class="panel" id="meals">
             <div class="card">
                 <h2>🍽️ Weekly Meal Plan</h2>
-                <p style="color:#666;font-size:13px;margin-bottom:12px;">Click any meal to edit it. Changes save automatically.</p>
-                <div id="mealPlan"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
+                <p style="color:#666;font-size:13px;margin-bottom:12px;">Click any meal to edit inline, or use the buttons below for more options.</p>
+                <div id="mealPlan">
+                    <div class="meal-grid">
+                        <!-- Monday -->
+                        <div class="meal-day">
+                            <div class="meal-day-header">Monday</div>
+                            <div class="meal-slot"><span class="meal-label">🌅</span><span class="meal-val">Porridge &amp; berries</span></div>
+                            <div class="meal-slot"><span class="meal-label">☀️</span><span class="meal-val">Sandwich &amp; fruit</span></div>
+                            <div class="meal-slot"><span class="meal-label">🌙</span><span class="meal-val">Spaghetti Bolognese</span></div>
+                        </div>
+                        <!-- Tuesday -->
+                        <div class="meal-day">
+                            <div class="meal-day-header">Tuesday</div>
+                            <div class="meal-slot"><span class="meal-label">🌅</span><span class="meal-val">Toast &amp; banana</span></div>
+                            <div class="meal-slot"><span class="meal-label">☀️</span><span class="meal-val">Pasta salad</span></div>
+                            <div class="meal-slot"><span class="meal-label">🌙</span><span class="meal-val">Chicken stir-fry</span></div>
+                        </div>
+                        <!-- Wednesday -->
+                        <div class="meal-day">
+                            <div class="meal-day-header">Wednesday</div>
+                            <div class="meal-slot"><span class="meal-label">🌅</span><span class="meal-val">Cereal &amp; yoghurt</span></div>
+                            <div class="meal-slot"><span class="meal-label">☀️</span><span class="meal-val">Soup &amp; roll</span></div>
+                            <div class="meal-slot"><span class="meal-label">🌙</span><span class="meal-val">Fish fingers &amp; chips</span></div>
+                        </div>
+                        <!-- Thursday -->
+                        <div class="meal-day">
+                            <div class="meal-day-header">Thursday</div>
+                            <div class="meal-slot"><span class="meal-label">🌅</span><span class="meal-val">Scrambled eggs</span></div>
+                            <div class="meal-slot"><span class="meal-label">☀️</span><span class="meal-val">Wrap &amp; crisps</span></div>
+                            <div class="meal-slot"><span class="meal-label">🌙</span><span class="meal-val">Homemade pizza</span></div>
+                        </div>
+                        <!-- Friday -->
+                        <div class="meal-day">
+                            <div class="meal-day-header">Friday</div>
+                            <div class="meal-slot"><span class="meal-label">🌅</span><span class="meal-val">Pancakes &amp; syrup</span></div>
+                            <div class="meal-slot"><span class="meal-label">☀️</span><span class="meal-val">Jacket potato</span></div>
+                            <div class="meal-slot"><span class="meal-label">🌙</span><span class="meal-val">Fish &amp; rice</span></div>
+                        </div>
+                        <!-- Saturday -->
+                        <div class="meal-day">
+                            <div class="meal-day-header">Saturday</div>
+                            <div class="meal-slot"><span class="meal-label">🌅</span><span class="meal-val">Full English</span></div>
+                            <div class="meal-slot"><span class="meal-label">☀️</span><span class="meal-val">Toasties</span></div>
+                            <div class="meal-slot"><span class="meal-label">🌙</span><span class="meal-val">Fajita night 🌮</span></div>
+                        </div>
+                        <!-- Sunday -->
+                        <div class="meal-day">
+                            <div class="meal-day-header">Sunday</div>
+                            <div class="meal-slot"><span class="meal-label">🌅</span><span class="meal-val">Croissants &amp; jam</span></div>
+                            <div class="meal-slot"><span class="meal-label">☀️</span><span class="meal-val">Roast chicken dinner</span></div>
+                            <div class="meal-slot"><span class="meal-label">🌙</span><span class="meal-val">Pasta &amp; garlic bread</span></div>
+                        </div>
+                    </div>
+                    <div class="meal-stats">7/7 days planned • Click any meal to edit inline</div>
+                </div>
                 <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
                     <button class="add-btn" onclick="openMealEditor()">✏️ Edit Full Week</button>
                     <button class="add-btn" style="background:linear-gradient(135deg,#10b981,#059669)" onclick="quickAddMeal()">+ Quick Add</button>
+                    <button class="add-btn" style="background:linear-gradient(135deg,#f59e0b,#f97316)" onclick="suggestShoppingFromMeals()">🛒 Auto-Shop</button>
                 </div>
             </div>
         </div>
@@ -1136,7 +1229,7 @@
                         return eDate === dateStr;
                     });
                     
-                    html += `<div class="week-day ${isToday ? 'today' : ''}">`;
+                    html += `<div class="week-day ${isToday ? 'today' : ''}"${dayEvents.length > 0 ? ` onclick="showDayEvents('${dateStr}')"` : ''}>`;
                     html += `<div class="day-num">${d.getDate()}</div>`;
                     html += `<div class="day-name">${dayNames[d.getDay()===0?6:d.getDay()-1].substring(0,3)}</div>`;
                     html += `<div class="day-events">`;
@@ -1150,7 +1243,10 @@
                     });
                     html += `</div>`;
                     if (dayEvents.length > 4) {
-                        html += `<div class="more-link" onclick="showDayEvents('${dateStr}')">+${dayEvents.length - 4} more</div>`;
+                        html += `<div class="more-link" onclick="event.stopPropagation();showDayEvents('${dateStr}')">+${dayEvents.length - 4} more</div>`;
+                    }
+                    if (dayEvents.length > 0 && dayEvents.length <= 4) {
+                        html += `<div class="more-link" onclick="event.stopPropagation();showDayEvents('${dateStr}')">View all</div>`;
                     }
                     html += `</div>`;
                 });
@@ -1228,29 +1324,71 @@
         function showDayEvents(dateStr) {
             const events = getSheet('📅');
             const dayEvents = events.filter(e => (e.Date || e.date || e.Start || '').substring(0,10) === dateStr);
-            if (dayEvents.length === 0) return;
             
             const d = new Date(dateStr + 'T00:00:00');
-            const dateFormatted = d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+            const dateFormatted = d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+            const isToday = dateStr === todayStr();
             
-            let html = `<div class="event-detail">`;
-            html += `<div class="ed-title">${dateFormatted}</div>`;
-            html += `<div style="color:#999;margin-bottom:12px;">${dayEvents.length} event${dayEvents.length>1?'s':''}</div>`;
+            // Sort by time (all-day first, then by start time)
+            dayEvents.sort((a, b) => {
+                const ta = (a.Time || a.time || '').trim();
+                const tb = (b.Time || b.time || '').trim();
+                if (ta === 'All day' && tb !== 'All day') return -1;
+                if (tb === 'All day' && ta !== 'All day') return 1;
+                return ta.localeCompare(tb);
+            });
             
-            dayEvents.forEach(e => {
-                const cls = getEventClass(e);
-                const colors = {'school':'#10b981','activity':'#06b6d4','holiday':'#f59e0b','':'#667eea'};
-                const who = (e.Who || e.who || '');
-                const dotCls = who ? nameToDotClass(who) : '';
-                html += `<div style="border-left:4px solid ${colors[cls]};background:#f8f9ff;padding:12px;border-radius:0 8px 8px 0;margin-bottom:8px;cursor:pointer;" onclick='showEventDetail(${JSON.stringify(e).replace(/'/g, "\\'")})'>`;
-                html += `<div style="font-weight:600;font-size:15px;">${dotCls ? `<span class="event-dot ${dotCls}"></span>` : ''}${e.Event || e.event || e.Title || 'Event'}</div>`;
-                if (e.Time || e.time) html += `<div style="font-size:13px;color:#666;margin-top:2px;">🕐 ${e.Time || e.time}</div>`;
-                if (e.Location || e.location) html += `<div style="font-size:13px;color:#666;margin-top:2px;">📍 ${e.Location || e.location}</div>`;
-                if (who) html += `<div style="font-size:13px;margin-top:2px;">👤 ${colourWho(who)}</div>`;
+            const catColors = {'school':'#10b981','activity':'#06b6d4','holiday':'#f59e0b','birthday':'#ec4899','general':'#667eea'};
+            const catEmojis = {'school':'🏫','activity':'🏃','holiday':'🏖️','birthday':'🎂','general':'📅'};
+            
+            let html = `<div class="day-modal">`;
+            html += `<div class="day-modal-header">`;
+            html += `<div class="day-modal-date">${dateFormatted}</div>`;
+            if (isToday) html += `<div class="day-modal-today-badge">TODAY</div>`;
+            html += `</div>`;
+            
+            if (dayEvents.length === 0) {
+                html += `<div class="day-modal-empty">No events on this day</div>`;
+                html += `<div class="day-modal-actions"><button class="day-modal-close" onclick="closeModal()">Close</button></div>`;
+                html += `</div>`;
+                openModal(html, null);
+                return;
+            }
+            
+            html += `<div class="day-modal-count">${dayEvents.length} event${dayEvents.length > 1 ? 's' : ''}</div>`;
+            html += `<div class="day-modal-events">`;
+            
+            dayEvents.forEach((e, idx) => {
+                const cls = getEventClass(e) || 'general';
+                const color = catColors[cls] || catColors['general'];
+                const emoji = catEmojis[cls] || catEmojis['general'];
+                const title = e.Event || e.event || e.Title || 'Event';
+                const timeVal = (e.Time || e.time || '').trim();
+                const locVal = e.Location || e.location || '';
+                const whoVal = e.Who || e.who || '';
+                const notesVal = e.Notes || e.notes || '';
+                const dotCls = whoVal ? nameToDotClass(whoVal) : '';
+                
+                html += `<div class="day-modal-event" data-em-idx="${idx}" onclick="showEventDetail(${JSON.stringify(e).replace(/"/g, '&quot;')})">`;
+                html += `<div class="dme-color" style="background:${color}"></div>`;
+                html += `<div class="dme-body">`;
+                html += `<div class="dme-top">`;
+                html += `<span class="dme-emoji">${emoji}</span>`;
+                html += `<span class="dme-title">${dotCls ? `<span class="event-dot ${dotCls}"></span>` : ''}${title}</span>`;
+                html += `</div>`;
+                html += `<div class="dme-details">`;
+                if (timeVal) html += `<span class="dme-detail">${timeVal === 'All day' ? '📅 All day' : '🕐 ' + timeVal}</span>`;
+                if (locVal) html += `<span class="dme-detail">📍 ${locVal}</span>`;
+                if (whoVal) html += `<span class="dme-detail">👤 ${whoVal}</span>`;
+                html += `</div>`;
+                if (notesVal) html += `<div class="dme-notes">📝 ${notesVal}</div>`;
+                html += `</div>`;
+                html += `<div class="dme-arrow">›</div>`;
                 html += `</div>`;
             });
             
-            html += `<div class="ed-actions"><button class="ed-close-btn" onclick="closeModal()">Close</button></div>`;
+            html += `</div>`;
+            html += `<div class="day-modal-actions"><button class="day-modal-close" onclick="closeModal()">Close</button></div>`;
             html += `</div>`;
             
             openModal(html, null);
@@ -1468,7 +1606,9 @@
         }
         
         function renderShopping(data) {
-            const items = getSheet('🛒');
+            const rawItems = getSheet('🛒');
+            // Filter out deleted/empty items (Item field is empty or whitespace-only)
+            const items = rawItems.filter(i => (i.Item || '').toString().trim() !== '');
             if (!items.length) { showEmpty('shoppingList', 'Nothing on the list — add what you need! 🛒'); return; }
             
             // Sort: undone first, done items at bottom
@@ -1586,26 +1726,54 @@
         function renderChores(data) {
             const chores = getSheet('✅');
             if (chores.length) {
-                document.getElementById('choreList').innerHTML = chores.map((c, idx) => {
-                    const done = (c['Done ✓'] || '').toString().trim() !== '';
-                    const day = (c.Day || '').trim();
-                    const dayShort = day ? day.substring(0, 3) : '';
-                    const todayDay = new Date().toLocaleDateString('en-GB', { weekday: 'long' }).substring(0, 3);
-                    const isToday = dayShort.toLowerCase() === todayDay.toLowerCase();
-                    const diff = c.Difficulty || c.difficulty || 'Medium';
-                    const pts = POINTS[diff] || 10;
-                    const diffClass = diff.toLowerCase();
-                    const fc = FAMILY_COLOURS[(c['Assigned To'] || c.Who || '').trim()];
-                    const assigneeColour = fc ? fc.hex : '#666';
-                    return `<div class="chore-item${done ? ' done' : ''}" data-idx="${idx}" style="border-left-color:${done ? '#10b981' : '#f59e0b'};background:${done ? '#f0fdf4' : (isToday ? '#fff7ed' : '#fffbeb')};${isToday ? 'border:2px solid #f59e0b;border-left:4px solid ' + (done ? '#10b981' : '#f59e0b') + ';' : ''}">
-                        ${dayShort ? `<span class="chore-day-badge">${dayShort}</span>` : ''}
-                        <span class="chore-diff chore-diff-${diffClass}">${diff}</span>
-                        ${!done ? `<button class="chore-done-btn" onclick="completeChoreWithPoints(${idx}, event)" title="Mark done — earn ${pts} pts">⬜</button>` : '<span style="margin-left:4px;">✅</span>'}
-                        <div style="display:inline;vertical-align:middle;margin-left:4px;">${c.Chore || c.Task || 'Chore'}</div>
-                        <span class="chore-points">+${pts}</span>
-                        <div class="assignee" style="color:${assigneeColour};">👤 ${colourWho(c['Assigned To'] || c.Who || 'Anyone')}${c.Frequency !== 'Weekly' ? ` • <span class="freq">${c.Frequency}</span>` : ''}</div>
-                    </div>`;
-                }).join('');
+                const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+                const DAY_ICONS = {'Monday':'🌅','Tuesday':'☀️','Wednesday':'🌤️','Thursday':'⛅','Friday':'🎉','Saturday':'🌞','Sunday':'🏠'};
+                const todayDayFull = new Date().toLocaleDateString('en-GB', { weekday: 'long' });
+                // Group chores by day; default to 'Monday' if no day set
+                const groups = {};
+                DAYS.forEach(d => { groups[d] = []; });
+                const anyDayChores = [];
+                chores.forEach((c, idx) => {
+                    const rawDay = (c.Day || '').trim();
+                    const day = DAYS.includes(rawDay) ? rawDay : '';
+                    if (day) groups[day].push({c, idx});
+                    else anyDayChores.push({c, idx});
+                });
+                // Append "any day" chores to Monday (default)
+                anyDayChores.forEach(item => { groups['Monday'].push(item); });
+
+                let html = '';
+                DAYS.forEach(day => {
+                    const items = groups[day];
+                    const isToday = day === todayDayFull;
+                    const icon = DAY_ICONS[day] || '📋';
+                    const countLabel = items.length ? `(${items.length})` : '';
+                    html += `<div class="chore-day-group">`;
+                    html += `<div class="chore-day-header${isToday ? ' today-group' : ''}"><span class="day-icon">${icon}</span> ${day} <span class="day-count">${countLabel}</span></div>`;
+                    if (!items.length) {
+                        html += `<div class="chore-day-group-empty">No chores</div>`;
+                    } else {
+                        items.forEach(({c, idx}) => {
+                            const done = (c['Done ✓'] || '').toString().trim() !== '';
+                            const dayShort = day.substring(0, 3);
+                            const diff = c.Difficulty || c.difficulty || 'Medium';
+                            const pts = POINTS[diff] || 10;
+                            const diffClass = diff.toLowerCase();
+                            const fc = FAMILY_COLOURS[(c['Assigned To'] || c.Who || '').trim()];
+                            const assigneeColour = fc ? fc.hex : '#666';
+                            html += `<div class="chore-item${done ? ' done' : ''}" data-idx="${idx}" style="border-left-color:${done ? '#10b981' : '#f59e0b'};background:${done ? '#f0fdf4' : (isToday ? '#fff7ed' : '#fffbeb')};${isToday ? 'border:2px solid #f59e0b;border-left:4px solid ' + (done ? '#10b981' : '#f59e0b') + ';' : ''}">`;
+                            html += `<span class="chore-day-badge">${dayShort}</span>`;
+                            html += `<span class="chore-diff chore-diff-${diffClass}">${diff}</span>`;
+                            html += !done ? `<button class="chore-done-btn" onclick="completeChoreWithPoints(${idx}, event)" title="Mark done — earn ${pts} pts">⬜</button>` : '<span style="margin-left:4px;">✅</span>';
+                            html += `<div style="display:inline;vertical-align:middle;margin-left:4px;">${c.Chore || c.Task || 'Chore'}</div>`;
+                            html += `<span class="chore-points">+${pts}</span>`;
+                            html += `<div class="assignee" style="color:${assigneeColour};">👤 ${colourWho(c['Assigned To'] || c.Who || 'Anyone')}${c.Frequency !== 'Weekly' ? ` • <span class="freq">${c.Frequency}</span>` : ''}</div>`;
+                            html += `</div>`;
+                        });
+                    }
+                    html += `</div>`;
+                });
+                document.getElementById('choreList').innerHTML = html;
                 // Click to toggle done (for items without the button)
                 document.querySelectorAll('#choreList .chore-item').forEach(el => {
                     el.addEventListener('click', (e) => {
@@ -1646,20 +1814,83 @@
             days.forEach((d, i) => {
                 const m = map[d] || { Breakfast: '', Lunch: '', Dinner: '', Notes: '' };
                 const isToday = new Date().toLocaleDateString('en-GB', {weekday:'long'}) === d;
-                html += `<div class="meal-day${isToday ? ' today' : ''}" onclick="openMealEditor(${i})">`;
-                html += `<div class="meal-day-header">${d}${isToday ? ' <span class="today-badge">Today</span>' : ''}</div>`;
-                html += `<div class="meal-slot"><span class="meal-label">🌅</span><span class="meal-val">${m.Breakfast || '<span class="empty">—</span>'}</span></div>`;
-                html += `<div class="meal-slot"><span class="meal-label">☀️</span><span class="meal-val">${m.Lunch || '<span class="empty">—</span>'}</span></div>`;
-                html += `<div class="meal-slot dinner"><span class="meal-label">🌙</span><span class="meal-val">${m.Dinner || '<span class="empty">—</span>'}</span></div>`;
+                html += `<div class="meal-day${isToday ? ' today' : ''}" data-day-idx="${i}">`;
+                html += `<div class="meal-day-header" onclick="openMealEditor(${i})">${d}${isToday ? ' <span class="today-badge">Today</span>' : ''}</div>`;
+                html += `<div class="meal-slot" onclick="inlineMealEdit(${i},'Breakfast',event)"><span class="meal-label">🌅</span><span class="meal-val">${m.Breakfast || '<span class="empty">Tap to add</span>'}</span></div>`;
+                html += `<div class="meal-slot" onclick="inlineMealEdit(${i},'Lunch',event)"><span class="meal-label">☀️</span><span class="meal-val">${m.Lunch || '<span class="empty">Tap to add</span>'}</span></div>`;
+                html += `<div class="meal-slot" onclick="inlineMealEdit(${i},'Dinner',event)"><span class="meal-label">🌙</span><span class="meal-val">${m.Dinner || '<span class="empty">Tap to add</span>'}</span></div>`;
                 html += `</div>`;
             });
             html += '</div>';
             
             // Meal stats
             const filled = days.filter(d => map[d] && (map[d].Breakfast || map[d].Lunch || map[d].Dinner)).length;
-            html += `<div class="meal-stats">${filled}/7 days planned • Click any day to edit</div>`;
+            html += `<div class="meal-stats">${filled}/7 days planned • Click any meal to edit inline</div>`;
             
             document.getElementById('mealPlan').innerHTML = html;
+        }
+
+        function inlineMealEdit(dayIdx, mealType, event) {
+            event.stopPropagation();
+            const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+            const d = days[dayIdx];
+            const meals = getSheet('🍽️');
+            const existing = meals.find(m => m.Day === d) || { Breakfast: '', Lunch: '', Dinner: '', Notes: '' };
+            const currentVal = existing[mealType] || '';
+            
+            // Find the meal-val span and replace with an input
+            const slot = event.currentTarget;
+            const valSpan = slot.querySelector('.meal-val');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = currentVal;
+            input.className = 'meal-inline-input';
+            input.placeholder = `Add ${mealType.toLowerCase()}...`;
+            input.style.cssText = 'width:100%;border:none;background:transparent;font-size:13px;font-family:inherit;outline:none;padding:0;color:#333;';
+            
+            valSpan.replaceWith(input);
+            input.focus();
+            if (currentVal) input.select();
+            
+            let saved = false;
+            const save = async () => {
+                if (saved) return;
+                saved = true;
+                const newVal = input.value.trim();
+                input.replaceWith(valSpan);
+                valSpan.textContent = newVal || 'Tap to add';
+                if (!newVal) valSpan.className = 'meal-val empty';
+                else valSpan.className = 'meal-val';
+                
+                if (newVal !== currentVal) {
+                    const data = { Day: d, Breakfast: existing.Breakfast || '', Lunch: existing.Lunch || '', Dinner: existing.Dinner || '', Notes: existing.Notes || '' };
+                    data[mealType] = newVal;
+                    const existingIdx = meals.findIndex(m => m.Day === d);
+                    try {
+                        if (existingIdx >= 0) {
+                            await apiCall({ action: 'update', sheet: '🍽️ Meal Plan', row: String(existingIdx + 2), data: JSON.stringify(data) });
+                            if (familyData) {
+                                for (const key of Object.keys(familyData)) {
+                                    if (key.startsWith('🍽️')) { familyData[key].rows[existingIdx] = data; break; }
+                                }
+                            }
+                        } else {
+                            await apiCall({ action: 'append', sheet: '🍽️ Meal Plan', data: JSON.stringify(data) });
+                            localAddItem('🍽️', data);
+                        }
+                        showToast(`✅ ${d} ${mealType} saved!`);
+                    } catch(e) {
+                        showToast('❌ Failed to save', true);
+                        renderMeals(familyData);
+                    }
+                }
+            };
+            
+            input.addEventListener('blur', save);
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') { e.preventDefault(); input.blur(); }
+                if (e.key === 'Escape') { input.value = currentVal; input.blur(); }
+            });
         }
 
         function openMealEditor(dayIdx) {
@@ -2038,6 +2269,90 @@
             }
         }
         
+        // ===== MEAL PLAN GAS API (GET-based) =====
+        // Load meal plan data from the GAS API via GET
+        async function loadMealPlanFromAPI() {
+            try {
+                const url = API_URL + '?action=getMeals&_=' + Date.now();
+                const r = await fetch(url, { method: 'GET' });
+                const data = await r.json();
+                if (Array.isArray(data) && data.length > 0) {
+                    // Merge API data into familyData
+                    if (familyData) {
+                        for (const key of Object.keys(familyData)) {
+                            if (key.startsWith('🍽️')) {
+                                // Build a map of existing days
+                                const existingMap = {};
+                                familyData[key].rows.forEach((row, idx) => {
+                                    if (row.Day) existingMap[row.Day] = idx;
+                                });
+                                // Update or append rows from API data
+                                data.forEach(apiRow => {
+                                    if (apiRow.Day) {
+                                        const existingIdx = existingMap[apiRow.Day];
+                                        if (existingIdx !== undefined) {
+                                            // Only update if API data has content
+                                            const existing = familyData[key].rows[existingIdx];
+                                            if (apiRow.Breakfast) existing.Breakfast = apiRow.Breakfast;
+                                            if (apiRow.Lunch) existing.Lunch = apiRow.Lunch;
+                                            if (apiRow.Dinner) existing.Dinner = apiRow.Dinner;
+                                            if (apiRow.Notes) existing.Notes = apiRow.Notes;
+                                        } else {
+                                            familyData[key].rows.push(apiRow);
+                                        }
+                                    }
+                                });
+                                break;
+                            }
+                        }
+                    }
+                    return data;
+                }
+                return null;
+            } catch(e) {
+                console.error('Meal plan API load error:', e);
+                return null;
+            }
+        }
+
+        // Save a single meal slot to the GAS API via GET with query params
+        async function saveMealSlotToAPI(day, mealType, value) {
+            try {
+                const params = new URLSearchParams({
+                    action: 'saveMeal',
+                    day: day,
+                    mealType: mealType,
+                    value: value,
+                    _: Date.now()
+                });
+                const url = API_URL + '?' + params.toString();
+                const r = await fetch(url, { method: 'GET' });
+                const data = await r.json();
+                return data.success !== false;
+            } catch(e) {
+                console.error('Meal slot save error:', e);
+                return false;
+            }
+        }
+
+        // Save the full weekly meal plan to the GAS API via GET
+        async function saveMealPlanToAPI(meals) {
+            try {
+                const params = new URLSearchParams({
+                    action: 'saveMealPlan',
+                    data: JSON.stringify(meals),
+                    _: Date.now()
+                });
+                const url = API_URL + '?' + params.toString();
+                const r = await fetch(url, { method: 'GET' });
+                const data = await r.json();
+                return data.success !== false;
+            } catch(e) {
+                console.error('Meal plan save error:', e);
+                return false;
+            }
+        }
+
         // ===== TODO LIST =====
         function renderTodos(data) {
             const todos = getSheet('📌');
@@ -2221,7 +2536,7 @@
         }
         
         // ===== API (POST for reliability) =====
-        const API_URL = 'https://script.google.com/macros/s/AKfycbygH631E2jkxhcIZm5F3b2d50XcfmvdekMMrvComv_X5DQBSdCTog5vfimLgZ6haDMk/exec';
+        const API_URL = 'https://script.google.com/macros/s/AKfycbzK2EYYKFk4RlDyCCSKYluFlHUoipmS2ch7uzf76sGXe0CwBnJeOh8RGygA-4vqq888fw/exec';
         const CALENDAR_API_URL = 'https://script.google.com/macros/s/AKfycbzK2EYYKFk4RlDyCCSKYluFlHUoipmS2ch7uzf76sGXe0CwBnJeOh8RGygA-4vqq888fw/exec';
         
         function showToast(msg, err) {
@@ -2245,11 +2560,13 @@
         }
         
         // ===== GOOGLE CALENDAR SYNC =====
+        // GAS redirects POST to a GET-only endpoint (405), so we must use GET with query params.
+        // The GAS doGet handler returns CORS headers (access-control-allow-origin: *).
         async function fetchCalendarEvents() {
             if (!CALENDAR_API_URL) return null;
             try {
-                const body = JSON.stringify({ action: 'listEvents', days: 365 });
-                const r = await fetch(CALENDAR_API_URL, { method: 'POST', body: body, headers: { 'Content-Type': 'application/json' } });
+                const url = CALENDAR_API_URL + '?action=listEvents&days=365&_=' + Date.now();
+                const r = await fetch(url, { method: 'GET' });
                 const data = await r.json();
                 if (Array.isArray(data)) return data;
                 return null;
@@ -2261,8 +2578,9 @@
         
         async function createCalendarEvent(data) {
             if (!CALENDAR_API_URL) return { error: 'Calendar API not configured' };
-            const body = JSON.stringify(Object.assign({ action: 'createEvent' }, data));
-            const r = await fetch(CALENDAR_API_URL, { method: 'POST', body: body, headers: { 'Content-Type': 'application/json' } });
+            const params = new URLSearchParams(Object.assign({ action: 'createEvent' }, data));
+            const url = CALENDAR_API_URL + '?' + params.toString();
+            const r = await fetch(url, { method: 'GET' });
             return r.json();
         }
         
@@ -2384,7 +2702,7 @@
             openModal(`<h3>✅ Add Chore</h3>
                 <label>Task</label><input type="text" id="c_task" placeholder="e.g. Empty bins" autofocus>
                 <label>Assigned To</label><select id="c_who"><option>Simon</option><option>Emma</option><option>Ava</option><option>Ella</option><option>Everyone</option></select>
-                <label>Day</label><select id="c_day"><option value="">Any day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select>
+                <label>Day</label><select id="c_day"><option value="Monday" selected>Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="Friday">Friday</option><option value="Saturday">Saturday</option><option value="Sunday">Sunday</option><option value="">Any day</option></select>
                 <label>Difficulty</label><select id="c_diff"><option value="Easy">Easy (+5 pts)</option><option value="Medium" selected>Medium (+10 pts)</option><option value="Hard">Hard (+15 pts)</option></select>
                 <label>Frequency</label><select id="c_freq"><option>Weekly</option><option>Once</option><option>Daily</option><option>Monthly</option></select>
                 <label>Notes</label><input type="text" id="c_notes" placeholder="Optional">
@@ -2607,7 +2925,14 @@
                     renderCalendar(familyData);
                     renderFamily(familyData);
                 }
-            // Update "last refreshed" timestamp
+                // Also fetch meal plan from GAS API and merge
+                const apiMeals = await loadMealPlanFromAPI();
+                if (apiMeals && apiMeals.length) {
+                    renderMeals(familyData);
+                    renderToday(familyData);
+                }
+                
+                // Update "last refreshed" timestamp
                 const now = new Date();
                 const timeStr = now.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
                 const el = document.getElementById('lastUpdated');
@@ -2624,8 +2949,8 @@
         async function deleteCalendarEvent(eventId) {
             if (!CALENDAR_API_URL || !eventId) return;
             try {
-                const body = JSON.stringify({ action: 'deleteEvent', eventId: eventId });
-                const r = await fetch(CALENDAR_API_URL, { method: 'POST', body: body, headers: { 'Content-Type': 'application/json' } });
+                const url = CALENDAR_API_URL + '?action=deleteEvent&eventId=' + encodeURIComponent(eventId);
+                const r = await fetch(url, { method: 'GET' });
                 const data = await r.json();
                 return data.success;
             } catch(e) {

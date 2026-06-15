@@ -1026,6 +1026,7 @@
     "headers": [
       "Task",
       "Assigned To",
+      "Day",
       "Due Date",
       "Frequency",
       "Done ✓",
@@ -1036,6 +1037,7 @@
         "_row": 2,
         "Task": "Apply for passport renewal",
         "Assigned To": "Simon & Emma",
+        "Day": "",
         "Due Date": "2026-06-08",
         "Frequency": "Once",
         "Done ✓": "",
@@ -1045,6 +1047,7 @@
         "_row": 3,
         "Task": "Put Bins Out",
         "Assigned To": "Simon",
+        "Day": "Wednesday",
         "Due Date": "",
         "Frequency": "Weekly",
         "Done ✓": "",
