@@ -736,7 +736,7 @@
         "Event": "\ud83c\udf82 Ava's Birthday",
         "Who": "Ava",
         "Location": "",
-        "Notes": "Turning 11!"
+        "Notes": "Turning 8!"
       },
       {
         "_row": 83,
@@ -772,7 +772,7 @@
         "Event": "\ud83c\udf82 Ava's Birthday",
         "Who": "Ava",
         "Location": "",
-        "Notes": "Turning 12!"
+        "Notes": "Turning 9!"
       },
       {
         "_row": 87,
@@ -1368,7 +1368,8 @@
       "Role",
       "Email",
       "Phone",
-      "Notes"
+      "Notes",
+      "DOB"
     ],
     "rows": [
       {
@@ -1377,7 +1378,8 @@
         "Role": "Dad",
         "Email": "simon.stimson@gmail.com",
         "Phone": "",
-        "Notes": "Primary account holder"
+        "Notes": "Primary account holder",
+        "DOB": "28/10/1985"
       },
       {
         "_row": 3,
@@ -1385,7 +1387,8 @@
         "Role": "Mum",
         "Email": "clementsonemma@gmail.com",
         "Phone": "",
-        "Notes": "Full access"
+        "Notes": "Full access",
+        "DOB": "27/12/1987"
       },
       {
         "_row": 4,
@@ -1393,7 +1396,8 @@
         "Role": "Daughter (7)",
         "Email": "",
         "Phone": "",
-        "Notes": "Year 3 at Fairfield Park"
+        "Notes": "Year 3 at Fairfield Park",
+        "DOB": "17/08/2018"
       },
       {
         "_row": 5,
@@ -1401,7 +1405,8 @@
         "Role": "Daughter (10)",
         "Email": "",
         "Phone": "",
-        "Notes": "Year 5 at Pix Brook Academy \u2014 Pankhurst Class"
+        "Notes": "Year 5 at Pix Brook Academy \u2014 Pankhurst Class",
+        "DOB": "20/09/2015"
       }
     ]
   },

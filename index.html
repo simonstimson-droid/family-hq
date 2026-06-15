@@ -2992,11 +2992,33 @@
         }
 
         // ===== PROFILE PAGES =====
+        function calcAge(dobStr) {
+            if (!dobStr) return null;
+            const parts = dobStr.split('/');
+            if (parts.length !== 3) return null;
+            const [dd, mm, yy] = parts.map(Number);
+            const dob = new Date(yy, mm - 1, dd);
+            const today = new Date();
+            let age = today.getFullYear() - dob.getFullYear();
+            const m = today.getMonth() - dob.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+            return age;
+        }
+        function getRole(name) {
+            const members = getSheet('👨');
+            const m = members.find(r => r.Name === name);
+            const dob = m && m.DOB;
+            const age = dob ? calcAge(dob) : null;
+            if (name === 'Simon') return 'Dad';
+            if (name === 'Emma') return 'Mum';
+            if (age !== null) return `Daughter (${age})`;
+            return 'Daughter';
+        }
         const PROFILE_DATA = {
-            'Simon': { avatar: '👨', gradient: 'linear-gradient(135deg, #64748b, #475569)', role: 'Dad', colour: '#64748b' },
-            'Emma':  { avatar: '👩', gradient: 'linear-gradient(135deg, #f472b6, #ec4899)', role: 'Mum', colour: '#f472b6' },
-            'Ava':   { avatar: '💜', gradient: 'linear-gradient(135deg, #c084fc, #a855f7)', role: 'Daughter (7)', colour: '#c084fc' },
-            'Ella':  { avatar: '💙', gradient: 'linear-gradient(135deg, #38bdf8, #0ea5e9)', role: 'Daughter (10)', colour: '#38bdf8' },
+            'Simon': { avatar: '👨', gradient: 'linear-gradient(135deg, #64748b, #475569)', colour: '#64748b' },
+            'Emma':  { avatar: '👩', gradient: 'linear-gradient(135deg, #f472b6, #ec4899)', colour: '#f472b6' },
+            'Ava':   { avatar: '💜', gradient: 'linear-gradient(135deg, #c084fc, #a855f7)', colour: '#c084fc' },
+            'Ella':  { avatar: '💙', gradient: 'linear-gradient(135deg, #38bdf8, #0ea5e9)', colour: '#38bdf8' },
         };
         
         function openProfile(name) {
@@ -3040,7 +3062,7 @@
             html += `<button class="close-btn" onclick="closeProfile()">✕</button>`;
             html += `<div class="profile-avatar">${pd.avatar}</div>`;
             html += `<div class="profile-name">${name}</div>`;
-            html += `<div class="profile-role">${pd.role}</div>`;
+            html += `<div class="profile-role">${getRole(name)}</div>`;
             html += `</div>`;
             
             html += `<div class="profile-body">`;
