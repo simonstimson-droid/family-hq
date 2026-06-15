@@ -59,6 +59,10 @@ for name in SHEETS:
                 row_dict = {"_row": row_idx}
                 for i, h in enumerate(headers):
                     row_dict[h] = row[i] if i < len(row) else ""
+                # Skip completely empty rows (all fields blank)
+                non_empty = [v for k, v in row_dict.items() if k != "_row" and str(v).strip() != ""]
+                if not non_empty:
+                    continue
                 rows.append(row_dict)
             output[name] = {"headers": headers, "rows": rows}
         elif values:
