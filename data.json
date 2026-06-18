@@ -773,6 +773,15 @@
         "Notes": ""
       },
       {
+        "_row": 88,
+        "Date": "2026-07-15",
+        "Time": "14:00",
+        "Event": "🧪 Test Event - Dashboard Sync",
+        "Who": "Simon",
+        "Location": "Home",
+        "Notes": "Testing calendar sync"
+      },
+      {
         "_row": 56,
         "Date": "2026-07-15",
         "Time": "18:30-19:00",
@@ -935,6 +944,16 @@
       },
       {
         "Date": "2026-07-20",
+        "Time": "14:00-15:00",
+        "Event": "🧪 CreateEvent Test",
+        "Who": "",
+        "Location": "Home Office",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "pv413hfu7t6cqirtl5q36vdnho"
+      },
+      {
+        "Date": "2026-07-20",
         "Time": "15:00-16:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
@@ -1049,6 +1068,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20260725T081500Z"
+      },
+      {
+        "Date": "2026-07-25",
+        "Time": "10:00-11:00",
+        "Event": "🧪 E2E Test - Dashboard to Calendar",
+        "Who": "",
+        "Location": "Home",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "4tnmb8cgrqn8lppiq72mde2f1o"
       },
       {
         "Date": "2026-07-25",
