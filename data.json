@@ -84,7 +84,7 @@
       {
         "_row": 10,
         "Date": "2026-06-11",
-        "Time": "17:45-18:30",
+        "Time": "17:00-17:45",
         "Event": "Stretch & Flex",
         "Who": "Ava & Ella",
         "Location": "BX Dance",
@@ -174,7 +174,7 @@
       {
         "_row": 20,
         "Date": "2026-06-18",
-        "Time": "17:45-18:30",
+        "Time": "17:00-17:45",
         "Event": "Stretch & Flex",
         "Who": "Ava & Ella",
         "Location": "BX Dance",
@@ -264,7 +264,7 @@
       {
         "_row": 30,
         "Date": "2026-06-25",
-        "Time": "17:45-18:30",
+        "Time": "17:00-17:45",
         "Event": "Stretch & Flex",
         "Who": "Ava & Ella",
         "Location": "BX Dance",
@@ -345,7 +345,7 @@
       {
         "_row": 39,
         "Date": "2026-07-02",
-        "Time": "17:45-18:30",
+        "Time": "17:00-17:45",
         "Event": "Stretch & Flex",
         "Who": "Ava & Ella",
         "Location": "BX Dance",
@@ -426,7 +426,7 @@
       {
         "_row": 48,
         "Date": "2026-07-09",
-        "Time": "17:45-18:30",
+        "Time": "17:00-17:45",
         "Event": "Stretch & Flex",
         "Who": "Ava & Ella",
         "Location": "BX Dance",
@@ -507,7 +507,7 @@
       {
         "_row": 57,
         "Date": "2026-07-16",
-        "Time": "17:45-18:30",
+        "Time": "17:00-17:45",
         "Event": "Stretch & Flex",
         "Who": "Ava & Ella",
         "Location": "BX Dance",
@@ -1161,7 +1161,7 @@
         "_row": 9,
         "Child": "Ava & Ella",
         "Activity": "Stretch & Flex (BX Dance)",
-        "Day/Time": "Thu 5:45pm",
+        "Day/Time": "Thu 5:00pm",
         "Location": "BX Dance",
         "Notes": "Weekly class — both attend"
       },
@@ -1339,6 +1339,129 @@
       }
     ]
   },
+  "📌 To-Do": {
+    "headers": [
+      "Task",
+      "Assigned To",
+      "Due Date",
+      "Priority",
+      "Done",
+      "Notes",
+      "Created"
+    ],
+    "rows": [
+      {
+        "_row": 2,
+        "Task": "Apply for passport renewal",
+        "Assigned To": "Simon & Emma",
+        "Due Date": "2026-06-08",
+        "Priority": "🔴 High",
+        "Done": "",
+        "Notes": "URGENT - expires tomorrow!",
+        "Created": "2026-06-08"
+      },
+      {
+        "_row": 3,
+        "Task": "Order new school shoes for Ella",
+        "Assigned To": "Emma",
+        "Due Date": "2026-06-20",
+        "Priority": "🟡 Medium",
+        "Done": "",
+        "Notes": "Check uniform shop sizes",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 4,
+        "Task": "Wash swimming kits",
+        "Assigned To": "Simon",
+        "Due Date": "",
+        "Priority": "🟢 Low",
+        "Done": "",
+        "Notes": "Both Ava + Ella kits for next week",
+        "Created": "2026-06-09"
+      },
+      {
+        "_row": 5,
+        "Task": "Book summer holiday activities",
+        "Assigned To": "Emma",
+        "Due Date": "2026-06-15",
+        "Priority": "🟡 Medium",
+        "Done": "",
+        "Notes": "Research local holiday clubs",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 6,
+        "Task": "Check Ava's bike tyres",
+        "Assigned To": "Simon",
+        "Due Date": "",
+        "Priority": "🟢 Low",
+        "Done": "",
+        "Notes": "Pump up if flat",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 7,
+        "Task": "Confirm HBS gymnastics dates",
+        "Assigned To": "Emma",
+        "Due Date": "2026-06-30",
+        "Priority": "🟡 Medium",
+        "Done": "",
+        "Notes": "Ava Fri 6pm, Ella Fri 7pm — check summer schedule",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 8,
+        "Task": "Buy birthday present for Ella",
+        "Assigned To": "Simon",
+        "Due Date": "2026-09-15",
+        "Priority": "🔴 High",
+        "Done": "",
+        "Notes": "Ella's birthday Sept 20!",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 9,
+        "Task": "Sort out old clothes for charity",
+        "Assigned To": "Emma",
+        "Due Date": "",
+        "Priority": "🟢 Low",
+        "Done": "",
+        "Notes": "Both girls — outgrown items",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 13,
+        "Task": "",
+        "Assigned To": "",
+        "Due Date": "",
+        "Priority": "",
+        "Done": "",
+        "Notes": "",
+        "Created": "2026-06-13"
+      },
+      {
+        "_row": 14,
+        "Task": "",
+        "Assigned To": "",
+        "Due Date": "",
+        "Priority": "",
+        "Done": "",
+        "Notes": "",
+        "Created": "2026-06-13"
+      },
+      {
+        "_row": 15,
+        "Task": "Top up Ella's dinner money",
+        "Assigned To": "Simon",
+        "Due Date": "",
+        "Priority": "🔴 High",
+        "Done": "",
+        "Notes": "Balance: £2.55 - Pix Brook Academy",
+        "Created": ""
+      }
+    ]
+  },
   "👨‍👩‍👧‍👧 Family Members": {
     "headers": [
       "Name",
@@ -1422,7 +1545,7 @@
         "Phone": "",
         "Email": "",
         "Address": "",
-        "Notes": "Ava: Sat 9:15am | Ella: Sat 10:00am | Stretch & Flex: Thu 5:45pm"
+        "Notes": "Ava: Sat 9:15am | Ella: Sat 10:00am | Stretch & Flex: Thu 5:00pm"
       },
       {
         "_row": 5,
