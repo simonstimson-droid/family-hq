@@ -237,13 +237,33 @@
       },
       {
         "Date": "2026-06-19",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260619T180000Z"
+      },
+      {
+        "Date": "2026-06-20",
+        "Time": "08:15-09:00",
+        "Event": "💃 BX Dance - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20260620T081500Z"
+      },
+      {
+        "Date": "2026-06-20",
+        "Time": "09:00-09:45",
+        "Event": "💃 BX Dance - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260620T090000Z"
       },
       {
         "_row": 22,
@@ -264,6 +284,16 @@
         "Notes": ""
       },
       {
+        "Date": "2026-06-20",
+        "Time": "12:30-13:30",
+        "Event": "🤿 Diving - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260620T123000Z"
+      },
+      {
         "_row": 24,
         "Date": "2026-06-20",
         "Time": "13:30-14:30",
@@ -282,6 +312,16 @@
         "Notes": "Whole school event"
       },
       {
+        "Date": "2026-06-22",
+        "Time": "14:00-15:00",
+        "Event": "🏃 Athletics - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260622T140000Z"
+      },
+      {
         "_row": 25,
         "Date": "2026-06-22",
         "Time": "15:00-16:00",
@@ -289,6 +329,16 @@
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": ""
+      },
+      {
+        "Date": "2026-06-22",
+        "Time": "17:15-18:00",
+        "Event": "Ella Brownies",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20260622T171500Z"
       },
       {
         "_row": 95,
@@ -318,6 +368,16 @@
         "Notes": "Whole school - activities all week"
       },
       {
+        "Date": "2026-06-23",
+        "Time": "15:00-16:00",
+        "Event": "🎭 Drama Kids - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260623T150000Z"
+      },
+      {
         "_row": 27,
         "Date": "2026-06-23",
         "Time": "16:00-17:00",
@@ -337,13 +397,23 @@
       },
       {
         "Date": "2026-06-24",
-        "Time": "09:00-12:00",
+        "Time": "08:00-11:00",
         "Event": "🦊 Ava's Class (Fox) – Stotfold Mill Trip",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "t55n0i7icr619mtisvm4gkgb94"
+      },
+      {
+        "Date": "2026-06-24",
+        "Time": "17:30-18:00",
+        "Event": "🏊 Swimming - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "5n119953avla434gipkm3t3hgs_20260624T173000Z"
       },
       {
         "_row": 29,
@@ -364,6 +434,16 @@
         "Notes": "AM trip - Fox Class only. Bring packed lunch, water bottle, sun hat"
       },
       {
+        "Date": "2026-06-25",
+        "Time": "14:00-15:00",
+        "Event": "🎵 Choir - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260625T140000Z"
+      },
+      {
         "_row": 31,
         "Date": "2026-06-25",
         "Time": "15:00-16:00",
@@ -371,6 +451,26 @@
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": ""
+      },
+      {
+        "Date": "2026-06-25",
+        "Time": "16:00-16:45",
+        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260625T164500Z"
+      },
+      {
+        "Date": "2026-06-25",
+        "Time": "16:45-17:30",
+        "Event": "Ava Beavers",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260625T164500Z"
       },
       {
         "_row": 30,
@@ -411,13 +511,33 @@
       },
       {
         "Date": "2026-06-26",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260626T180000Z"
+      },
+      {
+        "Date": "2026-06-27",
+        "Time": "08:15-09:00",
+        "Event": "💃 BX Dance - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20260627T081500Z"
+      },
+      {
+        "Date": "2026-06-27",
+        "Time": "09:00-09:45",
+        "Event": "💃 BX Dance - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260627T090000Z"
       },
       {
         "_row": 33,
@@ -438,6 +558,16 @@
         "Notes": ""
       },
       {
+        "Date": "2026-06-27",
+        "Time": "12:30-13:30",
+        "Event": "🤿 Diving - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260627T123000Z"
+      },
+      {
         "_row": 35,
         "Date": "2026-06-27",
         "Time": "13:30-14:30",
@@ -447,6 +577,16 @@
         "Notes": ""
       },
       {
+        "Date": "2026-06-29",
+        "Time": "14:00-15:00",
+        "Event": "🏃 Athletics - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260629T140000Z"
+      },
+      {
         "_row": 36,
         "Date": "2026-06-29",
         "Time": "15:00-16:00",
@@ -454,6 +594,16 @@
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": ""
+      },
+      {
+        "Date": "2026-06-29",
+        "Time": "17:15-18:00",
+        "Event": "Ella Brownies",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20260629T171500Z"
       },
       {
         "_row": 94,
@@ -466,13 +616,23 @@
       },
       {
         "Date": "2026-06-30",
-        "Time": "09:30-12:00",
+        "Time": "08:30-11:00",
         "Event": "🏃 KS2 Sports Day – Ava (Fox Class, DB)",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "vakkmsfvqtraibrtucr7duvqks"
+      },
+      {
+        "Date": "2026-06-30",
+        "Time": "15:00-16:00",
+        "Event": "🎭 Drama Kids - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260630T150000Z"
       },
       {
         "_row": 37,
@@ -491,6 +651,16 @@
         "Who": "Ava",
         "Location": "Child Development Centre, Hill Rise, Kempston, Bedford MK42 7EB",
         "Notes": "Bring shorts + vest top. Call 01234 310278 if unwell. Sat Nav: MK42 7DN"
+      },
+      {
+        "Date": "2026-07-01",
+        "Time": "17:30-18:00",
+        "Event": "🏊 Swimming - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "5n119953avla434gipkm3t3hgs_20260701T173000Z"
       },
       {
         "_row": 38,
@@ -512,6 +682,16 @@
         "_cal_id": "h4bkubqvsi2v9s38jaosodebl4"
       },
       {
+        "Date": "2026-07-02",
+        "Time": "14:00-15:00",
+        "Event": "🎵 Choir - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260702T140000Z"
+      },
+      {
         "_row": 40,
         "Date": "2026-07-02",
         "Time": "15:00-16:00",
@@ -519,6 +699,26 @@
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": ""
+      },
+      {
+        "Date": "2026-07-02",
+        "Time": "16:00-16:45",
+        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260702T164500Z"
+      },
+      {
+        "Date": "2026-07-02",
+        "Time": "16:45-17:30",
+        "Event": "Ava Beavers",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260702T164500Z"
       },
       {
         "_row": 39,
@@ -550,13 +750,33 @@
       },
       {
         "Date": "2026-07-03",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260703T180000Z"
+      },
+      {
+        "Date": "2026-07-04",
+        "Time": "08:15-09:00",
+        "Event": "💃 BX Dance - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20260704T081500Z"
+      },
+      {
+        "Date": "2026-07-04",
+        "Time": "09:00-09:45",
+        "Event": "💃 BX Dance - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260704T090000Z"
       },
       {
         "_row": 41,
@@ -577,6 +797,16 @@
         "Notes": ""
       },
       {
+        "Date": "2026-07-04",
+        "Time": "12:30-13:30",
+        "Event": "🤿 Diving - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260704T123000Z"
+      },
+      {
         "_row": 43,
         "Date": "2026-07-04",
         "Time": "13:30-14:30",
@@ -586,6 +816,16 @@
         "Notes": ""
       },
       {
+        "Date": "2026-07-06",
+        "Time": "14:00-15:00",
+        "Event": "🏃 Athletics - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260706T140000Z"
+      },
+      {
         "_row": 44,
         "Date": "2026-07-06",
         "Time": "15:00-16:00",
@@ -593,6 +833,16 @@
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": ""
+      },
+      {
+        "Date": "2026-07-06",
+        "Time": "17:15-18:00",
+        "Event": "Ella Brownies",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20260706T171500Z"
       },
       {
         "_row": 93,
@@ -614,6 +864,16 @@
         "_cal_id": "e5q2v74nirmip95jap0u93kgo4"
       },
       {
+        "Date": "2026-07-07",
+        "Time": "15:00-16:00",
+        "Event": "🎭 Drama Kids - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260707T150000Z"
+      },
+      {
         "_row": 45,
         "Date": "2026-07-07",
         "Time": "16:00-17:00",
@@ -632,6 +892,16 @@
         "Notes": "Whole school event"
       },
       {
+        "Date": "2026-07-08",
+        "Time": "17:30-18:00",
+        "Event": "🏊 Swimming - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "5n119953avla434gipkm3t3hgs_20260708T173000Z"
+      },
+      {
         "_row": 47,
         "Date": "2026-07-08",
         "Time": "18:30-19:00",
@@ -639,6 +909,16 @@
         "Who": "Ava",
         "Location": "North Herts Leisure Centre",
         "Notes": ""
+      },
+      {
+        "Date": "2026-07-09",
+        "Time": "14:00-15:00",
+        "Event": "🎵 Choir - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260709T140000Z"
       },
       {
         "_row": 49,
@@ -650,6 +930,26 @@
         "Notes": ""
       },
       {
+        "Date": "2026-07-09",
+        "Time": "16:00-16:45",
+        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260709T164500Z"
+      },
+      {
+        "Date": "2026-07-09",
+        "Time": "16:45-17:30",
+        "Event": "Ava Beavers",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260709T164500Z"
+      },
+      {
         "_row": 48,
         "Date": "2026-07-09",
         "Time": "17:00-17:45",
@@ -657,16 +957,6 @@
         "Who": "Ava & Ella",
         "Location": "BX Dance",
         "Notes": ""
-      },
-      {
-        "Date": "2026-07-09",
-        "Time": "17:45-18:30",
-        "Event": "Ava Beavers",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260709T164500Z"
       },
       {
         "_row": 50,
@@ -689,7 +979,7 @@
       },
       {
         "Date": "2026-07-10",
-        "Time": "10:00-12:00",
+        "Time": "09:00-11:00",
         "Event": "🎤 Fairfield Park's Got Talent – Parents Welcome",
         "Who": "",
         "Location": "",
@@ -699,13 +989,33 @@
       },
       {
         "Date": "2026-07-10",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260710T180000Z"
+      },
+      {
+        "Date": "2026-07-11",
+        "Time": "08:15-09:00",
+        "Event": "💃 BX Dance - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20260711T081500Z"
+      },
+      {
+        "Date": "2026-07-11",
+        "Time": "09:00-09:45",
+        "Event": "💃 BX Dance - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260711T090000Z"
       },
       {
         "_row": 51,
@@ -726,6 +1036,16 @@
         "Notes": ""
       },
       {
+        "Date": "2026-07-11",
+        "Time": "12:30-13:30",
+        "Event": "🤿 Diving - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260711T123000Z"
+      },
+      {
         "_row": 53,
         "Date": "2026-07-11",
         "Time": "13:30-14:30",
@@ -733,6 +1053,16 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
+      },
+      {
+        "Date": "2026-07-13",
+        "Time": "14:00-15:00",
+        "Event": "🏃 Athletics - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260713T140000Z"
       },
       {
         "_row": 54,
@@ -745,7 +1075,7 @@
       },
       {
         "Date": "2026-07-13",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -764,6 +1094,16 @@
         "_cal_id": "jfj9aag8mlrpiau0bqcmfdhlv8"
       },
       {
+        "Date": "2026-07-14",
+        "Time": "15:00-16:00",
+        "Event": "🎭 Drama Kids - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260714T150000Z"
+      },
+      {
         "_row": 55,
         "Date": "2026-07-14",
         "Time": "16:00-17:00",
@@ -771,6 +1111,16 @@
         "Who": "Ava",
         "Location": "Fairfield Park Lower School",
         "Notes": ""
+      },
+      {
+        "Date": "2026-07-15",
+        "Time": "13:00-14:00",
+        "Event": "🧪 Test Event - Dashboard Sync",
+        "Who": "",
+        "Location": "Home",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "mmuv09evvp5mmce14n2f6cnrnk"
       },
       {
         "_row": 88,
@@ -782,6 +1132,16 @@
         "Notes": "Testing calendar sync"
       },
       {
+        "Date": "2026-07-15",
+        "Time": "17:30-18:00",
+        "Event": "🏊 Swimming - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "5n119953avla434gipkm3t3hgs_20260715T173000Z"
+      },
+      {
         "_row": 56,
         "Date": "2026-07-15",
         "Time": "18:30-19:00",
@@ -789,6 +1149,16 @@
         "Who": "Ava",
         "Location": "North Herts Leisure Centre",
         "Notes": ""
+      },
+      {
+        "Date": "2026-07-16",
+        "Time": "14:00-15:00",
+        "Event": "🎵 Choir - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260716T140000Z"
       },
       {
         "_row": 58,
@@ -800,6 +1170,26 @@
         "Notes": ""
       },
       {
+        "Date": "2026-07-16",
+        "Time": "16:00-16:45",
+        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260716T164500Z"
+      },
+      {
+        "Date": "2026-07-16",
+        "Time": "16:45-17:30",
+        "Event": "Ava Beavers",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260716T164500Z"
+      },
+      {
         "_row": 57,
         "Date": "2026-07-16",
         "Time": "17:00-17:45",
@@ -807,16 +1197,6 @@
         "Who": "Ava & Ella",
         "Location": "BX Dance",
         "Notes": ""
-      },
-      {
-        "Date": "2026-07-16",
-        "Time": "17:45-18:30",
-        "Event": "Ava Beavers",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260716T164500Z"
       },
       {
         "_row": 59,
@@ -858,7 +1238,7 @@
       },
       {
         "Date": "2026-07-17",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -868,7 +1248,7 @@
       },
       {
         "Date": "2026-07-18",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -878,13 +1258,23 @@
       },
       {
         "Date": "2026-07-18",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260718T090000Z"
+      },
+      {
+        "Date": "2026-07-18",
+        "Time": "12:30-13:30",
+        "Event": "🤿 Diving - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260718T123000Z"
       },
       {
         "_row": 61,
@@ -944,7 +1334,7 @@
       },
       {
         "Date": "2026-07-20",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -954,7 +1344,7 @@
       },
       {
         "Date": "2026-07-20",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -973,7 +1363,7 @@
       },
       {
         "Date": "2026-07-21",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
@@ -991,6 +1381,16 @@
         "Notes": "Last day of school"
       },
       {
+        "Date": "2026-07-22",
+        "Time": "17:30-18:00",
+        "Event": "🏊 Swimming - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "5n119953avla434gipkm3t3hgs_20260722T173000Z"
+      },
+      {
         "_row": 67,
         "Date": "2026-07-22",
         "Time": "18:30-19:00",
@@ -1001,7 +1401,7 @@
       },
       {
         "Date": "2026-07-23",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -1011,7 +1411,7 @@
       },
       {
         "Date": "2026-07-23",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -1021,7 +1421,7 @@
       },
       {
         "Date": "2026-07-23",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -1041,7 +1441,7 @@
       },
       {
         "Date": "2026-07-24",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -1051,7 +1451,7 @@
       },
       {
         "Date": "2026-07-25",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -1061,13 +1461,23 @@
       },
       {
         "Date": "2026-07-25",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260725T090000Z"
+      },
+      {
+        "Date": "2026-07-25",
+        "Time": "12:30-13:30",
+        "Event": "🤿 Diving - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260725T123000Z"
       },
       {
         "_row": 68,
@@ -1080,7 +1490,7 @@
       },
       {
         "Date": "2026-07-27",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -1090,7 +1500,7 @@
       },
       {
         "Date": "2026-07-27",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -1100,13 +1510,23 @@
       },
       {
         "Date": "2026-07-28",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260728T150000Z"
+      },
+      {
+        "Date": "2026-07-29",
+        "Time": "17:30-18:00",
+        "Event": "🏊 Swimming - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "5n119953avla434gipkm3t3hgs_20260729T173000Z"
       },
       {
         "_row": 69,
@@ -1119,7 +1539,7 @@
       },
       {
         "Date": "2026-07-30",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -1129,7 +1549,7 @@
       },
       {
         "Date": "2026-07-30",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -1139,7 +1559,7 @@
       },
       {
         "Date": "2026-07-30",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -1159,7 +1579,7 @@
       },
       {
         "Date": "2026-07-31",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -1169,7 +1589,7 @@
       },
       {
         "Date": "2026-08-01",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -1179,13 +1599,23 @@
       },
       {
         "Date": "2026-08-01",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260801T090000Z"
+      },
+      {
+        "Date": "2026-08-01",
+        "Time": "12:30-13:30",
+        "Event": "🤿 Diving - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260801T123000Z"
       },
       {
         "_row": 70,
@@ -1198,7 +1628,7 @@
       },
       {
         "Date": "2026-08-03",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -1208,7 +1638,7 @@
       },
       {
         "Date": "2026-08-03",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -1218,13 +1648,23 @@
       },
       {
         "Date": "2026-08-04",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260804T150000Z"
+      },
+      {
+        "Date": "2026-08-05",
+        "Time": "17:30-18:00",
+        "Event": "🏊 Swimming - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "5n119953avla434gipkm3t3hgs_20260805T173000Z"
       },
       {
         "_row": 71,
@@ -1237,7 +1677,7 @@
       },
       {
         "Date": "2026-08-06",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -1247,7 +1687,7 @@
       },
       {
         "Date": "2026-08-06",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -1257,7 +1697,7 @@
       },
       {
         "Date": "2026-08-06",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -1277,7 +1717,7 @@
       },
       {
         "Date": "2026-08-07",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -1287,7 +1727,7 @@
       },
       {
         "Date": "2026-08-08",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -1297,13 +1737,23 @@
       },
       {
         "Date": "2026-08-08",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260808T090000Z"
+      },
+      {
+        "Date": "2026-08-08",
+        "Time": "12:30-13:30",
+        "Event": "🤿 Diving - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260808T123000Z"
       },
       {
         "_row": 72,
@@ -1316,7 +1766,7 @@
       },
       {
         "Date": "2026-08-10",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -1326,7 +1776,7 @@
       },
       {
         "Date": "2026-08-10",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -1336,13 +1786,23 @@
       },
       {
         "Date": "2026-08-11",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260811T150000Z"
+      },
+      {
+        "Date": "2026-08-12",
+        "Time": "17:30-18:00",
+        "Event": "🏊 Swimming - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "5n119953avla434gipkm3t3hgs_20260812T173000Z"
       },
       {
         "_row": 73,
@@ -1355,7 +1815,7 @@
       },
       {
         "Date": "2026-08-13",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -1365,7 +1825,7 @@
       },
       {
         "Date": "2026-08-13",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -1375,7 +1835,7 @@
       },
       {
         "Date": "2026-08-13",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -1395,7 +1855,7 @@
       },
       {
         "Date": "2026-08-14",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -1405,7 +1865,7 @@
       },
       {
         "Date": "2026-08-15",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -1415,13 +1875,23 @@
       },
       {
         "Date": "2026-08-15",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260815T090000Z"
+      },
+      {
+        "Date": "2026-08-15",
+        "Time": "12:30-13:30",
+        "Event": "🤿 Diving - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260815T123000Z"
       },
       {
         "_row": 74,
@@ -1443,7 +1913,7 @@
       },
       {
         "Date": "2026-08-17",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -1453,7 +1923,7 @@
       },
       {
         "Date": "2026-08-17",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -1463,7 +1933,7 @@
       },
       {
         "Date": "2026-08-18",
-        "Time": "07:00-09:00",
+        "Time": "06:00-08:00",
         "Event": "Ava surgery admission (RNOH Stanmore)",
         "Who": "",
         "Location": "Royal National Orthopaedic Hospital (RNOH) Stanmore — Sir William Coxen Ward",
@@ -1473,13 +1943,23 @@
       },
       {
         "Date": "2026-08-18",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260818T150000Z"
+      },
+      {
+        "Date": "2026-08-19",
+        "Time": "17:30-18:00",
+        "Event": "🏊 Swimming - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "5n119953avla434gipkm3t3hgs_20260819T173000Z"
       },
       {
         "_row": 75,
@@ -1492,7 +1972,7 @@
       },
       {
         "Date": "2026-08-20",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -1502,7 +1982,7 @@
       },
       {
         "Date": "2026-08-20",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -1512,7 +1992,7 @@
       },
       {
         "Date": "2026-08-20",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -1532,7 +2012,7 @@
       },
       {
         "Date": "2026-08-21",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -1542,7 +2022,7 @@
       },
       {
         "Date": "2026-08-22",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -1552,13 +2032,23 @@
       },
       {
         "Date": "2026-08-22",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260822T090000Z"
+      },
+      {
+        "Date": "2026-08-22",
+        "Time": "12:30-13:30",
+        "Event": "🤿 Diving - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260822T123000Z"
       },
       {
         "_row": 76,
@@ -1571,7 +2061,7 @@
       },
       {
         "Date": "2026-08-24",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -1581,7 +2071,7 @@
       },
       {
         "Date": "2026-08-24",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -1591,13 +2081,23 @@
       },
       {
         "Date": "2026-08-25",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260825T150000Z"
+      },
+      {
+        "Date": "2026-08-26",
+        "Time": "17:30-18:00",
+        "Event": "🏊 Swimming - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "5n119953avla434gipkm3t3hgs_20260826T173000Z"
       },
       {
         "_row": 77,
@@ -1610,7 +2110,7 @@
       },
       {
         "Date": "2026-08-27",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -1620,7 +2120,7 @@
       },
       {
         "Date": "2026-08-27",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -1630,7 +2130,7 @@
       },
       {
         "Date": "2026-08-27",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -1650,7 +2150,7 @@
       },
       {
         "Date": "2026-08-28",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -1660,7 +2160,7 @@
       },
       {
         "Date": "2026-08-29",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -1670,13 +2170,23 @@
       },
       {
         "Date": "2026-08-29",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260829T090000Z"
+      },
+      {
+        "Date": "2026-08-29",
+        "Time": "12:30-13:30",
+        "Event": "🤿 Diving - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260829T123000Z"
       },
       {
         "_row": 78,
@@ -1689,7 +2199,7 @@
       },
       {
         "Date": "2026-08-31",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -1699,7 +2209,7 @@
       },
       {
         "Date": "2026-08-31",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -1709,7 +2219,7 @@
       },
       {
         "Date": "2026-09-01",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
@@ -1719,7 +2229,7 @@
       },
       {
         "Date": "2026-09-02",
-        "Time": "18:30-19:00",
+        "Time": "17:30-18:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
@@ -1729,7 +2239,7 @@
       },
       {
         "Date": "2026-09-03",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -1739,7 +2249,7 @@
       },
       {
         "Date": "2026-09-03",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -1749,7 +2259,7 @@
       },
       {
         "Date": "2026-09-03",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -1769,7 +2279,7 @@
       },
       {
         "Date": "2026-09-04",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -1779,7 +2289,7 @@
       },
       {
         "Date": "2026-09-05",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -1789,7 +2299,7 @@
       },
       {
         "Date": "2026-09-05",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
@@ -1799,7 +2309,7 @@
       },
       {
         "Date": "2026-09-05",
-        "Time": "13:30-14:30",
+        "Time": "12:30-13:30",
         "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -1809,7 +2319,7 @@
       },
       {
         "Date": "2026-09-07",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -1819,7 +2329,7 @@
       },
       {
         "Date": "2026-09-07",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -1829,7 +2339,7 @@
       },
       {
         "Date": "2026-09-08",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
@@ -1839,7 +2349,7 @@
       },
       {
         "Date": "2026-09-09",
-        "Time": "18:30-19:00",
+        "Time": "17:30-18:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
@@ -1849,7 +2359,7 @@
       },
       {
         "Date": "2026-09-10",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -1859,7 +2369,7 @@
       },
       {
         "Date": "2026-09-10",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -1869,7 +2379,7 @@
       },
       {
         "Date": "2026-09-10",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -1889,7 +2399,7 @@
       },
       {
         "Date": "2026-09-11",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -1899,7 +2409,7 @@
       },
       {
         "Date": "2026-09-12",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -1909,7 +2419,7 @@
       },
       {
         "Date": "2026-09-12",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
@@ -1919,7 +2429,7 @@
       },
       {
         "Date": "2026-09-12",
-        "Time": "13:30-14:30",
+        "Time": "12:30-13:30",
         "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -1929,7 +2439,7 @@
       },
       {
         "Date": "2026-09-14",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -1939,7 +2449,7 @@
       },
       {
         "Date": "2026-09-14",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -1949,7 +2459,7 @@
       },
       {
         "Date": "2026-09-15",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
@@ -1959,7 +2469,7 @@
       },
       {
         "Date": "2026-09-16",
-        "Time": "18:30-19:00",
+        "Time": "17:30-18:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
@@ -1969,7 +2479,7 @@
       },
       {
         "Date": "2026-09-17",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -1979,7 +2489,7 @@
       },
       {
         "Date": "2026-09-17",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -1989,7 +2499,7 @@
       },
       {
         "Date": "2026-09-17",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -2009,7 +2519,7 @@
       },
       {
         "Date": "2026-09-18",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -2019,7 +2529,7 @@
       },
       {
         "Date": "2026-09-19",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -2029,7 +2539,7 @@
       },
       {
         "Date": "2026-09-19",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
@@ -2039,7 +2549,7 @@
       },
       {
         "Date": "2026-09-19",
-        "Time": "13:30-14:30",
+        "Time": "12:30-13:30",
         "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -2058,7 +2568,7 @@
       },
       {
         "Date": "2026-09-21",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -2068,7 +2578,7 @@
       },
       {
         "Date": "2026-09-21",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -2078,7 +2588,7 @@
       },
       {
         "Date": "2026-09-22",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
@@ -2088,7 +2598,7 @@
       },
       {
         "Date": "2026-09-23",
-        "Time": "18:30-19:00",
+        "Time": "17:30-18:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
@@ -2098,7 +2608,7 @@
       },
       {
         "Date": "2026-09-24",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -2108,7 +2618,7 @@
       },
       {
         "Date": "2026-09-24",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -2118,7 +2628,7 @@
       },
       {
         "Date": "2026-09-24",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -2138,7 +2648,7 @@
       },
       {
         "Date": "2026-09-25",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -2148,7 +2658,7 @@
       },
       {
         "Date": "2026-09-26",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -2158,7 +2668,7 @@
       },
       {
         "Date": "2026-09-26",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
@@ -2168,7 +2678,7 @@
       },
       {
         "Date": "2026-09-26",
-        "Time": "13:30-14:30",
+        "Time": "12:30-13:30",
         "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -2178,7 +2688,7 @@
       },
       {
         "Date": "2026-09-28",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -2188,7 +2698,7 @@
       },
       {
         "Date": "2026-09-28",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -2198,7 +2708,7 @@
       },
       {
         "Date": "2026-09-29",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
@@ -2208,7 +2718,7 @@
       },
       {
         "Date": "2026-09-30",
-        "Time": "18:30-19:00",
+        "Time": "17:30-18:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
@@ -2218,7 +2728,7 @@
       },
       {
         "Date": "2026-10-01",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -2228,7 +2738,7 @@
       },
       {
         "Date": "2026-10-01",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -2238,7 +2748,7 @@
       },
       {
         "Date": "2026-10-01",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -2258,7 +2768,7 @@
       },
       {
         "Date": "2026-10-02",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -2268,7 +2778,7 @@
       },
       {
         "Date": "2026-10-03",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -2278,7 +2788,7 @@
       },
       {
         "Date": "2026-10-03",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
@@ -2288,7 +2798,7 @@
       },
       {
         "Date": "2026-10-03",
-        "Time": "13:30-14:30",
+        "Time": "12:30-13:30",
         "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -2298,7 +2808,7 @@
       },
       {
         "Date": "2026-10-05",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -2308,7 +2818,7 @@
       },
       {
         "Date": "2026-10-05",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -2318,7 +2828,7 @@
       },
       {
         "Date": "2026-10-06",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
@@ -2328,7 +2838,7 @@
       },
       {
         "Date": "2026-10-07",
-        "Time": "18:30-19:00",
+        "Time": "17:30-18:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
@@ -2338,7 +2848,7 @@
       },
       {
         "Date": "2026-10-08",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -2348,7 +2858,7 @@
       },
       {
         "Date": "2026-10-08",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -2358,7 +2868,7 @@
       },
       {
         "Date": "2026-10-08",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -2378,7 +2888,7 @@
       },
       {
         "Date": "2026-10-09",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -2388,7 +2898,7 @@
       },
       {
         "Date": "2026-10-10",
-        "Time": "09:15-10:00",
+        "Time": "08:15-09:00",
         "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
@@ -2398,7 +2908,7 @@
       },
       {
         "Date": "2026-10-10",
-        "Time": "10:00-10:45",
+        "Time": "09:00-09:45",
         "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
@@ -2408,7 +2918,7 @@
       },
       {
         "Date": "2026-10-10",
-        "Time": "13:30-14:30",
+        "Time": "12:30-13:30",
         "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -2418,7 +2928,7 @@
       },
       {
         "Date": "2026-10-12",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
@@ -2428,7 +2938,7 @@
       },
       {
         "Date": "2026-10-12",
-        "Time": "18:15-19:00",
+        "Time": "17:15-18:00",
         "Event": "Ella Brownies",
         "Who": "",
         "Location": "",
@@ -2438,7 +2948,7 @@
       },
       {
         "Date": "2026-10-13",
-        "Time": "16:00-17:00",
+        "Time": "15:00-16:00",
         "Event": "🎭 Drama Kids - Ava",
         "Who": "",
         "Location": "",
@@ -2448,7 +2958,7 @@
       },
       {
         "Date": "2026-10-14",
-        "Time": "18:30-19:00",
+        "Time": "17:30-18:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
@@ -2458,7 +2968,7 @@
       },
       {
         "Date": "2026-10-15",
-        "Time": "15:00-16:00",
+        "Time": "14:00-15:00",
         "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
@@ -2468,7 +2978,7 @@
       },
       {
         "Date": "2026-10-15",
-        "Time": "17:00-17:45",
+        "Time": "16:00-16:45",
         "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
@@ -2478,7 +2988,7 @@
       },
       {
         "Date": "2026-10-15",
-        "Time": "17:45-18:30",
+        "Time": "16:45-17:30",
         "Event": "Ava Beavers",
         "Who": "",
         "Location": "",
@@ -2498,7 +3008,7 @@
       },
       {
         "Date": "2026-10-16",
-        "Time": "19:00-20:00",
+        "Time": "18:00-19:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
