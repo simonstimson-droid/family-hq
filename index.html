@@ -2473,29 +2473,34 @@
 
         // ===== TODO LIST =====
         function renderTodos(data) {
-            const todos = getSheet('📝').filter(x => (x.Priority || '') === 'Todo');
+            const todos = getSheet('📌').filter(t => (t['Task'] || '').trim() !== '');
             if (todos.length) {
                 // Sort: incomplete first, then by priority, then by date
                 const priorityOrder = { '🔴 High': 0, '🟡 Medium': 1, '🟢 Low': 2, '': 3 };
                 todos.sort((a, b) => {
                     const doneA = (a['Done'] || '').toString().trim() !== '';
-                    const doneB = (b['Done'] || '').toString().trim() || '';
+                    const doneB = (b['Done'] || '').toString().trim() !== '';
                     if (doneA !== doneB) return doneA ? 1 : -1;
-                    const pa = priorityOrder[a.Priority] || 3;
-                    const pb = priorityOrder[b.Priority] || 3;
+                    const pa = priorityOrder[a.Priority] ?? 3;
+                    const pb = priorityOrder[b.Priority] ?? 3;
                     if (pa !== pb) return pa - pb;
                     const da = new Date(a['Due Date'] || '2099');
                     const db = new Date(b['Due Date'] || '2099');
                     return da - db;
                 });
                 document.getElementById('todoList').innerHTML = todos.map((t, idx) => {
-                    const done = (t['Done ✓'] || '').toString().trim() !== '';
-                    const who = (t.Who || t['Assigned To'] || '').trim();
+                    const done = (t['Done'] || '').toString().trim() !== '';
+                    const who = (t['Assigned To'] || '').trim();
+                    const text = (t['Task'] || '').trim();
+                    const notes = (t['Notes'] || '').trim();
                     const fc = who ? FAMILY_COLOURS[who] : null;
                     const dotHtml = fc ? `<span class="event-dot ${fc.dot}"></span>` : '';
+                    const priorityClass = t.Priority === '🔴 High' ? 'todo-priority-high' : t.Priority === '🟡 Medium' ? 'todo-priority-medium' : t.Priority === '🟢 Low' ? 'todo-priority-low' : '';
+                    const priorityHtml = priorityClass ? `<span class="todo-priority ${priorityClass}">${t.Priority}</span>` : '';
                     return `<div class="todo-item${done ? ' done' : ''}" data-idx="${idx}">
                         <span class="todo-check">${done ? '✅' : '⬜'}</span>
-                        <span class="todo-text">${dotHtml}${t.Message || ''}</span>
+                        <span class="todo-text">${dotHtml}${text}${notes ? ` <span style="color:#888;font-size:12px;">— ${notes}</span>` : ''}</span>
+                        ${priorityHtml}
                         ${who ? `<span class="todo-who">${who}</span>` : ''}
                         <span class="todo-del" onclick="deleteTodo(${idx}, event)">✕</span>
                     </div>`;
@@ -2504,17 +2509,17 @@
                 document.querySelectorAll('#todoList .todo-item').forEach(el => {
                     el.addEventListener('click', (e) => {
                         if (e.target.classList.contains('todo-del')) return;
-                        const todos2 = getSheet('📝').filter(x => (x.Priority || '') === 'Todo');
+                        const todos2 = getSheet('📌');
                         const idx = parseInt(el.dataset.idx);
                         const t = todos2[idx];
                         if (!t) return;
-                        const newDone = (t['Done ✓'] || '').toString().trim() ? '' : '✓';
-                        t['Done ✓'] = newDone;
+                        const newDone = (t['Done'] || '').toString().trim() ? '' : '✓';
+                        t['Done'] = newDone;
                         el.classList.toggle('done');
                         el.querySelector('.todo-check').textContent = newDone ? '✅' : '⬜';
-                        const annIdx = familyData['📝 Announcements'].rows.indexOf(t);
-                        if (annIdx >= 0) {
-                            apiCall({action:'update', sheet:'📝 Announcements', row:String(annIdx+2), data:JSON.stringify(t)}).catch(()=>{});
+                        const todoIdx = familyData['📌 To-Do'].rows.indexOf(t);
+                        if (todoIdx >= 0) {
+                            apiCall({action:'update', sheet:'📌 To-Do', row:String(todoIdx+2), data:JSON.stringify(t)}).catch(()=>{});
                         }
                     });
                 });
@@ -2551,18 +2556,19 @@
             const dateStr = now.toISOString().split('T')[0];
             
             const data = {
-                Date: dateStr,
-                From: 'Family',
-                Message: text,
-                Priority: 'Todo',
-                Who: who,
-                'Done ✓': ''
+                Task: text,
+                'Assigned To': who,
+                'Due Date': '',
+                Priority: '🟡 Medium',
+                Done: '',
+                Notes: '',
+                Created: dateStr
             };
             
-            const r = await apiCall({action:'append', sheet:'📝 Announcements', data:JSON.stringify(data)});
+            const r = await apiCall({action:'append', sheet:'📌 To-Do', data:JSON.stringify(data)});
             console.log('addTodo API response:', r);
             if (r && r.success) {
-                localAddItem('📝', data);
+                localAddItem('📌', data);
                 document.getElementById('todoText').value = '';
                 showToast('📌 Task added!');
             } else {
@@ -2573,7 +2579,7 @@
         
         async function deleteTodo(idx, e) {
             e.stopPropagation();
-            const todos = getSheet('📝').filter(x => (x.Priority || '') === 'Todo');
+            const todos = getSheet('📌').filter(t => (t['Task'] || '').trim() !== '');
             const t = todos[idx];
             if (!t) return;
 
@@ -2581,11 +2587,11 @@
             if (t._row) {
                 const emptyRow = {};
                 for (const k of Object.keys(t)) emptyRow[k] = '';
-                apiCall({ action: 'update', sheet: '📝 Announcements', row: String(t._row), data: JSON.stringify(emptyRow) });
+                apiCall({ action: 'update', sheet: '📌 To-Do', row: String(t._row), data: JSON.stringify(emptyRow) });
             }
 
             // Find in familyData and remove
-            const rows = familyData['📝 Announcements'].rows;
+            const rows = familyData['📌 To-Do'].rows;
             const realIdx = rows.indexOf(t);
             if (realIdx >= 0) rows.splice(realIdx, 1);
 
@@ -2712,10 +2718,18 @@
         
         async function createCalendarEvent(data) {
             if (!CALENDAR_API_URL) return { error: 'Calendar API not configured' };
-            const params = new URLSearchParams(Object.assign({ action: 'createEvent' }, data));
-            const url = CALENDAR_API_URL + '?' + params.toString();
-            const r = await fetch(url, { method: 'GET' });
-            return r.json();
+            try {
+                const payload = Object.assign({ action: 'createEvent' }, data);
+                const r = await fetch(CALENDAR_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                return r.json();
+            } catch(e) {
+                console.error('createCalendarEvent error:', e);
+                return { error: e.message };
+            }
         }
         
         /** Merge calendar events into familyData, deduplicating by date+event name */
@@ -2763,6 +2777,7 @@
             else if (sheetEmoji === '✅') renderChoresWithRewards(familyData);
             else if (sheetEmoji === '🍽️') renderMeals(familyData);
             else if (sheetEmoji === '📝') { renderAnnouncements(familyData); renderTodos(familyData); }
+            else if (sheetEmoji === '📌') renderTodos(familyData);
             else if (sheetEmoji === '📅') renderCalendar(familyData);
             renderToday(familyData);
         }
