@@ -1,3 +1,5 @@
+Fetched 230 events from family17800354474891822339@group.calendar.google.com
+Fetched 190 events from clementsonemma@gmail.com
 {
   "📅 Calendar": {
     "headers": [
@@ -4425,6 +4427,26 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20261016T180000Z"
+      },
+      {
+        "Date": "2026-10-17",
+        "Time": "09:15-10:00",
+        "Event": "💃 BX Dance - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20261017T081500Z"
+      },
+      {
+        "Date": "2026-10-17",
+        "Time": "10:00-10:45",
+        "Event": "💃 BX Dance - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20261017T090000Z"
       },
       {
         "_row": 81,
