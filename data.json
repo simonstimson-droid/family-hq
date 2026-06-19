@@ -246,16 +246,6 @@
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260619T180000Z"
       },
       {
-        "Date": "2026-06-20",
-        "Time": "All day",
-        "Event": "Solstice swim ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_6ksj8ea370okab9m611kab9k60o44ba284o3eb9j60s3ee1g6h136h1i8g"
-      },
-      {
         "_row": 22,
         "Date": "2026-06-20",
         "Time": "09:15-10:00",
@@ -303,6 +293,16 @@
         "_cal_id": "_84pkah9h6t1jiba66os3gb9k6p334b9p60s3eb9j8l1kah1h6t142cpm8o"
       },
       {
+        "Date": "2026-06-20",
+        "Time": "17:00-18:30",
+        "Event": "Solstice swim ",
+        "Who": "",
+        "Location": "",
+        "Notes": "Summer Solstice family swim — longest day of the year!",
+        "_source": "calendar",
+        "_cal_id": "_6ksj8ea370okab9m611kab9k60o44ba284o3eb9j60s3ee1g6h136h1i8g"
+      },
+      {
         "Date": "2026-06-21",
         "Time": "All day",
         "Event": "Check Ella’s Dinner Money",
@@ -311,6 +311,22 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_68r36dpi88q48b9o6csj2b9k6oq3eba18co3cb9p75342h1j64q32e1g8c_20260621"
+      },
+      {
+        "Date": "2026-06-21",
+        "Time": "All day",
+        "Event": "☀️ Father's Day",
+        "Who": "Simon",
+        "Location": "",
+        "Notes": "Dad's special day — kids make cards/breakfast"
+      },
+      {
+        "Date": "2026-06-21",
+        "Time": "All day",
+        "Event": "☀️ Summer Solstice",
+        "Who": "",
+        "Location": "",
+        "Notes": "Longest day of the year — sun rises 4:43am, sets 9:21pm"
       },
       {
         "Date": "2026-06-21",
@@ -1508,6 +1524,14 @@
       },
       {
         "Date": "2026-07-17",
+        "Time": "All day",
+        "Event": "🎓 End of Term — Fairfield Park",
+        "Who": "Ava",
+        "Location": "",
+        "Notes": "Last day of school for Ava"
+      },
+      {
+        "Date": "2026-07-17",
         "Time": "19:00-20:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
@@ -1525,6 +1549,14 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_60ojiea164rjgba36gr3gb9k8cs42b9p60ojgb9h8d23ed1n8d2jec1k6g"
+      },
+      {
+        "Date": "2026-07-18",
+        "Time": "All day",
+        "Event": "🏖️ Summer Holidays Begin",
+        "Who": "Both",
+        "Location": "",
+        "Notes": "6 weeks of freedom!"
       },
       {
         "Date": "2026-07-18",
@@ -1621,6 +1653,14 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "ooh3t15c6jn5euibv2ancgmv60"
+      },
+      {
+        "Date": "2026-07-20",
+        "Time": "All day",
+        "Event": "🎓 End of Term — Pix Brook",
+        "Who": "Ella",
+        "Location": "",
+        "Notes": "Last day of school for Ella"
       },
       {
         "Date": "2026-07-20",
@@ -4463,6 +4503,30 @@
         "Who": "Emma",
         "Location": "",
         "Notes": ""
+      },
+      {
+        "Date": "2027-06-19",
+        "Time": "All day",
+        "Event": "☀️ Father's Day",
+        "Who": "Simon",
+        "Location": "",
+        "Notes": "Dad's special day"
+      },
+      {
+        "Date": "2027-06-20",
+        "Time": "All day",
+        "Event": "☀️ Summer Solstice",
+        "Who": "",
+        "Location": "",
+        "Notes": "Longest day of the year"
+      },
+      {
+        "Date": "2027-06-20",
+        "Time": "17:00-18:30",
+        "Event": "🏊 Solstice Swim",
+        "Who": "Both",
+        "Location": "",
+        "Notes": "Summer Solstice family swim"
       },
       {
         "_row": 83,
