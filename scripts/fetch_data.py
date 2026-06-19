@@ -364,6 +364,14 @@ try:
             print(f"WARNING: Failed to fetch from {cal_id}: {e}", file=sys.stderr)
     sheet_calendar = output.get("📅 Calendar", {}).get("rows", [])
     merged = merge_calendar_events(sheet_calendar, all_cal_events)
+    
+    # Filter out past events (keep today + future)
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    merged = [e for e in merged if e.get("Date", "") >= today]
+    removed = len(sheet_calendar) - len(merged)
+    if removed > 0:
+        print(f"Removed {removed} past events (before {today})", file=sys.stderr)
+    
     output["📅 Calendar"] = {
         "headers": ["Date", "Time", "Event", "Who", "Location", "Notes"],
         "rows": merged,

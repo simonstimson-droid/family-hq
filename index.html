@@ -3143,11 +3143,13 @@
             }
             html += `</div>`;
             
-            // Upcoming events
+            // Upcoming events (filter out past events)
+            const todayStr = new Date().toISOString().substring(0, 10);
+            const upcomingEvents = personEvents.filter(e => (e.Date || e.Start || '').substring(0, 10) >= todayStr);
             html += `<div class="profile-section">`;
             html += `<h3>📅 Upcoming Events</h3>`;
-            if (personEvents.length) {
-                personEvents.forEach(e => {
+            if (upcomingEvents.length) {
+                upcomingEvents.forEach(e => {
                     const dateStr = (e.Date || e.Start || '').substring(0, 10);
                     const d = new Date(dateStr + 'T00:00:00');
                     const dateFmt = isNaN(d.getTime()) ? dateStr : d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
@@ -3157,7 +3159,7 @@
                 html += `<div class="profile-empty">No upcoming events</div>`;
             }
             html += `</div>`;
-            
+
             // Activities
             if (personActivities.length) {
                 html += `<div class="profile-section">`;
