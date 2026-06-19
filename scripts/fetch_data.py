@@ -359,6 +359,7 @@ try:
             events = fetch_calendar_events(token, cal_id)
             all_cal_events.extend(events)
             print(f"Fetched {len(events)} events from {cal_id}", file=sys.stderr)
+            sys.stderr.flush()
         except Exception as e:
             print(f"WARNING: Failed to fetch from {cal_id}: {e}", file=sys.stderr)
     sheet_calendar = output.get("📅 Calendar", {}).get("rows", [])
