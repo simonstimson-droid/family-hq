@@ -1,3 +1,5 @@
+Fetched 231 events from family17800354474891822339@group.calendar.google.com
+Fetched 191 events from clementsonemma@gmail.com
 {
   "📅 Calendar": {
     "headers": [
@@ -4375,7 +4377,7 @@
         "Item": "Cheese",
         "Quantity": "1 Block",
         "Added By": "Dairy",
-        "Done ✓": "",
+        "Done ✓": "Simon Stimson",
         "Category": "",
         "@": "6/11/2026 22:59:48"
       },
@@ -4384,7 +4386,7 @@
         "Item": "Flash",
         "Quantity": "1 bottle",
         "Added By": "Household",
-        "Done ✓": "",
+        "Done ✓": "Simon Stimson",
         "Category": "",
         "@": "6/11/2026 22:59:49"
       },
@@ -4393,7 +4395,7 @@
         "Item": "Milk",
         "Quantity": "2 pints",
         "Added By": "Dairy",
-        "Done ✓": "",
+        "Done ✓": "Simon Stimson",
         "Category": "",
         "@": "6/11/2026 22:59:50"
       }
