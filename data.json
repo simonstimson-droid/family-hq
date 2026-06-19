@@ -227,7 +227,7 @@
       },
       {
         "Date": "2026-06-19",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -271,16 +271,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-06-20",
-        "Time": "13:30-14:30",
-        "Event": "Ella diving ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h23gga68crkab9k6gpjcb9k88qj2ba185130b9g8ko46dhg8co3eda26g_20260620T123000Z"
       },
       {
         "Date": "2026-06-20",
@@ -476,15 +466,6 @@
         "_cal_id": "_60q38cho64r3ab9l88pk2b9k8gs4ab9p6oq48b9n70sjaea588q3agi464"
       },
       {
-        "_row": 29,
-        "Date": "2026-06-24",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
-        "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
-        "Notes": ""
-      },
-      {
         "Date": "2026-06-24",
         "Time": "18:30-19:00",
         "Event": "Ava swimming ",
@@ -571,7 +552,7 @@
       },
       {
         "Date": "2026-06-26",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -665,16 +646,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-06-27",
-        "Time": "13:30-14:30",
-        "Event": "Ella diving ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h23gga68crkab9k6gpjcb9k88qj2ba185130b9g8ko46dhg8co3eda26g_20260627T123000Z"
       },
       {
         "Date": "2026-06-28",
@@ -803,15 +774,6 @@
         "Notes": "Bring shorts + vest top. Call 01234 310278 if unwell. Sat Nav: MK42 7DN"
       },
       {
-        "_row": 38,
-        "Date": "2026-07-01",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
-        "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
-        "Notes": ""
-      },
-      {
         "Date": "2026-07-01",
         "Time": "18:30-19:00",
         "Event": "Ava swimming ",
@@ -900,7 +862,7 @@
       },
       {
         "Date": "2026-07-03",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -954,16 +916,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-07-04",
-        "Time": "13:30-14:30",
-        "Event": "Ella diving ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h23gga68crkab9k6gpjcb9k88qj2ba185130b9g8ko46dhg8co3eda26g_20260704T123000Z"
       },
       {
         "Date": "2026-07-05",
@@ -1062,15 +1014,6 @@
         "Notes": "Whole school event"
       },
       {
-        "_row": 47,
-        "Date": "2026-07-08",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
-        "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
-        "Notes": ""
-      },
-      {
         "Date": "2026-07-08",
         "Time": "18:30-19:00",
         "Event": "Ava swimming ",
@@ -1149,7 +1092,7 @@
       },
       {
         "Date": "2026-07-10",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -1243,16 +1186,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-07-11",
-        "Time": "13:30-14:30",
-        "Event": "Ella diving ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h23gga68crkab9k6gpjcb9k88qj2ba185130b9g8ko46dhg8co3eda26g_20260711T123000Z"
       },
       {
         "Date": "2026-07-11",
@@ -1382,15 +1315,6 @@
         "Notes": "Testing calendar sync"
       },
       {
-        "_row": 56,
-        "Date": "2026-07-15",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
-        "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
-        "Notes": ""
-      },
-      {
         "Date": "2026-07-15",
         "Time": "18:30-19:00",
         "Event": "Ava swimming ",
@@ -1488,7 +1412,7 @@
       },
       {
         "Date": "2026-07-17",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -1539,7 +1463,7 @@
       {
         "Date": "2026-07-18",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1549,7 +1473,7 @@
       {
         "Date": "2026-07-18",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1564,16 +1488,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-07-18",
-        "Time": "13:30-14:30",
-        "Event": "Ella diving ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h23gga68crkab9k6gpjcb9k88qj2ba185130b9g8ko46dhg8co3eda26g_20260718T123000Z"
       },
       {
         "Date": "2026-07-19",
@@ -1721,15 +1635,6 @@
         "Notes": "Last day of school"
       },
       {
-        "_row": 67,
-        "Date": "2026-07-22",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
-        "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
-        "Notes": ""
-      },
-      {
         "Date": "2026-07-22",
         "Time": "18:30-19:00",
         "Event": "Ava swimming ",
@@ -1772,7 +1677,7 @@
       {
         "Date": "2026-07-23",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1801,7 +1706,7 @@
       },
       {
         "Date": "2026-07-24",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -1822,7 +1727,7 @@
       {
         "Date": "2026-07-25",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1842,7 +1747,7 @@
       {
         "Date": "2026-07-25",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1857,16 +1762,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-07-25",
-        "Time": "13:30-14:30",
-        "Event": "Ella diving ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h23gga68crkab9k6gpjcb9k88qj2ba185130b9g8ko46dhg8co3eda26g_20260725T123000Z"
       },
       {
         "Date": "2026-07-26",
@@ -1929,15 +1824,6 @@
         "_cal_id": "_88s42dhl8op3cba56l232b9k6d1j4ba18p242ba38l1j8ci36opjahi660_20260728T150000Z"
       },
       {
-        "_row": 69,
-        "Date": "2026-07-29",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
-        "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
-        "Notes": ""
-      },
-      {
         "Date": "2026-07-29",
         "Time": "18:30-19:00",
         "Event": "Ava swimming ",
@@ -1970,7 +1856,7 @@
       {
         "Date": "2026-07-30",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1999,7 +1885,7 @@
       },
       {
         "Date": "2026-07-31",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -2050,7 +1936,7 @@
       {
         "Date": "2026-08-01",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2060,7 +1946,7 @@
       {
         "Date": "2026-08-01",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2075,16 +1961,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-08-01",
-        "Time": "13:30-14:30",
-        "Event": "Ella diving ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h23gga68crkab9k6gpjcb9k88qj2ba185130b9g8ko46dhg8co3eda26g_20260801T123000Z"
       },
       {
         "Date": "2026-08-02",
@@ -2177,15 +2053,6 @@
         "_cal_id": "_6opk6dpp6914cba58kpjcb9k8913cb9p651k8b9n75346e1h651jad1j60"
       },
       {
-        "_row": 71,
-        "Date": "2026-08-05",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
-        "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
-        "Notes": ""
-      },
-      {
         "Date": "2026-08-05",
         "Time": "18:30-19:00",
         "Event": "Ava swimming ",
@@ -2218,7 +2085,7 @@
       {
         "Date": "2026-08-06",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2247,7 +2114,7 @@
       },
       {
         "Date": "2026-08-07",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -2268,7 +2135,7 @@
       {
         "Date": "2026-08-08",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2278,7 +2145,7 @@
       {
         "Date": "2026-08-08",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2293,16 +2160,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-08-08",
-        "Time": "13:30-14:30",
-        "Event": "Ella diving ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h23gga68crkab9k6gpjcb9k88qj2ba185130b9g8ko46dhg8co3eda26g_20260808T123000Z"
       },
       {
         "Date": "2026-08-09",
@@ -2365,15 +2222,6 @@
         "_cal_id": "_88s42dhl8op3cba56l232b9k6d1j4ba18p242ba38l1j8ci36opjahi660_20260811T150000Z"
       },
       {
-        "_row": 73,
-        "Date": "2026-08-12",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
-        "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
-        "Notes": ""
-      },
-      {
         "Date": "2026-08-12",
         "Time": "18:30-19:00",
         "Event": "Ava swimming ",
@@ -2406,7 +2254,7 @@
       {
         "Date": "2026-08-13",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2435,7 +2283,7 @@
       },
       {
         "Date": "2026-08-14",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -2466,7 +2314,7 @@
       {
         "Date": "2026-08-15",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2476,7 +2324,7 @@
       {
         "Date": "2026-08-15",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2491,16 +2339,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-08-15",
-        "Time": "13:30-14:30",
-        "Event": "Ella diving ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h23gga68crkab9k6gpjcb9k88qj2ba185130b9g8ko46dhg8co3eda26g_20260815T123000Z"
       },
       {
         "Date": "2026-08-16",
@@ -2622,15 +2460,6 @@
         "_cal_id": "_71144cpk70o3eb9o8d2kcb9k6sqk4b9o8gpj2b9l8h244gpn60o48hhg8g"
       },
       {
-        "_row": 75,
-        "Date": "2026-08-19",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
-        "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
-        "Notes": ""
-      },
-      {
         "Date": "2026-08-19",
         "Time": "18:30-19:00",
         "Event": "Ava swimming ",
@@ -2663,7 +2492,7 @@
       {
         "Date": "2026-08-20",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2692,7 +2521,7 @@
       },
       {
         "Date": "2026-08-21",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -2713,7 +2542,7 @@
       {
         "Date": "2026-08-22",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2723,7 +2552,7 @@
       {
         "Date": "2026-08-22",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2738,16 +2567,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-08-22",
-        "Time": "13:30-14:30",
-        "Event": "Ella diving ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h23gga68crkab9k6gpjcb9k88qj2ba185130b9g8ko46dhg8co3eda26g_20260822T123000Z"
       },
       {
         "Date": "2026-08-23",
@@ -2810,15 +2629,6 @@
         "_cal_id": "_88s42dhl8op3cba56l232b9k6d1j4ba18p242ba38l1j8ci36opjahi660_20260825T150000Z"
       },
       {
-        "_row": 77,
-        "Date": "2026-08-26",
-        "Time": "18:30-19:00",
-        "Event": "Swimming - Ava",
-        "Who": "Ava",
-        "Location": "North Herts Leisure Centre",
-        "Notes": ""
-      },
-      {
         "Date": "2026-08-26",
         "Time": "18:30-19:00",
         "Event": "Ava swimming ",
@@ -2851,7 +2661,7 @@
       {
         "Date": "2026-08-27",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2880,7 +2690,7 @@
       },
       {
         "Date": "2026-08-28",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -2901,7 +2711,7 @@
       {
         "Date": "2026-08-29",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2911,7 +2721,7 @@
       {
         "Date": "2026-08-29",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2936,16 +2746,6 @@
         "Who": "Ava & Ella",
         "Location": "Luton Diving Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-08-29",
-        "Time": "13:30-14:30",
-        "Event": "Ella diving ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h23gga68crkab9k6gpjcb9k88qj2ba185130b9g8ko46dhg8co3eda26g_20260829T123000Z"
       },
       {
         "Date": "2026-08-29",
@@ -3060,16 +2860,6 @@
       {
         "Date": "2026-09-02",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260902T173000Z"
-      },
-      {
-        "Date": "2026-09-02",
-        "Time": "18:30-19:00",
         "Event": "Ava swimming ",
         "Who": "",
         "Location": "",
@@ -3100,7 +2890,7 @@
       {
         "Date": "2026-09-03",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3129,7 +2919,7 @@
       },
       {
         "Date": "2026-09-04",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -3150,7 +2940,7 @@
       {
         "Date": "2026-09-05",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3160,7 +2950,7 @@
       {
         "Date": "2026-09-05",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3260,16 +3050,6 @@
       {
         "Date": "2026-09-09",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260909T173000Z"
-      },
-      {
-        "Date": "2026-09-09",
-        "Time": "18:30-19:00",
         "Event": "Ava swimming ",
         "Who": "",
         "Location": "",
@@ -3300,7 +3080,7 @@
       {
         "Date": "2026-09-10",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3329,7 +3109,7 @@
       },
       {
         "Date": "2026-09-11",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -3370,7 +3150,7 @@
       {
         "Date": "2026-09-12",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3380,7 +3160,7 @@
       {
         "Date": "2026-09-12",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3510,16 +3290,6 @@
       {
         "Date": "2026-09-16",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260916T173000Z"
-      },
-      {
-        "Date": "2026-09-16",
-        "Time": "18:30-19:00",
         "Event": "Ava swimming ",
         "Who": "",
         "Location": "",
@@ -3550,7 +3320,7 @@
       {
         "Date": "2026-09-17",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3579,7 +3349,7 @@
       },
       {
         "Date": "2026-09-18",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -3610,7 +3380,7 @@
       {
         "Date": "2026-09-19",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3620,7 +3390,7 @@
       {
         "Date": "2026-09-19",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3719,16 +3489,6 @@
       {
         "Date": "2026-09-23",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260923T173000Z"
-      },
-      {
-        "Date": "2026-09-23",
-        "Time": "18:30-19:00",
         "Event": "Ava swimming ",
         "Who": "",
         "Location": "",
@@ -3769,7 +3529,7 @@
       {
         "Date": "2026-09-24",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3798,7 +3558,7 @@
       },
       {
         "Date": "2026-09-25",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -3819,7 +3579,7 @@
       {
         "Date": "2026-09-26",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3829,7 +3589,7 @@
       {
         "Date": "2026-09-26",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3939,16 +3699,6 @@
       {
         "Date": "2026-09-30",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260930T173000Z"
-      },
-      {
-        "Date": "2026-09-30",
-        "Time": "18:30-19:00",
         "Event": "Ava swimming ",
         "Who": "",
         "Location": "",
@@ -3989,7 +3739,7 @@
       {
         "Date": "2026-10-01",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -4018,7 +3768,7 @@
       },
       {
         "Date": "2026-10-02",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -4039,7 +3789,7 @@
       {
         "Date": "2026-10-03",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -4049,7 +3799,7 @@
       {
         "Date": "2026-10-03",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -4139,16 +3889,6 @@
       {
         "Date": "2026-10-07",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20261007T173000Z"
-      },
-      {
-        "Date": "2026-10-07",
-        "Time": "18:30-19:00",
         "Event": "Ava swimming ",
         "Who": "",
         "Location": "",
@@ -4179,7 +3919,7 @@
       {
         "Date": "2026-10-08",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -4208,7 +3948,7 @@
       },
       {
         "Date": "2026-10-09",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -4229,7 +3969,7 @@
       {
         "Date": "2026-10-10",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -4239,7 +3979,7 @@
       {
         "Date": "2026-10-10",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -4349,16 +4089,6 @@
       {
         "Date": "2026-10-14",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20261014T173000Z"
-      },
-      {
-        "Date": "2026-10-14",
-        "Time": "18:30-19:00",
         "Event": "Ava swimming ",
         "Who": "",
         "Location": "",
@@ -4399,7 +4129,7 @@
       {
         "Date": "2026-10-15",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Event": "Stretch & Flex (BX Dance) - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -4428,7 +4158,7 @@
       },
       {
         "Date": "2026-10-16",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
@@ -4449,7 +4179,7 @@
       {
         "Date": "2026-10-17",
         "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
+        "Event": "BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -4459,7 +4189,7 @@
       {
         "Date": "2026-10-17",
         "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
+        "Event": "BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
