@@ -320,6 +320,10 @@
         /* Day events modal */
         .day-modal { padding: 4px 0; }
         .day-modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; gap: 10px; }
+        .day-modal-center { text-align: center; flex: 1; min-width: 0; }
+        .day-nav-btn { background: none; border: 2px solid #e0e7ff; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #667eea; font-size: 12px; transition: all 0.15s; flex-shrink: 0; }
+        .day-nav-btn:hover { background: #667eea; color: white; border-color: #667eea; }
+        .day-nav-btn:active { transform: scale(0.9); }
         .day-modal-date { font-size: 18px; font-weight: 700; color: #1e1b4b; }
         .day-modal-today-badge { background: #667eea; color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 10px; letter-spacing: 0.5px; }
         .day-modal-count { font-size: 13px; color: #999; margin-bottom: 12px; }
@@ -338,6 +342,7 @@
         .dme-notes { font-size: 12px; color: #888; margin-top: 4px; font-style: italic; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .dme-arrow { display: flex; align-items: center; padding: 0 12px; color: #ccc; font-size: 22px; flex-shrink: 0; }
         .day-modal-actions { margin-top: 16px; }
+        .day-modal-swipe-hint { text-align: center; font-size: 11px; color: #999; margin-top: 10px; letter-spacing: 0.5px; }
         .day-modal-close { width: 100%; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; background: #f0f0f0; color: #555; }
         .day-modal-close:hover { background: #e0e0e0; }
         @media (max-width: 600px) {
@@ -456,8 +461,7 @@
         .pin-box h2 { color: white; font-size: 22px; margin-bottom: 6px; }
         .pin-box p { color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 24px; }
         .pin-dots { display: flex; gap: 14px; justify-content: center; margin-bottom: 24px; }
-        .pin-dot {
-            width: 18px; height: 18px; border-radius: 50%;
+        .pin-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); background: transparent; transition: all 0.2s; }
             border: 2px solid rgba(255,255,255,0.5); background: transparent;
             transition: all 0.2s;
         }
@@ -1345,17 +1349,23 @@
             const catColors = {'school':'#10b981','activity':'#06b6d4','holiday':'#f59e0b','birthday':'#ec4899','general':'#667eea'};
             const catEmojis = {'school':'🏫','activity':'🏃','holiday':'🏖️','birthday':'🎂','general':'📅'};
             
-            let html = `<div class="day-modal">`;
+            let html = `<div class="day-modal" data-current-date="${dateStr}">`;
             html += `<div class="day-modal-header">`;
+            html += `<button class="day-nav-btn day-nav-prev" onclick="navigateDay(-1)">◀</button>`;
+            html += `<div class="day-modal-center">`;
             html += `<div class="day-modal-date">${dateFormatted}</div>`;
             if (isToday) html += `<div class="day-modal-today-badge">TODAY</div>`;
+            html += `</div>`;
+            html += `<button class="day-nav-btn day-nav-next" onclick="navigateDay(1)">▶</button>`;
             html += `</div>`;
             
             if (dayEvents.length === 0) {
                 html += `<div class="day-modal-empty">No events on this day</div>`;
+                html += `<div class="day-modal-swipe-hint">◀ Swipe to navigate days ▶</div>`;
                 html += `<div class="day-modal-actions"><button class="day-modal-close" onclick="closeModal()">Close</button></div>`;
                 html += `</div>`;
                 openModal(html, null);
+                attachSwipeHandlers();
                 return;
             }
             
@@ -1393,9 +1403,54 @@
             
             html += `</div>`;
             html += `<div class="day-modal-actions"><button class="day-modal-close" onclick="closeModal()">Close</button></div>`;
+            html += `<div class="day-modal-swipe-hint">◀ Swipe to navigate days ▶</div>`;
             html += `</div>`;
             
             openModal(html, null);
+            attachSwipeHandlers();
+        }
+        
+        // ===== DAY NAVIGATION (SWIPE) =====
+        let _daySwipeStartX = 0;
+        let _daySwipeStartY = 0;
+        let _daySwipeModal = null;
+        
+        function attachSwipeHandlers() {
+            _daySwipeModal = document.querySelector('.day-modal');
+            if (!_daySwipeModal) return;
+            
+            _daySwipeModal.addEventListener('touchstart', function(e) {
+                _daySwipeStartX = e.changedTouches[0].screenX;
+                _daySwipeStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+            
+            _daySwipeModal.addEventListener('touchend', function(e) {
+                const dx = e.changedTouches[0].screenX - _daySwipeStartX;
+                const dy = e.changedTouches[0].screenY - _daySwipeStartY;
+                
+                // Only trigger if horizontal swipe is dominant and > 50px
+                if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+                    if (dx < 0) {
+                        // Swipe left → next day
+                        navigateDay(1);
+                    } else {
+                        // Swipe right → previous day
+                        navigateDay(-1);
+                    }
+                }
+            }, { passive: true });
+        }
+        
+        function navigateDay(offset) {
+            const modal = document.querySelector('.day-modal');
+            if (!modal) return;
+            const currentDate = modal.dataset.currentDate;
+            if (!currentDate) return;
+            
+            const d = new Date(currentDate + 'T00:00:00');
+            d.setDate(d.getDate() + offset);
+            const newDateStr = d.toISOString().split('T')[0];
+            showDayEvents(newDateStr);
         }
         
         // ===== RENDER FUNCTIONS =====
