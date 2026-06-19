@@ -23,7 +23,7 @@ jobs:
       - name: Fetch Google Sheets data
         env:
           GOOGLE_TOKEN_JSON: ${{ secrets.GOOGLE_TOKEN_JSON }}
-        run: python3 scripts/fetch_data.py > data.json
+        run: python3 scripts/fetch_data.py 2>/dev/null > data.json
 
       - name: Commit and push if changed
         run: |
