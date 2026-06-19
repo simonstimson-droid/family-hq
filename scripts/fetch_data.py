@@ -13,6 +13,10 @@ from difflib import SequenceMatcher
 
 SPREADSHEET_ID = "1zYs5s66J2nyv-LmaZWBL2Tzhu5vicrkOq3nDC5LSFXA"
 CALENDAR_ID = "family17800354474891822339@group.calendar.google.com"
+CALENDAR_IDS = [
+    "family17800354474891822339@group.calendar.google.com",
+    "clementsonemma@gmail.com",  # Emma's calendar
+]
 CALENDAR_LOOKAHEAD_DAYS = 120  # how far ahead to fetch calendar events
 
 # ── Token handling ──────────────────────────────────────────────────────────
@@ -117,12 +121,14 @@ def get_access_token():
     return tok["access_token"]
 
 
-def fetch_calendar_events(token):
-    """Fetch events from Google Calendar."""
+def fetch_calendar_events(token, calendar_id=None):
+    """Fetch events from Google Calendar. Defaults to primary CALENDAR_ID."""
+    if calendar_id is None:
+        calendar_id = CALENDAR_ID
     now = datetime.now(timezone.utc)
     time_min = urllib.parse.quote(now.isoformat())
     time_max = urllib.parse.quote((now + timedelta(days=CALENDAR_LOOKAHEAD_DAYS)).isoformat())
-    cal_id = urllib.parse.quote(CALENDAR_ID)
+    cal_id = urllib.parse.quote(calendar_id)
 
     url = (
         f"https://www.googleapis.com/calendar/v3/calendars/{cal_id}/events"
@@ -266,12 +272,19 @@ def merge_calendar_events(sheet_rows, cal_events):
     return merged
 
 
-# Fetch and merge
+# Fetch and merge from all calendars
 try:
     token = get_access_token()
-    cal_events = fetch_calendar_events(token)
+    all_cal_events = []
+    for cal_id in CALENDAR_IDS:
+        try:
+            events = fetch_calendar_events(token, cal_id)
+            all_cal_events.extend(events)
+            print(f"Fetched {len(events)} events from {cal_id}", file=sys.stderr)
+        except Exception as e:
+            print(f"WARNING: Failed to fetch from {cal_id}: {e}", file=sys.stderr)
     sheet_calendar = output.get("📅 Calendar", {}).get("rows", [])
-    merged = merge_calendar_events(sheet_calendar, cal_events)
+    merged = merge_calendar_events(sheet_calendar, all_cal_events)
     output["📅 Calendar"] = {
         "headers": ["Date", "Time", "Event", "Who", "Location", "Notes"],
         "rows": merged,
