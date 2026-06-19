@@ -4642,6 +4642,15 @@
         "Frequency": "Weekly",
         "Done ✓": "",
         "Notes": ""
+      },
+      {
+        "_row": 4,
+        "Task": "Test chore",
+        "Assigned To": "Simon",
+        "Due Date": "",
+        "Frequency": "",
+        "Done ✓": "",
+        "Notes": ""
       }
     ]
   },
