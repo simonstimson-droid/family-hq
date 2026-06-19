@@ -218,7 +218,8 @@ def times_overlap(cal_time, sheet_time):
 def extract_core_name(event_name):
     """Extract the core event name for deduplication.
     
-    Strips person names, locations, emojis, parentheticals, and day-of-week suffixes.
+    Strips person names, emojis, parentheticals, locations, and day-of-week suffixes.
+    Keeps only the essential activity name for matching.
     """
     s = event_name or ""
     # Strip emoji
@@ -232,6 +233,10 @@ def extract_core_name(event_name):
     s = re.sub(r"[\s\-–]*\(?(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\)?\s*$", "", s, flags=re.IGNORECASE)
     # Strip "with Mum" / "with Dad" etc
     s = re.sub(r"\s+with\s+\w+$", "", s, flags=re.IGNORECASE)
+    # Strip location prepositions: "at HBS", "in Luton", "at school"
+    s = re.sub(r"\s+(at|in|from|near)\s+[\w\s']+(\s*,.*)?$", "", s, flags=re.IGNORECASE)
+    # Strip trailing location after comma
+    s = re.sub(r"\s*,.*$", "", s)
     # Normalize whitespace
     s = " ".join(s.split())
     return s.lower().strip()
@@ -253,8 +258,8 @@ def merge_calendar_events(sheet_rows, cal_events):
     
     Returns merged list of event dicts.
     """
-    STRICT_THRESHOLD = 0.70
-    FUZZY_THRESHOLD = 0.80
+    STRICT_THRESHOLD = 0.55
+    FUZZY_THRESHOLD = 0.70
     matched_cal = set()
     matched_sheet = set()
 
