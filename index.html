@@ -1449,7 +1449,11 @@
             
             const d = new Date(currentDate + 'T00:00:00');
             d.setDate(d.getDate() + offset);
-            const newDateStr = d.toISOString().split('T')[0];
+            // Use local date to avoid timezone off-by-one (BST issue)
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            const newDateStr = y + '-' + m + '-' + day;
             showDayEvents(newDateStr);
         }
         
