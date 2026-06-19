@@ -194,19 +194,47 @@ def normalize_name(s):
 
 
 def times_overlap(cal_time, sheet_time):
-    """Check if two time strings overlap (same start time)."""
+    """Check if two time strings overlap (same start time).
+    
+    Fuzzy matching:
+    - "All day" matches only "All day" (not specific times)
+    - "18:00-19:00" matches "18:00" (same start)
+    - "18:00" matches "18:00-19:00" (same start)
+    - "18:00" matches "18:00" (exact)
+    """
     if not cal_time and not sheet_time:
         return True
     if not cal_time or not sheet_time:
         return False
-    # Handle "All day"
-    if cal_time == "All day" and sheet_time == "All day":
-        return True
+    # Handle "All day" — only match other "All day"
     if cal_time == "All day" or sheet_time == "All day":
-        return False
+        return cal_time == sheet_time
+    # Compare start times (fuzzy: same hour:minute)
     cal_start = cal_time.split("-")[0].strip()
     sheet_start = sheet_time.split("-")[0].strip()
     return cal_start == sheet_start
+
+
+def extract_core_name(event_name):
+    """Extract the core event name for deduplication.
+    
+    Strips person names, locations, emojis, parentheticals, and day-of-week suffixes.
+    """
+    s = event_name or ""
+    # Strip emoji
+    s = re.sub(r"[^\x00-\x7F]+", "", s)
+    # Strip parentheticals
+    s = re.sub(r"\(.*?\)", "", s)
+    # Strip common person prefixes/suffixes
+    s = re.sub(r"^-\s*(ava|ella|ava\s*&\s*ella|both|simon|emma)\s*", "", s, flags=re.IGNORECASE)
+    s = re.sub(r"\s*-\s*(ava|ella|ava\s*&\s*ella|both|simon|emma)\s*$", "", s, flags=re.IGNORECASE)
+    # Strip day-of-week suffixes like "– Fri" or "(Fri)"
+    s = re.sub(r"[\s\-–]*\(?(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\)?\s*$", "", s, flags=re.IGNORECASE)
+    # Strip "with Mum" / "with Dad" etc
+    s = re.sub(r"\s+with\s+\w+$", "", s, flags=re.IGNORECASE)
+    # Normalize whitespace
+    s = " ".join(s.split())
+    return s.lower().strip()
 
 
 def merge_calendar_events(sheet_rows, cal_events):
@@ -215,40 +243,85 @@ def merge_calendar_events(sheet_rows, cal_events):
     
     Strategy:
     - Events in both (matched by date + time + name similarity) → keep spreadsheet version
-      (spreadsheet may have manual annotations)
+      (spreadsheet may have manual annotations). If calendar has better time, use calendar time.
     - Events only in Calendar → add to merged list
     - Events only in Sheet → keep (may be manual entries not in calendar)
     
+    Multi-pass matching:
+    1. Strict: same date + overlapping time + core name match (≥0.7)
+    2. Fuzzy: same date + any time + core name match (≥0.8) — catches time differences
+    
     Returns merged list of event dicts.
     """
-    SIMILARITY_THRESHOLD = 0.60
+    STRICT_THRESHOLD = 0.70
+    FUZZY_THRESHOLD = 0.80
     matched_cal = set()
     matched_sheet = set()
 
-    # Match calendar events to sheet rows
+    # Pass 1: Strict matching (date + time overlap + core name)
     for ci, cal in enumerate(cal_events):
+        if ci in matched_cal:
+            continue
+        cal_core = extract_core_name(cal["Event"])
         best_match = None
         best_sim = 0
         for si, row in enumerate(sheet_rows):
+            if si in matched_sheet:
+                continue
             if cal["Date"] != row.get("Date", ""):
                 continue
             if not times_overlap(cal["Time"], row.get("Time", "")):
                 continue
-            sim = SequenceMatcher(
-                None, normalize_name(cal["Event"]), normalize_name(row.get("Event", ""))
-            ).ratio()
+            row_core = extract_core_name(row.get("Event", ""))
+            sim = SequenceMatcher(None, cal_core, row_core).ratio()
             if sim > best_sim:
                 best_sim = sim
                 best_match = si
-        if best_match is not None and best_sim >= SIMILARITY_THRESHOLD:
+        if best_match is not None and best_sim >= STRICT_THRESHOLD:
             matched_cal.add(ci)
             matched_sheet.add(best_match)
+            # If calendar has a specific time but sheet has "All day", upgrade to calendar time
+            sheet_row = sheet_rows[best_match]
+            if sheet_row.get("Time", "") in ("All day", "") and cal.get("Time", "") not in ("All day", ""):
+                sheet_row["_Time"] = cal["Time"]
+
+    # Pass 2: Fuzzy matching (date + core name only, ignores time differences)
+    for ci, cal in enumerate(cal_events):
+        if ci in matched_cal:
+            continue
+        cal_core = extract_core_name(cal["Event"])
+        if not cal_core or len(cal_core) < 4:
+            continue  # skip very short names, too ambiguous
+        best_match = None
+        best_sim = 0
+        for si, row in enumerate(sheet_rows):
+            if si in matched_sheet:
+                continue
+            if cal["Date"] != row.get("Date", ""):
+                continue
+            row_core = extract_core_name(row.get("Event", ""))
+            if not row_core or len(row_core) < 4:
+                continue
+            sim = SequenceMatcher(None, cal_core, row_core).ratio()
+            if sim > best_sim:
+                best_sim = sim
+                best_match = si
+        if best_match is not None and best_sim >= FUZZY_THRESHOLD:
+            matched_cal.add(ci)
+            matched_sheet.add(best_match)
+            # If calendar has a specific time but sheet has "All day", upgrade to calendar time
+            sheet_row = sheet_rows[best_match]
+            if sheet_row.get("Time", "") in ("All day", "") and cal.get("Time", "") not in ("All day", ""):
+                sheet_row["_Time"] = cal["Time"]
 
     # Build merged list
     merged = []
 
     # Add all sheet rows (spreadsheet is the base)
     for si, row in enumerate(sheet_rows):
+        # Apply any time upgrade from calendar merge
+        if "_Time" in row:
+            row["Time"] = row.pop("_Time")
         merged.append(row)
 
     # Add calendar events that weren't matched
