@@ -14,10 +14,19 @@ CERT_FILE = '/Users/simonstimson/caddy/ha.crt'
 KEY_FILE = '/Users/simonstimson/caddy/ha.key'
 
 class ProxyHandler(http.server.BaseHTTPRequestHandler):
+    def _add_cors_headers(self):
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self._add_cors_headers()
+        self.end_headers()
+
     def do_GET(self):
         try:
             conn = http.client.HTTPConnection(HA_HOST, HA_PORT, timeout=10)
-            # Forward all headers except Host
             headers = {}
             for key, val in self.headers.items():
                 if key.lower() not in ('host', 'transfer-encoding'):
@@ -29,12 +38,14 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
             for key, val in resp.getheaders():
                 if key.lower() not in ('transfer-encoding', 'connection'):
                     self.send_header(key, val)
+            self._add_cors_headers()
             self.end_headers()
             body = resp.read()
             self.wfile.write(body)
             conn.close()
         except Exception as e:
             self.send_response(502)
+            self._add_cors_headers()
             self.end_headers()
             self.wfile.write(f'Proxy error: {e}'.encode())
 
@@ -54,12 +65,14 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
             for key, val in resp.getheaders():
                 if key.lower() not in ('transfer-encoding', 'connection'):
                     self.send_header(key, val)
+            self._add_cors_headers()
             self.end_headers()
             resp_body = resp.read()
             self.wfile.write(resp_body)
             conn.close()
         except Exception as e:
             self.send_response(502)
+            self._add_cors_headers()
             self.end_headers()
             self.wfile.write(f'Proxy error: {e}'.encode())
 
