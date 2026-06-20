@@ -562,16 +562,6 @@
       {
         "Date": "2026-06-26",
         "Time": "All day",
-        "Event": "Ava Gymnastics at HBS Revolutions",
-        "Who": "",
-        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260626"
-      },
-      {
-        "Date": "2026-06-26",
-        "Time": "All day",
         "Event": "Camping ",
         "Who": "",
         "Location": "",
@@ -598,6 +588,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8h142e226d24cba18p138b9k70o48ba26t1kcb9g8ko3ighg74p3id9l6k"
+      },
+      {
+        "Date": "2026-06-26",
+        "Time": "18:00-19:00",
+        "Event": "Ava Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260626T170000Z"
       },
       {
         "Date": "2026-06-26",
@@ -891,22 +891,22 @@
       {
         "Date": "2026-07-03",
         "Time": "All day",
-        "Event": "Ava Gymnastics at HBS Revolutions",
-        "Who": "",
-        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260703"
-      },
-      {
-        "Date": "2026-07-03",
-        "Time": "All day",
         "Event": "Dad staying ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8goj0dq260ojeb9k84pk6b9k6ks3eba28cs42b9n61338e218l248g9m6g"
+      },
+      {
+        "Date": "2026-07-03",
+        "Time": "18:00-19:00",
+        "Event": "Ava Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260703T170000Z"
       },
       {
         "Date": "2026-07-03",
@@ -1140,16 +1140,6 @@
       {
         "Date": "2026-07-10",
         "Time": "All day",
-        "Event": "Ava Gymnastics at HBS Revolutions",
-        "Who": "",
-        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260710"
-      },
-      {
-        "Date": "2026-07-10",
-        "Time": "All day",
         "Event": "Ella sports day. Packed lunch",
         "Who": "",
         "Location": "",
@@ -1176,6 +1166,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "m8s70q01lihb23fjjf40vqu05k"
+      },
+      {
+        "Date": "2026-07-10",
+        "Time": "18:00-19:00",
+        "Event": "Ava Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260710T170000Z"
       },
       {
         "Date": "2026-07-10",
@@ -1479,16 +1479,6 @@
       {
         "Date": "2026-07-17",
         "Time": "All day",
-        "Event": "Ava Gymnastics at HBS Revolutions",
-        "Who": "",
-        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260717"
-      },
-      {
-        "Date": "2026-07-17",
-        "Time": "All day",
         "Event": "🏫 Last Day of Term – Fairfield Park",
         "Who": "",
         "Location": "",
@@ -1505,6 +1495,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_60qkah236cskcba48opkcb9k6cs44ba28l138ba370q4cci5652k6ga36s"
+      },
+      {
+        "Date": "2026-07-17",
+        "Time": "18:00-19:00",
+        "Event": "Ava Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260717T170000Z"
       },
       {
         "Date": "2026-07-17",
@@ -1791,13 +1791,13 @@
       },
       {
         "Date": "2026-07-24",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260724"
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260724T170000Z"
       },
       {
         "Date": "2026-07-24",
@@ -1990,16 +1990,6 @@
       {
         "Date": "2026-07-31",
         "Time": "All day",
-        "Event": "Ava Gymnastics at HBS Revolutions",
-        "Who": "",
-        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260731"
-      },
-      {
-        "Date": "2026-07-31",
-        "Time": "All day",
         "Event": "Invoice RSW",
         "Who": "",
         "Location": "",
@@ -2016,6 +2006,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8or34c9i64pkab9i6l1k8b9k8d0j6b9p6crk8b9g68o44h9j88rjadq174"
+      },
+      {
+        "Date": "2026-07-31",
+        "Time": "18:00-19:00",
+        "Event": "Ava Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260731T170000Z"
       },
       {
         "Date": "2026-07-31",
@@ -2237,13 +2237,13 @@
       },
       {
         "Date": "2026-08-07",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260807"
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260807T170000Z"
       },
       {
         "Date": "2026-08-07",
@@ -2426,22 +2426,22 @@
       {
         "Date": "2026-08-14",
         "Time": "All day",
-        "Event": "Ava Gymnastics at HBS Revolutions",
-        "Who": "",
-        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260814"
-      },
-      {
-        "Date": "2026-08-14",
-        "Time": "All day",
         "Event": "Flea cats",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8p13ie9m8d33ab9j7533cb9k8ko4cba27123eb9j68pj6cq46oo36gpn8o_20260814"
+      },
+      {
+        "Date": "2026-08-14",
+        "Time": "18:00-19:00",
+        "Event": "Ava Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260814T170000Z"
       },
       {
         "Date": "2026-08-14",
@@ -2682,13 +2682,13 @@
       },
       {
         "Date": "2026-08-21",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260821"
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260821T170000Z"
       },
       {
         "Date": "2026-08-21",
@@ -2870,13 +2870,13 @@
       },
       {
         "Date": "2026-08-28",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260828"
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260828T170000Z"
       },
       {
         "Date": "2026-08-28",
@@ -3119,13 +3119,13 @@
       },
       {
         "Date": "2026-09-04",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260904"
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260904T170000Z"
       },
       {
         "Date": "2026-09-04",
@@ -3320,16 +3320,6 @@
       {
         "Date": "2026-09-11",
         "Time": "All day",
-        "Event": "Ava Gymnastics at HBS Revolutions",
-        "Who": "",
-        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260911"
-      },
-      {
-        "Date": "2026-09-11",
-        "Time": "All day",
         "Event": "Oasis Doc ",
         "Who": "",
         "Location": "",
@@ -3346,6 +3336,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_6kr36dpo8os36b9j6cpk4b9k84qj8ba16d1jcba270qk2gpp6op46ga268"
+      },
+      {
+        "Date": "2026-09-11",
+        "Time": "18:00-19:00",
+        "Event": "Ava Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260911T170000Z"
       },
       {
         "Date": "2026-09-11",
@@ -3570,22 +3570,22 @@
       {
         "Date": "2026-09-18",
         "Time": "All day",
-        "Event": "Ava Gymnastics at HBS Revolutions",
-        "Who": "",
-        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260918"
-      },
-      {
-        "Date": "2026-09-18",
-        "Time": "All day",
         "Event": "Jane’s Birthday ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_6kq42g9l8gs44b9m74pj8b9k8kqjcb9p8gpk2b9k8cojiga674sj8dpn68_20260918"
+      },
+      {
+        "Date": "2026-09-18",
+        "Time": "18:00-19:00",
+        "Event": "Ava Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260918T170000Z"
       },
       {
         "Date": "2026-09-18",
@@ -3788,13 +3788,13 @@
       },
       {
         "Date": "2026-09-25",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260925"
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260925T170000Z"
       },
       {
         "Date": "2026-09-25",
@@ -4008,13 +4008,13 @@
       },
       {
         "Date": "2026-10-02",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20261002"
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20261002T170000Z"
       },
       {
         "Date": "2026-10-02",
@@ -4198,13 +4198,13 @@
       },
       {
         "Date": "2026-10-09",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20261009"
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20261009T170000Z"
       },
       {
         "Date": "2026-10-09",
@@ -4418,13 +4418,13 @@
       },
       {
         "Date": "2026-10-16",
-        "Time": "All day",
+        "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20261016"
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20261016T170000Z"
       },
       {
         "Date": "2026-10-16",
