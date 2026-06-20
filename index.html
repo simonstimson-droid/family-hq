@@ -1835,12 +1835,10 @@
             renderShopping(familyData);
             showToast('🗑️ Item deleted');
             
-            // Delete from sheet by clearing the row (we can't truly delete without a dedicated endpoint)
+            // Delete the row in the sheet
             try {
-                const emptyRow = {};
-                for (const k of Object.keys(item)) emptyRow[k] = '';
-                await apiCall({action:'update', sheet:'🛒 Shopping List', row:String(idx+2), data:JSON.stringify(emptyRow)});
-            } catch(e) { console.error('Failed to clear row in sheet', e); }
+                await apiCall({action:'delete', sheet:'🛒 Shopping List', row:String(idx+2)});
+            } catch(e) { console.error('Failed to delete row in sheet', e); }
         }
         
         function renderChores(data) {
@@ -2926,13 +2924,23 @@
                 const b = document.getElementById('s_save'); b.disabled=true; b.textContent='Adding...';
                 const data = {Item: document.getElementById('s_item').value, Quantity: document.getElementById('s_qty').value, 'Added by': document.getElementById('s_who').value, 'Done ✓': '', Category: document.getElementById('s_cat').value};
                 if (!data.Item) { showToast('Please enter an item',true); b.disabled=false; return; }
-                const r = await apiCall({action:'append', sheet:'🛒 Shopping List', data:JSON.stringify(data)});
-                if (r.success) {
-                    localAddItem('🛒', data);
-                    showToast('✅ Added!');
-                    closeModal();
+                console.log('Adding shopping item:', data);
+                try {
+                    const r = await apiCall({action:'append', sheet:'🛒 Shopping List', data:JSON.stringify(data)});
+                    console.log('Add shopping item response:', r);
+                    if (r && r.success) {
+                        localAddItem('🛒', data);
+                        showToast('✅ Added!');
+                        closeModal();
+                    } else {
+                        showToast('❌ '+(r && r.error ? r.error : 'Failed — check console'),true);
+                        b.disabled=false;
+                    }
+                } catch(e) {
+                    console.error('Add shopping item error:', e);
+                    showToast('❌ Error: ' + e.message, true);
+                    b.disabled=false;
                 }
-                else { showToast('❌ '+(r.error||'Failed'),true); b.disabled=false; }
             });
         }
         
