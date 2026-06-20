@@ -549,6 +549,7 @@
         <div class="tab" data-panel="messages">💬 Messages</div>
         <div class="tab" data-panel="todo">📌 To-Do</div>
         <div class="tab" data-panel="family">👨‍👩‍👧‍👧 Family</div>
+        <div class="tab" data-panel="settings">⚙️ Settings</div>
         <div class="tab" data-panel="emailadd">✉️ Quick Add</div>
     </div>
     
@@ -564,11 +565,11 @@
                         <div style="font-weight:700;font-size:13px;color:#166534">Home Assistant</div>
                         <div id="haStatus" style="font-size:11px;color:#16a34a;margin-top:2px">Checking...</div>
                     </div>
-                    <a href="http://192.168.64.2:8123" target="_blank" id="haLink" style="text-decoration:none;color:inherit">
+                    <a href="https://192.168.0.86:8443" target="_blank" id="haLink" style="text-decoration:none;color:inherit">
                         <div style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:12px;padding:14px;text-align:center;border:1px solid #93c5fd;cursor:pointer;transition:all 0.15s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                             <div style="font-size:24px">⚡</div>
                             <div style="font-weight:700;font-size:13px;color:#1e40af">Open HA</div>
-                            <div style="font-size:11px;color:#3b82f6;margin-top:2px">192.168.64.2:8123</div>
+                            <div style="font-size:11px;color:#3b82f6;margin-top:2px">192.168.0.86:8443</div>
                         </div>
                     </a>
                 </div>
@@ -811,7 +812,36 @@
                 <div class="family-grid" id="familyMembers"><div class="loading"><span class="spinner">⏳</span> Loading...</div></div>
             </div>
         </div>
-        
+
+        <!-- SETTINGS -->
+        <div class="panel" id="settings">
+            <div class="card">
+                <h2>⚙️ Settings</h2>
+                <p style="font-size:13px;color:#666;margin-bottom:16px;">Configure your Family HQ dashboard preferences.</p>
+                
+                <div style="margin-bottom:20px">
+                    <h3 style="font-size:14px;font-weight:700;color:#333;margin-bottom:8px;">🏠 Home Assistant</h3>
+                    <p style="font-size:12px;color:#888;margin-bottom:8px;">Enter your Home Assistant long-lived access token to enable device control and status.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap">
+                        <input type="password" id="haTokenInput" placeholder="Paste your HA token here..." style="flex:1;min-width:250px;padding:10px 14px;border:2px solid #e0e7ff;border-radius:10px;font-size:14px;outline:none;transition:border-color 0.15s;font-family:monospace" onfocus="this.style.border-color='#6366f1'" onblur="this.style.border-color='#e0e7ff'">
+                        <button onclick="saveHAToken(document.getElementById('haTokenInput').value)" style="padding:10px 18px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;border:none;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;">💾 Save Token</button>
+                    </div>
+                    <div id="haTokenStatus" style="margin-top:6px;font-size:12px;color:#888;"></div>
+                    <p style="font-size:11px;color:#999;margin-top:6px;">To create a token: Open HA → Profile → Security → Long-Lived Access Tokens → Create Token. Token is stored locally in your browser only.</p>
+                </div>
+
+                <div style="margin-bottom:20px">
+                    <h3 style="font-size:14px;font-weight:700;color:#333;margin-bottom:8px;">🔒 Dashboard PIN</h3>
+                    <p style="font-size:12px;color:#888;margin-bottom:8px;">Change the PIN required to access the dashboard.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap">
+                        <input type="password" id="pinInput" placeholder="New 4-digit PIN..." maxlength="4" style="width:160px;padding:10px 14px;border:2px solid #e0e7ff;border-radius:10px;font-size:14px;outline:none;transition:border-color 0.15s" onfocus="this.style.border-color='#6366f1'" onblur="this.style.border-color='#e0e7ff'">
+                        <button onclick="if(document.getElementById('pinInput').value.length===4){localStorage.setItem(PIN_GATE_STORAGE_KEY,document.getElementById('pinInput').value);document.getElementById('pinStatus').textContent='✅ PIN updated!';document.getElementById('pinInput').value='';}else{document.getElementById('pinStatus').textContent='❌ Enter exactly 4 digits';}" style="padding:10px 18px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;border:none;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;">💾 Save PIN</button>
+                    </div>
+                    <div id="pinStatus" style="margin-top:6px;font-size:12px;color:#888;"></div>
+                </div>
+            </div>
+        </div>
+
         <!-- QUICK ADD VIA EMAIL -->
         <div class="panel" id="emailadd">
             <div class="card">
@@ -3489,8 +3519,13 @@
         }
     
     // ========== HOME PANEL ==========
-    const HA_URL = 'http://192.168.64.2:8123';
-    const HA_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI0NTZhYWZlM2M1YWU0ZDYxYmUzZWQ0ZDdiM2UxNzQxYiIsImlhdCI6MTc4MTMwNDU1OSwiZXhwIjoyMDk2NjY0NTU5fQ.8_-BJ11BPNQeSSBcmm46txwOAqLhbzJT9Ty2l6zH9Ag'; // Will be set via settings
+    const HA_URL = 'https://192.168.0.86:8443';
+    const HA_TOKEN = localStorage.getItem('ha_token') || '';
+
+    function saveHAToken(token) {
+        localStorage.setItem('ha_token', token);
+        location.reload();
+    }
 
     function initHomePanel() {
         checkHAStatus();
@@ -3548,7 +3583,7 @@
             console.error('HA connection error:', e.name, e.message);
             statusEl.textContent = 'Offline';
             statusEl.style.color = '#dc2626';
-            devicesEl.innerHTML = 'VM may be unreachable — are you on home WiFi?<br><span style="font-size:11px;color:#94a3b8;">Note: HA is HTTP-only, so browser may block from HTTPS pages.<br>Open HA directly: <a href="http://192.168.64.2:8123" style="color:#3b82f6;">192.168.64.2:8123</a></span>';
+            devicesEl.innerHTML = 'Home Assistant connected but no token set.<br><span style="font-size:11px;color:#94a3b8;">Go to Settings → Home Assistant to add your token.</span>';
             linkEl.href = HA_URL;
         }
     }
