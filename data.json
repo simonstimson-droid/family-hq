@@ -321,6 +321,26 @@
         "Notes": ""
       },
       {
+        "Date": "2026-06-22",
+        "Time": "15:25-17:00",
+        "Event": "Ava - Eagles After School",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "vp5md5mbp95dl7hsgqeqmqgkjo"
+      },
+      {
+        "Date": "2026-06-22",
+        "Time": "17:00-18:00",
+        "Event": "Ella - PBA Extra (after Athletics)",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "mpnpuher0089g3p7vg0k79ajkc"
+      },
+      {
         "_row": 95,
         "Date": "2026-06-22",
         "Time": "18:15",
@@ -388,6 +408,16 @@
         "_cal_id": "_8913ic9n6kskab9k6d136b9k60p3gba28crjcb9o6kpk2gi68go3edi288"
       },
       {
+        "Date": "2026-06-23",
+        "Time": "15:00-16:00",
+        "Event": "Ella - Homework Club",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "6aq1e17a98tfljrv5d58k2d3i8"
+      },
+      {
         "_row": 27,
         "Date": "2026-06-23",
         "Time": "16:00-17:00",
@@ -395,6 +425,16 @@
         "Who": "Ava",
         "Location": "Fairfield Park Lower School",
         "Notes": ""
+      },
+      {
+        "Date": "2026-06-23",
+        "Time": "16:00-18:00",
+        "Event": "Ella - PBA Extra (after Homework Club)",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "7vvs792joj5i87d7elphamadbo"
       },
       {
         "Date": "2026-06-23",
@@ -503,6 +543,16 @@
         "Notes": ""
       },
       {
+        "Date": "2026-06-25",
+        "Time": "15:25-17:00",
+        "Event": "Ava - Eagles After School",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "v9821n62419c23c6k781lrfep8"
+      },
+      {
         "_row": 30,
         "Date": "2026-06-25",
         "Time": "17:00-17:45",
@@ -510,6 +560,16 @@
         "Who": "Ava & Ella",
         "Location": "BX Dance",
         "Notes": ""
+      },
+      {
+        "Date": "2026-06-25",
+        "Time": "17:00-18:00",
+        "Event": "Ella - PBA Extra (after Choir)",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "vpf4odrlsigd4rt23oml9khjhk"
       },
       {
         "_row": 90,
