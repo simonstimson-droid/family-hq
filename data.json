@@ -4629,7 +4629,7 @@
         "@": ""
       },
       {
-        "_row": 10,
+        "_row": 6,
         "Item": "Agave syrup",
         "Quantity": "",
         "Added By": "",
@@ -4638,7 +4638,7 @@
         "@": ""
       },
       {
-        "_row": 11,
+        "_row": 7,
         "Item": "Butter",
         "Quantity": "",
         "Added By": "",
@@ -4647,30 +4647,30 @@
         "@": ""
       },
       {
-        "_row": 12,
+        "_row": 8,
         "Item": "Cheese",
         "Quantity": "1 Block",
-        "Added By": "Dairy",
-        "Done ✓": "Simon Stimson",
-        "Category": "",
+        "Added By": "Simon Stimson",
+        "Done ✓": "",
+        "Category": "Dairy",
         "@": "6/11/2026 22:59:48"
       },
       {
-        "_row": 13,
+        "_row": 9,
         "Item": "Flash",
         "Quantity": "1 bottle",
-        "Added By": "Household",
-        "Done ✓": "Simon Stimson",
-        "Category": "",
+        "Added By": "Simon Stimson",
+        "Done ✓": "",
+        "Category": "Household",
         "@": "6/11/2026 22:59:49"
       },
       {
-        "_row": 14,
+        "_row": 10,
         "Item": "Milk",
         "Quantity": "2 pints",
-        "Added By": "Dairy",
-        "Done ✓": "Simon Stimson",
-        "Category": "",
+        "Added By": "Simon Stimson",
+        "Done ✓": "",
+        "Category": "Dairy",
         "@": "6/11/2026 22:59:50"
       }
     ]

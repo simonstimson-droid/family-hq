@@ -131,7 +131,8 @@ function processShopping(ss, content, from) {
   const sheet = ss.getSheetByName('🛒 Shopping List');
   if (!sheet) return false;
   
-  sheet.appendRow([item, quantity, category, addedBy, '', new Date()]);
+  // Headers: Item, Quantity, Added By, Done ✓, Category, @
+  sheet.appendRow([item, quantity, addedBy, '', category, new Date()]);
   return true;
 }
 
