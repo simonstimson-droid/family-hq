@@ -13,6 +13,8 @@
  * 
  * EMAIL FORMAT (put in subject line):
  *   SHOPPING: Item name | Quantity | Category
+ *   SHOPPING_DONE: Item name          (toggle item as bought)
+ *   SHOPPING_DELETE: Item name        (remove item from list)
  *   CHORES: Task | Assigned To | Frequency
  *   EVENT: Event name | Date (DD/MM/YYYY) | Time | Who | Location
  *   NEWS: Message | Priority (Info/High)
@@ -21,6 +23,8 @@
  * 
  * Examples:
  *   SHOPPING: Milk | 2 pints | Dairy
+ *   SHOPPING_DONE: Milk          (mark as bought)
+ *   SHOPPING_DELETE: Milk        (remove from list)
  *   CHORES: Empty bins | Simon | Weekly
  *   EVENT: Ava dentist | 15/06/2026 | 14:00 | Ava | Hitchin Surgery
  *   NEWS: School trip payment due Friday | High
@@ -83,6 +87,16 @@ function processEmails() {
           case 'SHOPPING':
             success = processShopping(ss, content, from);
             break;
+          case 'SHOPPING_DONE':
+          case 'SHOPPING_CHECK':
+          case 'SHOPPING_BOUGHT':
+            success = processShoppingDone(ss, content);
+            break;
+          case 'SHOPPING_DELETE':
+          case 'SHOPPING_REMOVE':
+          case 'SHOPPING_DEL':
+            success = processShoppingDelete(ss, content);
+            break;
           case 'CHORES':
           case 'CHORE':
             success = processChores(ss, content, from);
@@ -131,9 +145,64 @@ function processShopping(ss, content, from) {
   const sheet = ss.getSheetByName('🛒 Shopping List');
   if (!sheet) return false;
   
+  // Check if item already exists (case-insensitive)
+  const data = sheet.getDataRange().getValues();
+  for (let i = 1; i < data.length; i++) {
+    const existingItem = (data[i][0] || '').toString().toLowerCase().trim();
+    const existingDone = (data[i][3] || '').toString().trim();
+    if (existingItem === item.toLowerCase() && !existingDone) {
+      // Item already exists and not done - don't add duplicate
+      Logger.log('Item already exists: ' + item);
+      return true; // Return true so email is marked as processed
+    }
+  }
+  
   // Headers: Item, Quantity, Added By, Done ✓, Category, @
   sheet.appendRow([item, quantity, addedBy, '', category, new Date()]);
   return true;
+}
+
+function processShoppingDone(ss, content) {
+  const itemName = content.trim();
+  const sheet = ss.getSheetByName('🛒 Shopping List');
+  if (!sheet) return false;
+  
+  const data = sheet.getDataRange().getValues();
+  // Search from bottom to top (most recent first)
+  for (let i = data.length - 1; i >= 1; i--) {
+    const existingItem = (data[i][0] || '').toString().toLowerCase().trim();
+    if (existingItem === itemName.toLowerCase()) {
+      // Toggle: if already done, uncheck; otherwise check
+      const currentDone = (data[i][3] || '').toString().trim();
+      const newDone = currentDone ? '' : '✓';
+      sheet.getRange(i + 1, 4).setValue(newDone);
+      Logger.log('Toggled done for: ' + itemName + ' -> ' + (newDone ? 'done' : 'not done'));
+      return true;
+    }
+  }
+  
+  Logger.log('Item not found for done toggle: ' + itemName);
+  return false;
+}
+
+function processShoppingDelete(ss, content) {
+  const itemName = content.trim();
+  const sheet = ss.getSheetByName('🛒 Shopping List');
+  if (!sheet) return false;
+  
+  const data = sheet.getDataRange().getValues();
+  // Search from bottom to top to delete most recent match
+  for (let i = data.length - 1; i >= 1; i--) {
+    const existingItem = (data[i][0] || '').toString().toLowerCase().trim();
+    if (existingItem === itemName.toLowerCase()) {
+      sheet.deleteRow(i + 1);
+      Logger.log('Deleted shopping item: ' + itemName);
+      return true;
+    }
+  }
+  
+  Logger.log('Item not found for delete: ' + itemName);
+  return false;
 }
 
 function processChores(ss, content, from) {

@@ -26,10 +26,24 @@ function handleRequest(e) {
         result = appendRow(sheet, JSON.parse(e.parameter.data));
         break;
       case 'update':
-        result = updateRow(sheet, e.parameter.row, JSON.parse(e.parameter.data));
+        if (e.parameter.searchCol && e.parameter.searchVal) {
+          // Find and update by search
+          result = findAndUpdateRow(sheet, e.parameter.searchCol, e.parameter.searchVal, e.parameter.updateCol, e.parameter.updateVal);
+        } else {
+          result = updateRow(sheet, e.parameter.row, JSON.parse(e.parameter.data));
+        }
         break;
       case 'delete':
-        result = deleteRow(sheet, e.parameter.row);
+        if (e.parameter.searchCol && e.parameter.searchVal) {
+          // Find and delete by search
+          result = findAndDeleteRow(sheet, e.parameter.searchCol, e.parameter.searchVal);
+        } else {
+          result = deleteRow(sheet, e.parameter.row);
+        }
+        break;
+      case 'toggleDone':
+        var toggleResult = findAndUpdateRow(sheet, 'Item', e.parameter.item, 'Done ✓', e.parameter.done ? '✓' : '');
+        result = toggleResult;
         break;
       default:
         result = {error: 'Unknown action: ' + action};
@@ -83,6 +97,56 @@ function deleteRow(sheetName, rowNum) {
   
   sheet.deleteRow(parseInt(rowNum));
   return {success: true, message: 'Deleted row ' + rowNum + ' from ' + sheetName};
+}
+
+function findAndUpdateRow(sheetName, searchCol, searchVal, updateCol, updateVal) {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var sheet = getSheetByEmoji(ss, sheetName);
+  if (!sheet) return {error: 'Sheet not found: ' + sheetName};
+  
+  var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  var colIdx = -1;
+  for (var i = 0; i < headers.length; i++) {
+    if (headers[i] === searchCol) { colIdx = i + 1; break; }
+  }
+  if (colIdx === -1) return {error: 'Column not found: ' + searchCol};
+  
+  var updateColIdx = -1;
+  for (var i = 0; i < headers.length; i++) {
+    if (headers[i] === updateCol) { updateColIdx = i + 1; break; }
+  }
+  if (updateColIdx === -1) return {error: 'Update column not found: ' + updateCol};
+  
+  var data = sheet.getDataRange().getValues();
+  for (var i = 1; i < data.length; i++) {
+    if (data[i][colIdx - 1] && data[i][colIdx - 1].toString().toLowerCase().trim() === searchVal.toLowerCase().trim()) {
+      sheet.getRange(i + 1, updateColIdx).setValue(updateVal);
+      return {success: true, message: 'Updated "' + searchVal + '" in ' + sheetName};
+    }
+  }
+  return {error: 'Item not found: ' + searchVal};
+}
+
+function findAndDeleteRow(sheetName, searchCol, searchVal) {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var sheet = getSheetByEmoji(ss, sheetName);
+  if (!sheet) return {error: 'Sheet not found: ' + sheetName};
+  
+  var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  var colIdx = -1;
+  for (var i = 0; i < headers.length; i++) {
+    if (headers[i] === searchCol) { colIdx = i + 1; break; }
+  }
+  if (colIdx === -1) return {error: 'Column not found: ' + searchCol};
+  
+  var data = sheet.getDataRange().getValues();
+  for (var i = data.length - 1; i >= 1; i--) {
+    if (data[i][colIdx - 1] && data[i][colIdx - 1].toString().toLowerCase().trim() === searchVal.toLowerCase().trim()) {
+      sheet.deleteRow(i + 1);
+      return {success: true, message: 'Deleted "' + searchVal + '" from ' + sheetName};
+    }
+  }
+  return {error: 'Item not found: ' + searchVal};
 }
 
 // ===== HELPER =====

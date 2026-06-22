@@ -362,6 +362,7 @@ try:
             sys.stderr.flush()
         except Exception as e:
             print(f"WARNING: Failed to fetch from {cal_id}: {e}", file=sys.stderr)
+            sys.stderr.flush()
     sheet_calendar = output.get("📅 Calendar", {}).get("rows", [])
     merged = merge_calendar_events(sheet_calendar, all_cal_events)
     
