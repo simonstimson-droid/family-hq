@@ -1,5 +1,3 @@
-Fetched 233 events from family17800354474891822339@group.calendar.google.com
-Fetched 193 events from clementsonemma@gmail.com
 {
   "📅 Calendar": {
     "headers": [
@@ -291,16 +289,6 @@ Fetched 193 events from clementsonemma@gmail.com
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": ""
-      },
-      {
-        "Date": "2026-06-22",
-        "Time": "17:00-18:00",
-        "Event": "Ella - PBA Extra (after Athletics)",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "mpnpuher0089g3p7vg0k79ajkc"
       },
       {
         "_row": 95,
