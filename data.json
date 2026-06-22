@@ -1,3 +1,5 @@
+Fetched 234 events from family17800354474891822339@group.calendar.google.com
+Fetched 191 events from clementsonemma@gmail.com
 {
   "📅 Calendar": {
     "headers": [
@@ -5024,6 +5026,13 @@
         "Date": "2026-06-22",
         "From": "Stylelife Dating Tips",
         "Message": "Intern Coach Deadline, Summer Conference, SLA Packages Sold Out",
+        "Priority": "Info"
+      },
+      {
+        "_row": 13,
+        "Date": "2026-06-22",
+        "From": "Stylelife Dating Tips",
+        "Message": "Stylelife Conference 2011, Coach Auditions and Academy Upgrade",
         "Priority": "Info"
       }
     ]
