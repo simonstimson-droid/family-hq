@@ -298,16 +298,6 @@
         "Notes": "Whole school - activities all week"
       },
       {
-        "Date": "2026-06-23",
-        "Time": "All day",
-        "Event": "Ella Yoga at school - PE kit",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_6oqk4ci16gp42b9g64s36b9k6d1jcba16ss32b9h6oskcc9o74sj6d9n70"
-      },
-      {
         "_row": 27,
         "Date": "2026-06-23",
         "Time": "16:00-17:00",
@@ -4485,6 +4475,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8krk4e1k68o4aba174s3ab9k60p3ib9p8oq3gb9p6l24ch9o6p134d1j8k_20261022T164500Z"
+      },
+      {
+        "Date": "2026-10-23",
+        "Time": "All day",
+        "Event": "Abigails birthday ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_68q3eh1p84s3gba56gs4ab9k84p32b9o8oqjcba16p1jic9h8kqk2da56k_20261023"
       },
       {
         "_row": 81,
