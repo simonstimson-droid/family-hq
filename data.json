@@ -326,16 +326,6 @@
         "Notes": "Comfortable clothes, bare feet, water bottle"
       },
       {
-        "Date": "2026-06-24",
-        "Time": "17:30-18:30",
-        "Event": "Hair ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_60q38cho64r3ab9l88pk2b9k8gs4ab9p6oq48b9n70sjaea588q3agi464"
-      },
-      {
         "_row": 29,
         "Date": "2026-06-24",
         "Time": "18:30-19:00",
@@ -4475,6 +4465,36 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20261022T140000Z"
+      },
+      {
+        "Date": "2026-10-22",
+        "Time": "17:45-18:30",
+        "Event": "Ava Beavers",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20261022T164500Z"
+      },
+      {
+        "Date": "2026-10-22",
+        "Time": "17:45-18:30",
+        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20261022T164500Z"
+      },
+      {
+        "Date": "2026-10-22",
+        "Time": "17:45-19:00",
+        "Event": "Ava beavers ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8krk4e1k68o4aba174s3ab9k60p3ib9p8oq3gb9p6l24ch9o6p134d1j8k_20261022T164500Z"
       },
       {
         "_row": 81,
