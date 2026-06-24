@@ -1,3 +1,5 @@
+Fetched 229 events from family17800354474891822339@group.calendar.google.com
+Fetched 187 events from clementsonemma@gmail.com
 {
   "📅 Calendar": {
     "headers": [
@@ -333,16 +335,6 @@
         "Who": "Ava",
         "Location": "North Herts Leisure Centre",
         "Notes": ""
-      },
-      {
-        "Date": "2026-06-24",
-        "Time": "18:30-19:00",
-        "Event": "Ava swimming ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_60oj8gi58ks48b9g850jib9k68pkcba160sjab9l6t1k4gpo6coj4e9m8c_20260624T173000Z"
       },
       {
         "_row": 100,
