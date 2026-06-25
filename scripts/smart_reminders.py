@@ -163,7 +163,7 @@ def fetch_calendar_events(days=7):
         if "dateTime" in start:
             dt = datetime.fromisoformat(start["dateTime"].replace("Z", "+00:00"))
         elif "date" in start:
-            dt = datetime.fromisoformat(start["date"])
+            dt = date.fromisoformat(start["date"])
         else:
             continue
         
