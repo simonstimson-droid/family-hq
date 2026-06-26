@@ -391,16 +391,6 @@
       },
       {
         "Date": "2026-06-26",
-        "Time": "07:55-08:55",
-        "Event": "Nails ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8h142e226d24cba18p138b9k70o48ba26t1kcb9g8ko3ighg74p3id9l6k"
-      },
-      {
-        "Date": "2026-06-26",
         "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
@@ -4465,6 +4455,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20261023T180000Z"
+      },
+      {
+        "Date": "2026-10-24",
+        "Time": "09:15-10:00",
+        "Event": "💃 BX Dance - Ava",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20261024T081500Z"
       },
       {
         "_row": 81,
