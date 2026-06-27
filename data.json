@@ -1139,7 +1139,7 @@
         "Event": "🎉 End of Year Rewards - Day 1",
         "Who": "",
         "Location": "Pix Brook",
-        "Notes": "",
+        "Notes": "School closes early, no PBA Extra. Last day for pupils.",
         "_source": "calendar",
         "_cal_id": "75vl77ade9t5qcn6lj3rrkcctg"
       },
@@ -1198,7 +1198,7 @@
         "Event": "🏫 Last Day of Term - Ella",
         "Who": "",
         "Location": "Pix Brook",
-        "Notes": "",
+        "Notes": "Coincides with End of Year Rewards Day 2 — last day for PBA pupils.",
         "_source": "calendar",
         "_cal_id": "1rldg86hjkul8jf9fu7nuo5t08"
       },
@@ -1208,7 +1208,7 @@
         "Event": "🎉 End of Year Rewards - Day 2",
         "Who": "",
         "Location": "Pix Brook",
-        "Notes": "",
+        "Notes": "Ella's last school day. School closes early, no PBA Extra.",
         "_source": "calendar",
         "_cal_id": "rahlbogf0gme4i4o4fbkoeakbk"
       },
@@ -1221,15 +1221,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8h33cea66t0jiba66soj6b9k850kaba26cq4ab9p6opj2cpm8gsj8ci46s"
-      },
-      {
-        "_row": 88,
-        "Date": "2026-07-15",
-        "Time": "14:00",
-        "Event": "🧪 Test Event - Dashboard Sync",
-        "Who": "Simon",
-        "Location": "Home",
-        "Notes": "Testing calendar sync"
       },
       {
         "_row": 56,
@@ -1335,7 +1326,7 @@
         "Event": "📅 End of Term - PBA",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
-        "Notes": "Last day of school"
+        "Notes": "Official end of term date (administrative). Pupils finished 15 July."
       },
       {
         "_row": 60,
@@ -1345,36 +1336,6 @@
         "Who": "Ava & Ella",
         "Location": "",
         "Notes": "Last day before summer holidays!"
-      },
-      {
-        "Date": "2026-07-17",
-        "Time": "All day",
-        "Event": "🏫 Last Day of Term – Fairfield Park",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "cf0mgvt7al3gp2kliidd396an0"
-      },
-      {
-        "Date": "2026-07-17",
-        "Time": "All day",
-        "Event": "🏫 Last Day of Term - Ava",
-        "Who": "",
-        "Location": "Fairfield Park",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "mo49cq5g9r7i5dn39lvfealvj4"
-      },
-      {
-        "Date": "2026-07-17",
-        "Time": "All day",
-        "Event": "End of term.",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_60qkah236cskcba48opkcb9k6cs44ba28l138ba370q4cci5652k6ga36s"
       },
       {
         "Date": "2026-07-17",
