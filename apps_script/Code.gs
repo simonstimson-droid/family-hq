@@ -17,7 +17,6 @@ function doPost(e) {
 function handleRequest(e) {
   var action = e.parameter.action;
   var sheet = e.parameter.sheet;
-  
   var result;
   
   try {
@@ -27,7 +26,6 @@ function handleRequest(e) {
         break;
       case 'update':
         if (e.parameter.searchCol && e.parameter.searchVal) {
-          // Find and update by search
           result = findAndUpdateRow(sheet, e.parameter.searchCol, e.parameter.searchVal, e.parameter.updateCol, e.parameter.updateVal);
         } else {
           result = updateRow(sheet, e.parameter.row, JSON.parse(e.parameter.data));
@@ -35,7 +33,6 @@ function handleRequest(e) {
         break;
       case 'delete':
         if (e.parameter.searchCol && e.parameter.searchVal) {
-          // Find and delete by search
           result = findAndDeleteRow(sheet, e.parameter.searchCol, e.parameter.searchVal);
         } else {
           result = deleteRow(sheet, e.parameter.row);
@@ -45,8 +42,11 @@ function handleRequest(e) {
         var toggleResult = findAndUpdateRow(sheet, 'Item', e.parameter.item, 'Done ✓', e.parameter.done ? '✓' : '');
         result = toggleResult;
         break;
+      case 'listEvents':
+        result = listCalendarEvents(parseInt(e.parameter.days) || 30);
+        break;
       default:
-        result = {error: 'Unknown action: ' + action};
+        result = listCalendarEvents(30); // Default: return calendar events
     }
   } catch(err) {
     result = {error: err.toString()};
@@ -55,6 +55,30 @@ function handleRequest(e) {
   var output = JSON.stringify(result);
   return ContentService.createTextOutput(output)
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+function listCalendarEvents(days) {
+  var events = [];
+  var now = new Date();
+  var future = new Date();
+  future.setDate(future.getDate() + days);
+  try {
+    var calendar = CalendarApp.getCalendarById('family17800354474891822339@group.calendar.google.com');
+    var calEvents = calendar.getEvents(now, future);
+    calEvents.forEach(function(e) {
+      events.push({
+        Date: formatDate(e.getStartTime()),
+        Time: e.isAllDayEvent() ? 'All day' : formatTime(e.getStartTime()) + ' - ' + formatTime(e.getEndTime()),
+        Event: e.getTitle(),
+        Who: e.getDescription() || 'Family',
+        Location: e.getLocation() || '',
+        Notes: '',
+        Source: 'calendar'
+      });
+    });
+  } catch(err) {}
+  events.sort(function(a,b){return new Date(a.Date) - new Date(b.Date)});
+  return events;
 }
 
 // ===== SHEET OPERATIONS =====
@@ -149,8 +173,6 @@ function findAndDeleteRow(sheetName, searchCol, searchVal) {
   return {error: 'Item not found: ' + searchVal};
 }
 
-// ===== HELPER =====
-
 function getSheetByEmoji(ss, emojiPrefix) {
   var sheets = ss.getSheets();
   for (var i = 0; i < sheets.length; i++) {
@@ -161,14 +183,15 @@ function getSheetByEmoji(ss, emojiPrefix) {
   return null;
 }
 
-// ===== SETUP FUNCTION =====
-// Run this once after pasting the script to verify it works
-function testSetup() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  Logger.log('Spreadsheet: ' + ss.getName());
-  Logger.log('ID: ' + ss.getId());
-  var sheets = ss.getSheets();
-  for (var i = 0; i < sheets.length; i++) {
-    Logger.log('Sheet ' + i + ': ' + sheets[i].getName());
-  }
+function formatDate(d) {
+  if (isNaN(d.getTime())) return '';
+  var year = d.getFullYear();
+  var month = String(d.getMonth() + 1).padStart(2, '0');
+  var day = String(d.getDate()).padStart(2, '0');
+  return year + '-' + month + '-' + day;
+}
+
+function formatTime(d) {
+  if (isNaN(d.getTime())) return '';
+  return d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 }
