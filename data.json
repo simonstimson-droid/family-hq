@@ -4683,15 +4683,6 @@
     ],
     "rows": [
       {
-        "_row": 2,
-        "Item": "Passport photos (x2)",
-        "Quantity": "2",
-        "Added By": "Simon",
-        "Done ✓": "",
-        "Category": "Admin",
-        "@": ""
-      },
-      {
         "_row": 3,
         "Item": "Milk",
         "Quantity": "2 pints",
@@ -4719,24 +4710,6 @@
         "@": ""
       },
       {
-        "_row": 6,
-        "Item": "Agave syrup",
-        "Quantity": "",
-        "Added By": "",
-        "Done ✓": "",
-        "Category": "Other",
-        "@": ""
-      },
-      {
-        "_row": 7,
-        "Item": "Butter",
-        "Quantity": "",
-        "Added By": "",
-        "Done ✓": "",
-        "Category": "",
-        "@": ""
-      },
-      {
         "_row": 8,
         "Item": "Cheese",
         "Quantity": "1 Block",
@@ -4753,15 +4726,6 @@
         "Done ✓": "",
         "Category": "Household",
         "@": "6/11/2026 22:59:49"
-      },
-      {
-        "_row": 10,
-        "Item": "Milk",
-        "Quantity": "2 pints",
-        "Added By": "Simon Stimson",
-        "Done ✓": "",
-        "Category": "Dairy",
-        "@": "6/11/2026 22:59:50"
       }
     ]
   },

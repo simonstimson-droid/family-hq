@@ -2775,10 +2775,11 @@
         function modalSave() { if (window._modalSave) window._modalSave(); }
         
         async function apiCall(params) {
-            const fd = new URLSearchParams();
-            for (const [k,v] of Object.entries(params)) fd.append(k, v);
+            const qs = new URLSearchParams();
+            for (const [k,v] of Object.entries(params)) qs.append(k, v);
             try {
-                const r = await fetch(API_URL, { method: 'POST', body: fd });
+                const url = API_URL + '?' + qs.toString();
+                const r = await fetch(url, { method: 'GET' });
                 return r.json();
             } catch(e) {
                 console.error('apiCall network error:', e, params);
