@@ -1139,17 +1139,17 @@
         "Event": "🎉 End of Year Rewards - Day 1",
         "Who": "",
         "Location": "Pix Brook",
-        "Notes": "School closes early, no PBA Extra. Last day for pupils.",
+        "Notes": "Rewards day. School closes early (not last day of term).",
         "_source": "calendar",
         "_cal_id": "75vl77ade9t5qcn6lj3rrkcctg"
       },
       {
         "Date": "2026-07-14",
         "Time": "All day",
-        "Event": "🏆 Whole School End of Year Rewards",
+        "Event": "🏆 End of Year Rewards - Pix Brook",
         "Who": "",
         "Location": "",
-        "Notes": "",
+        "Notes": "Rewards assembly (not last day). School closes early on 14-15 July.",
         "_source": "calendar",
         "_cal_id": "jfj9aag8mlrpiau0bqcmfdhlv8"
       },
@@ -1195,20 +1195,10 @@
       {
         "Date": "2026-07-15",
         "Time": "All day",
-        "Event": "🏫 Last Day of Term - Ella",
-        "Who": "",
-        "Location": "Pix Brook",
-        "Notes": "Coincides with End of Year Rewards Day 2 — last day for PBA pupils.",
-        "_source": "calendar",
-        "_cal_id": "1rldg86hjkul8jf9fu7nuo5t08"
-      },
-      {
-        "Date": "2026-07-15",
-        "Time": "All day",
         "Event": "🎉 End of Year Rewards - Day 2",
         "Who": "",
         "Location": "Pix Brook",
-        "Notes": "Ella's last school day. School closes early, no PBA Extra.",
+        "Notes": "Rewards day. School closes early (not last day of term).",
         "_source": "calendar",
         "_cal_id": "rahlbogf0gme4i4o4fbkoeakbk"
       },
@@ -1323,10 +1313,10 @@
         "_row": 59,
         "Date": "2026-07-17",
         "Time": "All day",
-        "Event": "📅 End of Term - PBA",
+        "Event": "🏫 Last Day of Term - PBA",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
-        "Notes": "Official end of term date (administrative). Pupils finished 15 July."
+        "Notes": "Ella's last day of Year 5. End of term."
       },
       {
         "_row": 60,
@@ -1335,7 +1325,7 @@
         "Event": "🏫 End of Term - Both Schools",
         "Who": "Ava & Ella",
         "Location": "",
-        "Notes": "Last day before summer holidays!"
+        "Notes": "Ava (Y3) and Ella (Y5) both finish today. Last day before summer holidays!"
       },
       {
         "Date": "2026-07-17",
@@ -4630,6 +4620,16 @@
         "Who": "Emma",
         "Location": "",
         "Notes": ""
+      },
+      {
+        "_row": 9999,
+        "Date": "2026-07-17",
+        "Time": "All day",
+        "Event": "🏫 Last Day of Term - Ella (Y5)",
+        "Who": "Ella",
+        "Location": "Pix Brook",
+        "Notes": "End of Year 5. Following Rewards Days (14-15 Jul), final day of term.",
+        "source": "school_bulletin"
       }
     ]
   },
