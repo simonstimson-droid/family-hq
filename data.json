@@ -1139,7 +1139,7 @@
         "Event": "🎉 End of Year Rewards - Day 1",
         "Who": "",
         "Location": "Pix Brook",
-        "Notes": "Rewards day. School closes early (not last day of term).",
+        "Notes": "End of Year Rewards assembly. Normal school hours.",
         "_source": "calendar",
         "_cal_id": "75vl77ade9t5qcn6lj3rrkcctg"
       },
@@ -1149,7 +1149,7 @@
         "Event": "🏆 End of Year Rewards - Pix Brook",
         "Who": "",
         "Location": "",
-        "Notes": "Rewards assembly (not last day). School closes early on 14-15 July.",
+        "Notes": "End of Year Rewards assembly. Normal school hours.",
         "_source": "calendar",
         "_cal_id": "jfj9aag8mlrpiau0bqcmfdhlv8"
       },
@@ -1198,7 +1198,7 @@
         "Event": "🎉 End of Year Rewards - Day 2",
         "Who": "",
         "Location": "Pix Brook",
-        "Notes": "Rewards day. School closes early (not last day of term).",
+        "Notes": "End of Year Rewards assembly. Normal school hours.",
         "_source": "calendar",
         "_cal_id": "rahlbogf0gme4i4o4fbkoeakbk"
       },
@@ -1316,7 +1316,7 @@
         "Event": "🏫 Last Day of Term - PBA",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
-        "Notes": "Ella's last day of Year 5. End of term."
+        "Notes": "Ella's last day of Year 5. School closes early on this day."
       },
       {
         "_row": 60,
@@ -1325,7 +1325,7 @@
         "Event": "🏫 End of Term - Both Schools",
         "Who": "Ava & Ella",
         "Location": "",
-        "Notes": "Ava (Y3) and Ella (Y5) both finish today. Last day before summer holidays!"
+        "Notes": "Ava (Y3) and Ella (Y5) both finish today. School closes early. Last day before summer holidays!"
       },
       {
         "Date": "2026-07-17",
@@ -4628,7 +4628,7 @@
         "Event": "🏫 Last Day of Term - Ella (Y5)",
         "Who": "Ella",
         "Location": "Pix Brook",
-        "Notes": "End of Year 5. Following Rewards Days (14-15 Jul), final day of term.",
+        "Notes": "End of Year 5. School closes early on last day of term.",
         "source": "school_bulletin"
       }
     ]
