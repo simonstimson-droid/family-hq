@@ -477,6 +477,16 @@
       {
         "Date": "2026-06-30",
         "Time": "09:30-12:00",
+        "Event": "🏃 KS2 Sports Day - Ava",
+        "Who": "",
+        "Location": "Dickens Blvd",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3vgdakaah3a9licvh1lsi8s278"
+      },
+      {
+        "Date": "2026-06-30",
+        "Time": "09:30-12:00",
         "Event": "🏃 KS2 Sports Day – Ava (Fox Class, DB)",
         "Who": "",
         "Location": "",
@@ -641,6 +651,16 @@
       {
         "Date": "2026-07-03",
         "Time": "All day",
+        "Event": "🎓 Year 4 Step Up Day - Ava",
+        "Who": "",
+        "Location": "Fairfield Park",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "l9tt0dmv19i0kaguip9stsrif4"
+      },
+      {
+        "Date": "2026-07-03",
+        "Time": "All day",
         "Event": "Dad staying ",
         "Who": "",
         "Location": "",
@@ -766,6 +786,16 @@
       {
         "Date": "2026-07-07",
         "Time": "All day",
+        "Event": "📊 Reports to Parents",
+        "Who": "",
+        "Location": "Fairfield Park",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "hteff8d8fm7sc35b3iv3nsprmk"
+      },
+      {
+        "Date": "2026-07-07",
+        "Time": "All day",
         "Event": "Garden waste collection ",
         "Who": "",
         "Location": "",
@@ -802,6 +832,16 @@
         "Notes": "Whole school event"
       },
       {
+        "Date": "2026-07-08",
+        "Time": "All day",
+        "Event": "🎭 Creative Arts Festival - Day 1",
+        "Who": "",
+        "Location": "Pix Brook",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "h5ojtva9c1p3q05db6kvvc88rk"
+      },
+      {
         "_row": 47,
         "Date": "2026-07-08",
         "Time": "18:30-19:00",
@@ -819,6 +859,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_60oj8gi58ks48b9g850jib9k68pkcba160sjab9l6t1k4gpo6coj4e9m8c_20260708T173000Z"
+      },
+      {
+        "Date": "2026-07-09",
+        "Time": "All day",
+        "Event": "🎭 Creative Arts Festival - Day 2",
+        "Who": "",
+        "Location": "Pix Brook",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "d0aa3p67jtcpvuffci7e42cchc"
       },
       {
         "Date": "2026-07-09",
@@ -890,6 +940,16 @@
       {
         "Date": "2026-07-10",
         "Time": "All day",
+        "Event": "Sports Day - Ella (Pix Brook Academy)",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "hev2qr5cbr44pdnav1r3qvl0ss"
+      },
+      {
+        "Date": "2026-07-10",
+        "Time": "All day",
         "Event": "🏃 Years 5-10 Sports Day",
         "Who": "",
         "Location": "",
@@ -926,6 +986,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "m8s70q01lihb23fjjf40vqu05k"
+      },
+      {
+        "Date": "2026-07-10",
+        "Time": "10:00-10:00",
+        "Event": "🎤 Fairfield Park's Got Talent",
+        "Who": "",
+        "Location": "Fairfield Park",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "r5e2v4pv5n5vhav00k9e5m4dk8"
       },
       {
         "Date": "2026-07-10",
@@ -1066,6 +1136,16 @@
       {
         "Date": "2026-07-14",
         "Time": "All day",
+        "Event": "🎉 End of Year Rewards - Day 1",
+        "Who": "",
+        "Location": "Pix Brook",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "75vl77ade9t5qcn6lj3rrkcctg"
+      },
+      {
+        "Date": "2026-07-14",
+        "Time": "All day",
         "Event": "🏆 Whole School End of Year Rewards",
         "Who": "",
         "Location": "",
@@ -1111,6 +1191,26 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_88s42dhl8op3cba56l232b9k6d1j4ba18p242ba38l1j8ci36opjahi660_20260714T150000Z"
+      },
+      {
+        "Date": "2026-07-15",
+        "Time": "All day",
+        "Event": "🏫 Last Day of Term - Ella",
+        "Who": "",
+        "Location": "Pix Brook",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "1rldg86hjkul8jf9fu7nuo5t08"
+      },
+      {
+        "Date": "2026-07-15",
+        "Time": "All day",
+        "Event": "🎉 End of Year Rewards - Day 2",
+        "Who": "",
+        "Location": "Pix Brook",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "rahlbogf0gme4i4o4fbkoeakbk"
       },
       {
         "Date": "2026-07-15",
@@ -1255,6 +1355,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "cf0mgvt7al3gp2kliidd396an0"
+      },
+      {
+        "Date": "2026-07-17",
+        "Time": "All day",
+        "Event": "🏫 Last Day of Term - Ava",
+        "Who": "",
+        "Location": "Fairfield Park",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "mo49cq5g9r7i5dn39lvfealvj4"
       },
       {
         "Date": "2026-07-17",
@@ -4559,196 +4669,6 @@
         "Who": "Emma",
         "Location": "",
         "Notes": ""
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-06-30",
-        "Time": "09:30-12:00",
-        "Event": "🏃 KS2 Sports Day - Ava",
-        "Who": "Ava",
-        "Location": "Dickens Blvd",
-        "Notes": "PE kit + coloured T-shirt. Spectators arrive 9:20am via Nickleby Way gate",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-03",
-        "Time": "All day",
-        "Event": "🎓 Year 4 Step Up Day - Ava",
-        "Who": "Ava",
-        "Location": "Fairfield Park",
-        "Notes": "Visit new Y4 classroom, meet new teacher",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-07",
-        "Time": "All day",
-        "Event": "📊 Reports to Parents",
-        "Who": "Ava",
-        "Location": "Fairfield Park",
-        "Notes": "Check bag for school report",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-10",
-        "Time": "10:00",
-        "Event": "🎤 Fairfield Park's Got Talent",
-        "Who": "Ava",
-        "Location": "Fairfield Park",
-        "Notes": "Parents welcome at 10am!",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-17",
-        "Time": "All day",
-        "Event": "🏫 Last Day of Term",
-        "Who": "Ava",
-        "Location": "Fairfield Park",
-        "Notes": "End of Year 3",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-06-30",
-        "Time": "All day",
-        "Event": "🏏 Y9 Cricket v SWA (H)",
-        "Who": "Ella",
-        "Location": "Pix Brook",
-        "Notes": "Not Ella's match but school event",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-01",
-        "Time": "All day",
-        "Event": "🏏 Cricket Finals @ Parkfields",
-        "Who": "Ella",
-        "Location": "Parkfields",
-        "Notes": "All day event",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-02",
-        "Time": "All day",
-        "Event": "🏏 Dynamo Cricket @ Flitwick CC",
-        "Who": "Ella",
-        "Location": "Flitwick CC",
-        "Notes": "Away fixture",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-03",
-        "Time": "All day",
-        "Event": "🎓 Year 9 Work Experience Day",
-        "Who": "Ella",
-        "Location": "Pix Brook",
-        "Notes": "Not Ella's but school closed for Y9",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-06",
-        "Time": "All day",
-        "Event": "🎒 Y9 Battlefields Trip",
-        "Who": "Ella",
-        "Location": "Battlefields",
-        "Notes": "Not Ella's but school event",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-06",
-        "Time": "All day",
-        "Event": "🚴 Y6 Bikeability Group 2",
-        "Who": "Ella",
-        "Location": "Pix Brook",
-        "Notes": "Not Ella's but school event",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-08",
-        "Time": "All day",
-        "Event": "🎭 Creative Arts Festival - Day 1",
-        "Who": "Ella",
-        "Location": "Pix Brook",
-        "Notes": "Whole school! Tickets £4",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-09",
-        "Time": "All day",
-        "Event": "🎭 Creative Arts Festival - Day 2",
-        "Who": "Ella",
-        "Location": "Pix Brook",
-        "Notes": "Whole school! Tickets £4",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-10",
-        "Time": "All day",
-        "Event": "🏃 Sports Day (Years 5-10) - Ella",
-        "Who": "Ella",
-        "Location": "Pix Brook",
-        "Notes": "Ella's first PBA Sports Day!",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-14",
-        "Time": "All day",
-        "Event": "🎉 End of Year Rewards - Day 1",
-        "Who": "Ella",
-        "Location": "Pix Brook",
-        "Notes": "School closes early, no PBA Extra",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-15",
-        "Time": "All day",
-        "Event": "🎉 End of Year Rewards - Day 2",
-        "Who": "Ella",
-        "Location": "Pix Brook",
-        "Notes": "School closes early, no PBA Extra",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-06-30",
-        "Time": "08:45",
-        "Event": "🍽️ Full Uniform Returns",
-        "Who": "Both girls",
-        "Location": "School",
-        "Notes": "Blazers + ties back on. Weather cooling to ~23°C",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-08",
-        "Time": "All day",
-        "Event": "🎭 Creative Arts Festival - Tickets",
-        "Who": "Family",
-        "Location": "Pix Brook",
-        "Notes": "£4/ticket, max 4/order, under 13s need adult",
-        "source": "school_bulletin"
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-17",
-        "Time": "All day",
-        "Event": "🏫 Last Day of Term - Ava (Y3)",
-        "Who": "Ava",
-        "Location": "Fairfield Park",
-        "Notes": "End of Year 3",
-        "source": "school_bulletin"
       }
     ]
   },
