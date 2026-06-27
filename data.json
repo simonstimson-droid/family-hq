@@ -1139,17 +1139,17 @@
         "Event": "🎉 End of Year Rewards - Day 1",
         "Who": "",
         "Location": "Pix Brook",
-        "Notes": "End of Year Rewards assembly. Normal school hours.",
+        "Notes": "",
         "_source": "calendar",
         "_cal_id": "75vl77ade9t5qcn6lj3rrkcctg"
       },
       {
         "Date": "2026-07-14",
         "Time": "All day",
-        "Event": "🏆 End of Year Rewards - Pix Brook",
+        "Event": "🏆 Whole School End of Year Rewards",
         "Who": "",
         "Location": "",
-        "Notes": "End of Year Rewards assembly. Normal school hours.",
+        "Notes": "",
         "_source": "calendar",
         "_cal_id": "jfj9aag8mlrpiau0bqcmfdhlv8"
       },
@@ -1195,10 +1195,20 @@
       {
         "Date": "2026-07-15",
         "Time": "All day",
+        "Event": "🏫 Last Day of Term - Ella",
+        "Who": "",
+        "Location": "Pix Brook",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "1rldg86hjkul8jf9fu7nuo5t08"
+      },
+      {
+        "Date": "2026-07-15",
+        "Time": "All day",
         "Event": "🎉 End of Year Rewards - Day 2",
         "Who": "",
         "Location": "Pix Brook",
-        "Notes": "End of Year Rewards assembly. Normal school hours.",
+        "Notes": "",
         "_source": "calendar",
         "_cal_id": "rahlbogf0gme4i4o4fbkoeakbk"
       },
@@ -1211,6 +1221,15 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8h33cea66t0jiba66soj6b9k850kaba26cq4ab9p6opj2cpm8gsj8ci46s"
+      },
+      {
+        "_row": 88,
+        "Date": "2026-07-15",
+        "Time": "14:00",
+        "Event": "🧪 Test Event - Dashboard Sync",
+        "Who": "Simon",
+        "Location": "Home",
+        "Notes": "Testing calendar sync"
       },
       {
         "_row": 56,
@@ -1313,10 +1332,10 @@
         "_row": 59,
         "Date": "2026-07-17",
         "Time": "All day",
-        "Event": "🏫 Last Day of Term - PBA",
+        "Event": "📅 End of Term - PBA",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
-        "Notes": "Ella's last day of Year 5. School closes early on this day."
+        "Notes": "Last day of school"
       },
       {
         "_row": 60,
@@ -1325,7 +1344,37 @@
         "Event": "🏫 End of Term - Both Schools",
         "Who": "Ava & Ella",
         "Location": "",
-        "Notes": "Ava (Y3) and Ella (Y5) both finish today. School closes early. Last day before summer holidays!"
+        "Notes": "Last day before summer holidays!"
+      },
+      {
+        "Date": "2026-07-17",
+        "Time": "All day",
+        "Event": "🏫 Last Day of Term – Fairfield Park",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "cf0mgvt7al3gp2kliidd396an0"
+      },
+      {
+        "Date": "2026-07-17",
+        "Time": "All day",
+        "Event": "🏫 Last Day of Term - Ava",
+        "Who": "",
+        "Location": "Fairfield Park",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "mo49cq5g9r7i5dn39lvfealvj4"
+      },
+      {
+        "Date": "2026-07-17",
+        "Time": "All day",
+        "Event": "End of term.",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_60qkah236cskcba48opkcb9k6cs44ba28l138ba370q4cci5652k6ga36s"
       },
       {
         "Date": "2026-07-17",
@@ -4620,16 +4669,6 @@
         "Who": "Emma",
         "Location": "",
         "Notes": ""
-      },
-      {
-        "_row": 9999,
-        "Date": "2026-07-17",
-        "Time": "All day",
-        "Event": "🏫 Last Day of Term - Ella (Y5)",
-        "Who": "Ella",
-        "Location": "Pix Brook",
-        "Notes": "End of Year 5. School closes early on last day of term.",
-        "source": "school_bulletin"
       }
     ]
   },
