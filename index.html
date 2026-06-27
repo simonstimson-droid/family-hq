@@ -1883,6 +1883,7 @@
                             html += `<span class="chore-day-badge">${dayShort}</span>`;
                             html += `<span class="chore-diff chore-diff-${diffClass}">${diff}</span>`;
                             html += !done ? `<button class="chore-done-btn" onclick="completeChoreWithPoints(${idx}, event)" title="Mark done — earn ${pts} pts">⬜</button>` : '<span style="margin-left:4px;">✅</span>';
+                            html += `<button class="chore-delete-btn" onclick="deleteChore(${idx}, event)" title="Delete" style="background:none;border:none;cursor:pointer;font-size:14px;padding:2px 6px;border-radius:6px;color:#ef4444;margin-left:8px;">✕</button>`;
                             html += `<div style="display:inline;vertical-align:middle;margin-left:4px;">${c.Chore || c.Task || 'Chore'}</div>`;
                             html += `<span class="chore-points">+${pts}</span>`;
                             html += `<div class="assignee" style="color:${assigneeColour};">👤 ${colourWho(c['Assigned To'] || c.Who || 'Anyone')}${c.Frequency !== 'Weekly' ? ` • <span class="freq">${c.Frequency}</span>` : ''}</div>`;
@@ -2594,8 +2595,9 @@
                 }).join('');
                 // Click to toggle done
                 document.querySelectorAll('#todoList .todo-item').forEach(el => {
-                    el.addEventListener('click', (e) => {
+                    el.addEventListener('click', async (e) => {
                         if (e.target.classList.contains('todo-del')) return;
+                        if (e.target.classList.contains('todo-check')) return;
                         const todos2 = getSheet('📌');
                         const idx = parseInt(el.dataset.idx);
                         const t = todos2[idx];
@@ -2606,10 +2608,13 @@
                         el.querySelector('.todo-check').textContent = newDone ? '✅' : '⬜';
                         const todoIdx = familyData['📌 To-Do'].rows.indexOf(t);
                         if (todoIdx >= 0) {
-                            apiCall({action:'update', sheet:'📌 To-Do', row:String(todoIdx+2), data:JSON.stringify(t)}).catch(()=>{});
+                            familyData['📌 To-Do'].rows[todoIdx]['Done'] = newDone;
+                            try {
+                                await apiCall({action:'update', sheet:'📌 To-Do', row:String(t._row || todoIdx+2), data:JSON.stringify(t)});
+                            } catch(err) { console.error('Failed to update todo done status', err); }
                         }
                     });
-                });
+            });
             } else { showEmpty('todoList', 'No to-dos! Add one above 📌'); }
         }
 
@@ -2666,15 +2671,16 @@
         
         async function deleteTodo(idx, e) {
             e.stopPropagation();
+            if (!confirm('Delete this task?')) return;
             const todos = getSheet('📌').filter(t => (t['Task'] || '').trim() !== '');
             const t = todos[idx];
             if (!t) return;
 
-            // Clear the row in the sheet
+            // Delete the row in the sheet
             if (t._row) {
-                const emptyRow = {};
-                for (const k of Object.keys(t)) emptyRow[k] = '';
-                apiCall({ action: 'update', sheet: '📌 To-Do', row: String(t._row), data: JSON.stringify(emptyRow) });
+                try {
+                    await apiCall({ action: 'delete', sheet: '📌 To-Do', row: String(t._row) });
+                } catch(err) { console.error('Failed to delete row in sheet', err); }
             }
 
             // Find in familyData and remove
@@ -2684,6 +2690,30 @@
 
             renderTodos(familyData);
             showToast('🗑️ Task deleted');
+        }
+
+        async function toggleTodoDone(idx, e) {
+            e.stopPropagation();
+            const todos = getSheet('📌').filter(t => (t['Task'] || '').trim() !== '');
+            const t = todos[idx];
+            if (!t) return;
+
+            const newDone = (t['Done'] || '').trim() === '✓' ? '' : '✓';
+            const updated = Object.assign({}, t, { Done: newDone });
+
+            if (t._row) {
+                try {
+                    await apiCall({ action: 'update', sheet: '📌 To-Do', row: String(t._row), data: JSON.stringify(updated) });
+                } catch(err) { console.error('Failed to update todo done status', err); }
+            }
+
+            if (familyData) {
+                const rows = familyData['📌 To-Do'].rows;
+                const realIdx = rows.indexOf(t);
+                if (realIdx >= 0) rows[realIdx] = updated;
+                renderTodos(familyData);
+            }
+            showToast(newDone ? '✅ Task done!' : '↩️ Marked undone');
         }
         
         function renderFamily(data) {
@@ -2945,6 +2975,29 @@
             });
         }
         
+        async function deleteChore(idx, e) {
+            e.stopPropagation();
+            if (!confirm('Delete this chore?')) return;
+            const chores = getSheet('✅').filter(c => (c.Task || c.Chore || '').trim() !== '');
+            const c = chores[idx];
+            if (!c) return;
+
+            // Delete the row in the sheet
+            if (c._row) {
+                try {
+                    await apiCall({ action: 'delete', sheet: '✅ Chores', row: String(c._row) });
+                } catch(err) { console.error('Failed to delete chore row in sheet', err); }
+            }
+
+            // Find in familyData and remove
+            const rows = familyData['✅ Chores'].rows;
+            const realIdx = rows.indexOf(c);
+            if (realIdx >= 0) rows.splice(realIdx, 1);
+
+            renderChoresWithRewards(familyData);
+            showToast('🗑️ Chore deleted');
+        }
+
         async function addChore() {
             openModal(`<h3>✅ Add Chore</h3>
                 <label>Task</label><input type="text" id="c_task" placeholder="e.g. Empty bins" autofocus>

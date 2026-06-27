@@ -4740,29 +4740,11 @@
     ],
     "rows": [
       {
-        "_row": 2,
-        "Task": "Apply for passport renewal",
-        "Assigned To": "Simon & Emma",
-        "Due Date": "2026-06-08",
-        "Frequency": "Once",
-        "Done ✓": "",
-        "Notes": "🛂 URGENT - expires tomorrow!"
-      },
-      {
         "_row": 3,
         "Task": "Put Bins Out",
         "Assigned To": "Simon",
         "Due Date": "",
         "Frequency": "Weekly",
-        "Done ✓": "",
-        "Notes": ""
-      },
-      {
-        "_row": 4,
-        "Task": "Test chore",
-        "Assigned To": "Simon",
-        "Due Date": "",
-        "Frequency": "",
         "Done ✓": "",
         "Notes": ""
       }
@@ -5101,16 +5083,6 @@
     ],
     "rows": [
       {
-        "_row": 2,
-        "Task": "Apply for passport renewal",
-        "Assigned To": "Simon & Emma",
-        "Due Date": "2026-06-08",
-        "Priority": "🔴 High",
-        "Done": "",
-        "Notes": "URGENT - expires tomorrow!",
-        "Created": "2026-06-08"
-      },
-      {
         "_row": 3,
         "Task": "Order new school shoes for Ella",
         "Assigned To": "Emma",
@@ -5129,16 +5101,6 @@
         "Done": "",
         "Notes": "Both Ava + Ella kits for next week",
         "Created": "2026-06-09"
-      },
-      {
-        "_row": 5,
-        "Task": "Book summer holiday activities",
-        "Assigned To": "Emma",
-        "Due Date": "2026-06-15",
-        "Priority": "🟡 Medium",
-        "Done": "",
-        "Notes": "Research local holiday clubs",
-        "Created": "2026-06-06"
       },
       {
         "_row": 6,
