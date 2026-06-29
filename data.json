@@ -706,16 +706,6 @@
         "_cal_id": "_68r36dpi88q48b9o6csj2b9k6oq3eba18co3cb9p75342h1j64q32e1g8c_20260705"
       },
       {
-        "Date": "2026-07-06",
-        "Time": "11:30-12:30",
-        "Event": "Ava leg pre op",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8co44di2890jgba4611kab9k68s32b9p750jgb9m68r3gc1n68sjchhi60"
-      },
-      {
         "_row": 44,
         "Date": "2026-07-06",
         "Time": "15:00-16:00",
@@ -1787,6 +1777,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8d23gda5752k4ba36ksj2b9k6l23eba170ok6b9i6l2k2h9n6gok6di38g_20260727T171500Z"
+      },
+      {
+        "Date": "2026-07-28",
+        "Time": "14:30-15:30",
+        "Event": "Ava leg pre op",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8co44di2890jgba4611kab9k68s32b9p750jgb9m68r3gc1n68sjchhi60"
       },
       {
         "Date": "2026-07-28",
