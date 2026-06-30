@@ -425,26 +425,6 @@
         "_cal_id": "_6513ee9k6t0jcb9k70rj4b9k6orjgba26933gba56spjad1j85234e218o_20260630"
       },
       {
-        "Date": "2026-06-30",
-        "Time": "09:30-12:00",
-        "Event": "🏃 KS2 Sports Day - Ava",
-        "Who": "",
-        "Location": "Dickens Blvd",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "3vgdakaah3a9licvh1lsi8s278"
-      },
-      {
-        "Date": "2026-06-30",
-        "Time": "09:30-12:00",
-        "Event": "🏃 KS2 Sports Day – Ava (Fox Class, DB)",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "vakkmsfvqtraibrtucr7duvqks"
-      },
-      {
         "_row": 37,
         "Date": "2026-06-30",
         "Time": "16:00-17:00",
@@ -452,16 +432,6 @@
         "Who": "Ava",
         "Location": "Fairfield Park Lower School",
         "Notes": ""
-      },
-      {
-        "Date": "2026-06-30",
-        "Time": "16:00-17:00",
-        "Event": "Ella and Ava Drama Club",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_88s42dhl8op3cba56l232b9k6d1j4ba18p242ba38l1j8ci36opjahi660_20260630T150000Z"
       },
       {
         "Date": "2026-07-01",
@@ -1614,6 +1584,16 @@
         "Time": "08:30-09:30",
         "Event": "Ava Physio",
         "Who": "",
+        "Location": "Bedford Kempston",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "dpscf24caibi2fs8q33195mrtg"
+      },
+      {
+        "Date": "2026-07-23",
+        "Time": "08:30-09:30",
+        "Event": "Ava Physio",
+        "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
@@ -1767,6 +1747,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8d23gda5752k4ba36ksj2b9k6l23eba170ok6b9i6l2k2h9n6gok6di38g_20260727T171500Z"
+      },
+      {
+        "Date": "2026-07-28",
+        "Time": "14:30-15:30",
+        "Event": "PAEDIATRIC PRE-OP ASSESSMENT F2F - Ava",
+        "Who": "",
+        "Location": "Royal National Orthopaedic Hospital, Stanmore",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "1r06u53lpk3jk443l1vtmld334"
       },
       {
         "Date": "2026-07-28",
@@ -2434,6 +2424,16 @@
       {
         "Date": "2026-08-18",
         "Time": "All day",
+        "Event": "Ava Surgery: TSF Tibia/Fibula Osteotomies",
+        "Who": "",
+        "Location": "Royal National Orthopaedic Hospital, Stanmore",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "ikfjahkjqtu3jvi0jd9jrdob3o"
+      },
+      {
+        "Date": "2026-08-18",
+        "Time": "All day",
         "Event": "Garden waste collection ",
         "Who": "",
         "Location": "",
@@ -2480,6 +2480,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_88s42dhl8op3cba56l232b9k6d1j4ba18p242ba38l1j8ci36opjahi660_20260818T150000Z"
+      },
+      {
+        "Date": "2026-08-19",
+        "Time": "10:35-11:35",
+        "Event": "PAEDS ORTHO FOLLOW UP F2F - Ava",
+        "Who": "",
+        "Location": "Royal National Orthopaedic Hospital, Stanmore",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "qm2h4lkk4k7etk7hv6l03ofbcg"
       },
       {
         "Date": "2026-08-19",
@@ -2936,6 +2946,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "bf0j6mrr43a5ue22oaf9cqteeo"
+      },
+      {
+        "Date": "2026-09-02",
+        "Time": "14:30-15:30",
+        "Event": "PAEDS ORTHO FOLLOW UP F2F - Ava",
+        "Who": "",
+        "Location": "Royal National Orthopaedic Hospital, Stanmore",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "52bk26dprj16tvg1sj6i5tl3p4"
       },
       {
         "Date": "2026-09-02",
@@ -3406,6 +3426,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_88s42dhl8op3cba56l232b9k6d1j4ba18p242ba38l1j8ci36opjahi660_20260915T150000Z"
+      },
+      {
+        "Date": "2026-09-16",
+        "Time": "14:30-15:30",
+        "Event": "PAEDS ORTHO FOLLOW UP F2F - Ava",
+        "Who": "",
+        "Location": "Royal National Orthopaedic Hospital, Stanmore",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "3dd2saveo2rlq4ub07uok5ofdk"
       },
       {
         "Date": "2026-09-16",
@@ -4726,16 +4756,6 @@
         "Notes": ""
       },
       {
-        "Date": "2026-10-28",
-        "Time": "All day",
-        "Event": "🏫 Half Term - Both Schools",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "i38hol4a6bilnfmgvodpdb5mls"
-      },
-      {
         "_row": 82,
         "Date": "2026-12-27",
         "Time": "All day",
@@ -5485,6 +5505,15 @@
         "Email": "bhn-tr.cdcpaediatricphysios@nhs.net",
         "Address": "Hill Rise, Kempston, Bedford, MK42 7EB",
         "Notes": "Sat Nav: MK42 7DN. Ava's physio appointments."
+      },
+      {
+        "_row": 19,
+        "Name": "Royal National Orthopaedic Hospital",
+        "Type": "Hospital",
+        "Phone": "020 8954 6000",
+        "Email": "",
+        "Address": "Brockley Hill, Stanmore, London HA7 4LP",
+        "Notes": "Ava's orthopaedic surgery appointments"
       }
     ]
   }
