@@ -1584,16 +1584,6 @@
         "Time": "08:30-09:30",
         "Event": "Ava Physio",
         "Who": "",
-        "Location": "Bedford Kempston",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "dpscf24caibi2fs8q33195mrtg"
-      },
-      {
-        "Date": "2026-07-23",
-        "Time": "08:30-09:30",
-        "Event": "Ava Physio",
-        "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
@@ -4754,6 +4744,16 @@
         "Who": "Simon",
         "Location": "",
         "Notes": ""
+      },
+      {
+        "Date": "2026-10-28",
+        "Time": "All day",
+        "Event": "🏫 Half Term - Both Schools",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "i38hol4a6bilnfmgvodpdb5mls"
       },
       {
         "_row": 82,
