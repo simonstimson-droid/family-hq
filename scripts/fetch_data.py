@@ -228,6 +228,8 @@ def extract_core_name(event_name):
     s = re.sub(r"\(.*?\)", "", s)
     # Strip common person prefixes/suffixes
     s = re.sub(r"^-\s*(ava|ella|ava\s*&\s*ella|both|simon|emma)\s*", "", s, flags=re.IGNORECASE)
+    # Strip leading person names without a dash ("Ella diving" -> "diving")
+    s = re.sub(r"^(ava|ella|simon|emma)\s+", "", s, flags=re.IGNORECASE)
     s = re.sub(r"\s*-\s*(ava|ella|ava\s*&\s*ella|both|simon|emma)\s*$", "", s, flags=re.IGNORECASE)
     # Strip day-of-week suffixes like "– Fri" or "(Fri)"
     s = re.sub(r"[\s\-–]*\(?(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\)?\s*$", "", s, flags=re.IGNORECASE)
@@ -240,6 +242,35 @@ def extract_core_name(event_name):
     # Normalize whitespace
     s = " ".join(s.split())
     return s.lower().strip()
+
+
+def dedupe_calendar_events(cal_events):
+    """Remove near-duplicate events that appear in more than one calendar
+    (e.g. the shared family calendar AND Emma's personal calendar).
+
+    Two events are considered the same when they share a date, have
+    overlapping start times, and their core names are >=0.80 similar.
+    The first occurrence wins (family calendar is fetched first).
+    """
+    deduped = []
+    for cal in cal_events:
+        cal_core = extract_core_name(cal.get("Event", ""))
+        is_dup = False
+        for kept in deduped:
+            if cal.get("Date", "") != kept.get("Date", ""):
+                continue
+            if not times_overlap(cal.get("Time", ""), kept.get("Time", "")):
+                continue
+            kept_core = extract_core_name(kept.get("Event", ""))
+            if not cal_core or not kept_core:
+                continue
+            sim = SequenceMatcher(None, cal_core, kept_core).ratio()
+            if sim >= 0.80:
+                is_dup = True
+                break
+        if not is_dup:
+            deduped.append(cal)
+    return deduped
 
 
 def merge_calendar_events(sheet_rows, cal_events):
@@ -364,6 +395,10 @@ try:
             print(f"WARNING: Failed to fetch from {cal_id}: {e}", file=sys.stderr)
             sys.stderr.flush()
     sheet_calendar = output.get("📅 Calendar", {}).get("rows", [])
+    before = len(all_cal_events)
+    all_cal_events = dedupe_calendar_events(all_cal_events)
+    print(f"Deduped calendar events: {before} -> {len(all_cal_events)}", file=sys.stderr)
+    sys.stderr.flush()
     merged = merge_calendar_events(sheet_calendar, all_cal_events)
     
     output["📅 Calendar"] = {
