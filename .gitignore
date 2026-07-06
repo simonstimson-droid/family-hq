@@ -5,5 +5,10 @@ node_modules/
 .DS_Store
 update_ha_token.py
 update_token.py
-update_ha_token.py
-update_token.py
+
+# Secrets — never commit these
+client_secrets.json
+scripts/client_secrets.json
+google_token.json
+scripts/google_token.json
+*token*.json
