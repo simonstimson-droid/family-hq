@@ -1200,6 +1200,8 @@
                 let html = '';
                 events.forEach((e, i) => {
                     const dateVal = (e.Date || e.date || e.Start || '').substring(0, 10);
+                    // List view shows upcoming only — skip past events (week/month views keep them for navigation)
+                    if (dateVal && dateVal < today) return;
                     const timeVal = e.Time || e.time || '';
                     const locVal = e.Location || e.location || '';
                     const whoVal = e.Who || e.who || '';
