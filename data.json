@@ -1234,6 +1234,16 @@
       {
         "Date": "2026-07-21",
         "Time": "All day",
+        "Event": "Emma in london ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_64ojch9o6h2j6b9h84o44b9k8kpjcb9p84qj2b9h750k8hi56513gc9h88"
+      },
+      {
+        "Date": "2026-07-21",
+        "Time": "All day",
         "Event": "Garden waste collection ",
         "Who": "",
         "Location": "",
