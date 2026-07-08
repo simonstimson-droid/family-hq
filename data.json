@@ -10,26 +10,6 @@
     ],
     "rows": [
       {
-        "Date": "2026-07-07",
-        "Time": "All day",
-        "Event": "📋 Ava's School Report – Sent to Parents",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "e5q2v74nirmip95jap0u93kgo4"
-      },
-      {
-        "Date": "2026-07-07",
-        "Time": "All day",
-        "Event": "📊 Reports to Parents",
-        "Who": "",
-        "Location": "Fairfield Park",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "hteff8d8fm7sc35b3iv3nsprmk"
-      },
-      {
         "Date": "2026-07-08",
         "Time": "All day",
         "Event": "🎨 Whole School Creative Arts Festival",
@@ -3582,12 +3562,12 @@
       {
         "Date": "2026-11-04",
         "Time": "18:30-19:00",
-        "Event": "Ava swimming ",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_60oj8gi58ks48b9g850jib9k68pkcba160sjab9l6t1k4gpo6coj4e9m8c_20261104T183000Z"
+        "_cal_id": "5n119953avla434gipkm3t3hgs_20261104T183000Z"
       }
     ]
   },
