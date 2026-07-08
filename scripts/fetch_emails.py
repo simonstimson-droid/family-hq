@@ -81,11 +81,7 @@ def get_or_create_label(token):
     for label in labels.get("labels", []):
         if label["name"] == PROCESSED_LABEL:
             return label["id"]
-    result = gmail_get(
-        "labels",
-        token,
-        # POST handled below
-    )
+    
     # Create label
     url = "https://gmail.googleapis.com/gmail/v1/users/me/labels"
     headers = {
