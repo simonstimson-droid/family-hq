@@ -20,16 +20,6 @@
         "_cal_id": "f6nb6r9234e1qufpe21v8mo5a4"
       },
       {
-        "Date": "2026-07-08",
-        "Time": "All day",
-        "Event": "🎭 Creative Arts Festival - Day 1",
-        "Who": "",
-        "Location": "Pix Brook",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "h5ojtva9c1p3q05db6kvvc88rk"
-      },
-      {
         "Date": "2026-07-09",
         "Time": "All day",
         "Event": "🎭 Creative Arts Festival - Day 2",
@@ -48,56 +38,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_611kah1n6sojeba36os32b9k8p2jeba26gpk6ba46kpj2chl8os32gpp84"
-      },
-      {
-        "Date": "2026-07-09",
-        "Time": "07:30-08:30",
-        "Event": "Ava Poppies ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_68o38h9k6sr3ab9j6go4ab9k7533gba18p0k8ba36p0jgga388q32ca268_20260709T063000Z"
-      },
-      {
-        "Date": "2026-07-09",
-        "Time": "15:00-16:00",
-        "Event": "🎵 Choir - Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260709T140000Z"
-      },
-      {
-        "Date": "2026-07-09",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260709T164500Z"
-      },
-      {
-        "Date": "2026-07-09",
-        "Time": "17:30-19:30",
-        "Event": "Ava Shuttleworth Concert ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8gr30da265232b9g8orkab9k74qkaba260p30b9o85130e1n6kr34gpo8g"
-      },
-      {
-        "Date": "2026-07-09",
-        "Time": "17:45-18:30",
-        "Event": "Ava Beavers",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260709T164500Z"
       },
       {
         "Date": "2026-07-10",
@@ -591,6 +531,16 @@
       },
       {
         "Date": "2026-07-20",
+        "Time": "09:00-17:00",
+        "Event": "Ella & Ava - Nanny & Gramp's",
+        "Who": "",
+        "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260720T080000Z"
+      },
+      {
+        "Date": "2026-07-20",
         "Time": "14:00-15:00",
         "Event": "🧪 CreateEvent Test",
         "Who": "",
@@ -601,23 +551,23 @@
       },
       {
         "Date": "2026-07-20",
-        "Time": "15:00-16:00",
-        "Event": "🏃 Athletics - Ella",
+        "Time": "18:15-19:15",
+        "Event": "Ella Brownies ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260720T140000Z"
+        "_cal_id": "_8d23gda5752k4ba36ksj2b9k6l23eba170ok6b9i6l2k2h9n6gok6di38g_20260720T171500Z"
       },
       {
-        "Date": "2026-07-20",
-        "Time": "18:15-19:00",
-        "Event": "Ella Brownies",
+        "Date": "2026-07-21",
+        "Time": "All day",
+        "Event": "Ava - Pippins Pre School (with Zara & Zoia)",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20260720T171500Z"
+        "_cal_id": "_71148e1g8l148b9m8csj0b9k710k8ba268s36ba260p46h9i8ork4dq568"
       },
       {
         "Date": "2026-07-21",
@@ -691,6 +641,16 @@
       },
       {
         "Date": "2026-07-22",
+        "Time": "09:00-17:00",
+        "Event": "Ella & Ava - Nanny & Gramp's",
+        "Who": "",
+        "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260722T080000Z"
+      },
+      {
+        "Date": "2026-07-22",
         "Time": "18:30-19:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
@@ -708,6 +668,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "2apfe2nasueqkljuoed97o1rns"
+      },
+      {
+        "Date": "2026-07-23",
+        "Time": "All day",
+        "Event": "Ava - Pippins Pre School (with Zara & Zoia)",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6srj6dq58cs34b9j8p1j2b9k84qjgba288o3gb9g68p38c2168pj2da284"
       },
       {
         "Date": "2026-07-23",
@@ -741,33 +711,13 @@
       },
       {
         "Date": "2026-07-23",
-        "Time": "15:00-16:00",
-        "Event": "🎵 Choir - Ella",
+        "Time": "17:45-19:00",
+        "Event": "Ava beavers ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260723T140000Z"
-      },
-      {
-        "Date": "2026-07-23",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260723T164500Z"
-      },
-      {
-        "Date": "2026-07-23",
-        "Time": "17:45-18:30",
-        "Event": "Ava Beavers",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260723T164500Z"
+        "_cal_id": "_8krk4e1k68o4aba174s3ab9k60p3ib9p8oq3gb9p6l24ch9o6p134d1j8k_20260723T164500Z"
       },
       {
         "Date": "2026-07-24",
@@ -791,16 +741,6 @@
       },
       {
         "Date": "2026-07-25",
-        "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20260725T081500Z"
-      },
-      {
-        "Date": "2026-07-25",
         "Time": "10:00-11:00",
         "Event": "🧪 E2E Test - Dashboard to Calendar",
         "Who": "",
@@ -808,16 +748,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "4tnmb8cgrqn8lppiq72mde2f1o"
-      },
-      {
-        "Date": "2026-07-25",
-        "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260725T090000Z"
       },
       {
         "Date": "2026-07-25",
@@ -841,23 +771,23 @@
       },
       {
         "Date": "2026-07-27",
-        "Time": "15:00-16:00",
-        "Event": "🏃 Athletics - Ella",
+        "Time": "09:00-17:00",
+        "Event": "Ella & Ava - Nanny & Gramp's",
         "Who": "",
-        "Location": "",
+        "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260727T140000Z"
+        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260727T080000Z"
       },
       {
         "Date": "2026-07-27",
-        "Time": "18:15-19:00",
-        "Event": "Ella Brownies",
+        "Time": "18:15-19:15",
+        "Event": "Ella Brownies ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20260727T171500Z"
+        "_cal_id": "_8d23gda5752k4ba36ksj2b9k6l23eba170ok6b9i6l2k2h9n6gok6di38g_20260727T171500Z"
       },
       {
         "Date": "2026-07-28",
@@ -901,6 +831,16 @@
       },
       {
         "Date": "2026-07-29",
+        "Time": "09:00-17:00",
+        "Event": "Ella & Ava - Nanny & Gramp's",
+        "Who": "",
+        "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260729T080000Z"
+      },
+      {
+        "Date": "2026-07-29",
         "Time": "18:30-19:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
@@ -921,33 +861,13 @@
       },
       {
         "Date": "2026-07-30",
-        "Time": "15:00-16:00",
-        "Event": "🎵 Choir - Ella",
+        "Time": "17:45-19:00",
+        "Event": "Ava beavers ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260730T140000Z"
-      },
-      {
-        "Date": "2026-07-30",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260730T164500Z"
-      },
-      {
-        "Date": "2026-07-30",
-        "Time": "17:45-18:30",
-        "Event": "Ava Beavers",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260730T164500Z"
+        "_cal_id": "_8krk4e1k68o4aba174s3ab9k60p3ib9p8oq3gb9p6l24ch9o6p134d1j8k_20260730T164500Z"
       },
       {
         "Date": "2026-07-31",
@@ -1001,26 +921,6 @@
       },
       {
         "Date": "2026-08-01",
-        "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20260801T081500Z"
-      },
-      {
-        "Date": "2026-08-01",
-        "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260801T090000Z"
-      },
-      {
-        "Date": "2026-08-01",
         "Time": "13:30-14:30",
         "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
@@ -1051,23 +951,23 @@
       },
       {
         "Date": "2026-08-03",
-        "Time": "15:00-16:00",
-        "Event": "🏃 Athletics - Ella",
+        "Time": "09:00-17:00",
+        "Event": "Ella & Ava - Nanny & Gramp's",
         "Who": "",
-        "Location": "",
+        "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260803T140000Z"
+        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260803T080000Z"
       },
       {
         "Date": "2026-08-03",
-        "Time": "18:15-19:00",
-        "Event": "Ella Brownies",
+        "Time": "18:15-19:15",
+        "Event": "Ella Brownies ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20260803T171500Z"
+        "_cal_id": "_8d23gda5752k4ba36ksj2b9k6l23eba170ok6b9i6l2k2h9n6gok6di38g_20260803T171500Z"
       },
       {
         "Date": "2026-08-04",
@@ -1111,6 +1011,16 @@
       },
       {
         "Date": "2026-08-05",
+        "Time": "09:00-17:00",
+        "Event": "Ella & Ava - Nanny & Gramp's",
+        "Who": "",
+        "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260805T080000Z"
+      },
+      {
+        "Date": "2026-08-05",
         "Time": "18:30-19:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
@@ -1131,33 +1041,13 @@
       },
       {
         "Date": "2026-08-06",
-        "Time": "15:00-16:00",
-        "Event": "🎵 Choir - Ella",
+        "Time": "17:45-19:00",
+        "Event": "Ava beavers ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260806T140000Z"
-      },
-      {
-        "Date": "2026-08-06",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260806T164500Z"
-      },
-      {
-        "Date": "2026-08-06",
-        "Time": "17:45-18:30",
-        "Event": "Ava Beavers",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260806T164500Z"
+        "_cal_id": "_8krk4e1k68o4aba174s3ab9k60p3ib9p8oq3gb9p6l24ch9o6p134d1j8k_20260806T164500Z"
       },
       {
         "Date": "2026-08-07",
@@ -1181,26 +1071,6 @@
       },
       {
         "Date": "2026-08-08",
-        "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20260808T081500Z"
-      },
-      {
-        "Date": "2026-08-08",
-        "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260808T090000Z"
-      },
-      {
-        "Date": "2026-08-08",
         "Time": "13:30-14:30",
         "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
@@ -1221,23 +1091,23 @@
       },
       {
         "Date": "2026-08-10",
-        "Time": "15:00-16:00",
-        "Event": "🏃 Athletics - Ella",
+        "Time": "09:00-17:00",
+        "Event": "Ella & Ava - Nanny & Gramp's",
         "Who": "",
-        "Location": "",
+        "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260810T140000Z"
+        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260810T080000Z"
       },
       {
         "Date": "2026-08-10",
-        "Time": "18:15-19:00",
-        "Event": "Ella Brownies",
+        "Time": "18:15-19:15",
+        "Event": "Ella Brownies ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20260810T171500Z"
+        "_cal_id": "_8d23gda5752k4ba36ksj2b9k6l23eba170ok6b9i6l2k2h9n6gok6di38g_20260810T171500Z"
       },
       {
         "Date": "2026-08-11",
@@ -1261,6 +1131,16 @@
       },
       {
         "Date": "2026-08-12",
+        "Time": "09:00-17:00",
+        "Event": "Ella & Ava - Nanny & Gramp's",
+        "Who": "",
+        "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260812T080000Z"
+      },
+      {
+        "Date": "2026-08-12",
         "Time": "18:30-19:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
@@ -1281,33 +1161,13 @@
       },
       {
         "Date": "2026-08-13",
-        "Time": "15:00-16:00",
-        "Event": "🎵 Choir - Ella",
+        "Time": "17:45-19:00",
+        "Event": "Ava beavers ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260813T140000Z"
-      },
-      {
-        "Date": "2026-08-13",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260813T164500Z"
-      },
-      {
-        "Date": "2026-08-13",
-        "Time": "17:45-18:30",
-        "Event": "Ava Beavers",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260813T164500Z"
+        "_cal_id": "_8krk4e1k68o4aba174s3ab9k60p3ib9p8oq3gb9p6l24ch9o6p134d1j8k_20260813T164500Z"
       },
       {
         "Date": "2026-08-14",
@@ -1341,26 +1201,6 @@
       },
       {
         "Date": "2026-08-15",
-        "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20260815T081500Z"
-      },
-      {
-        "Date": "2026-08-15",
-        "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260815T090000Z"
-      },
-      {
-        "Date": "2026-08-15",
         "Time": "13:30-14:30",
         "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
@@ -1391,23 +1231,13 @@
       },
       {
         "Date": "2026-08-17",
-        "Time": "15:00-16:00",
-        "Event": "🏃 Athletics - Ella",
+        "Time": "18:15-19:15",
+        "Event": "Ella Brownies ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260817T140000Z"
-      },
-      {
-        "Date": "2026-08-17",
-        "Time": "18:15-19:00",
-        "Event": "Ella Brownies",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20260817T171500Z"
+        "_cal_id": "_8d23gda5752k4ba36ksj2b9k6l23eba170ok6b9i6l2k2h9n6gok6di38g_20260817T171500Z"
       },
       {
         "Date": "2026-08-18",
@@ -1511,33 +1341,13 @@
       },
       {
         "Date": "2026-08-20",
-        "Time": "15:00-16:00",
-        "Event": "🎵 Choir - Ella",
+        "Time": "17:45-19:00",
+        "Event": "Ava beavers ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260820T140000Z"
-      },
-      {
-        "Date": "2026-08-20",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260820T164500Z"
-      },
-      {
-        "Date": "2026-08-20",
-        "Time": "17:45-18:30",
-        "Event": "Ava Beavers",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260820T164500Z"
+        "_cal_id": "_8krk4e1k68o4aba174s3ab9k60p3ib9p8oq3gb9p6l24ch9o6p134d1j8k_20260820T164500Z"
       },
       {
         "Date": "2026-08-21",
@@ -1561,26 +1371,6 @@
       },
       {
         "Date": "2026-08-22",
-        "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20260822T081500Z"
-      },
-      {
-        "Date": "2026-08-22",
-        "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260822T090000Z"
-      },
-      {
-        "Date": "2026-08-22",
         "Time": "13:30-14:30",
         "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
@@ -1601,23 +1391,13 @@
       },
       {
         "Date": "2026-08-24",
-        "Time": "15:00-16:00",
-        "Event": "🏃 Athletics - Ella",
+        "Time": "18:15-19:15",
+        "Event": "Ella Brownies ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260824T140000Z"
-      },
-      {
-        "Date": "2026-08-24",
-        "Time": "18:15-19:00",
-        "Event": "Ella Brownies",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20260824T171500Z"
+        "_cal_id": "_8d23gda5752k4ba36ksj2b9k6l23eba170ok6b9i6l2k2h9n6gok6di38g_20260824T171500Z"
       },
       {
         "Date": "2026-08-25",
@@ -1661,33 +1441,13 @@
       },
       {
         "Date": "2026-08-27",
-        "Time": "15:00-16:00",
-        "Event": "🎵 Choir - Ella",
+        "Time": "17:45-19:00",
+        "Event": "Ava beavers ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260827T140000Z"
-      },
-      {
-        "Date": "2026-08-27",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260827T164500Z"
-      },
-      {
-        "Date": "2026-08-27",
-        "Time": "17:45-18:30",
-        "Event": "Ava Beavers",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260827T164500Z"
+        "_cal_id": "_8krk4e1k68o4aba174s3ab9k60p3ib9p8oq3gb9p6l24ch9o6p134d1j8k_20260827T164500Z"
       },
       {
         "Date": "2026-08-28",
@@ -1708,26 +1468,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260828T180000Z"
-      },
-      {
-        "Date": "2026-08-29",
-        "Time": "09:15-10:00",
-        "Event": "💃 BX Dance - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "o2dkdu90u2oigctja047ik8hk8_20260829T081500Z"
-      },
-      {
-        "Date": "2026-08-29",
-        "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260829T090000Z"
       },
       {
         "Date": "2026-08-29",
@@ -1781,23 +1521,13 @@
       },
       {
         "Date": "2026-08-31",
-        "Time": "15:00-16:00",
-        "Event": "🏃 Athletics - Ella",
+        "Time": "18:15-19:15",
+        "Event": "Ella Brownies ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260831T140000Z"
-      },
-      {
-        "Date": "2026-08-31",
-        "Time": "18:15-19:00",
-        "Event": "Ella Brownies",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20260831T171500Z"
+        "_cal_id": "_8d23gda5752k4ba36ksj2b9k6l23eba170ok6b9i6l2k2h9n6gok6di38g_20260831T171500Z"
       },
       {
         "Date": "2026-09-01",
@@ -1918,16 +1648,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260903T140000Z"
-      },
-      {
-        "Date": "2026-09-03",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260903T164500Z"
       },
       {
         "Date": "2026-09-03",
@@ -2088,16 +1808,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260910T140000Z"
-      },
-      {
-        "Date": "2026-09-10",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260910T164500Z"
       },
       {
         "Date": "2026-09-10",
@@ -2311,16 +2021,6 @@
       },
       {
         "Date": "2026-09-17",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260917T164500Z"
-      },
-      {
-        "Date": "2026-09-17",
         "Time": "17:45-18:30",
         "Event": "Ava Beavers",
         "Who": "",
@@ -2501,16 +2201,6 @@
       },
       {
         "Date": "2026-09-24",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260924T164500Z"
-      },
-      {
-        "Date": "2026-09-24",
         "Time": "17:45-18:30",
         "Event": "Ava Beavers",
         "Who": "",
@@ -2681,16 +2371,6 @@
       },
       {
         "Date": "2026-10-01",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20261001T164500Z"
-      },
-      {
-        "Date": "2026-10-01",
         "Time": "17:45-18:30",
         "Event": "Ava Beavers",
         "Who": "",
@@ -2828,16 +2508,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20261008T140000Z"
-      },
-      {
-        "Date": "2026-10-08",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20261008T164500Z"
       },
       {
         "Date": "2026-10-08",
@@ -3011,16 +2681,6 @@
       },
       {
         "Date": "2026-10-15",
-        "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20261015T164500Z"
-      },
-      {
-        "Date": "2026-10-15",
         "Time": "17:45-18:30",
         "Event": "Ava Beavers",
         "Who": "",
@@ -3168,16 +2828,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20261022T164500Z"
-      },
-      {
-        "Date": "2026-10-22",
-        "Time": "17:45-18:30",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20261022T164500Z"
       },
       {
         "Date": "2026-10-23",
@@ -3400,16 +3050,6 @@
         "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20261029T174500Z"
       },
       {
-        "Date": "2026-10-29",
-        "Time": "17:45-18:30",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20261029T174500Z"
-      },
-      {
         "Date": "2026-10-30",
         "Time": "All day",
         "Event": "🏫 Half Term - Both Schools",
@@ -3578,6 +3218,26 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20261105T174500Z"
+      },
+      {
+        "Date": "2026-11-06",
+        "Time": "18:00-19:00",
+        "Event": "Ava Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20261106T180000Z"
+      },
+      {
+        "Date": "2026-11-06",
+        "Time": "19:00-20:00",
+        "Event": "Ella Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20261106T190000Z"
       }
     ]
   },
