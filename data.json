@@ -10,6 +10,564 @@
     ],
     "rows": [
       {
+        "_row": 2,
+        "Date": "2026-04-13",
+        "Time": "All day",
+        "Event": "🏫 Training Day - Fairfield Park",
+        "Who": "Ava",
+        "Location": "",
+        "Notes": "School closed for pupils"
+      },
+      {
+        "_row": 3,
+        "Date": "2026-05-04",
+        "Time": "All day",
+        "Event": "🏦 Early May Bank Holiday",
+        "Who": "Both",
+        "Location": "",
+        "Notes": "All schools closed"
+      },
+      {
+        "_row": 4,
+        "Date": "2026-05-25",
+        "Time": "All day",
+        "Event": "🏦 Late May Bank Holiday",
+        "Who": "Both",
+        "Location": "",
+        "Notes": "All schools closed"
+      },
+      {
+        "_row": 5,
+        "Date": "2026-06-08",
+        "Time": "All day",
+        "Event": "🛂 Apply for passport renewal",
+        "Who": "Simon & Emma",
+        "Location": "",
+        "Notes": "URGENT - expires tomorrow!"
+      },
+      {
+        "_row": 6,
+        "Date": "2026-06-08",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "_row": 7,
+        "Date": "2026-06-09",
+        "Time": "All day",
+        "Event": "🛂 Passports expire!",
+        "Who": "Simon & Emma",
+        "Location": "",
+        "Notes": "Last valid day"
+      },
+      {
+        "_row": 8,
+        "Date": "2026-06-09",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "_row": 9,
+        "Date": "2026-06-10",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "_row": 11,
+        "Date": "2026-06-11",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "_row": 10,
+        "Date": "2026-06-11",
+        "Time": "17:00-17:45",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 92,
+        "Date": "2026-06-11",
+        "Time": "17:45",
+        "Event": "Ava Beavers",
+        "Who": "Ava",
+        "Location": "Fairfield Community Hall",
+        "Notes": "Added via email by Simon Stimson"
+      },
+      {
+        "_row": 12,
+        "Date": "2026-06-13",
+        "Time": "09:15-10:00",
+        "Event": "BX Dance - Ava",
+        "Who": "Ava",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 13,
+        "Date": "2026-06-13",
+        "Time": "10:00-10:45",
+        "Event": "BX Dance - Ella",
+        "Who": "Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 14,
+        "Date": "2026-06-13",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "_row": 15,
+        "Date": "2026-06-14",
+        "Time": "11:00-14:00",
+        "Event": "🎪 Fairfield Park Summer Fete",
+        "Who": "Ava's School",
+        "Location": "Fairfield Park",
+        "Notes": "PTA event £1 entry"
+      },
+      {
+        "_row": 16,
+        "Date": "2026-06-15",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "_row": 96,
+        "Date": "2026-06-15",
+        "Time": "18:15",
+        "Event": "Ella Brownies",
+        "Who": "Ella",
+        "Location": "Stotfold Girl Guide Centre",
+        "Notes": "Added via email by Simon Stimson"
+      },
+      {
+        "_row": 17,
+        "Date": "2026-06-16",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "_row": 18,
+        "Date": "2026-06-17",
+        "Time": "08:00-09:00",
+        "Event": "🎓 Father's Breakfast",
+        "Who": "Ava Year 3 DB",
+        "Location": "Fairfield Park",
+        "Notes": "Last day of school"
+      },
+      {
+        "_row": 97,
+        "Date": "2026-06-17",
+        "Time": "08:30",
+        "Event": "👨‍👧 Father's & Loved Ones Breakfast",
+        "Who": "Ava",
+        "Location": "Fairfield Park (Dickens Blvd)",
+        "Notes": "Year 3 DB site - pastries, juice, coffee"
+      },
+      {
+        "_row": 19,
+        "Date": "2026-06-17",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "_row": 21,
+        "Date": "2026-06-18",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "_row": 20,
+        "Date": "2026-06-18",
+        "Time": "17:00-17:45",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 91,
+        "Date": "2026-06-18",
+        "Time": "17:45",
+        "Event": "Ava Beavers",
+        "Who": "Ava",
+        "Location": "Fairfield Community Hall",
+        "Notes": "Added via email by Simon Stimson"
+      },
+      {
+        "_row": 22,
+        "Date": "2026-06-20",
+        "Time": "09:15-10:00",
+        "Event": "BX Dance - Ava",
+        "Who": "Ava",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 23,
+        "Date": "2026-06-20",
+        "Time": "10:00-10:45",
+        "Event": "BX Dance - Ella",
+        "Who": "Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 24,
+        "Date": "2026-06-20",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "_row": 98,
+        "Date": "2026-06-22",
+        "Time": "All day",
+        "Event": "✡️ Religious Diversity Day - Judaism",
+        "Who": "Ava",
+        "Location": "Fairfield Park",
+        "Notes": "Whole school event"
+      },
+      {
+        "_row": 25,
+        "Date": "2026-06-22",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "_row": 95,
+        "Date": "2026-06-22",
+        "Time": "18:15",
+        "Event": "Ella Brownies",
+        "Who": "Ella",
+        "Location": "Stotfold Girl Guide Centre",
+        "Notes": "Added via email by Simon Stimson"
+      },
+      {
+        "_row": 26,
+        "Date": "2026-06-23",
+        "Time": "All day",
+        "Event": "🧘 Year 5 Yoga Day 1",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Comfortable clothes, bare feet, water bottle"
+      },
+      {
+        "_row": 99,
+        "Date": "2026-06-23",
+        "Time": "All day",
+        "Event": "🔧 Engineering & Enterprise Week",
+        "Who": "Ava",
+        "Location": "Fairfield Park",
+        "Notes": "Whole school - activities all week"
+      },
+      {
+        "_row": 27,
+        "Date": "2026-06-23",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "_row": 28,
+        "Date": "2026-06-24",
+        "Time": "All day",
+        "Event": "🧘 Year 5 Yoga Day 2",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Comfortable clothes, bare feet, water bottle"
+      },
+      {
+        "_row": 29,
+        "Date": "2026-06-24",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "_row": 100,
+        "Date": "2026-06-24",
+        "Time": "AM",
+        "Event": "🏛️ Stotfold Mill Trip - Fox Class",
+        "Who": "Ava",
+        "Location": "Stotfold Mill",
+        "Notes": "AM trip - Fox Class only. Bring packed lunch, water bottle, sun hat"
+      },
+      {
+        "_row": 31,
+        "Date": "2026-06-25",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "_row": 30,
+        "Date": "2026-06-25",
+        "Time": "17:00-17:45",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 90,
+        "Date": "2026-06-25",
+        "Time": "17:45",
+        "Event": "Ava Beavers",
+        "Who": "Ava",
+        "Location": "Fairfield Community Hall",
+        "Notes": "Added via email by Simon Stimson"
+      },
+      {
+        "_row": 32,
+        "Date": "2026-06-26",
+        "Time": "All day",
+        "Event": "🎪 Where's Wally Day",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Dress up! £1.50 via MCAS"
+      },
+      {
+        "_row": 33,
+        "Date": "2026-06-27",
+        "Time": "09:15-10:00",
+        "Event": "BX Dance - Ava",
+        "Who": "Ava",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 34,
+        "Date": "2026-06-27",
+        "Time": "10:00-10:45",
+        "Event": "BX Dance - Ella",
+        "Who": "Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 35,
+        "Date": "2026-06-27",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "_row": 36,
+        "Date": "2026-06-29",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "_row": 94,
+        "Date": "2026-06-29",
+        "Time": "18:15",
+        "Event": "Ella Brownies",
+        "Who": "Ella",
+        "Location": "Stotfold Girl Guide Centre",
+        "Notes": "Added via email by Simon Stimson"
+      },
+      {
+        "_row": 37,
+        "Date": "2026-06-30",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "_row": 87,
+        "Date": "2026-07-01",
+        "Time": "11:00",
+        "Event": "🏥 NHS Physiotherapy - Sarah Salter",
+        "Who": "Ava",
+        "Location": "Child Development Centre, Hill Rise, Kempston, Bedford MK42 7EB",
+        "Notes": "Bring shorts + vest top. Call 01234 310278 if unwell. Sat Nav: MK42 7DN"
+      },
+      {
+        "_row": 38,
+        "Date": "2026-07-01",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "_row": 40,
+        "Date": "2026-07-02",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "_row": 39,
+        "Date": "2026-07-02",
+        "Time": "17:00-17:45",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 89,
+        "Date": "2026-07-02",
+        "Time": "17:45",
+        "Event": "Ava Beavers",
+        "Who": "Ava",
+        "Location": "Fairfield Community Hall",
+        "Notes": "Added via email by Simon Stimson"
+      },
+      {
+        "_row": 41,
+        "Date": "2026-07-04",
+        "Time": "09:15-10:00",
+        "Event": "BX Dance - Ava",
+        "Who": "Ava",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 42,
+        "Date": "2026-07-04",
+        "Time": "10:00-10:45",
+        "Event": "BX Dance - Ella",
+        "Who": "Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 43,
+        "Date": "2026-07-04",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
+      },
+      {
+        "_row": 44,
+        "Date": "2026-07-06",
+        "Time": "15:00-16:00",
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "_row": 93,
+        "Date": "2026-07-06",
+        "Time": "18:15",
+        "Event": "Ella Brownies",
+        "Who": "Ella",
+        "Location": "Stotfold Girl Guide Centre",
+        "Notes": "Added via email by Simon Stimson"
+      },
+      {
+        "_row": 45,
+        "Date": "2026-07-07",
+        "Time": "16:00-17:00",
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
+      },
+      {
+        "_row": 46,
+        "Date": "2026-07-08",
+        "Time": "All day",
+        "Event": "🎨 Creative Arts Festival",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Whole school event"
+      },
+      {
+        "_row": 47,
+        "Date": "2026-07-08",
+        "Time": "18:30-19:00",
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
+      },
+      {
+        "_row": 49,
+        "Date": "2026-07-09",
+        "Time": "15:00-16:00",
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
+        "_row": 48,
+        "Date": "2026-07-09",
+        "Time": "17:00-17:45",
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 50,
+        "Date": "2026-07-10",
+        "Time": "All day",
+        "Event": "🏃 Sports Day (Yrs 5-10)",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
+      },
+      {
         "Date": "2026-07-11",
         "Time": "All day",
         "Event": "Ella gullivers land brownies",
@@ -20,14 +578,31 @@
         "_cal_id": "_74o3gg9i6cs4cb9m74r32b9k751jib9o68rj2b9p88p34h1n6ssj0dhp6k"
       },
       {
+        "_row": 51,
         "Date": "2026-07-11",
-        "Time": "19:15-21:15",
-        "Event": "Charlie L pool party Letchworth pool.",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_70q38dpo84sk2b9m8oq32b9k892kab9o84ok8b9n88r3ahhk6gsjeh1n70"
+        "Time": "09:15-10:00",
+        "Event": "BX Dance - Ava",
+        "Who": "Ava",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 52,
+        "Date": "2026-07-11",
+        "Time": "10:00-10:45",
+        "Event": "BX Dance - Ella",
+        "Who": "Ella",
+        "Location": "BX Dance",
+        "Notes": ""
+      },
+      {
+        "_row": 53,
+        "Date": "2026-07-11",
+        "Time": "13:30-14:30",
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-07-12",
@@ -50,14 +625,13 @@
         "_cal_id": "_6krj4d9o612k6b9p8p0j6b9k64qj2b9p8kr34b9l84qjegi16p13ic9j6g"
       },
       {
+        "_row": 54,
         "Date": "2026-07-13",
         "Time": "15:00-16:00",
-        "Event": "🏃 Athletics - Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20260713T140000Z"
+        "Event": "Athletics - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
       },
       {
         "Date": "2026-07-13",
@@ -110,14 +684,13 @@
         "_cal_id": "_6gpjecq3611jeba688oj2b9k6gqkab9o84p3cba46t330gpn64pjie1p8c"
       },
       {
+        "_row": 55,
         "Date": "2026-07-14",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260714T150000Z"
+        "Event": "Drama Kids - Ava",
+        "Who": "Ava",
+        "Location": "Fairfield Park Lower School",
+        "Notes": ""
       },
       {
         "Date": "2026-07-14",
@@ -160,14 +733,22 @@
         "_cal_id": "_8h33cea66t0jiba66soj6b9k850kaba26cq4ab9p6opj2cpm8gsj8ci46s"
       },
       {
+        "_row": 88,
+        "Date": "2026-07-15",
+        "Time": "14:00",
+        "Event": "🧪 Test Event - Dashboard Sync",
+        "Who": "Simon",
+        "Location": "Home",
+        "Notes": "Testing calendar sync"
+      },
+      {
+        "_row": 56,
         "Date": "2026-07-15",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260715T173000Z"
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-07-16",
@@ -210,24 +791,22 @@
         "_cal_id": "_6l23eha58l33iba28d0kab9k60pk4b9o70r42ba368q3eca4612j8da56k"
       },
       {
+        "_row": 58,
         "Date": "2026-07-16",
         "Time": "15:00-16:00",
-        "Event": "🎵 Choir - Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "je8a4junpdm9c044ru3fc29ltk_20260716T140000Z"
+        "Event": "Choir - Ella",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": ""
       },
       {
+        "_row": 57,
         "Date": "2026-07-16",
         "Time": "17:00-17:45",
-        "Event": "🤸 Stretch & Flex (BX Dance) - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "thc80ctg2e33q8n2m3osi1f1gk_20260716T164500Z"
+        "Event": "Stretch & Flex",
+        "Who": "Ava & Ella",
+        "Location": "BX Dance",
+        "Notes": ""
       },
       {
         "Date": "2026-07-16",
@@ -240,14 +819,22 @@
         "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20260716T164500Z"
       },
       {
+        "_row": 59,
         "Date": "2026-07-17",
         "Time": "All day",
-        "Event": "📅 End of Term - Pix Brook Academy",
-        "Who": "",
+        "Event": "📅 End of Term - PBA",
+        "Who": "Ella",
+        "Location": "Pix Brook Academy",
+        "Notes": "Last day of school"
+      },
+      {
+        "_row": 60,
+        "Date": "2026-07-17",
+        "Time": "All day",
+        "Event": "🏫 End of Term - Both Schools",
+        "Who": "Ava & Ella",
         "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5gq6h7bcbom2405am4cr079b2k"
+        "Notes": "Last day before summer holidays!"
       },
       {
         "Date": "2026-07-17",
@@ -268,16 +855,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "mo49cq5g9r7i5dn39lvfealvj4"
-      },
-      {
-        "Date": "2026-07-17",
-        "Time": "All day",
-        "Event": "End of term.",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_60qkah236cskcba48opkcb9k6cs44ba28l138ba370q4cci5652k6ga36s"
       },
       {
         "Date": "2026-07-17",
@@ -340,14 +917,13 @@
         "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20260718T090000Z"
       },
       {
+        "_row": 61,
         "Date": "2026-07-18",
         "Time": "13:30-14:30",
-        "Event": "🤿 Diving - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260718T123000Z"
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-07-19",
@@ -358,6 +934,33 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_68r36dpi88q48b9o6csj2b9k6oq3eba18co3cb9p75342h1j64q32e1g8c_20260719"
+      },
+      {
+        "_row": 62,
+        "Date": "2026-07-20",
+        "Time": "All day",
+        "Event": "🏫 Training Day - Fairfield Park",
+        "Who": "Ava",
+        "Location": "",
+        "Notes": "School closed for pupils"
+      },
+      {
+        "_row": 63,
+        "Date": "2026-07-20",
+        "Time": "All day",
+        "Event": "🏫 Training Day - PBA",
+        "Who": "Ella",
+        "Location": "",
+        "Notes": "School closed for pupils"
+      },
+      {
+        "_row": 64,
+        "Date": "2026-07-20",
+        "Time": "All day",
+        "Event": "🏫 Training Day - Both Schools",
+        "Who": "Ava & Ella",
+        "Location": "",
+        "Notes": "Staff training - children off"
       },
       {
         "Date": "2026-07-20",
@@ -408,6 +1011,15 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8d23gda5752k4ba36ksj2b9k6l23eba170ok6b9i6l2k2h9n6gok6di38g_20260720T171500Z"
+      },
+      {
+        "_row": 65,
+        "Date": "2026-07-21",
+        "Time": "All day",
+        "Event": "📅 End of Term - Fairfield Park",
+        "Who": "Ava",
+        "Location": "Fairfield Park",
+        "Notes": "Ava effectively finishes 17 July (training day 20 July)"
       },
       {
         "Date": "2026-07-21",
@@ -470,6 +1082,15 @@
         "_cal_id": "_88s42dhl8op3cba56l232b9k6d1j4ba18p242ba38l1j8ci36opjahi660_20260721T150000Z"
       },
       {
+        "_row": 66,
+        "Date": "2026-07-22",
+        "Time": "All day",
+        "Event": "📅 End of Term - Fairfield Park",
+        "Who": "Ava",
+        "Location": "Fairfield Park",
+        "Notes": "Last day of school"
+      },
+      {
         "Date": "2026-07-22",
         "Time": "All day",
         "Event": "🔋 Charge all devices for Latitude Festival",
@@ -478,16 +1099,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "iupt1inta37rjmh0qc4m2ieq5k"
-      },
-      {
-        "Date": "2026-07-22",
-        "Time": "All day",
-        "Event": "📅 End of Term - Fairfield Park",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "k5oanln7cr59j56og3h3kpogac"
       },
       {
         "Date": "2026-07-22",
@@ -500,14 +1111,13 @@
         "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260722T080000Z"
       },
       {
+        "_row": 67,
         "Date": "2026-07-22",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260722T173000Z"
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-07-23",
@@ -600,14 +1210,13 @@
         "_cal_id": "4tnmb8cgrqn8lppiq72mde2f1o"
       },
       {
+        "_row": 68,
         "Date": "2026-07-25",
         "Time": "13:30-14:30",
-        "Event": "🤿 Diving - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260725T123000Z"
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-07-26",
@@ -700,14 +1309,13 @@
         "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260729T080000Z"
       },
       {
+        "_row": 69,
         "Date": "2026-07-29",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260729T173000Z"
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-07-30",
@@ -800,14 +1408,13 @@
         "_cal_id": "_6gq46c9j68ojgb9p6d348b9k8co4cb9o70o44b9g68qj6gq47123ggpk6k_20260801"
       },
       {
+        "_row": 70,
         "Date": "2026-08-01",
         "Time": "13:30-14:30",
-        "Event": "🤿 Diving - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260801T123000Z"
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-08-02",
@@ -920,14 +1527,13 @@
         "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260805T080000Z"
       },
       {
+        "_row": 71,
         "Date": "2026-08-05",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260805T173000Z"
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-08-06",
@@ -980,14 +1586,13 @@
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260807T180000Z"
       },
       {
+        "_row": 72,
         "Date": "2026-08-08",
         "Time": "13:30-14:30",
-        "Event": "🤿 Diving - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260808T123000Z"
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-08-09",
@@ -1080,14 +1685,13 @@
         "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260812T080000Z"
       },
       {
+        "_row": 73,
         "Date": "2026-08-12",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260812T173000Z"
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-08-13",
@@ -1150,14 +1754,13 @@
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260814T180000Z"
       },
       {
+        "_row": 74,
         "Date": "2026-08-15",
         "Time": "13:30-14:30",
-        "Event": "🤿 Diving - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260815T123000Z"
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-08-16",
@@ -1170,14 +1773,13 @@
         "_cal_id": "_68r36dpi88q48b9o6csj2b9k6oq3eba18co3cb9p75342h1j64q32e1g8c_20260816"
       },
       {
+        "_row": 79,
         "Date": "2026-08-17",
         "Time": "All day",
-        "Event": "Ava’s birthday",
-        "Who": "",
+        "Event": "🎂 Ava's Birthday",
+        "Who": "Ava",
         "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "35a53964251f4352920f7626527d03f7_20260817"
+        "Notes": "Turning 11!"
       },
       {
         "Date": "2026-08-17",
@@ -1270,14 +1872,13 @@
         "_cal_id": "_71144cpk70o3eb9o8d2kcb9k6sqk4b9o8gpj2b9l8h244gpn60o48hhg8g"
       },
       {
+        "_row": 75,
         "Date": "2026-08-19",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260819T173000Z"
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-08-20",
@@ -1340,14 +1941,13 @@
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260821T180000Z"
       },
       {
+        "_row": 76,
         "Date": "2026-08-22",
         "Time": "13:30-14:30",
-        "Event": "🤿 Diving - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260822T123000Z"
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-08-23",
@@ -1420,14 +2020,13 @@
         "_cal_id": "_8d1j2cpn70o3ib9o64qk6b9k6krjaba18go46b9n6kq42gpm6gojadq28o"
       },
       {
+        "_row": 77,
         "Date": "2026-08-26",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260826T173000Z"
+        "Event": "Swimming - Ava",
+        "Who": "Ava",
+        "Location": "North Herts Leisure Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-08-27",
@@ -1490,14 +2089,13 @@
         "_cal_id": "_68qkadpi70o3ab9g6ssjab9k64pk2b9o8l23eba384s32d9h64pk6g9p60"
       },
       {
+        "_row": 78,
         "Date": "2026-08-29",
         "Time": "13:30-14:30",
-        "Event": "🤿 Diving - Ava & Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260829T123000Z"
+        "Event": "Diving",
+        "Who": "Ava & Ella",
+        "Location": "Luton Diving Centre",
+        "Notes": ""
       },
       {
         "Date": "2026-08-29",
@@ -2140,14 +2738,13 @@
         "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20260919T123000Z"
       },
       {
+        "_row": 80,
         "Date": "2026-09-20",
         "Time": "All day",
-        "Event": "Ella’s birthday",
-        "Who": "",
+        "Event": "🎂 Ella's Birthday",
+        "Who": "Ella",
         "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "01d3d8a3440344dbb8937ad216206142_20260920"
+        "Notes": "Turning 11!"
       },
       {
         "Date": "2026-09-20",
@@ -3040,6 +3637,15 @@
         "_cal_id": "_88s42dhl8op3cba56l232b9k6d1j4ba18p242ba38l1j8ci36opjahi660_20261027T160000Z"
       },
       {
+        "_row": 81,
+        "Date": "2026-10-28",
+        "Time": "All day",
+        "Event": "🎂 Simon's Birthday",
+        "Who": "Simon",
+        "Location": "",
+        "Notes": ""
+      },
+      {
         "Date": "2026-10-28",
         "Time": "All day",
         "Event": "🏫 Half Term - Both Schools",
@@ -3328,34 +3934,767 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_68r36dpi88q48b9o6csj2b9k6oq3eba18co3cb9p75342h1j64q32e1g8c_20261108"
+      },
+      {
+        "_row": 82,
+        "Date": "2026-12-27",
+        "Time": "All day",
+        "Event": "🎂 Emma's Birthday",
+        "Who": "Emma",
+        "Location": "",
+        "Notes": ""
+      },
+      {
+        "_row": 83,
+        "Date": "2027-08-17",
+        "Time": "All day",
+        "Event": "🎂 Ava's Birthday",
+        "Who": "Ava",
+        "Location": "",
+        "Notes": "Turning 12!"
+      },
+      {
+        "_row": 84,
+        "Date": "2027-09-20",
+        "Time": "All day",
+        "Event": "🎂 Ella's Birthday",
+        "Who": "Ella",
+        "Location": "",
+        "Notes": "Turning 12!"
+      },
+      {
+        "_row": 85,
+        "Date": "2027-10-28",
+        "Time": "All day",
+        "Event": "🎂 Simon's Birthday",
+        "Who": "Simon",
+        "Location": "",
+        "Notes": ""
+      },
+      {
+        "_row": 86,
+        "Date": "2027-12-27",
+        "Time": "All day",
+        "Event": "🎂 Emma's Birthday",
+        "Who": "Emma",
+        "Location": "",
+        "Notes": ""
       }
     ]
   },
   "🛒 Shopping List": {
-    "error": "('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})"
+    "headers": [
+      "Item",
+      "Quantity",
+      "Added By",
+      "Done ✓",
+      "Category",
+      "@"
+    ],
+    "rows": [
+      {
+        "_row": 2,
+        "Item": "Milk",
+        "Quantity": "2 pints",
+        "Added By": "Simon",
+        "Done ✓": "",
+        "Category": "Dairy",
+        "@": ""
+      },
+      {
+        "_row": 3,
+        "Item": "Bread",
+        "Quantity": "1 loaf",
+        "Added By": "Simon",
+        "Done ✓": "",
+        "Category": "Bakery",
+        "@": ""
+      },
+      {
+        "_row": 4,
+        "Item": "Bin bags",
+        "Quantity": "1 roll",
+        "Added By": "Simon",
+        "Done ✓": "",
+        "Category": "Household",
+        "@": ""
+      },
+      {
+        "_row": 5,
+        "Item": "Cheese",
+        "Quantity": "1 Block",
+        "Added By": "Simon Stimson",
+        "Done ✓": "",
+        "Category": "Dairy",
+        "@": "6/11/2026 22:59:48"
+      },
+      {
+        "_row": 6,
+        "Item": "Flash",
+        "Quantity": "1 bottle",
+        "Added By": "Simon Stimson",
+        "Done ✓": "",
+        "Category": "Household",
+        "@": "6/11/2026 22:59:49"
+      }
+    ]
   },
   "✅ Chores": {
-    "error": "('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})"
+    "headers": [
+      "Task",
+      "Assigned To",
+      "Due Date",
+      "Frequency",
+      "Done ✓",
+      "Notes"
+    ],
+    "rows": [
+      {
+        "_row": 2,
+        "Task": "Put Bins Out",
+        "Assigned To": "Simon",
+        "Due Date": "",
+        "Frequency": "Weekly",
+        "Done ✓": "",
+        "Notes": ""
+      }
+    ]
   },
   "🍽️ Meal Plan": {
-    "error": "('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})"
+    "headers": [
+      "Day",
+      "Breakfast",
+      "Lunch",
+      "Dinner",
+      "Notes"
+    ],
+    "rows": [
+      {
+        "_row": 2,
+        "Day": "Monday",
+        "Breakfast": "Cereal / Toast",
+        "Lunch": "Sandwiches",
+        "Dinner": "Spaghetti Bolognese",
+        "Notes": ""
+      },
+      {
+        "_row": 3,
+        "Day": "Tuesday",
+        "Breakfast": "Porridge",
+        "Lunch": "School lunch",
+        "Dinner": "Chicken stir-fry",
+        "Notes": ""
+      },
+      {
+        "_row": 4,
+        "Day": "Wednesday",
+        "Breakfast": "Cereal / Toast",
+        "Lunch": "School leftovers",
+        "Dinner": "Fish fingers & chips",
+        "Notes": "Ava swimming after school"
+      },
+      {
+        "_row": 5,
+        "Day": "Thursday",
+        "Breakfast": "Pancakes",
+        "Lunch": "Wraps",
+        "Dinner": "Pizza night",
+        "Notes": ""
+      },
+      {
+        "_row": 6,
+        "Day": "Friday",
+        "Breakfast": "Cereal / Toast",
+        "Lunch": "School lunch",
+        "Dinner": "Takeaway / pub",
+        "Notes": "Charlie Bingham and beers"
+      },
+      {
+        "_row": 7,
+        "Day": "Saturday",
+        "Breakfast": "Full English",
+        "Lunch": "Soup & rolls",
+        "Dinner": "Roast chicken",
+        "Notes": ""
+      },
+      {
+        "_row": 8,
+        "Day": "Sunday",
+        "Breakfast": "Brunch",
+        "Lunch": "Family meal",
+        "Dinner": "Easy tea / sandwiches",
+        "Notes": "Prep for week ahead"
+      }
+    ]
   },
   "📋 School & Activities": {
-    "error": "('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})"
+    "headers": [
+      "Child",
+      "Activity",
+      "Day/Time",
+      "Location",
+      "Notes"
+    ],
+    "rows": [
+      {
+        "_row": 2,
+        "Child": "Ava",
+        "Activity": "School",
+        "Day/Time": "Mon-Fri 8:45-3:25",
+        "Location": "Fairfield Park",
+        "Notes": "Dickens Boulevard, Hitchin, SG4 7SS — Year 3 DB"
+      },
+      {
+        "_row": 3,
+        "Child": "Ella",
+        "Activity": "School",
+        "Day/Time": "Mon-Fri 8:00-3:00",
+        "Location": "Pix Brook Academy",
+        "Notes": "Arlesey Road, Stotfold, SG5 4HB — Year 5, Pankhurst Class"
+      },
+      {
+        "_row": 4,
+        "Child": "Ava",
+        "Activity": "Father's Breakfast",
+        "Day/Time": "Wed 17 Jun 8:00",
+        "Location": "Fairfield Park",
+        "Notes": "Year 3 DB"
+      },
+      {
+        "_row": 5,
+        "Child": "Ava",
+        "Activity": "Summer Fete",
+        "Day/Time": "Sun 14 Jun 11:00",
+        "Location": "Fairfield Park",
+        "Notes": "PTA event £1 entry"
+      },
+      {
+        "_row": 6,
+        "Child": "Ella",
+        "Activity": "Where's Wally Day",
+        "Day/Time": "Fri 26 Jun",
+        "Location": "Pix Brook Academy",
+        "Notes": "Dress up as Wally character, £1.50 via MCAS"
+      },
+      {
+        "_row": 7,
+        "Child": "Ava",
+        "Activity": "BX Dance",
+        "Day/Time": "Sat 9:15am",
+        "Location": "BX Dance",
+        "Notes": "Weekly class"
+      },
+      {
+        "_row": 8,
+        "Child": "Ella",
+        "Activity": "BX Dance",
+        "Day/Time": "Sat 10:00am",
+        "Location": "BX Dance",
+        "Notes": "Weekly class"
+      },
+      {
+        "_row": 9,
+        "Child": "Ava & Ella",
+        "Activity": "Stretch & Flex (BX Dance)",
+        "Day/Time": "Thu 5:00pm",
+        "Location": "BX Dance",
+        "Notes": "Weekly class — both attend"
+      },
+      {
+        "_row": 10,
+        "Child": "Ava & Ella",
+        "Activity": "Diving",
+        "Day/Time": "Sat 1:30pm",
+        "Location": "Luton Diving Centre",
+        "Notes": "Weekly class — both attend"
+      },
+      {
+        "_row": 11,
+        "Child": "Ava",
+        "Activity": "Swimming",
+        "Day/Time": "Wed 6:30-7:00pm",
+        "Location": "North Herts Leisure Centre, Letchworth",
+        "Notes": "Weekly lesson"
+      },
+      {
+        "_row": 12,
+        "Child": "Ava",
+        "Activity": "Drama Kids",
+        "Day/Time": "Tue 4:00-5:00pm",
+        "Location": "Fairfield Park Lower School",
+        "Notes": "Weekly class"
+      },
+      {
+        "_row": 13,
+        "Child": "Ella",
+        "Activity": "Choir",
+        "Day/Time": "Thu 3:00-4:00pm",
+        "Location": "Pix Brook Academy",
+        "Notes": "Straight after school"
+      },
+      {
+        "_row": 14,
+        "Child": "Ella",
+        "Activity": "Athletics",
+        "Day/Time": "Mon 3:00-4:00pm",
+        "Location": "Pix Brook Academy",
+        "Notes": "Straight after school"
+      },
+      {
+        "_row": 15,
+        "Child": "Ava",
+        "Activity": "Gymnastics",
+        "Day/Time": "Friday",
+        "Location": "6:00 PM",
+        "Notes": "TBC"
+      },
+      {
+        "_row": 16,
+        "Child": "Ella",
+        "Activity": "Gymnastics",
+        "Day/Time": "Friday",
+        "Location": "7:00 PM",
+        "Notes": "TBC"
+      },
+      {
+        "_row": 17,
+        "Child": "Ava",
+        "Activity": "Gymnastics",
+        "Day/Time": "Friday",
+        "Location": "6:00 PM",
+        "Notes": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT"
+      },
+      {
+        "_row": 18,
+        "Child": "Ella",
+        "Activity": "Gymnastics",
+        "Day/Time": "Friday",
+        "Location": "7:00 PM",
+        "Notes": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT"
+      }
+    ]
   },
   "💰 Budget": {
-    "error": "('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})"
+    "headers": [],
+    "rows": [
+      [
+        "Date",
+        "Category",
+        "Description",
+        "Amount",
+        "Paid By",
+        "Type"
+      ]
+    ]
   },
   "📝 Announcements": {
-    "error": "('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})"
+    "headers": [
+      "Date",
+      "From",
+      "Message",
+      "Priority"
+    ],
+    "rows": [
+      {
+        "_row": 2,
+        "Date": "2026-06-06",
+        "From": "Simon",
+        "Message": "Welcome to Family HQ! 🎉",
+        "Priority": "Info"
+      },
+      {
+        "_row": 3,
+        "Date": "2026-06-08",
+        "From": "Simon",
+        "Message": "⚠️ URGENT: Passport renewals needed for Simon + Emma!\nExpiry: 9 June (TOMORROW!)",
+        "Priority": "🔴 URGENT"
+      },
+      {
+        "_row": 4,
+        "Date": "2026-06-06",
+        "From": "Simon",
+        "Message": "📋 PBA Bulletin wc 8 June:\n• Where's Wally Day: 26 June\n• Year 5 Yoga: 23-24 June\n• Creative Arts Festival: 8-9 July\n• Sports Day: 10 July\n• End of Term: 17 July",
+        "Priority": "📌 Important"
+      },
+      {
+        "_row": 5,
+        "Date": "2026-06-06",
+        "From": "Simon",
+        "Message": "📅 TERM DATES:\n• Early May BH: 4 May\n• Late May BH: 25 May\n• PBA End of Term: 17 July\n• Fairfield Park End of Term: 22 July\n• FP Training Days: 13 Apr, 20 July\n• PBA Training Days: 20 July",
+        "Priority": "📌 Important"
+      },
+      {
+        "_row": 6,
+        "Date": "2026-06-06",
+        "From": "Simon",
+        "Message": "Ava's school fete 14 June, 11-2pm",
+        "Priority": "Info"
+      },
+      {
+        "_row": 7,
+        "Date": "2026-06-09",
+        "From": "Simon",
+        "Message": "This is great",
+        "Priority": "Message"
+      },
+      {
+        "_row": 8,
+        "Date": "2026-06-09",
+        "From": "Simon",
+        "Message": "is this working?",
+        "Priority": "Message"
+      },
+      {
+        "_row": 9,
+        "Date": "2026-06-14",
+        "From": "MSE's Money Tips",
+        "Message": "14m due £700 Car Finance back, cheapest Brit Gas fix since 2021 ends, 'Should I pay my child's tuition fees?', new 1% cashback card, £290 M&S beauty £60, new FREE £200 bank switch",
+        "Priority": "Info"
+      },
+      {
+        "_row": 10,
+        "Date": "2026-06-14",
+        "From": "MSE's Money Tips",
+        "Message": "Energy bills to rise again - act now to save 15%, FREE £175 ending, Boots No7 trick, 7 Amazon hacks, 34mth 0% debt shift",
+        "Priority": "Info"
+      },
+      {
+        "_row": 11,
+        "Date": "Ella - Dinner Money Low Balance",
+        "From": "£2.55 remaining - Pix Brook Academy",
+        "Message": "Action needed: Top up Ella's dinner money",
+        "Priority": ""
+      },
+      {
+        "_row": 12,
+        "Date": "2026-06-22",
+        "From": "Stylelife Dating Tips",
+        "Message": "Intern Coach Deadline, Summer Conference, SLA Packages Sold Out",
+        "Priority": "Info"
+      },
+      {
+        "_row": 13,
+        "Date": "2026-06-22",
+        "From": "Stylelife Dating Tips",
+        "Message": "Stylelife Conference 2011, Coach Auditions and Academy Upgrade",
+        "Priority": "Info"
+      }
+    ]
   },
   "📌 To-Do": {
-    "error": "('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})"
+    "headers": [
+      "Task",
+      "Assigned To",
+      "Due Date",
+      "Priority",
+      "Done",
+      "Notes",
+      "Created"
+    ],
+    "rows": [
+      {
+        "_row": 2,
+        "Task": "Apply for passport renewal",
+        "Assigned To": "Simon & Emma",
+        "Due Date": "2026-06-08",
+        "Priority": "🔴 High",
+        "Done": "",
+        "Notes": "URGENT - expires tomorrow!",
+        "Created": "2026-06-08"
+      },
+      {
+        "_row": 3,
+        "Task": "Order new school shoes for Ella",
+        "Assigned To": "Emma",
+        "Due Date": "2026-06-20",
+        "Priority": "🟡 Medium",
+        "Done": "",
+        "Notes": "Check uniform shop sizes",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 4,
+        "Task": "Wash swimming kits",
+        "Assigned To": "Simon",
+        "Due Date": "",
+        "Priority": "🟢 Low",
+        "Done": "",
+        "Notes": "Both Ava + Ella kits for next week",
+        "Created": "2026-06-09"
+      },
+      {
+        "_row": 5,
+        "Task": "Book summer holiday activities",
+        "Assigned To": "Emma",
+        "Due Date": "2026-06-15",
+        "Priority": "🟡 Medium",
+        "Done": "",
+        "Notes": "Research local holiday clubs",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 6,
+        "Task": "Check Ava's bike tyres",
+        "Assigned To": "Simon",
+        "Due Date": "",
+        "Priority": "🟢 Low",
+        "Done": "",
+        "Notes": "Pump up if flat",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 7,
+        "Task": "Confirm HBS gymnastics dates",
+        "Assigned To": "Emma",
+        "Due Date": "2026-06-30",
+        "Priority": "🟡 Medium",
+        "Done": "",
+        "Notes": "Ava Fri 6pm, Ella Fri 7pm — check summer schedule",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 8,
+        "Task": "Buy birthday present for Ella",
+        "Assigned To": "Simon",
+        "Due Date": "2026-09-15",
+        "Priority": "🔴 High",
+        "Done": "",
+        "Notes": "Ella's birthday Sept 20!",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 9,
+        "Task": "Sort out old clothes for charity",
+        "Assigned To": "Emma",
+        "Due Date": "",
+        "Priority": "🟢 Low",
+        "Done": "",
+        "Notes": "Both girls — outgrown items",
+        "Created": "2026-06-06"
+      },
+      {
+        "_row": 10,
+        "Task": "Top up Ella's dinner money",
+        "Assigned To": "Simon",
+        "Due Date": "",
+        "Priority": "🔴 High",
+        "Done": "",
+        "Notes": "Balance: £2.55 - Pix Brook Academy",
+        "Created": ""
+      }
+    ]
   },
   "👨‍👩‍👧‍👧 Family Members": {
-    "error": "('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})"
+    "headers": [
+      "Name",
+      "Role",
+      "Email",
+      "Phone",
+      "DOB",
+      "Notes"
+    ],
+    "rows": [
+      {
+        "_row": 2,
+        "Name": "Simon",
+        "Role": "Dad",
+        "Email": "simon.stimson@gmail.com",
+        "Phone": "",
+        "DOB": "",
+        "Notes": "Primary account holder"
+      },
+      {
+        "_row": 3,
+        "Name": "Emma",
+        "Role": "Mum",
+        "Email": "clementsonemma@gmail.com",
+        "Phone": "",
+        "DOB": "",
+        "Notes": "Full access"
+      },
+      {
+        "_row": 4,
+        "Name": "Ava",
+        "Role": "Daughter",
+        "Email": "",
+        "Phone": "",
+        "DOB": "17/08/2018",
+        "Notes": "Year 3 at Fairfield Park"
+      },
+      {
+        "_row": 5,
+        "Name": "Ella",
+        "Role": "Daughter",
+        "Email": "",
+        "Phone": "",
+        "DOB": "20/09/2015",
+        "Notes": "Year 5 at Pix Brook Academy — Pankhurst Class"
+      }
+    ]
   },
   "📞 Important Contacts": {
-    "error": "('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})"
+    "headers": [
+      "Name",
+      "Type",
+      "Phone",
+      "Email",
+      "Address",
+      "Notes"
+    ],
+    "rows": [
+      {
+        "_row": 2,
+        "Name": "Fairfield Park Lower School",
+        "Type": "Ava's School",
+        "Phone": "01462 830000",
+        "Email": "office@fairfieldparklower.uk",
+        "Address": "Dickens Boulevard, Fairfield Park, Hitchin, SG4 7SS",
+        "Notes": "Year 3 DB — School hours 8:45-3:25 — Main Office Option 1"
+      },
+      {
+        "_row": 3,
+        "Name": "Pix Brook Academy",
+        "Type": "Ella's School",
+        "Phone": "01462 416243",
+        "Email": "pixbrook@bestacademies.org.uk",
+        "Address": "Arlesey Road, Stotfold, Church End, Central Bedfordshire, SG5 4HB",
+        "Notes": "Year 5 — School hours 8:00-3:00"
+      },
+      {
+        "_row": 4,
+        "Name": "BX Dance",
+        "Type": "Dance School",
+        "Phone": "",
+        "Email": "",
+        "Address": "",
+        "Notes": "Ava: Sat 9:15am | Ella: Sat 10:00am | Stretch & Flex: Thu 5:00pm"
+      },
+      {
+        "_row": 5,
+        "Name": "Luton Diving Centre",
+        "Type": "Diving",
+        "Phone": "01582 393230",
+        "Email": "",
+        "Address": "",
+        "Notes": "Ava & Ella: Sat 1:30pm | Venue: Inspire Luton Sports Village"
+      },
+      {
+        "_row": 6,
+        "Name": "North Herts Leisure Centre",
+        "Type": "Swimming",
+        "Phone": "01462 679311",
+        "Email": "",
+        "Address": "Baldock Road, Phoenix Park Estate, Letchworth, SG6 2ER",
+        "Notes": "Ava: Wed 6:30-7:00pm"
+      },
+      {
+        "_row": 7,
+        "Name": "Simon Stimson",
+        "Type": "Dad",
+        "Phone": "07787 244460",
+        "Email": "simon.stimson@gmail.com",
+        "Address": "",
+        "Notes": "Primary contact"
+      },
+      {
+        "_row": 8,
+        "Name": "Emma Stimson",
+        "Type": "Mum",
+        "Phone": "07876 231657",
+        "Email": "clementsonemma@gmail.com",
+        "Address": "",
+        "Notes": "Secondary contact"
+      },
+      {
+        "_row": 9,
+        "Name": "PBA Absence Line",
+        "Type": "Ella's School",
+        "Phone": "",
+        "Email": "PBA-Absence@bestacademies.org.uk",
+        "Address": "",
+        "Notes": "Report absences by 8am daily"
+      },
+      {
+        "_row": 10,
+        "Name": "Joy Stimson",
+        "Type": "Simon's Mum",
+        "Phone": "07714 331369",
+        "Email": "",
+        "Address": "",
+        "Notes": ""
+      },
+      {
+        "_row": 11,
+        "Name": "Chris Stimson",
+        "Type": "Simon's Dad",
+        "Phone": "",
+        "Email": "",
+        "Address": "",
+        "Notes": "Phone TBC"
+      },
+      {
+        "_row": 12,
+        "Name": "Ella Stimson",
+        "Type": "Family",
+        "Phone": "07960 219012",
+        "Email": "",
+        "Address": "",
+        "Notes": "Ella's mobile"
+      },
+      {
+        "_row": 13,
+        "Name": "Tim Clementson",
+        "Type": "Emma's Dad",
+        "Phone": "07444 508022",
+        "Email": "",
+        "Address": "",
+        "Notes": ""
+      },
+      {
+        "_row": 14,
+        "Name": "Katy Clementson",
+        "Type": "Emma's Sister",
+        "Phone": "",
+        "Email": "",
+        "Address": "",
+        "Notes": "Phone TBC"
+      },
+      {
+        "_row": 15,
+        "Name": "HBS Revolutions Gymnastics",
+        "Type": "Gymnastics",
+        "Phone": "01462 459270",
+        "Email": "hbsrevolutions@hitchinboys.co.uk",
+        "Address": "HBS Sports Centre, Grammar School Walk, Hitchin, SG5 1XT",
+        "Notes": "Ava: Fri 6pm | Ella: Fri 7pm"
+      },
+      {
+        "_row": 17,
+        "Name": "Arlesey Surgery (Larksfield & Arlesey Medical Practice)",
+        "Type": "Doctor / GP Surgery",
+        "Phone": "01462 732200",
+        "Email": "",
+        "Address": "Arlesey Road, Stotfold, Hitchin, SG5 4HB",
+        "Notes": "Branch surgery: High Street, Arlesey, SG15 6SN"
+      },
+      {
+        "_row": 18,
+        "Name": "NHS Child Development Centre (Physiotherapy)",
+        "Type": "Hospital",
+        "Phone": "01234 310278",
+        "Email": "bhn-tr.cdcpaediatricphysios@nhs.net",
+        "Address": "Hill Rise, Kempston, Bedford, MK42 7EB",
+        "Notes": "Sat Nav: MK42 7DN. Ava's physio appointments."
+      },
+      {
+        "_row": 19,
+        "Name": "Royal National Orthopaedic Hospital",
+        "Type": "Hospital",
+        "Phone": "020 8954 6000",
+        "Email": "",
+        "Address": "Brockley Hill, Stanmore, London HA7 4LP",
+        "Notes": "Ava's orthopaedic surgery appointments"
+      }
+    ]
   }
 }
