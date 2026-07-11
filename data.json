@@ -10,26 +10,6 @@
     ],
     "rows": [
       {
-        "Date": "2026-07-10",
-        "Time": "All day",
-        "Event": "🏃 Sports Day (Years 5-10) - Ella",
-        "Who": "",
-        "Location": "Pix Brook",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "9fctqdefatf5mppa4dagtirkas"
-      },
-      {
-        "Date": "2026-07-10",
-        "Time": "All day",
-        "Event": "🏃 Years 5-10 Sports Day",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "hoiedeab8cceccttrifss9sqvg"
-      },
-      {
         "Date": "2026-07-11",
         "Time": "All day",
         "Event": "Ella gullivers land brownies",
@@ -3168,6 +3148,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20261107T133000Z"
+      },
+      {
+        "Date": "2026-11-08",
+        "Time": "All day",
+        "Event": "Check Ella’s Dinner Money",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_68r36dpi88q48b9o6csj2b9k6oq3eba18co3cb9p75342h1j64q32e1g8c_20261108"
       }
     ]
   },
