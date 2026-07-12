@@ -493,6 +493,16 @@
         .pin-attempts {
             color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 4px;
         }
+        #pinTextInput {
+            margin: 4px auto 8px; display: block; width: 140px; text-align: center;
+            padding: 10px 12px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1); color: white; font-size: 20px; letter-spacing: 6px;
+            outline: none; transition: border-color 0.15s;
+        }
+        #pinTextInput:focus { border-color: #fff; }
+        #pinTextInput::placeholder { color: rgba(255,255,255,0.5); font-size: 13px; letter-spacing: 0; }
+        .pin-hint { color: rgba(255,255,255,0.45); font-size: 11px; margin-top: 14px; }
+        .pin-hint b { color: rgba(255,255,255,0.8); }
     </style>
 </head>
 <body>
@@ -503,6 +513,9 @@
             <h2>Family HQ Access</h2>
             <p>Enter your 4-digit PIN to continue</p>
             <div class="pin-dots" id="pinDots"></div>
+            <input type="password" id="pinTextInput" inputmode="numeric" maxlength="4"
+                   placeholder="Tap keys or type your PIN"
+                   autocomplete="off" />
             <div class="pin-error-msg" id="pinError"></div>
             <div class="pin-attempts" id="pinAttempts"></div>
             <div class="pin-keypad">
@@ -519,6 +532,7 @@
                 <button class="pin-key" data-key="0">0</button>
                 <button class="pin-key action" data-key="forgot">Forgot?</button>
             </div>
+            <div class="pin-hint">Default PIN is <b>1234</b> — change it in Settings.</div>
         </div>
     </div>
 
@@ -930,7 +944,22 @@
             const pinDots = document.getElementById('pinDots');
             const pinError = document.getElementById('pinError');
             const pinAttemptsEl = document.getElementById('pinAttempts');
+            const pinTextInput = document.getElementById('pinTextInput');
             let currentPin = '';
+
+            function renderFromInput() {
+                // Keep the dots + hidden input in sync with currentPin
+                if (pinTextInput && document.activeElement !== pinTextInput) {
+                    pinTextInput.value = currentPin;
+                }
+                updatePinDisplay();
+            }
+
+            function setPin(value) {
+                currentPin = (value || '').toString().replace(/\D/g, '').slice(0, 4);
+                renderFromInput();
+                if (currentPin.length === 4) verifyPin();
+            }
 
             // Check if PIN is already set and valid
             function checkPinGate() {
@@ -997,17 +1026,11 @@
 
             function addPinDigit(digit) {
             if (currentPin.length >= 4) return;
-            currentPin += digit;
-            updatePinDisplay();
-
-            if (currentPin.length === 4) {
-                verifyPin();
-            }
+            setPin(currentPin + digit);
             }
 
             function clearPin() {
-            currentPin = '';
-            updatePinDisplay();
+            setPin('');
             pinError.textContent = '';
             pinAttemptsEl.textContent = '';
             }
@@ -1020,7 +1043,7 @@
             } else {
                 // Wrong PIN
                 pinAttempts++;
-                pinError.textContent = 'Incorrect PIN';
+                pinError.textContent = '❌ Incorrect PIN — try again';
                 pinAttemptsEl.textContent = `Attempt ${pinAttempts}/${MAX_ATTEMPTS}`;
                     
                 // Shake animation for dots
@@ -1033,6 +1056,7 @@
                     // Lockout
                     lockoutUntil = Date.now() + LOCKOUT_TIME;
                     pinAttemptsEl.textContent = `Too many attempts. Try again in ${Math.ceil(LOCKOUT_TIME/1000)}s`;
+                    pinError.textContent = '🔒 Too many attempts — locked for 30s';
                     setTimeout(() => {
                         pinAttempts = 0;
                         pinAttemptsEl.textContent = '';
@@ -1040,7 +1064,9 @@
                     }, LOCKOUT_TIME);
                 }
 
-                setTimeout(clearPin, 1000);
+                // Clear the entry after a short delay so the user can retry
+                // (keep the error message visible until they start typing again)
+                setTimeout(() => { if (currentPin.length === 4 && pinGate.classList.contains('hidden') === false) setPin(''); }, 900);
             }
             }
 
@@ -1074,6 +1100,16 @@
                 if (currentPin.length === 4) verifyPin();
             }
             });
+
+            // Allow typing the PIN directly into the input field
+            if (pinTextInput) {
+                pinTextInput.addEventListener('input', (e) => {
+                    setPin(e.target.value);
+                });
+                pinTextInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' && currentPin.length === 4) verifyPin();
+                });
+            }
 
             // Initialize PIN gate on load
             document.addEventListener('DOMContentLoaded', checkPinGate);
