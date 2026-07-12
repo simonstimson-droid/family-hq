@@ -42,6 +42,9 @@ def get_access_token():
     if expiry_str:
         try:
             exp_dt = datetime.fromisoformat(expiry_str)
+            if exp_dt.tzinfo is None:
+                # Stored expiry is naive; Google tokens are UTC
+                exp_dt = exp_dt.replace(tzinfo=timezone.utc)
             now = datetime.now(timezone.utc)
             if exp_dt <= now:
                 # Token expired — refresh it silently
@@ -170,27 +173,55 @@ def classify_email(subject, body, sender):
     if subject.upper().startswith("TODO:") or subject.upper().startswith("TO-DO:"):
         return "todo"
     
-    # Natural language detection
-    calendar_keywords = ["appointment", "dentist", "doctor", "meeting", "party", "pick up", "school trip", "event", "on ", "next ", "at ", "pm", "am", "colour run", "sports day", "summer fete", "fete", "trip", "visit", "parents evening", "concert", "performance", "assembly"]
-    shopping_keywords = ["buy", "shopping", "milk", "bread", "eggs", "get some", "need", "add to list", "shopping list", "groceries"]
-    chore_keywords = ["chore", "clean", "tidy", "hoover", "wash", "homework", "practice", "take out", "feed"]
-    meal_keywords = ["dinner", "lunch", "breakfast", "meal", "cook", "recipe", "spaghetti", "pizza", "chicken", "pasta"]
-    contact_keywords = ["contact", "phone number", "add to contacts", "number is"]
-    announcement_keywords = ["announcement", "news", "reminder", "don't forget", "important", "note that", "school", "academy", "bulletin", "newsletter", "update", "dear families", "pupils", "year 5", "year 3", "pta"]
-    
-    scores = {
-        "calendar": sum(1 for k in calendar_keywords if k in text),
-        "shopping": sum(1 for k in shopping_keywords if k in text),
-        "chore": sum(1 for k in chore_keywords if k in text),
-        "meal": sum(1 for k in meal_keywords if k in text),
-        "contact": sum(1 for k in contact_keywords if k in text),
-        "announcement": sum(1 for k in announcement_keywords if k in text),
-    }
-    
-    best = max(scores, key=scores.get)
-    if scores[best] == 0:
-        return "unknown"
-    return best
+    # ---- Natural-language classification (priority order) ----
+    # NOTE: avoid bare "am"/"pm"/"on "/"at " substrings — they match inside
+    # ordinary words (e.g. "name", "team") and cause false calendar hits.
+    subj_l = subject.lower()
+
+    # 1) Payments / money notices FIRST (so "Dinner Money" doesn't get caught
+    #    by the meal rule, and "MCAS payment" isn't treated as an event).
+    payment_keywords = ["dinner money", "balance is getting low", "balance low",
+                        "payment due", "payment", "invoice", "outstanding balance",
+                        "please pay", "money owed", "mcas"]
+    if any(k in text for k in payment_keywords):
+        return "shopping"
+
+    # 2) Explicit meal/food request.
+    meal_words = ["dinner", "lunch", "breakfast", "meal", "cook", "recipe",
+                  "spaghetti", "pizza", "chicken", "pasta", "order food", "food order"]
+    if any(k in text for k in meal_words):
+        return "meal"
+
+    # 3) Clear shopping ITEM words win over generic calendar words
+    #    ("tea towel", "uniform", "costume", "ticket", "order", "buy"...).
+    shopping_words = ["buy", "shopping", "milk", "bread", "eggs", "get some", "need",
+                      "add to list", "shopping list", "groceries", "tea towel", "towel",
+                      "uniform", "costume", "ticket", "order", "item"]
+    if any(k in text for k in shopping_words):
+        return "shopping"
+
+    # 4) Calendar: explicit EVENT words OR a real time pattern (digit + am/pm,
+    #    or HH:MM). Catches trips, colour runs, appointments, lessons, etc.
+    has_real_time = bool(re.search(r"\d{1,2}\s*(?:am|pm)\b|\d{1,2}:\d{2}", text))
+    calendar_words = ["appointment", "dentist", "doctor", "party",
+                      "pick up", "school trip", "colour run", "sports day",
+                      "summer fete", "fete", "trip", "visit", "parents evening",
+                      "concert", "performance", "assembly"]
+    # "meeting"/"event" intentionally excluded here: a bare "meeting" inside a
+    # newsletter/announcement should NOT force a calendar event. Only count
+    # them when paired with a real time.
+    if has_real_time or any(w in text for w in calendar_words):
+        return "calendar"
+
+    # 5) Remaining categories
+    if any(k in text for k in ["chore", "clean", "tidy", "hoover", "wash", "homework", "practice", "take out", "feed"]):
+        return "chore"
+    if any(k in text for k in ["contact", "phone number", "add to contacts", "number is"]):
+        return "contact"
+    if any(k in text for k in ["announcement", "news", "reminder", "don't forget", "important", "note that", "school", "academy", "bulletin", "newsletter", "update", "dear families", "pupils", "year 5", "year 3", "pta", "meeting", "event"]):
+        return "announcement"
+
+    return "unknown"
 
 def parse_shopping(subject, body):
     """Parse shopping item from email."""
@@ -304,10 +335,11 @@ def parse_calendar(subject, body):
             else:
                 date = f"{y}-{m:02d}-{d:02d}"
     
-    # If no date found in body text, fall back to email header date (with warning)
+    # Do NOT silently fall back to the email/forward header date — that is a
+    # SEND date, not the event date, and leads to wrong calendar entries.
+    # If we still have no date from the body, leave it empty and flag for review.
     if not date and header_date_str:
-        date = header_date_str
-        notes_parts.append("⚠️ Date is from email header (send date) — actual event date may differ, check attachment")
+        notes_parts.append("⚠️ No event date found in email body — please add the correct date manually (header date was a send date, not used)")
     
     # Look for time patterns — be more specific to avoid matching years like 2026
     time_patterns = [
@@ -472,13 +504,15 @@ def parse_todo(subject, body):
 def append_to_sheet(sheet_name, row_data, token):
     """Append a row to a specific sheet."""
     values = [row_data]
+    # IMPORTANT: valueInputOption is a QUERY parameter on the Sheets
+    # values.append endpoint, NOT part of the JSON body. Putting it in the
+    # body causes HTTP 400 "Unknown name valueInputOption" and silent failure.
     result = sheets_api_request(
         "POST",
-        f"values/{sheet_name}!A1:append",
+        f"values/{sheet_name}!A1:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS",
         {
             "values": values,
-            "majorDimension": "ROWS",
-            "valueInputOption": "USER_ENTERED"
+            "majorDimension": "ROWS"
         },
         token=token
     )
