@@ -28,6 +28,22 @@ PROCESSED_LABEL = "FamilyHQ_Processed"
 # inbox and flagged to Simon — never silently dropped.
 ALLOWED_SENDERS = []  # empty = process all unread mail
 
+# Promotional / newsletter / marketing senders that should NEVER be auto-filed
+# to the dashboard (they are not family-relevant). Matched as a substring of
+# the sender's email/name (case-insensitive). Mail from these is left in the
+# inbox and skipped.
+PROMO_SENDERS = [
+    "mse's money tips", "moneysavingexpert", "stylelife", "dating tips",
+    "newsletter", "marketing", "promo", "offers", "groupon", "voucher",
+    "noreply", "no-reply", "mailchimp", "substack", "medium.com",
+    "linkedin", "facebook", "instagram", "x.com", "twitter",
+]
+
+def is_promo(sender):
+    """True if the sender looks like marketing/promo and should be skipped."""
+    s = (sender or "").lower()
+    return any(p in s for p in PROMO_SENDERS)
+
 # Dashboard destinations the LLM may route to. Using the exact sheet tab
 # titles so the writer can append directly.
 CATEGORY_TO_SHEET = {
@@ -138,7 +154,8 @@ def llm_classify(subject, body, sender):
         "  announcement - general info/notice (incl. medical & school letters)\n"
         "  todo - an action item / reminder\n"
         "  medical - appointment or result from a hospital/doctor/clinic\n"
-        "  unknown - truly unclear\n\n"
+        "  unknown - truly unclear OR marketing/promo/newsletter/spam "
+        "(e.g. money tips, dating tips, sales, social-media notifications)\n\n"
         "JSON shape:\n"
         '{"category":"...","confidence":0.0-1.0,"medical":true/false,'
         '"summary":"one line","fields":{"date":"YYYY-MM-DD or empty",'
@@ -779,6 +796,10 @@ def apply_classifications(path):
         confidence = float(it.get("confidence", 0.5))
         medical = bool(it.get("medical"))
         subject = it.get("subject", "")
+        sender = it.get("sender", "")
+        if is_promo(sender) or is_promo(subject):
+            results.append(f"⏭️ Skipped promo sender: {subject[:50]}")
+            continue
         if category not in CATEGORY_TO_SHEET or category == "unknown" or confidence < HIGH:
             results.append(f"⚠️ Skipped (conf={confidence:.2f}) {subject[:50]}")
             continue
@@ -826,6 +847,12 @@ def main():
         sender = get_header(headers, "from")
         sender_email = re.search(r"<(.+?)>", sender)
         sender_email = sender_email.group(1) if sender_email else sender.strip()
+
+        # Skip promotional / marketing senders — never auto-file to dashboard.
+        if is_promo(sender) or is_promo(sender_email):
+            print(f"  ⏭ Skipping promo/marketing sender: {sender_email}")
+            label_email(msg_id, label_id, token)
+            continue
         subject = get_header(headers, "subject")
         body = extract_body(detail.get("payload", {}))
         
