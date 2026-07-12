@@ -15,7 +15,7 @@ SPREADSHEET_ID = "1zYs5s66J2nyv-LmaZWBL2Tzhu5vicrkOq3nDC5LSFXA"
 CALENDAR_ID = "family17800354474891822339@group.calendar.google.com"
 CALENDAR_IDS = [
     "family17800354474891822339@group.calendar.google.com",
-    "clementsonemma@gmail.com",  # Emma's calendar
+    "clementsonemma@gmail.com",  # Emma's calendar (read via Simon's personal account token)
 ]
 CALENDAR_LOOKAHEAD_DAYS = 120  # how far ahead to fetch calendar events
 
@@ -382,12 +382,55 @@ def merge_calendar_events(sheet_rows, cal_events):
 
 
 # Fetch and merge from all calendars
+#
+# Calendars are read with Simon's PERSONAL account token (google_token_calendar.json,
+# calendar.readonly scope), because stimsonfamilyhq@gmail.com cannot see Emma's
+# calendar or (until shared) the Family calendar. Sheets + Gmail still use the
+# stimsonfamilyhq token via get_access_token().
+def get_calendar_token():
+    """Load a valid access token for calendar fetches from the personal account."""
+    ctok_path = "/Users/simonstimson/.hermes/profiles/home/google_token_calendar.json"
+    if not os.path.exists(ctok_path):
+        return None
+    tok = json.load(open(ctok_path))
+    expiry_str = tok.get("expiry", "")
+    if expiry_str:
+        try:
+            exp = datetime.fromisoformat(expiry_str.replace("Z", "+00:00"))
+            if datetime.now(timezone.utc) >= exp:
+                params = {
+                    "client_id": tok["client_id"],
+                    "client_secret": tok["client_secret"],
+                    "refresh_token": tok["refresh_token"],
+                    "grant_type": "refresh_token",
+                }
+                data = urllib.parse.urlencode(params).encode()
+                req = urllib.request.Request(
+                    "https://oauth2.googleapis.com/token", data=data, method="POST"
+                )
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    result = json.loads(resp.read())
+                tok["access_token"] = result["access_token"]
+                tok["token"] = result["access_token"]
+                tok["expiry"] = (
+                    datetime.now(timezone.utc)
+                    + timedelta(seconds=result.get("expires_in", 3599))
+                ).isoformat()
+                with open(ctok_path, "w") as f:
+                    json.dump(tok, f, indent=2)
+        except Exception as e:
+            print(f"Calendar token refresh failed: {e}", file=sys.stderr)
+    return tok.get("access_token")
+
+
 try:
-    token = get_access_token()
+    cal_token = get_calendar_token()
+    if not cal_token:
+        print("WARNING: No personal-account calendar token found; skipping calendar fetch", file=sys.stderr)
     all_cal_events = []
     for cal_id in CALENDAR_IDS:
         try:
-            events = fetch_calendar_events(token, cal_id)
+            events = fetch_calendar_events(cal_token, cal_id)
             all_cal_events.extend(events)
             print(f"Fetched {len(events)} events from {cal_id}", file=sys.stderr)
             sys.stderr.flush()
