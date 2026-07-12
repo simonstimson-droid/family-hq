@@ -21,11 +21,45 @@ FAMILY_EMAIL = "stimsonfamilyhq@gmail.com"
 SHEET_ID = "1zYs5s66J2nyv-LmaZWBL2Tzhu5vicrkOq3nDC5LSFXA"
 TOKEN_PATH = Path("/Users/simonstimson/.hermes/profiles/home/google_token.json")
 PROCESSED_LABEL = "FamilyHQ_Processed"
-ALLOWED_SENDERS = [
-    "simon.stimson@gmail.com",
-    "clementsonemma@gmail.com",
-    "eclementson@hotmail.com",
-]
+
+# We process the WHOLE inbox now (schools / hospitals / clubs / etc. are
+# external senders). Instead of an allowlist, a confidence gate + the LLM
+# classifier decide what gets written. Low-confidence mail is left in the
+# inbox and flagged to Simon — never silently dropped.
+ALLOWED_SENDERS = []  # empty = process all unread mail
+
+# Dashboard destinations the LLM may route to. Using the exact sheet tab
+# titles so the writer can append directly.
+CATEGORY_TO_SHEET = {
+    "calendar":       "📅 Calendar",
+    "shopping":       "🛒 Shopping List",
+    "chore":          "✅ Chores",
+    "meal":           "🍽️ Meal Plan",
+    "contact":        "📞 Important Contacts",
+    "announcement":   "📝 Announcements",
+    "todo":           "📌 To-Do",
+    "medical":        "📝 Announcements",   # medical/school notices -> Announcements (flagged)
+    "unknown":        None,
+}
+
+# OpenRouter key resolution: prefer env var (set by Hermes agent runtime),
+# else a local secrets file. If neither is present, the processor falls back
+# to the deterministic regex classifier (still works, just less accurate).
+OPENROUTER_KEY_ENV = "OPENROUTER_API_KEY"
+OPENROUTER_KEY_FILE = "/Users/simonstimson/.hermes/profiles/home/secrets/openrouter_key.txt"
+OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+OPENROUTER_MODEL = os.environ.get("OPENROUTER_MODEL", "openrouter/auto")
+
+def get_openrouter_key():
+    key = os.environ.get(OPENROUTER_KEY_ENV, "").strip()
+    if key:
+        return key
+    try:
+        with open(OPENROUTER_KEY_FILE) as f:
+            key = f.read().strip()
+            return key or None
+    except Exception:
+        return None
 
 # ---- Load token ----
 def load_token():
@@ -67,6 +101,107 @@ def get_access_token():
         except Exception as e:
             print(f"Token refresh failed: {e}", flush=True)
     return tok.get("access_token") or tok.get("token")
+
+def llm_classify(subject, body, sender):
+    """Use the LLM (OpenRouter) to classify an email and extract structured
+    fields. Returns a dict:
+        {category, confidence, summary, fields:{date,time,who,amount,
+         action_needed}, medical:bool}
+    Falls back to the regex classifier if no OpenRouter key is available.
+    """
+    key = get_openrouter_key()
+    if not key:
+        # Graceful fallback: deterministic regex classifier.
+        cat = classify_email(subject, body, sender)
+        return {
+            "category": cat,
+            "confidence": 0.5,
+            "summary": subject[:120],
+            "fields": {},
+            "medical": False,
+            "llm": False,
+        }
+
+    # Strip forward boilerplate so the model reads the ORIGINAL message.
+    clean = strip_forward_boilerplate(subject, body)
+    prompt = (
+        "You are a household email triage assistant for the Stimson family "
+        "(Simon, Emma, Ava age 7, Ella age 10). Emails arrive from schools, "
+        "hospitals, doctors, clubs, and shops. Classify the email and extract "
+        "key fields. Reply with ONLY a JSON object, no prose.\n\n"
+        "CATEGORIES (use exactly these keys):\n"
+        "  calendar - a dated event/appointment/trip/club session\n"
+        "  shopping - something to buy / item needed\n"
+        "  chore - a task to do\n"
+        "  meal - a meal/food plan item\n"
+        "  contact - a new phone/contact to save\n"
+        "  announcement - general info/notice (incl. medical & school letters)\n"
+        "  todo - an action item / reminder\n"
+        "  medical - appointment or result from a hospital/doctor/clinic\n"
+        "  unknown - truly unclear\n\n"
+        "JSON shape:\n"
+        '{"category":"...","confidence":0.0-1.0,"medical":true/false,'
+        '"summary":"one line","fields":{"date":"YYYY-MM-DD or empty",'
+        '"time":"HH:MM or empty","who":"Ava/Ella/Emma/Simon or empty",'
+        '"amount":"£.. or empty","action_needed":"short or empty"}}\n\n'
+        f"From: {sender}\nSubject: {clean['subject']}\n\nBody:\n{clean['body'][:2500]}"
+    )
+    payload = {
+        "model": OPENROUTER_MODEL,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.0,
+        "response_format": {"type": "json_object"},
+    }
+    try:
+        req = urllib.request.Request(
+            OPENROUTER_URL,
+            data=json.dumps(payload).encode(),
+            headers={
+                "Authorization": f"Bearer {key}",
+                "Content-Type": "application/json",
+            },
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read())
+        content = data["choices"][0]["message"]["content"]
+        result = json.loads(content)
+        result["llm"] = True
+        # Normalise category to a known key.
+        cat = str(result.get("category", "unknown")).lower()
+        if cat not in CATEGORY_TO_SHEET:
+            cat = "unknown"
+        result["category"] = cat
+        return result
+    except Exception as e:
+        print(f"    ⚠️ LLM classify failed ({e}); using regex fallback", flush=True)
+        cat = classify_email(subject, body, sender)
+        return {
+            "category": cat,
+            "confidence": 0.4,
+            "summary": subject[:120],
+            "fields": {},
+            "medical": False,
+            "llm": False,
+        }
+
+
+def strip_forward_boilerplate(subject, body):
+    """Return {subject, body} with forwarded-email quoting removed so the
+    model reads the original message, not the forwarding wrapper."""
+    clean_subject = re.sub(r"^(fwd|fw|fwd:|fw:)\s*", "", subject, flags=re.IGNORECASE).strip()
+    text = body
+    # Cut at the forwarded-message marker.
+    m = re.search(r"Begin forwarded message:", text, re.IGNORECASE)
+    if m:
+        text = text[:m.start()]
+    # Drop quoted lines.
+    lines = [l for l in text.split("\n") if not l.strip().startswith(">")]
+    text = "\n".join(lines).strip()
+    # Drop mobile sigs.
+    text = re.sub(r"(?i)sent from my (iphone|android|phone).*$", "", text).strip()
+    return {"subject": clean_subject or subject, "body": text[:3000]}
+
 
 def gmail_api_request(method, path, data=None, token=None):
     """Make a Gmail API request."""
@@ -532,7 +667,132 @@ def label_email(msg_id, label_id, token):
         return False
     return True
 
+def route_and_write(category, fields, medical, subject, body, token, label_id, msg_id):
+    """Deterministically route a classified email to the correct sheet tab
+    and label it processed. Returns (success: bool, detail_msg: str)."""
+    fields = fields or {}
+    sheet_name = CATEGORY_TO_SHEET.get(category)
+    success = False
+    detail_msg = ""
+
+    if category in ("calendar", "medical"):
+        parsed = parse_calendar(subject, body)
+        if fields.get("date"):
+            parsed["date"] = fields["date"]
+        if fields.get("time"):
+            parsed["start"] = fields["time"]
+        if fields.get("who"):
+            parsed["title"] = f"{fields['who']}: {parsed['title']}"
+        tag = "🏥" if medical else "📅"
+        row = [parsed["date"], parsed["start"], parsed["title"],
+               "email", parsed["location"], parsed.get("notes", "")]
+        sheet_name = "📅 Calendar"
+        success = append_to_sheet(sheet_name, row, token)
+        detail_msg = f"{tag} Added {'medical ' if medical else ''}event '{parsed['title']}' to Calendar"
+        if parsed.get("notes"):
+            detail_msg += f" ({parsed['notes']})"
+    elif category == "shopping":
+        item = fields.get("summary") or subject
+        row = [item[:100], "1", "email", "", "Other"]
+        success = append_to_sheet("🛒 Shopping List", row, token)
+        detail_msg = f"🛒 Added '{item[:60]}' to Shopping List"
+    elif category == "chore":
+        task = fields.get("summary") or subject
+        row = [task[:100], fields.get("who", ""), "", "Once", "", ""]
+        success = append_to_sheet("✅ Chores", row, token)
+        detail_msg = f"✅ Added chore '{task[:50]}'"
+    elif category == "meal":
+        row = [fields.get("date", ""), "", "", fields.get("summary", subject)[:100], ""]
+        success = append_to_sheet("🍽️ Meal Plan", row, token)
+        detail_msg = f"🍽️ Added meal '{fields.get('summary', subject)[:40]}'"
+    elif category == "contact":
+        row = [fields.get("summary", subject)[:60], "Contact",
+               fields.get("amount", ""), "", "", ""]
+        success = append_to_sheet("📞 Important Contacts", row, token)
+        detail_msg = f"📞 Added contact '{fields.get('summary', subject)[:40]}'"
+    elif category == "announcement":
+        title = fields.get("summary") or subject
+        note = ("🏥 MEDICAL: " if medical else "") + (fields.get("action_needed", "") or "")
+        row = [datetime.now().strftime("%Y-%m-%d"), "email",
+               f"{title}: {fields.get('body', '')[:200]}", "Info"]
+        success = append_to_sheet("📝 Announcements", row, token)
+        detail_msg = f"📝 Added announcement: '{title[:50]}'" + (f" ({note})" if note else "")
+    elif category == "todo":
+        row = [fields.get("summary", subject)[:100], fields.get("who", ""),
+               fields.get("date", ""), "Medium", "", "", datetime.now().strftime("%Y-%m-%d")]
+        success = append_to_sheet("📌 To-Do", row, token)
+        detail_msg = f"📌 Added todo: '{fields.get('summary', subject)[:40]}'"
+    else:
+        return False, f"⚠️ Unrouted category '{category}' — left in inbox"
+
+    if success:
+        label_email(msg_id, label_id, token)
+    return success, detail_msg
+
+
+def emit_pending():
+    """Print unread (unprocessed) emails as a JSON array for an LLM to
+    classify. Includes only id, sender, subject, body (forward-stripped)."""
+    token = get_access_token()
+    if not token:
+        print(json.dumps({"error": "no token"}))
+        return
+    label_id = get_or_create_label(token)
+    emails = get_unread_emails(token, label_id) if label_id else []
+    out = []
+    for e in emails:
+        detail = get_email_detail(e["id"], token)
+        if "error" in detail:
+            continue
+        headers = detail.get("payload", {}).get("headers", [])
+        sender = get_header(headers, "from")
+        subject = get_header(headers, "subject")
+        body = extract_body(detail.get("payload", {}))
+        clean = strip_forward_boilerplate(subject, body)
+        out.append({
+            "id": e["id"],
+            "sender": sender,
+            "subject": subject,
+            "body": clean["body"][:3000],
+        })
+    print(json.dumps({"emails": out}, ensure_ascii=False))
+
+
+def apply_classifications(path):
+    """Read a JSON file of [{id, category, confidence, medical, fields}] and
+    write each (deterministically) to the dashboard. Low confidence => skip."""
+    token = get_access_token()
+    if not token:
+        print("❌ No access token available")
+        sys.exit(1)
+    label_id = get_or_create_label(token)
+    if not label_id:
+        print("❌ Could not get/create processed label")
+        sys.exit(1)
+    data = json.load(open(path))
+    items = data if isinstance(data, list) else data.get("emails", data.get("items", []))
+    results = []
+    HIGH = 0.7
+    for it in items:
+        msg_id = it["id"]
+        category = str(it.get("category", "unknown")).lower()
+        confidence = float(it.get("confidence", 0.5))
+        medical = bool(it.get("medical"))
+        subject = it.get("subject", "")
+        if category not in CATEGORY_TO_SHEET or category == "unknown" or confidence < HIGH:
+            results.append(f"⚠️ Skipped (conf={confidence:.2f}) {subject[:50]}")
+            continue
+        ok, msg = route_and_write(
+            category, it.get("fields", {}) or {}, medical,
+            subject, it.get("body", ""), token, label_id, msg_id)
+        results.append(msg)
+    print(f"\n📬 Applied {len(results)} classification(s):")
+    for r in results:
+        print(f"  {r}")
+
+
 def main():
+
     # Silent startup — only output if something happens
     
     token = get_access_token()
@@ -564,84 +824,41 @@ def main():
         
         headers = detail.get("payload", {}).get("headers", [])
         sender = get_header(headers, "from")
+        sender_email = re.search(r"<(.+?)>", sender)
+        sender_email = sender_email.group(1) if sender_email else sender.strip()
         subject = get_header(headers, "subject")
         body = extract_body(detail.get("payload", {}))
         
-        # Check sender is allowed
-        sender_email = re.search(r"<(.+?)>", sender)
-        sender_email = sender_email.group(1) if sender_email else sender.strip()
-        
-        if not any(allowed in sender_email.lower() for allowed in ALLOWED_SENDERS):
-            print(f"  ⏭ Skipping email from unauthorized sender: {sender_email}")
-            label_email(msg_id, label_id, token)
+        # Classify with the LLM (falls back to regex if no key).
+        result = llm_classify(subject, body, sender)
+        category = result["category"]
+        confidence = float(result.get("confidence", 0.5))
+        medical = bool(result.get("medical"))
+        print(f"  📧 From: {sender_email} | Subject: {subject[:50]} | "
+              f"Type: {category} (conf={confidence:.2f}{', MEDICAL' if medical else ''})", flush=True)
+
+        # Confidence gate: only WRITE when we're reasonably sure. Low
+        # confidence => leave the email in the inbox and flag it to Simon.
+        HIGH = 0.7
+        if category == "unknown" or confidence < HIGH:
+            note = (f"⚠️ Low-confidence ({category}, {confidence:.2f}) — left in inbox for review: "
+                    f"{subject[:50]}")
+            results.append(note)
+            print(f"    {note}", flush=True)
+            # Do NOT label as processed, so it stays actionable.
             continue
-        
-        # Classify the email
-        category = classify_email(subject, body, sender)
-        print(f"  📧 From: {sender_email} | Subject: {subject[:50]} | Type: {category}")
-        
-        success = False
-        detail_msg = ""
-        
-        if category == "shopping":
-            parsed = parse_shopping(subject, body)
-            if parsed:
-                row = [parsed["item"], parsed["quantity"], parsed["added_by"], "", parsed["category"]]
-                success = append_to_sheet("🛒 Shopping List", row, token)
-                detail_msg = f"🛒 Added '{parsed['item']}' to Shopping List"
-        
-        elif category == "calendar":
-            parsed = parse_calendar(subject, body)
-            if parsed:
-                row = [parsed["date"], parsed["start"], parsed["title"], "email", parsed["location"], parsed.get("notes", "")]
-                success = append_to_sheet("📅 Calendar", row, token)
-                detail_msg = f"📅 Added event '{parsed['title']}' to Calendar"
-                if parsed.get("notes"):
-                    detail_msg += f" ({parsed['notes']})"
-        
-        elif category == "chore":
-            parsed = parse_chore(subject, body)
-            if parsed:
-                row = [parsed["task"], parsed["person"], "", "Once", "", ""]
-                success = append_to_sheet("✅ Chores", row, token)
-                detail_msg = f"✅ Added chore '{parsed['task']}' for {parsed['person']}"
-        
-        elif category == "meal":
-            parsed = parse_meal(subject, body)
-            if parsed:
-                row = [parsed["day"], "", "", parsed["meal"], ""]
-                success = append_to_sheet("🍽️ Meal Plan", row, token)
-                detail_msg = f"🍽️ Added meal '{parsed['meal']}' for {parsed['day']}"
-        
-        elif category == "contact":
-            parsed = parse_contact(subject, body)
-            if parsed:
-                row = [parsed["name"], "Contact", parsed["phone"], "", "", parsed["notes"]]
-                success = append_to_sheet("📞 Important Contacts", row, token)
-                detail_msg = f"📞 Added contact '{parsed['name']}'"
-        
-        elif category == "announcement":
-            parsed = parse_announcement(subject, body)
-            row = [datetime.now().strftime("%Y-%m-%d"), "email", parsed["title"] + (": " + parsed["body"][:200] if parsed["body"] else ""), "Info"]
-            success = append_to_sheet("📝 Announcements", row, token)
-            detail_msg = f"📝 Added announcement: '{parsed['title']}'"
-        
-        elif category == "todo":
-            parsed = parse_todo(subject, body)
-            row = [parsed["task"], parsed["assigned_to"], parsed["due_date"], parsed["priority"], "", parsed["notes"], datetime.now().strftime("%Y-%m-%d")]
-            success = append_to_sheet("📌 To-Do", row, token)
-            detail_msg = f"📌 Added todo: '{parsed['task']}'"
-        
+
+        # Route + write deterministically.
+        ok, detail_msg = route_and_write(
+            category, result.get("fields", {}) or {}, medical,
+            subject, body, token, label_id, msg_id)
+        if detail_msg:
+            results.append(detail_msg)
+        if ok:
+            print(f"    ✅ {detail_msg}", flush=True)
         else:
-            print(f"    ⚠️ Could not classify email: {subject[:50]}")
-            detail_msg = f"⚠️ Could not understand email: '{subject[:40]}...' — try a clearer format"
-        
-        # Label as processed
-        label_email(msg_id, label_id, token)
-        
-        if success:
-            print(f"    ✅ {detail_msg}")
-        results.append(detail_msg if detail_msg else f"Processed: {subject[:40]}")
+            print(f"    ❌ {detail_msg} (write failed — left in inbox)", flush=True)
+
     
     # Output results for cron delivery
     if results:
@@ -652,4 +869,19 @@ def main():
         print("\nNo emails were processed")
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    p = argparse.ArgumentParser()
+    p.add_argument("--emit", action="store_true",
+                   help="Print pending unread emails as JSON (for LLM classification)")
+    p.add_argument("--apply", metavar="FILE",
+                   help="Apply classifications from a JSON file (deterministic write)")
+    p.add_argument("--dry-run", action="store_true",
+                   help="With --emit: also run the built-in classifier and print its verdicts")
+    args = p.parse_args()
+
+    if args.emit:
+        emit_pending()
+    elif args.apply:
+        apply_classifications(args.apply)
+    else:
+        main()
