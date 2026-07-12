@@ -984,16 +984,6 @@
       },
       {
         "Date": "2026-07-20",
-        "Time": "14:00-15:00",
-        "Event": "🧪 CreateEvent Test",
-        "Who": "",
-        "Location": "Home Office",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "pv413hfu7t6cqirtl5q36vdnho"
-      },
-      {
-        "Date": "2026-07-20",
         "Time": "18:15-19:15",
         "Event": "Ella Brownies ",
         "Who": "",
@@ -1060,16 +1050,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_64qk2cpk8osk4ba6891j2b9k84qkaba18h33eba68csk4cq3851jcc256s_20260721"
-      },
-      {
-        "Date": "2026-07-21",
-        "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260721T150000Z"
       },
       {
         "Date": "2026-07-21",
@@ -2032,16 +2012,6 @@
       {
         "Date": "2026-08-25",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260825T150000Z"
-      },
-      {
-        "Date": "2026-08-25",
-        "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
         "Location": "",
@@ -2180,6 +2150,16 @@
       {
         "Date": "2026-08-31",
         "Time": "All day",
+        "Event": "Bank Holiday",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "058rgnccq6ot12cdp0jjn6b61a"
+      },
+      {
+        "Date": "2026-08-31",
+        "Time": "All day",
         "Event": "Invoice RSW",
         "Who": "",
         "Location": "",
@@ -2196,16 +2176,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8d23gda5752k4ba36ksj2b9k6l23eba170ok6b9i6l2k2h9n6gok6di38g_20260831T171500Z"
-      },
-      {
-        "Date": "2026-09-01",
-        "Time": "All day",
-        "Event": "� Staggered Start - Both Schools",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "pc7sgnor8lkil80seab57vv200"
       },
       {
         "Date": "2026-09-01",
@@ -2230,16 +2200,6 @@
       {
         "Date": "2026-09-01",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260901T150000Z"
-      },
-      {
-        "Date": "2026-09-01",
-        "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
         "Location": "",
@@ -2256,16 +2216,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8cojica58p0k8b9p8p130b9k6t0kab9p69332ba26p2jgcpl8oq36e1k88"
-      },
-      {
-        "Date": "2026-09-02",
-        "Time": "All day",
-        "Event": "🏫 Staggered Start - Both Schools",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "bf0j6mrr43a5ue22oaf9cqteeo"
       },
       {
         "Date": "2026-09-02",
@@ -2470,16 +2420,6 @@
       {
         "Date": "2026-09-08",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260908T150000Z"
-      },
-      {
-        "Date": "2026-09-08",
-        "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
         "Location": "",
@@ -2660,16 +2600,6 @@
       {
         "Date": "2026-09-15",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260915T150000Z"
-      },
-      {
-        "Date": "2026-09-15",
-        "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
         "Location": "",
@@ -2839,16 +2769,6 @@
       {
         "Date": "2026-09-22",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260922T150000Z"
-      },
-      {
-        "Date": "2026-09-22",
-        "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
         "Location": "",
@@ -3009,16 +2929,6 @@
       {
         "Date": "2026-09-29",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260929T150000Z"
-      },
-      {
-        "Date": "2026-09-29",
-        "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
         "Location": "",
@@ -3169,16 +3079,6 @@
       {
         "Date": "2026-10-06",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20261006T150000Z"
-      },
-      {
-        "Date": "2026-10-06",
-        "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
         "Location": "",
@@ -3315,16 +3215,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_64qk2cpk8osk4ba6891j2b9k84qkaba18h33eba68csk4cq3851jcc256s_20261013"
-      },
-      {
-        "Date": "2026-10-13",
-        "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20261013T150000Z"
       },
       {
         "Date": "2026-10-13",
@@ -3475,16 +3365,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20261019T171500Z"
-      },
-      {
-        "Date": "2026-10-20",
-        "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20261020T150000Z"
       },
       {
         "Date": "2026-10-20",
@@ -3679,16 +3559,6 @@
       {
         "Date": "2026-10-27",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20261027T160000Z"
-      },
-      {
-        "Date": "2026-10-27",
-        "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
         "Location": "",
@@ -3874,16 +3744,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20261102T181500Z"
-      },
-      {
-        "Date": "2026-11-03",
-        "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20261103T160000Z"
       },
       {
         "Date": "2026-11-03",
