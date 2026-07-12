@@ -646,6 +646,16 @@
       {
         "Date": "2026-07-14",
         "Time": "All day",
+        "Event": "Ella Whipsnade - packed lunch",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8kpk2ci56t33cba574s48b9k6spjab9o6d2jgba66kr38ci5612j8d1m8k"
+      },
+      {
+        "Date": "2026-07-14",
+        "Time": "All day",
         "Event": "Flea cats",
         "Who": "",
         "Location": "",
