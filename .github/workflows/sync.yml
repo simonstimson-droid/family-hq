@@ -25,7 +25,26 @@ jobs:
           GOOGLE_TOKEN_JSON: ${{ secrets.GOOGLE_TOKEN_JSON }}
         run: python3 scripts/fetch_data.py 2>/dev/null > data.json
 
+      - name: Validate fetched data before committing
+        id: validate
+        run: |
+          python3 - <<'EOF'
+          import json, sys
+          try:
+              d = json.load(open('data.json'))
+          except Exception as e:
+              print(f"❌ data.json not valid JSON: {e}")
+              sys.exit(1)
+          calendar_rows = len(d.get('📅 Calendar', {}).get('rows', []))
+          error_tabs = [k for k, v in d.items() if isinstance(v, dict) and 'error' in v]
+          if calendar_rows < 1 or error_tabs:
+              print(f"❌ Fetch produced bad data (calendar_rows={calendar_rows}, error_tabs={error_tabs}). NOT committing — leaving existing data.json untouched.")
+              sys.exit(1)
+          print(f"✅ Fetched data valid (calendar_rows={calendar_rows}).")
+          EOF
+
       - name: Commit and push if changed
+        if: success()
         run: |
           git config user.name "Family HQ Bot"
           git config user.email "bot@family-hq.local"
