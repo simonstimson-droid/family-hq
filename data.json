@@ -955,22 +955,22 @@
       {
         "Date": "2026-07-20",
         "Time": "All day",
-        "Event": "🏫 Pix Brook Academy - Training Day (school closed)",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "ooh3t15c6jn5euibv2ancgmv60"
-      },
-      {
-        "Date": "2026-07-20",
-        "Time": "09:00-17:00",
         "Event": "Ella & Ava - Nanny & Gramp's",
         "Who": "",
         "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260720T080000Z"
+      },
+      {
+        "Date": "2026-07-20",
+        "Time": "All day",
+        "Event": "🏫 Pix Brook Academy - Training Day (school closed)",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "ooh3t15c6jn5euibv2ancgmv60"
       },
       {
         "Date": "2026-07-20",
@@ -1073,22 +1073,22 @@
       {
         "Date": "2026-07-22",
         "Time": "All day",
+        "Event": "Ella & Ava - Nanny & Gramp's",
+        "Who": "",
+        "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "6ok8ahehtgr9thau8c76ispjng_20260722"
+      },
+      {
+        "Date": "2026-07-22",
+        "Time": "All day",
         "Event": "🔋 Charge all devices for Latitude Festival",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "iupt1inta37rjmh0qc4m2ieq5k"
-      },
-      {
-        "Date": "2026-07-22",
-        "Time": "09:00-17:00",
-        "Event": "Ella & Ava - Nanny & Gramp's",
-        "Who": "",
-        "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260722T080000Z"
       },
       {
         "_row": 67,
@@ -1180,16 +1180,6 @@
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260724T180000Z"
       },
       {
-        "Date": "2026-07-25",
-        "Time": "10:00-11:00",
-        "Event": "🧪 E2E Test - Dashboard to Calendar",
-        "Who": "",
-        "Location": "Home",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "4tnmb8cgrqn8lppiq72mde2f1o"
-      },
-      {
         "_row": 68,
         "Date": "2026-07-25",
         "Time": "13:30-14:30",
@@ -1210,13 +1200,13 @@
       },
       {
         "Date": "2026-07-27",
-        "Time": "09:00-17:00",
+        "Time": "All day",
         "Event": "Ella & Ava - Nanny & Gramp's",
         "Who": "",
         "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260727T080000Z"
+        "_cal_id": "6ok8ahehtgr9thau8c76ispjng_20260727"
       },
       {
         "Date": "2026-07-27",
@@ -1261,16 +1251,6 @@
       {
         "Date": "2026-07-28",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260728T150000Z"
-      },
-      {
-        "Date": "2026-07-28",
-        "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
         "Location": "",
@@ -1280,13 +1260,13 @@
       },
       {
         "Date": "2026-07-29",
-        "Time": "09:00-17:00",
+        "Time": "All day",
         "Event": "Ella & Ava - Nanny & Gramp's",
         "Who": "",
         "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260729T080000Z"
+        "_cal_id": "co3v89c5u1krnio5n012l0npjv_20260729"
       },
       {
         "_row": 69,
@@ -1428,13 +1408,13 @@
       },
       {
         "Date": "2026-08-03",
-        "Time": "09:00-17:00",
+        "Time": "All day",
         "Event": "Ella & Ava - Nanny & Gramp's",
         "Who": "",
         "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260803T080000Z"
+        "_cal_id": "co3v89c5u1krnio5n012l0npjv_20260803"
       },
       {
         "Date": "2026-08-03",
@@ -1469,16 +1449,6 @@
       {
         "Date": "2026-08-04",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260804T150000Z"
-      },
-      {
-        "Date": "2026-08-04",
-        "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
         "Location": "",
@@ -1498,13 +1468,13 @@
       },
       {
         "Date": "2026-08-05",
-        "Time": "09:00-17:00",
+        "Time": "All day",
         "Event": "Ella & Ava - Nanny & Gramp's",
         "Who": "",
         "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260805T080000Z"
+        "_cal_id": "co3v89c5u1krnio5n012l0npjv_20260805"
       },
       {
         "_row": 71,
@@ -1596,13 +1566,13 @@
       },
       {
         "Date": "2026-08-10",
-        "Time": "09:00-17:00",
+        "Time": "All day",
         "Event": "Ella & Ava - Nanny & Gramp's",
         "Who": "",
         "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260810T080000Z"
+        "_cal_id": "co3v89c5u1krnio5n012l0npjv_20260810"
       },
       {
         "Date": "2026-08-10",
@@ -1637,16 +1607,6 @@
       {
         "Date": "2026-08-11",
         "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260811T150000Z"
-      },
-      {
-        "Date": "2026-08-11",
-        "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
         "Location": "",
@@ -1656,13 +1616,13 @@
       },
       {
         "Date": "2026-08-12",
-        "Time": "09:00-17:00",
-        "Event": "Ella & Ava - Nanny & Gramp's",
+        "Time": "All day",
+        "Event": "Ava - Nanny & Gramp's",
         "Who": "",
         "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_8oojehhi8ks34ba38l0jgb9k84o3aba18kq3gba68cpk2ci56gqk4cpo6g_20260812T080000Z"
+        "_cal_id": "co3v89c5u1krnio5n012l0npjv_20260812"
       },
       {
         "_row": 73,
@@ -1810,16 +1770,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "14c6b0cf17b5430bafb7b019c6fce308"
-      },
-      {
-        "Date": "2026-08-18",
-        "Time": "16:00-17:00",
-        "Event": "🎭 Drama Kids - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "qk8j1neprc1e5a1cap8spcccv8_20260818T150000Z"
       },
       {
         "Date": "2026-08-18",
