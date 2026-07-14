@@ -3990,25 +3990,7 @@
     ]
   },
   "✅ Chores": {
-    "headers": [
-      "Task",
-      "Assigned To",
-      "Due Date",
-      "Frequency",
-      "Done ✓",
-      "Notes"
-    ],
-    "rows": [
-      {
-        "_row": 2,
-        "Task": "Put Bins Out",
-        "Assigned To": "Simon",
-        "Due Date": "",
-        "Frequency": "Weekly",
-        "Done ✓": "",
-        "Notes": ""
-      }
-    ]
+    "error": "The read operation timed out"
   },
   "🍽️ Meal Plan": {
     "headers": [
