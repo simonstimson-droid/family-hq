@@ -675,6 +675,16 @@
       {
         "Date": "2026-07-15",
         "Time": "All day",
+        "Event": "🏫 Last Day of Term - Ella",
+        "Who": "",
+        "Location": "Pix Brook",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "1rldg86hjkul8jf9fu7nuo5t08"
+      },
+      {
+        "Date": "2026-07-15",
+        "Time": "All day",
         "Event": "🎉 End of Year Rewards - Day 2",
         "Who": "",
         "Location": "Pix Brook",
@@ -974,16 +984,6 @@
       {
         "Date": "2026-07-21",
         "Time": "All day",
-        "Event": "Ava - Pippins Pre School (with Zara & Zoia)",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_71148e1g8l148b9m8csj0b9k710k8ba268s36ba260p46h9i8ork4dq568"
-      },
-      {
-        "Date": "2026-07-21",
-        "Time": "All day",
         "Event": "🎒 Pack for Latitude Festival",
         "Who": "",
         "Location": "",
@@ -1020,6 +1020,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_64qk2cpk8osk4ba6891j2b9k84qkaba18h33eba68csk4cq3851jcc256s_20260721"
+      },
+      {
+        "Date": "2026-07-21",
+        "Time": "08:00-17:00",
+        "Event": "Ava - Pippins Pre School (with Zara & Zoia)",
+        "Who": "",
+        "Location": "Pippin Pre-School, Buttercup Road, Stotfold, Hitchin, Herts, SG5 4PF",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_71148e1g8l148b9m8csj0b9k710k8ba268s36ba260p46h9i8ork4dq568"
       },
       {
         "Date": "2026-07-21",
@@ -1082,16 +1092,6 @@
       {
         "Date": "2026-07-23",
         "Time": "All day",
-        "Event": "Ava - Pippins Pre School (with Zara & Zoia)",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_6srj6dq58cs34b9j8p1j2b9k84qjgba288o3gb9g68p38c2168pj2da284"
-      },
-      {
-        "Date": "2026-07-23",
-        "Time": "All day",
         "Event": "Ella at Mia's",
         "Who": "",
         "Location": "",
@@ -1118,6 +1118,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_68o38h9k6sr3ab9j6go4ab9k7533gba18p0k8ba36p0jgga388q32ca268_20260723T063000Z"
+      },
+      {
+        "Date": "2026-07-23",
+        "Time": "08:00-17:00",
+        "Event": "Ava - Pippins Pre School (with Zara & Zoia)",
+        "Who": "",
+        "Location": "Pippin Pre-School, Buttercup Road, Stotfold, Hitchin, Herts, SG5 4PF",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6srj6dq58cs34b9j8p1j2b9k84qjgba288o3gb9g68p38c2168pj2da284"
       },
       {
         "Date": "2026-07-23",
