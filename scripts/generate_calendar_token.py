@@ -25,7 +25,9 @@ from datetime import datetime, timezone, timedelta
 TOKEN_PATH = "/Users/simonstimson/.hermes/profiles/home/google_token_calendar.json"
 MAIN_TOKEN = "/Users/simonstimson/.hermes/profiles/home/google_token.json"
 REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
-SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
+# Read-WRITE calendar scope so we can also delete/correct events (e.g. the
+# incorrect "Last Day of Term - Ella" entry) via the API, not just read them.
+SCOPES = ["https://www.googleapis.com/auth/calendar"]
 AUTH_ENDPOINT = "https://accounts.google.com/o/oauth2/auth"
 TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token"
 
@@ -74,6 +76,12 @@ def exchange(code):
             datetime.now(timezone.utc) + timedelta(seconds=r.get("expires_in", 3599))
         ).isoformat(),
     }
+    # Back up the existing token before overwriting (the other reauth scripts
+    # do this; this one originally didn't).
+    from pathlib import Path as _P
+    _tp = _P(TOKEN_PATH)
+    if _tp.exists():
+        _tp.with_suffix(".json.bak").write_text(_tp.read_text())
     with open(TOKEN_PATH, "w") as f:
         json.dump(out, f, indent=2)
     print("Saved calendar token to", TOKEN_PATH)
