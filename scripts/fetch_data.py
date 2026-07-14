@@ -142,9 +142,35 @@ def fetch_calendar_events(token, calendar_id=None):
 
     events = data.get("items", [])
     result = []
+
+    # --- Manual exclusions -------------------------------------------------
+    # Events that exist in a source calendar but are factually wrong and must
+    # never surface on the dashboard. Keyed by Google event id (precise) with a
+    # summary+date safety net.
+    #   * "Last Day of Term - Ella" on 2026-07-15 is INCORRECT — Ella's real
+    #     last day is Fri 2026-07-17 (see "End of Term - PBA" / "End of Term -
+    #     Both Schools"). The source calendar event can't be deleted via the
+    #     read-only token, so we drop it at fetch time instead.
+    EXCLUDE_CAL_IDS = {
+        "1rldg86hjkul8jf9fu7nuo5t08",  # Ella wrong last-day event
+    }
+    EXCLUDE_SUMMARY_DATE = {
+        ("🏫 Last Day of Term - Ella", "2026-07-15"),
+    }
+    # -----------------------------------------------------------------------
+
     for e in events:
+        eid = e.get("id", "")
+        if eid in EXCLUDE_CAL_IDS:
+            continue
         start = e.get("start", {})
         end = e.get("end", {})
+
+        # Resolve the all-day date early so we can apply summary+date exclusions
+        _start_date = start.get("date") or (start.get("dateTime", "")[:10])
+        _summary = e.get("summary", "")
+        if (_summary, _start_date) in EXCLUDE_SUMMARY_DATE:
+            continue
 
         if "dateTime" in start:
             start_dt = datetime.fromisoformat(start["dateTime"])
