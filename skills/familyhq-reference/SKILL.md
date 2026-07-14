@@ -47,8 +47,10 @@ or the email/reminder cron jobs.
   Simon's PERSONAL account (sees Emma's + Family calendars, which the
   stimsonfamilyhq account cannot). Used by `fetch_data.py` calendar fetches.
   Backed up to `.bak` before each re-auth.
-  ⚠️ **HARD RULE (memory): never DELETE calendars/events without Simon's
-  explicit per-request permission — opt-in only, never automatic/cron/side-effect.**
+  ⚠️ **HARD RULE: never DELETE calendars/events without Simon's explicit
+  per-request permission** — opt-in only, never automatic/cron/side-effect.
+  See `references/calendar-write-ops.md` for the (authorised) procedure and the
+  preferred hide-without-delete alternative (`fetch_data.py` EXCLUDE block).
 
 ## Cron jobs (profile: home)
 - `e5ad20774e86` **Family HQ Email Auto-Processor** — `no_agent`, every 2h,
@@ -74,3 +76,12 @@ or the email/reminder cron jobs.
 - Google unverified-app OAuth: expect "Advanced → Go to Hermes (unsafe)" at consent.
 - `oob` redirect flow may be deprecated by Google; if a re-auth URL errors on
   redirect_uri, switch the generator to a localhost loopback flow.
+
+## Maintenance
+- **This skill is symlinked, not copied:** `~/.hermes/profiles/home/skills/familyhq-reference/SKILL.md`
+  → `~/FamilyHQ/skills/familyhq-reference/SKILL.md`. Edit and `git commit` the
+  **repo copy**; the symlink keeps the live (auto-loaded) skill in sync. Do NOT
+  replace the symlink with a standalone file or the two will diverge.
+- Put session-specific recipes in `references/` and keep SKILL.md as the index.
+- To add a new reference: `skill_manage action=write_file name=familyhq-reference
+  file_path=references/<topic>.md`.
