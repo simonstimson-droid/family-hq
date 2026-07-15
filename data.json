@@ -2599,6 +2599,16 @@
       },
       {
         "Date": "2026-09-09",
+        "Time": "All day",
+        "Event": "Ella’s school photo ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_892j4h9j6l33aba28d13eb9k6gr42ba16gpk2ba68csjag9g6p24aghn88"
+      },
+      {
+        "Date": "2026-09-09",
         "Time": "18:30-19:00",
         "Event": "🏊 Swimming - Ava",
         "Who": "",
