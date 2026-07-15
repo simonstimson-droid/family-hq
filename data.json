@@ -984,12 +984,12 @@
       {
         "Date": "2026-07-21",
         "Time": "All day",
-        "Event": "Ella - Pix Gymnastics",
+        "Event": "Emma at home",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "mdo3hn666j4rg71icaj1d5r308"
+        "_cal_id": "fk3sqg22badt5e9n7ee9js2if8"
       },
       {
         "Date": "2026-07-21",
@@ -1020,6 +1020,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_71148e1g8l148b9m8csj0b9k710k8ba268s36ba260p46h9i8ork4dq568"
+      },
+      {
+        "Date": "2026-07-21",
+        "Time": "12:30-15:00",
+        "Event": "Ella - Pix Gymnastics",
+        "Who": "",
+        "Location": "Pix Brook Academy",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "mdo3hn666j4rg71icaj1d5r308"
       },
       {
         "Date": "2026-07-21",
@@ -1061,6 +1071,16 @@
         "_cal_id": "iupt1inta37rjmh0qc4m2ieq5k"
       },
       {
+        "Date": "2026-07-22",
+        "Time": "All day",
+        "Event": "Emma - London",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "svbscou8qd36o4h3fu7neq8boc"
+      },
+      {
         "_row": 67,
         "Date": "2026-07-22",
         "Time": "18:30-19:00",
@@ -1082,12 +1102,22 @@
       {
         "Date": "2026-07-23",
         "Time": "All day",
-        "Event": "Ella at Mia's",
+        "Event": "Mia @ ours (Ella)",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "bacaqtefjek1nkmq1eukga0rdg"
+      },
+      {
+        "Date": "2026-07-23",
+        "Time": "All day",
+        "Event": "Emma WFH",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "h1hio0rt9eh07ijiu83ob7emrk"
       },
       {
         "Date": "2026-07-23",
@@ -1122,12 +1152,22 @@
       {
         "Date": "2026-07-23",
         "Time": "08:30-09:30",
-        "Event": "Ava Physio",
+        "Event": "Ava - Physio",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_6gpkaga184oj2b9k8d0jab9k8cpjiba168p4ab9i64r30gq66ks30ca274"
+        "_cal_id": "tv0j7cibdfpf4h7g580c245sb8"
+      },
+      {
+        "Date": "2026-07-23",
+        "Time": "16:00-16:30",
+        "Event": "🚗 Head to Latitude Festival",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "kaeds0i55tpaei1f8eodejlhp8"
       },
       {
         "Date": "2026-07-23",
@@ -1142,7 +1182,7 @@
       {
         "Date": "2026-07-24",
         "Time": "All day",
-        "Event": "Emma at Home",
+        "Event": "Everyone off",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1200,6 +1240,16 @@
       },
       {
         "Date": "2026-07-27",
+        "Time": "All day",
+        "Event": "Emma - London",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "nv10dhjiqunsunkskjoaefol0k"
+      },
+      {
+        "Date": "2026-07-27",
         "Time": "18:15-19:15",
         "Event": "Ella Brownies ",
         "Who": "",
@@ -1211,12 +1261,12 @@
       {
         "Date": "2026-07-28",
         "Time": "All day",
-        "Event": "Ella - BX Dance Camp (Ava AM only)",
+        "Event": "Emma @ home with both (no BX today)",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_6t336g9l6kqj0b9p6cq46b9k6d2j6ba26gqk4b9m8p2k4hi18gqjedq374"
+        "_cal_id": "arkoj6cn1gk70h1lltg273rlak"
       },
       {
         "Date": "2026-07-28",
@@ -1251,6 +1301,16 @@
       {
         "Date": "2026-07-29",
         "Time": "All day",
+        "Event": "Emma - London",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "7tps40511b4a59jdltghoat5tc"
+      },
+      {
+        "Date": "2026-07-29",
+        "Time": "All day",
         "Event": "Ella & Ava - Nanny & Gramp's",
         "Who": "",
         "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
@@ -1270,12 +1330,12 @@
       {
         "Date": "2026-07-30",
         "Time": "All day",
-        "Event": "BX Dance Camp - Ava & Ella",
+        "Event": "Emma - London",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_6sp3ae1j8co46b9h851j4b9k70s48ba26h244b9n6d33eg9i60sjida368"
+        "_cal_id": "diug865d692j9mj4a1gfdp0oo8"
       },
       {
         "Date": "2026-07-30",
@@ -1286,6 +1346,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_68o38h9k6sr3ab9j6go4ab9k7533gba18p0k8ba36p0jgga388q32ca268_20260730T063000Z"
+      },
+      {
+        "Date": "2026-07-30",
+        "Time": "09:00-15:00",
+        "Event": "BX Dance Camp - Ava & Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6sp3ae1j8co46b9h851j4b9k70s48ba26h244b9n6d33eg9i60sjida368"
       },
       {
         "Date": "2026-07-30",
@@ -1316,6 +1386,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_6513ee9k6t0jcb9k70rj4b9k6orjgba26933gba56spjad1j85234e218o_20260731"
+      },
+      {
+        "Date": "2026-07-31",
+        "Time": "10:00-14:00",
+        "Event": "Carra",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "bsb6lihuok9k57r4112fbv58kg"
       },
       {
         "Date": "2026-07-31",
@@ -1389,22 +1469,32 @@
       {
         "Date": "2026-08-03",
         "Time": "All day",
-        "Event": "Ava - Small Stars",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8d2jih9g6t1k4ba368ok2b9k6csj2ba26t232b9j8op4ch1j84ojie9j60"
-      },
-      {
-        "Date": "2026-08-03",
-        "Time": "All day",
-        "Event": "Ella & Ava - Nanny & Gramp's",
+        "Event": "Ella - Nanny & Gramp's",
         "Who": "",
         "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "co3v89c5u1krnio5n012l0npjv_20260803"
+      },
+      {
+        "Date": "2026-08-03",
+        "Time": "All day",
+        "Event": "Emma - London",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "glad18p4029s116p1469t169o4"
+      },
+      {
+        "Date": "2026-08-03",
+        "Time": "08:45-15:15",
+        "Event": "Ava - Small Stars",
+        "Who": "",
+        "Location": "St Thomas More School, Letchworth, SG6 3QB",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8d2jih9g6t1k4ba368ok2b9k6csj2ba26t232b9j8op4ch1j84ojie9j60"
       },
       {
         "Date": "2026-08-03",
@@ -1419,12 +1509,12 @@
       {
         "Date": "2026-08-04",
         "Time": "All day",
-        "Event": "HBS Gymnastics - Ava & Ella",
+        "Event": "Emma - WFH",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_690k8chj6sq38ba260s34b9k6sr30ba26t0jab9i6so3ig9o6cpk8h1o6s"
+        "_cal_id": "jpbme892rdo3r25v5meflbvm6g"
       },
       {
         "Date": "2026-08-04",
@@ -1438,6 +1528,16 @@
       },
       {
         "Date": "2026-08-04",
+        "Time": "09:30-15:00",
+        "Event": "HBS Gymnastics - Ava & Ella",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_690k8chj6sq38ba260s34b9k6sr30ba26t0jab9i6so3ig9o6cpk8h1o6s"
+      },
+      {
+        "Date": "2026-08-04",
         "Time": "16:00-17:00",
         "Event": "Ella and Ava Drama Club",
         "Who": "",
@@ -1445,6 +1545,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_88s42dhl8op3cba56l232b9k6d1j4ba18p242ba38l1j8ci36opjahi660_20260804T150000Z"
+      },
+      {
+        "Date": "2026-08-04",
+        "Time": "18:30-19:00",
+        "Event": "Emma - Hair appointment",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "qph99hia2i7sk7sagoo8krp1ec"
       },
       {
         "Date": "2026-08-04",
@@ -1459,22 +1569,32 @@
       {
         "Date": "2026-08-05",
         "Time": "All day",
-        "Event": "Ella - Art Camp",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "0a9p1n8o41nf3pia3n6k8pja9o"
-      },
-      {
-        "Date": "2026-08-05",
-        "Time": "All day",
-        "Event": "Ella & Ava - Nanny & Gramp's",
+        "Event": "Ava - Simon's Mum",
         "Who": "",
         "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "co3v89c5u1krnio5n012l0npjv_20260805"
+      },
+      {
+        "Date": "2026-08-05",
+        "Time": "All day",
+        "Event": "Emma - London",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "s57ocdqbqqrc41os9stosote54"
+      },
+      {
+        "Date": "2026-08-05",
+        "Time": "08:45-16:00",
+        "Event": "Ella - Art Camp",
+        "Who": "",
+        "Location": "Pix Brook Academy",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "0a9p1n8o41nf3pia3n6k8pja9o"
       },
       {
         "_row": 71,
@@ -1488,17 +1608,17 @@
       {
         "Date": "2026-08-06",
         "Time": "All day",
-        "Event": "Ava - Small Stars",
+        "Event": "Emma - London",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_6go3ggpp6cp4ab9h6h2k8b9k6opj0b9o850j4b9i6l338c1p8grk2da468"
+        "_cal_id": "9d6rp10f6qf8h9seiv9tg9nj9s"
       },
       {
         "Date": "2026-08-06",
         "Time": "All day",
-        "Event": "Ella at Liv's",
+        "Event": "Ella @ Liv Shelley's",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1517,6 +1637,16 @@
       },
       {
         "Date": "2026-08-06",
+        "Time": "08:45-15:15",
+        "Event": "Ava - Small Stars",
+        "Who": "",
+        "Location": "St Thomas More School, Letchworth, SG6 3QB",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6go3ggpp6cp4ab9h6h2k8b9k6opj0b9o850j4b9i6l338c1p8grk2da468"
+      },
+      {
+        "Date": "2026-08-06",
         "Time": "17:45-19:00",
         "Event": "Ava beavers ",
         "Who": "",
@@ -1527,23 +1657,13 @@
       },
       {
         "Date": "2026-08-07",
-        "Time": "18:00-19:00",
+        "Time": "09:30-15:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
         "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260807T170000Z"
-      },
-      {
-        "Date": "2026-08-07",
-        "Time": "19:00-20:00",
-        "Event": "Ella Gymnastics at HBS Revolutions",
-        "Who": "",
-        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260807T180000Z"
       },
       {
         "_row": 72,
@@ -1577,22 +1697,22 @@
       {
         "Date": "2026-08-10",
         "Time": "All day",
-        "Event": "Ava - Small Stars",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_88sjahi36ksjib9m60pjib9k6ooj0ba164q3aba18op46da585144chl8k"
-      },
-      {
-        "Date": "2026-08-10",
-        "Time": "All day",
         "Event": "Ella & Ava - Nanny & Gramp's",
         "Who": "",
         "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "co3v89c5u1krnio5n012l0npjv_20260810"
+      },
+      {
+        "Date": "2026-08-10",
+        "Time": "08:45-15:15",
+        "Event": "Ava - Small Stars",
+        "Who": "",
+        "Location": "St Thomas More School, Letchworth, SG6 3QB",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_88sjahi36ksjib9m60pjib9k6ooj0ba164q3aba18op46da585144chl8k"
       },
       {
         "Date": "2026-08-10",
@@ -1617,22 +1737,22 @@
       {
         "Date": "2026-08-11",
         "Time": "All day",
-        "Event": "HBS Gymnastics - Ava",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_6h0j4d1n852j8b9j60p4ab9k8ookcba270rj4b9o8krj0ga26h33cca174"
-      },
-      {
-        "Date": "2026-08-11",
-        "Time": "All day",
         "Event": "Ella away",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_88sk6ga6652j4b9l6ooj6b9k6so3ib9p6d23ab9g8d34ah9l851jghi670"
+      },
+      {
+        "Date": "2026-08-11",
+        "Time": "09:30-15:00",
+        "Event": "HBS Gymnastics - Ava",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6h0j4d1n852j8b9j60p4ab9k8ookcba270rj4b9o8krj0ga26h33cca174"
       },
       {
         "Date": "2026-08-11",
@@ -1655,6 +1775,16 @@
         "_cal_id": "co3v89c5u1krnio5n012l0npjv_20260812"
       },
       {
+        "Date": "2026-08-12",
+        "Time": "All day",
+        "Event": "Emma - London",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "t6a4bh89vp0c7e5u283mjb4338"
+      },
+      {
         "_row": 73,
         "Date": "2026-08-12",
         "Time": "18:30-19:00",
@@ -1666,12 +1796,22 @@
       {
         "Date": "2026-08-13",
         "Time": "All day",
-        "Event": "Ava - Small Stars",
+        "Event": "Emma - London",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_6t0kcc1i6gqjeb9n6p134b9k60qj2ba28kr34b9g6cp30c236cr3id248c"
+        "_cal_id": "g99119a7vf7qefq1hqmc6qaijg"
+      },
+      {
+        "Date": "2026-08-13",
+        "Time": "All day",
+        "Event": "📍 Simon collecting Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "nle8gtqjuarn8c5i4r7b34ucik"
       },
       {
         "Date": "2026-08-13",
@@ -1682,6 +1822,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_68o38h9k6sr3ab9j6go4ab9k7533gba18p0k8ba36p0jgga388q32ca268_20260813T063000Z"
+      },
+      {
+        "Date": "2026-08-13",
+        "Time": "08:45-15:15",
+        "Event": "Ava - Small Stars",
+        "Who": "",
+        "Location": "St Thomas More School, Letchworth, SG6 3QB",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6t0kcc1i6gqjeb9n6p134b9k60qj2ba28kr34b9g6cp30c236cr3id248c"
       },
       {
         "Date": "2026-08-13",
@@ -1760,6 +1910,16 @@
         "Who": "Ava",
         "Location": "",
         "Notes": "Turning 11!"
+      },
+      {
+        "Date": "2026-08-17",
+        "Time": "All day",
+        "Event": "Emma off",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "1oeu1mpjp62amd1tleedvhcdjg"
       },
       {
         "Date": "2026-08-17",
@@ -2190,12 +2350,32 @@
       {
         "Date": "2026-09-02",
         "Time": "All day",
+        "Event": "Emma off",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "6dcs6f6gp31ava7qbgp2mh2lec"
+      },
+      {
+        "Date": "2026-09-02",
+        "Time": "All day",
         "Event": "Simon's Mum (childcare)",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8cojica58p0k8b9p8p130b9k6t0kab9p69332ba26p2jgcpl8oq36e1k88"
+      },
+      {
+        "Date": "2026-09-02",
+        "Time": "13:00-18:00",
+        "Event": "Simon off (afternoon)",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "p94f6ihfqnf7ba2li0k7fh001c"
       },
       {
         "Date": "2026-09-02",
@@ -2286,6 +2466,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "moh38phrqdavcj4hjetof3jib0"
+      },
+      {
+        "Date": "2026-09-04",
+        "Time": "10:00-14:00",
+        "Event": "Carra",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "bssraus05i22u9vpvf2anuepe0"
       },
       {
         "Date": "2026-09-04",
