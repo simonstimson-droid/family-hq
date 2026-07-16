@@ -1190,6 +1190,26 @@
       },
       {
         "Date": "2026-07-28",
+        "Time": "09:00-12:30",
+        "Event": "Carra",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "51rq0cq9hqaodtd2kin5q1r2ug"
+      },
+      {
+        "Date": "2026-07-28",
+        "Time": "10:30-11:00",
+        "Event": "🦷 Ella - Dentist",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "64at2o9bvs4f8mv5pskc7c4kjs"
+      },
+      {
+        "Date": "2026-07-28",
         "Time": "10:30-11:30",
         "Event": "Ella dentist",
         "Who": "",
@@ -1587,6 +1607,16 @@
       },
       {
         "Date": "2026-08-07",
+        "Time": "All day",
+        "Event": "Emma - WFH",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "s0j6fv0i0f8oghqqfv2dqrmmu0"
+      },
+      {
+        "Date": "2026-08-07",
         "Time": "09:30-15:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
@@ -1795,6 +1825,16 @@
       },
       {
         "Date": "2026-08-14",
+        "Time": "10:00-14:00",
+        "Event": "Carra",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "nkovgkcamlujpfjhokbb4dk3ac"
+      },
+      {
+        "Date": "2026-08-14",
         "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
@@ -1982,6 +2022,16 @@
       },
       {
         "Date": "2026-08-21",
+        "Time": "10:00-14:00",
+        "Event": "Carra",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "4v9b1ifrq37201r45b2gqh5m3c"
+      },
+      {
+        "Date": "2026-08-21",
         "Time": "18:00-19:00",
         "Event": "Ava Gymnastics at HBS Revolutions",
         "Who": "",
@@ -2127,6 +2177,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_68o38h9k6sr3ab9j6go4ab9k7533gba18p0k8ba36p0jgga388q32ca268_20260827T063000Z"
+      },
+      {
+        "Date": "2026-08-27",
+        "Time": "10:00-14:00",
+        "Event": "Carra - Ava (tentative)",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "g3ivelb8gh5mjulvpsg10rmi5c"
       },
       {
         "Date": "2026-08-27",
@@ -2320,12 +2380,12 @@
       {
         "Date": "2026-09-02",
         "Time": "18:30-19:00",
-        "Event": "🏊 Swimming - Ava",
+        "Event": "Ava swimming ",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "5n119953avla434gipkm3t3hgs_20260902T173000Z"
+        "_cal_id": "_60oj8gi58ks48b9g850jib9k68pkcba160sjab9l6t1k4gpo6coj4e9m8c_20260902T173000Z"
       },
       {
         "Date": "2026-09-03",
@@ -2440,7 +2500,7 @@
       {
         "Date": "2026-09-05",
         "Time": "13:30-14:30",
-        "Event": "🤿 Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -4044,6 +4104,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20261113T180000Z"
+      },
+      {
+        "Date": "2026-11-13",
+        "Time": "19:00-20:00",
+        "Event": "Ella Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20261113T190000Z"
       },
       {
         "_row": 82,
