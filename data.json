@@ -10,6 +10,15 @@
     ],
     "rows": [
       {
+        "_row": 100,
+        "Date": "",
+        "Time": "All day",
+        "Event": "Event",
+        "Who": "Family",
+        "Location": "",
+        "Notes": ""
+      },
+      {
         "_row": 2,
         "Date": "2026-04-13",
         "Time": "All day",
@@ -100,7 +109,7 @@
         "Notes": ""
       },
       {
-        "_row": 92,
+        "_row": 88,
         "Date": "2026-06-11",
         "Time": "17:45",
         "Event": "Ava Beavers",
@@ -154,7 +163,7 @@
         "Notes": ""
       },
       {
-        "_row": 96,
+        "_row": 92,
         "Date": "2026-06-15",
         "Time": "18:15",
         "Event": "Ella Brownies",
@@ -181,7 +190,7 @@
         "Notes": "Last day of school"
       },
       {
-        "_row": 97,
+        "_row": 93,
         "Date": "2026-06-17",
         "Time": "08:30",
         "Event": "👨‍👧 Father's & Loved Ones Breakfast",
@@ -217,7 +226,7 @@
         "Notes": ""
       },
       {
-        "_row": 91,
+        "_row": 87,
         "Date": "2026-06-18",
         "Time": "17:45",
         "Event": "Ava Beavers",
@@ -253,7 +262,7 @@
         "Notes": ""
       },
       {
-        "_row": 98,
+        "_row": 94,
         "Date": "2026-06-22",
         "Time": "All day",
         "Event": "✡️ Religious Diversity Day - Judaism",
@@ -271,7 +280,7 @@
         "Notes": ""
       },
       {
-        "_row": 95,
+        "_row": 91,
         "Date": "2026-06-22",
         "Time": "18:15",
         "Event": "Ella Brownies",
@@ -289,7 +298,7 @@
         "Notes": "Comfortable clothes, bare feet, water bottle"
       },
       {
-        "_row": 99,
+        "_row": 95,
         "Date": "2026-06-23",
         "Time": "All day",
         "Event": "🔧 Engineering & Enterprise Week",
@@ -325,7 +334,7 @@
         "Notes": ""
       },
       {
-        "_row": 100,
+        "_row": 96,
         "Date": "2026-06-24",
         "Time": "AM",
         "Event": "🏛️ Stotfold Mill Trip - Fox Class",
@@ -352,7 +361,7 @@
         "Notes": ""
       },
       {
-        "_row": 90,
+        "_row": 86,
         "Date": "2026-06-25",
         "Time": "17:45",
         "Event": "Ava Beavers",
@@ -406,13 +415,22 @@
         "Notes": ""
       },
       {
-        "_row": 94,
+        "_row": 90,
         "Date": "2026-06-29",
         "Time": "18:15",
         "Event": "Ella Brownies",
         "Who": "Ella",
         "Location": "Stotfold Girl Guide Centre",
         "Notes": "Added via email by Simon Stimson"
+      },
+      {
+        "_row": 97,
+        "Date": "2026-06-30",
+        "Time": "All day",
+        "Event": "🏃 KS2 Sports Day",
+        "Who": "Ava",
+        "Location": "Fairfield Park",
+        "Notes": "KS2 only - wear PE kit, bring water bottle + sun cream"
       },
       {
         "_row": 37,
@@ -424,7 +442,7 @@
         "Notes": ""
       },
       {
-        "_row": 87,
+        "_row": 83,
         "Date": "2026-07-01",
         "Time": "11:00",
         "Event": "🏥 NHS Physiotherapy - Sarah Salter",
@@ -460,7 +478,7 @@
         "Notes": ""
       },
       {
-        "_row": 89,
+        "_row": 85,
         "Date": "2026-07-02",
         "Time": "17:45",
         "Event": "Ava Beavers",
@@ -505,7 +523,7 @@
         "Notes": ""
       },
       {
-        "_row": 93,
+        "_row": 89,
         "Date": "2026-07-06",
         "Time": "18:15",
         "Event": "Ella Brownies",
@@ -568,6 +586,15 @@
         "Notes": ""
       },
       {
+        "_row": 98,
+        "Date": "2026-07-10",
+        "Time": "10:00",
+        "Event": "🎤 Fairfield Park's Got Talent Show",
+        "Who": "Ava",
+        "Location": "Fairfield Park",
+        "Notes": "Performance for parents - 10am"
+      },
+      {
         "_row": 51,
         "Date": "2026-07-11",
         "Time": "09:15-10:00",
@@ -613,7 +640,7 @@
         "Notes": ""
       },
       {
-        "_row": 88,
+        "_row": 84,
         "Date": "2026-07-15",
         "Time": "14:00",
         "Event": "🧪 Test Event - Dashboard Sync",
@@ -665,6 +692,15 @@
         "Who": "Ava & Ella",
         "Location": "",
         "Notes": "Last day before summer holidays!"
+      },
+      {
+        "_row": 99,
+        "Date": "2026-07-17",
+        "Time": "All day",
+        "Event": "🏫 Last Day of Term",
+        "Who": "Ava",
+        "Location": "Fairfield Park",
+        "Notes": "End of Summer Term 2026"
       },
       {
         "_row": 61,
@@ -4063,42 +4099,6 @@
         "Who": "Emma",
         "Location": "",
         "Notes": ""
-      },
-      {
-        "_row": 83,
-        "Date": "2027-08-17",
-        "Time": "All day",
-        "Event": "🎂 Ava's Birthday",
-        "Who": "Ava",
-        "Location": "",
-        "Notes": "Turning 12!"
-      },
-      {
-        "_row": 84,
-        "Date": "2027-09-20",
-        "Time": "All day",
-        "Event": "🎂 Ella's Birthday",
-        "Who": "Ella",
-        "Location": "",
-        "Notes": "Turning 12!"
-      },
-      {
-        "_row": 85,
-        "Date": "2027-10-28",
-        "Time": "All day",
-        "Event": "🎂 Simon's Birthday",
-        "Who": "Simon",
-        "Location": "",
-        "Notes": ""
-      },
-      {
-        "_row": 86,
-        "Date": "2027-12-27",
-        "Time": "All day",
-        "Event": "🎂 Emma's Birthday",
-        "Who": "Emma",
-        "Location": "",
-        "Notes": ""
       }
     ]
   },
@@ -4511,7 +4511,7 @@
         "Role": "Dad",
         "Email": "simon.stimson@gmail.com",
         "Phone": "",
-        "DOB": "",
+        "DOB": "28/10",
         "Notes": "Primary account holder"
       },
       {
@@ -4520,7 +4520,7 @@
         "Role": "Mum",
         "Email": "clementsonemma@gmail.com",
         "Phone": "",
-        "DOB": "",
+        "DOB": "27/12",
         "Notes": "Full access"
       },
       {
