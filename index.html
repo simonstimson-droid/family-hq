@@ -2770,23 +2770,29 @@
             }
             html += '</div>';
             
-            // Upcoming birthdays
-            const birthdayEvents = events.filter(e => (e.Event || e.event || '').toLowerCase().includes('birthday') || (e.Event || e.event || '').includes('🎂'));
+            // Upcoming birthdays — computed from the Family Members DOB column
+            // (authoritative single source of truth), NOT from free-text
+            // calendar events (which can be duplicated across years).
             const now = new Date();
-            const upcomingBirthdays = birthdayEvents
-                .map(e => {
-                    const date = new Date((e.Date || e.Start || '') + 'T00:00:00');
-                    if (isNaN(date.getTime())) return null;
-                    // If birthday has passed this year, show next year's
-                    const thisYear = new Date(now.getFullYear(), date.getMonth(), date.getDate());
-                    if (thisYear < now) {
-                        date.setFullYear(now.getFullYear() + 1);
-                    } else {
-                        date.setFullYear(now.getFullYear());
+            const members = getSheet('👨');
+            const parseDOB = (s) => {
+                if (!s) return null;
+                // Accept DD/MM/YYYY or DD/MM
+                const m = String(s).match(/(\d{1,2})\s*\/\s*(\d{1,2})(?:\s*\/\s*(\d{4}))?/);
+                if (!m) return null;
+                return { day: parseInt(m[1], 10), month: parseInt(m[2], 10), year: m[3] ? parseInt(m[3], 10) : null };
+            };
+            const upcomingBirthdays = members
+                .map(m => {
+                    const dob = parseDOB(m.DOB);
+                    if (!dob) return null;
+                    const next = new Date(now.getFullYear(), dob.month - 1, dob.day);
+                    if (next < new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
+                        next.setFullYear(now.getFullYear() + 1);
                     }
-                    const daysUntil = Math.ceil((date - now) / (1000 * 60 * 60 * 24));
-                    const age = date.getFullYear() - parseInt((e.Date || e.Start || '').substring(0, 4));
-                    return { ...e, nextDate: date, daysUntil, age };
+                    const daysUntil = Math.ceil((next - now) / (1000 * 60 * 60 * 24));
+                    const age = dob.year ? (next.getFullYear() - dob.year) : null;
+                    return { who: m.Name || m.name || '', nextDate: next, daysUntil, age };
                 })
                 .filter(Boolean)
                 .sort((a, b) => a.daysUntil - b.daysUntil)
@@ -3303,9 +3309,27 @@
                 return who.includes(name.toLowerCase());
             });
             
-            // Upcoming birthdays
-            const bdayEvents = events.filter(e => (e.Event || e.event || '').toLowerCase().includes('birthday'));
-            const myBday = bdayEvents.find(e => (e.Who || e.who || '').toLowerCase().includes(name.toLowerCase()));
+            // Upcoming birthdays — prefer the Family Members DOB column
+            const memberDOB = memberInfo.DOB;
+            let myBday = null;
+            if (memberDOB) {
+                const dm = String(memberDOB).match(/(\d{1,2})\s*\/\s*(\d{1,2})(?:\s*\/\s*(\d{4}))?/);
+                if (dm) {
+                    const d = parseInt(dm[1], 10), mo = parseInt(dm[2], 10);
+                    const thisYear = new Date(new Date().getFullYear(), mo - 1, d);
+                    const dateStr = thisYear.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+                    myBday = { dateStr };
+                }
+            }
+            // Fallback to calendar event if no DOB stored
+            if (!myBday) {
+                const bdayEvents = events.filter(e => (e.Event || e.event || '').toLowerCase().includes('birthday'));
+                const ev = bdayEvents.find(e => (e.Who || e.who || '').toLowerCase().includes(name.toLowerCase()));
+                if (ev) {
+                    const bdayDate = new Date((ev.Date || ev.Start || '') + 'T00:00:00');
+                    myBday = { dateStr: bdayDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }) };
+                }
+            }
             
             let html = `<div class="profile-overlay show" id="profileOverlay" onclick="if(event.target===this)closeProfile()">`;
             html += `<div class="profile-card">`;
