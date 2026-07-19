@@ -77,6 +77,81 @@ or the email/reminder cron jobs.
 - `oob` redirect flow may be deprecated by Google; if a re-auth URL errors on
   `redirect_uri`, switch the generator to a localhost loopback flow.
 
+## Token re-auth (Sheets/Gmail token = `google_token.json`)
+This is the #1 cause of silent Family HQ breakage — when it dies, the Data
+Refresh / Email Auto-Processor / Calendar Sync crons all fail and the dashboard
+freezes on stale data. The `OAuth Re-auth Reminder` cron warns, but act on it
+fast. Diagnose then re-auth:
+
+1. **Detect which token is dead.** Two separate token files, different scopes:
+   - `google_token.json` — Sheets + Gmail (the dashboard's data source + email
+     processor). Used by `fetch_data.py` Sheets calls, `email_auto_processor.py`.
+   - `google_token_calendar.json` — read-write `calendar` (Simon's PERSONAL
+     account; sees Family + Emma calendars). Used by `fetch_data.py` calendar
+     fetches.
+   Try a refresh on each: POST `https://oauth2.googleapis.com/token` with
+   `client_id/secret/refresh_token/grant_type=refresh_token`.
+   - **`HTTP 400 { "error": "invalid_grant", "error_description": "Token has
+     been expired or revoked." }`** → that token's refresh_token is dead. This is
+     the usual case (Google rotates/revokes refresh tokens on re-auth or
+     security events). The `access_token` in the file is also stale (401 on use).
+   - A successful refresh returns a fresh `access_token` — save it back and move on.
+2. **Re-auth the dead one.** You do NOT need a new client_id — it's still valid
+   in the dead token file. Build a consent URL from the file's own `client_id`:
+   `https://accounts.google.com/o/oauth2/v2/auth?client_id=<cid>&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=<space-joined scopes from token file>&access_type=offline&prompt=consent`
+   - The `scope` list lives in the token file's `scopes` array — reuse it
+     verbatim (typically calendar + spreadsheets + gmail.readonly + gmail.modify).
+   - The `oob` (`urn:ietf:wg:oauth:2.0:oob`) redirect still works here; if Google
+     ever rejects it, fall back to a localhost loopback flow.
+3. **Exchange the code** Simon pastes back:
+   POST `https://oauth2.googleapis.com/token` with
+   `code, client_id, client_secret, redirect_uri=urn:ietf:wg:oauth:2.0:oob,
+   grant_type=authorization_code` → returns `access_token` + a NEW
+   `refresh_token` (the old one is now revoked).
+4. **Rebuild the token file**, preserving the client creds + scopes from the old
+   file so future refreshes keep working:
+   `{access_token, token:access_token, refresh_token:<new>, token_uri,
+   client_id, client_secret, scopes, expiry, type:"Bearer"}`.
+   Write it back over `google_token.json` (or `_calendar.json`).
+   ⚠️ **EXPIRY FORMAT TRAP (caused a multi-day silent outage):** the OAuth token
+   endpoint returns `expires_in` as an **integer seconds** value (e.g. `3599`).
+   Do NOT store that integer as `expiry`. `fetch_data.py` loads the token via
+   `google.oauth2.credentials.Credentials.from_authorized_user_file`, which does
+   `expiry.rstrip("Z").split(".")[0]` — an **int has no `.rstrip`**, so it
+   throws `AttributeError: 'int' object has no attribute 'rstrip'` and
+   `fetch_data.py` dies at import. The Data Refresh cron (and Email
+   Auto-Processor, Calendar Sync) then fail silently and `data.json` FREEZES on
+   stale data — any new sheet column (e.g. the Chores `Day` column) never flows
+   through, so widgets look "wrong" with no error. **Always compute `expiry` as
+   an ISO-8601 string from `expires_in`:**
+   `expiry = (now_utc + timedelta(seconds=expires_in)).isoformat()`. If you ever
+   see the `'int' object has no attribute 'rstrip'` crash, that's the cause —
+   fix the file's `expiry` field then re-run the Data Refresh wrapper
+   (`~/.hermes/profiles/home/scripts/familyhq_data_refresh.sh`), do NOT just
+   re-run `python3 scripts/fetch_data.py` (that only prints to stdout; the
+   wrapper is what validates + overwrites + commits `data.json`).
+5. **Verify** by re-reading the live sheet/calendar with the new token before
+   declaring done. Also run the Data Refresh wrapper and confirm `data.json`
+   regenerated (check a recently-added column such as `Day` actually appears).
+
+PITFALL: the dashboard `renderChores` groups chores by a **`Day` column** that
+may not exist in the sheet yet. If a chore shows under "Monday" (the default
+fallback) when it should be mid-week, the `Day` column is missing — INSERT it
+(see "Chores `Day` column" below) rather than editing `Frequency`.
+
+## Chores `Day` column (data-model pitfall)
+`renderChores()` in `index.html` reads `c.Day` and groups the chore under that
+weekday; **any chore with no valid `Day` value falls into the "any day" bucket
+which defaults to Monday.** The add-chore form (line ~3056) already sends a
+`Day` field, but the `✅ Chores` sheet historically had only
+`Task | Assigned To | Due Date | Frequency | Done ✓ | Notes` — NO `Day` column.
+So a weekly chore like "Put Bins Out" appeared on Monday until the column was
+added. Fix: `insertDimension` a COLUMN at index 4 (between Frequency col D and
+Done col E) titled `Day`, then set the row's `Day` to the weekday
+(e.g. `Wednesday`). The hourly Data Refresh regenerates `data.json` and the
+dashboard groups it correctly — no `index.html` change needed. Same pattern
+applies to any "chore shows on wrong day" report.
+
 ## Dashboard data-source pitfalls (read BEFORE chasing a "wrong data" bug)
 Several dashboard widgets have broken because they read from the WRONG source.
 When a panel shows junk/duplicates/missing people, check where its render
@@ -126,6 +201,30 @@ app. Pattern that works:
 - Put session-specific recipes in `references/` and keep SKILL.md as the index.
 - To add a new reference: `skill_manage action=write_file name=familyhq-reference
   file_path=references/<topic>.md`.
+
+## Tooling gotchas (learned the hard way — save your calls)
+- **`search_files` returns 0 / times out on `index.html` (232 KB, emoji-heavy)
+  and other large repo files.** It also chokes on regex containing unbalanced
+  parentheses (`(`, `)`) — "grep: parentheses not balanced". Symptom: total_count
+  0 or a `search_timeout`, even though the pattern is present. **Fix: use
+  `terminal` + `grep -n` instead** for any FamilyHQ source search. It is the
+  reliable path; `search_files` is fine for small/clean files only.
+- **Symlink-vs-standalone confusion:** the live skill
+  (`~/.hermes/profiles/home/skills/familyhq-reference/SKILL.md`) is a symlink
+  pointing at the repo copy (`~/FamilyHQ/skills/familyhq-reference/SKILL.md`).
+  `ls -la` INSIDE the repo shows a *regular file* (correct — the symlink lives
+  in the home dir, not the repo). Do NOT conclude the symlink is "broken" just
+  because the repo copy is a plain file. To verify integrity, `ls -la` the
+  **live** path too; a healthy setup shows `SKILL.md -> /Users/.../FamilyHQ/...`.
+- **Read-only Google API calls need explicit user consent** (the terminal tool's
+  approval gate). A blocked/timeout read is NOT failure — it means consent wasn't
+  given. Stop and ask; never retry or route around a blocked command.
+- **Before changing a recurring task's schedule (e.g. "Put Bins Out" day), locate
+  the real source of truth first.** A repo-wide search may show NO day field
+  (Chores tab stores `Frequency: Weekly` with no weekday column, and there may be
+  no calendar event either). The day could live only in the live Sheet or a
+  calendar event not visible in the local `data.json` snapshot. Confirm the
+  source before editing, or you'll change the wrong thing / miss a source.
 
 ## References
 - `references/calendar-write-ops.md` — calendar event delete procedure + the
