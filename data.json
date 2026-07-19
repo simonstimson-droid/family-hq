@@ -4129,6 +4129,7 @@
       "Assigned To",
       "Due Date",
       "Frequency",
+      "Day",
       "Done ✓",
       "Notes"
     ],
@@ -4139,6 +4140,7 @@
         "Assigned To": "Simon",
         "Due Date": "",
         "Frequency": "Weekly",
+        "Day": "Wednesday",
         "Done ✓": "",
         "Notes": ""
       }
