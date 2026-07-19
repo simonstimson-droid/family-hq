@@ -12,3 +12,9 @@ scripts/client_secrets.json
 google_token.json
 scripts/google_token.json
 *token*.json
+
+# Clasp working dir (holds .clasp.json, deployment state) — not repo material
+.clasp_clone/
+
+# One-off generated briefing artifact
+weekend_briefing.md
