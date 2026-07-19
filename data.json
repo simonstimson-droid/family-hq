@@ -722,16 +722,6 @@
         "_cal_id": "_68r36dpi88q48b9o6csj2b9k6oq3eba18co3cb9p75342h1j64q32e1g8c_20260719"
       },
       {
-        "Date": "2026-07-19",
-        "Time": "16:00-19:00",
-        "Event": "Ava Zara’s ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_61334ghp89242ba170oj8b9k70pj2ba164o3ab9p6t0k4chm60p36h9l8o"
-      },
-      {
         "_row": 62,
         "Date": "2026-07-20",
         "Time": "All day",
@@ -1256,12 +1246,22 @@
       {
         "Date": "2026-07-31",
         "Time": "All day",
-        "Event": "Emma @ home",
+        "Event": "Emma at home",
         "Who": "",
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "_6crj0d1p6t338ba46kpjeb9k6csjcb9p88p46b9n8l34ah1n74p30d9n8o"
+        "_cal_id": "67s8g682n7ebtrmpm2efltqrso"
+      },
+      {
+        "Date": "2026-07-31",
+        "Time": "All day",
+        "Event": "⛺ Camping - Henlow Bridge Lakes",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "ftddkbqp02itku2g8coltm8ols"
       },
       {
         "Date": "2026-07-31",
@@ -1281,7 +1281,7 @@
         "Location": "",
         "Notes": "",
         "_source": "calendar",
-        "_cal_id": "bsb6lihuok9k57r4112fbv58kg"
+        "_cal_id": "rn2djm8nd0d342pkbmqkkutii8"
       },
       {
         "Date": "2026-07-31",
@@ -1292,26 +1292,6 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8or34c9i64pkab9i6l1k8b9k8d0j6b9p6crk8b9g68o44h9j88rjadq174"
-      },
-      {
-        "Date": "2026-07-31",
-        "Time": "18:00-19:00",
-        "Event": "Ava Gymnastics at HBS Revolutions",
-        "Who": "",
-        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260731T170000Z"
-      },
-      {
-        "Date": "2026-07-31",
-        "Time": "19:00-20:00",
-        "Event": "Ella Gymnastics at HBS Revolutions",
-        "Who": "",
-        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20260731T180000Z"
       },
       {
         "Date": "2026-08-01",
@@ -1560,6 +1540,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20260807T170000Z"
+      },
+      {
+        "Date": "2026-08-08",
+        "Time": "11:00-13:00",
+        "Event": "💦 Graveley Slip n Slide - whole family",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "mei417b41l6blmic73l2en92v4"
       },
       {
         "_row": 72,
@@ -4110,6 +4100,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "c78du9061klaskc5vc8hb5j8vo_20261116T150000Z"
+      },
+      {
+        "Date": "2026-11-16",
+        "Time": "18:15-19:00",
+        "Event": "Ella Brownies",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20261116T181500Z"
       },
       {
         "_row": 82,
