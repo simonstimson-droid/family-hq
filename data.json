@@ -4114,15 +4114,6 @@
     "rows": [
       {
         "_row": 2,
-        "Item": "VERIFY_OK",
-        "Quantity": "",
-        "Added By": "",
-        "Done ✓": "",
-        "Category": "",
-        "@": ""
-      },
-      {
-        "_row": 3,
         "Item": "Oat Milk",
         "Quantity": "2 cartons",
         "Added By": "",
@@ -4341,55 +4332,14 @@
     ]
   },
   "📝 Announcements": {
-    "headers": [
-      "Date",
-      "From",
-      "Message",
-      "Priority"
-    ],
+    "headers": [],
     "rows": [
-      {
-        "_row": 2,
-        "Date": "2026-06-06",
-        "From": "Simon",
-        "Message": "Welcome to Family HQ! 🎉",
-        "Priority": "Info"
-      },
-      {
-        "_row": 3,
-        "Date": "2026-06-08",
-        "From": "Simon",
-        "Message": "⚠️ URGENT: Passport renewals needed for Simon + Emma!\nExpiry: 9 June (TOMORROW!)",
-        "Priority": "🔴 URGENT"
-      },
-      {
-        "_row": 4,
-        "Date": "2026-06-06",
-        "From": "Simon",
-        "Message": "📋 PBA Bulletin wc 8 June:\n• Where's Wally Day: 26 June\n• Year 5 Yoga: 23-24 June\n• Creative Arts Festival: 8-9 July\n• Sports Day: 10 July\n• End of Term: 17 July",
-        "Priority": "📌 Important"
-      },
-      {
-        "_row": 5,
-        "Date": "2026-06-06",
-        "From": "Simon",
-        "Message": "📅 TERM DATES:\n• Early May BH: 4 May\n• Late May BH: 25 May\n• PBA End of Term: 17 July\n• Fairfield Park End of Term: 22 July\n• FP Training Days: 13 Apr, 20 July\n• PBA Training Days: 20 July",
-        "Priority": "📌 Important"
-      },
-      {
-        "_row": 6,
-        "Date": "2026-06-06",
-        "From": "Simon",
-        "Message": "Ava's school fete 14 June, 11-2pm",
-        "Priority": "Info"
-      },
-      {
-        "_row": 7,
-        "Date": "Ella - Dinner Money Low Balance",
-        "From": "£2.55 remaining - Pix Brook Academy",
-        "Message": "Action needed: Top up Ella's dinner money",
-        "Priority": ""
-      }
+      [
+        "Date",
+        "From",
+        "Message",
+        "Priority"
+      ]
     ]
   },
   "📌 To-Do": {
