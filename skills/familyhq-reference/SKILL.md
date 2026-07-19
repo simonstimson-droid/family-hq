@@ -75,7 +75,48 @@ or the email/reminder cron jobs.
   trigger is deleted via `deleteOrphanedTriggers()`.
 - Google unverified-app OAuth: expect "Advanced → Go to Hermes (unsafe)" at consent.
 - `oob` redirect flow may be deprecated by Google; if a re-auth URL errors on
-  redirect_uri, switch the generator to a localhost loopback flow.
+  `redirect_uri`, switch the generator to a localhost loopback flow.
+
+## Dashboard data-source pitfalls (read BEFORE chasing a "wrong data" bug)
+Several dashboard widgets have broken because they read from the WRONG source.
+When a panel shows junk/duplicates/missing people, check where its render
+function gets its data, not just the sheet:
+- **"Upcoming Birthdays" must read the Family Members DOB column, NOT calendar
+  events.** A version scraped `events` for text containing "birthday"/"🎂" —
+  the Calendar sheet had 2026 AND 2027 birthday rows, so Ava appeared twice and
+  Simon/Emma showed as "random" extras, and age math was wrong on 2027 rows.
+  Fix: compute from `getSheet('👨')` DOB (DD/MM or DD/MM/YYYY), dedupe by person,
+  fall back to calendar event only if a member has no DOB. Add missing DOBs
+  (even day/month without year) to Family Members so the widget is consistent.
+- **"School & Activities" list is a DUMB MIRROR** of the `📋` tab — `renderSchool`
+  maps every row with NO date filtering. Dated one-off events (e.g. "Father's
+  Breakfast", "Summer Fete") linger forever after they pass. Nothing auto-prunes
+  it; either delete rows manually or run the weekly auto-cleanup cron
+  (`scripts/cleanup_activities.py` + `cleanup_activities_cron.sh`, job
+  `8f6e153701d0`, Sun 23:00). The cleanup deletes only rows whose `Day/Time`
+  holds a PARSEABLE PAST date; recurring classes ("Sat 9:15am", "Mon-Fri",
+  "Weekly", "TBC") are never touched. Dry-run by default; `--commit` to delete.
+- **Where each panel gets its data:** Shopping/Chores/To-Do/Meal/Announcements =
+  the Apps Script web app (see Web-app deployment section). Calendar = merged
+  sheet+Google Calendar. Activities/Birthdays/Family = the `📋` / `👨` sheet tabs
+  directly (no web app). Mixing these up is the usual root cause of "X is wrong".
+
+## Sheets API direct-write cheat sheet (for sheet-row deletes/updates)
+Cron Python scripts and the agent both edit sheets via the REST API, NOT the web
+app. Pattern that works:
+- Refresh token: POST `https://oauth2.googleapis.com/token` with
+  `client_id/secret/refresh_token/grant_type=refresh_token` → `access_token`.
+- Read: `GET .../spreadsheets/{ID}/values/{TAB}!A1:E1000` (quote the tab name;
+  emoji tabs are fine).
+- Get the tab's `sheetId` (gid) from `.../spreadsheets/{ID}?fields=sheets(properties(title,sheetId))`
+  — you need it for deleteDimension, the NAME is not enough.
+- Delete rows: `POST .../spreadsheets/{ID}:batchUpdate` with
+  `requests:[{deleteDimension:{range:{sheetId:GID,dimension:"ROWS",startIndex:r-1,endIndex:r}}}]`.
+  Delete HIGHEST row index first so lower indices don't shift mid-loop.
+- Put the token in the `Authorization: Bearer` header (not the URL query) — the
+  `&` in a query URL string trips the shell's backgrounding guard.
+- HARD RULE still applies to *calendar events*, not sheet rows — scripted sheet
+  deletes (activity cleanup, birthday-row dedupe) are authorized per request.
 
 ## Maintenance
 - **This skill is symlinked, not copied:** `~/.hermes/profiles/home/skills/familyhq-reference/SKILL.md`
@@ -85,3 +126,76 @@ or the email/reminder cron jobs.
 - Put session-specific recipes in `references/` and keep SKILL.md as the index.
 - To add a new reference: `skill_manage action=write_file name=familyhq-reference
   file_path=references/<topic>.md`.
+
+## References
+- `references/calendar-write-ops.md` — calendar event delete procedure + the
+  preferred hide-without-delete (EXCLUDE) alternative. HARD deletion rule.
+- `references/webapp-deploy.md` — full clasp push/deploy/URL-update recipe +
+  the curl diagnostic that proves a deployment is stale vs working.
+- `references/dashboard-data-model.md` — which dashboard panel reads which
+  source, the birthdays-scrape vs DOB bug, and the activity auto-cleanup cron.
+
+## Web-app deployment (CRITICAL — writes silently fail if stale)
+The dashboard's write path (`addShoppingItem`, `toggleShoppingDone`, `delete*`,
+add To-Do, etc.) calls a Google Apps Script **web app** via
+`API_URL` / `CALENDAR_API_URL` in `index.html` (around line 2829). The Apps
+Script source is `apps_script/Code.gs` (handlers: `append`/`update`/`delete`/
+`toggleDone`). It is deployed as a web app; the deployed URL is baked into
+`index.html` as a constant.
+
+⚠️ **Stale-deployment trap (this is the #1 cause of "I can't add to the
+shopping list"):** if `Code.gs` is edited and **not** redeployed, the old
+deployment keeps serving its previous behaviour. History: an early version
+only implemented `listEvents`, so every `action=append` just returned the
+calendar event list (HTTP 200, no error) — the dashboard's optimistic local
+update flashed then vanished on refresh. Symptom: dashboard reads fine, but
+adds/toggles/deletes don't persist.
+
+**Diagnostic (do this before touching code):** hit the live URL directly and
+confirm it echoes `action`:
+```
+curl -sL "https://script.google.com/macros/s/<DEPLOY_ID>/exec?action=append&sheet=ZZZ_BOGUS&data=%7B%22Item%22%3A%22x%22%7D"
+```
+- Healthy deployment → `{"error":"Sheet not found: ZZZ_BOGUS"}`
+- Stale (read-only) deployment → returns the calendar event JSON array (ignores
+  `action`). That's your proof it's stale.
+
+**Fix:** `clasp` (v3.3.0 at `~/.hermes/node/bin/clasp`) is already authenticated
+to the project `1IAFtrxUytcYDjpHpKfqk5r1ySe7XxoIKSictvFh2eegyQooDL3PfnhKp`
+("Family Hq Email Set…"). The editable copy of the script lives in
+`apps_script/Code.gs`; the `.clasp_clone/` dir is the clasp working dir.
+1. `cp apps_script/Code.gs .clasp_clone/Code.js` (clasp pushes `.js`, repo uses
+   `.gs` — same content).
+2. `cd .clasp_clone && clasp push` (says "already up to date" if code matches).
+3. `clasp deploy --description "Family HQ dashboard CRUD web app"` → prints a
+   NEW deployment ID `@<n>`.
+4. Update BOTH `API_URL` and `CALENDAR_API_URL` in `index.html` to the new ID.
+5. `git commit && git push` (GitHub Pages serves the file; raw URL updates
+   within a minute, Pages site within ~1 min).
+6. Re-run the diagnostic curl against the NEW deployment to confirm
+   `{"success":true,...}` on a real append, then delete the test row.
+
+Full recipe + verification transcript: `references/webapp-deploy.md`.
+
+### Web-app deployment recipe (copy/paste)
+```bash
+cd ~/FamilyHQ
+cp apps_script/Code.gs .clasp_clone/Code.js          # clasp pushes .js, repo keeps .gs
+cd .clasp_clone && clasp push                        # "already up to date" if code matches
+clasp deploy --description "Family HQ dashboard CRUD web app"   # prints NEW_ID @n
+# set BOTH API_URL and CALENDAR_API_URL in index.html (~line 2829) to:
+#   https://script.google.com/macros/s/<NEW_ID>/exec
+cd ~/FamilyHQ && git add index.html && git commit -m "fix: new web-app deployment" && git push
+# verify against NEW deployment, then delete the test row:
+NEW=<NEW_ID>
+curl -sL "https://script.google.com/macros/s/$NEW/exec?action=append&sheet=%F0%9F%9B%92%20Shopping%20List&data=%7B%22Item%22%3A%22VERIFY_OK%22%7D"
+#   -> {"success":true,"row":<n>,"message":"Added to 🛒 Shopping List"}
+curl -sL "https://script.google.com/macros/s/$NEW/exec?action=delete&sheet=%F0%9F%9B%92%20Shopping%20List&row=<n>"
+# confirm live file:
+curl -sL "https://raw.githubusercontent.com/simonstimson-droid/family-hq/main/index.html" | grep -o "<NEW_ID>"
+```
+Gotchas: run `clasp` from inside `.clasp_clone/` (holds `.clasp.json`); the raw
+`/exec` URL 302-redirects so curl needs `-L`; `getSheetByEmoji` matches
+`name.startsWith(prefix)` so the `🛒 Shopping List` tab must keep that prefix or
+writes fail with "Sheet not found". Every future `Code.gs` edit must be followed
+by push + deploy + URL update or the silent failure returns.
