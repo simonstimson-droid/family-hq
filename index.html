@@ -3350,12 +3350,12 @@
             if (memberInfo.Email) html += `<div class="profile-info-row"><span class="pil">Email</span><span class="pir">${memberInfo.Email}</span></div>`;
             if (memberInfo.Notes) html += `<div class="profile-info-row"><span class="pil">Notes</span><span class="pir">${memberInfo.Notes}</span></div>`;
             if (myBday) {
-                // myBday already carries the pre-formatted date string; never re-parse '' + 'T00:00:00'
-                // (that produced "Invalid Date"). Use the stored string, with an isNaN guard as fallback.
-                const bdayDate = new Date((myBday.Date || myBday.Start || '') + 'T00:00:00');
-                const dateStr = (myBday.dateStr && !isNaN(bdayDate.getTime()))
-                    ? myBday.dateStr
-                    : bdayDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+                // myBday always carries a pre-formatted string (dateStr). Use it directly.
+                // Both the DOB branch and the calendar-event fallback set dateStr, so it is
+                // always present when myBday is truthy. Guard against any unexpected
+                // undefined with the raw DOB/event source as a last-resort fallback.
+                const dateStr = myBday.dateStr
+                    || (myBday.Date || myBday.Start || '');
                 html += `<div class="profile-info-row"><span class="pil">🎂 Birthday</span><span class="pir">${dateStr}</span></div>`;
             }
             html += `</div>`;
