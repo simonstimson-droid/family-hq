@@ -799,6 +799,16 @@
       },
       {
         "Date": "2026-07-21",
+        "Time": "08:15-09:15",
+        "Event": "Appointment: Registration",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8h346di464qjcb9o70pj6b9k68qkaba265134b9j850kcc9l6923gdpk68"
+      },
+      {
+        "Date": "2026-07-21",
         "Time": "12:30-15:00",
         "Event": "Ella - Pix Gymnastics",
         "Who": "",
