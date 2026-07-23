@@ -807,16 +807,6 @@
       },
       {
         "Date": "2026-07-23",
-        "Time": "07:30-08:30",
-        "Event": "Ava Poppies ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_68o38h9k6sr3ab9j6go4ab9k7533gba18p0k8ba36p0jgga388q32ca268_20260723T063000Z"
-      },
-      {
-        "Date": "2026-07-23",
         "Time": "08:00-17:00",
         "Event": "Ava - Pippins Pre School (with Zara & Zoia)",
         "Who": "",
@@ -1023,6 +1013,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "co3v89c5u1krnio5n012l0npjv_20260729"
+      },
+      {
+        "Date": "2026-07-29",
+        "Time": "All day",
+        "Event": "Dinner Sarah ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8gp32dpn8h33gba66krjab9k60ok4b9o6oqjcb9g70s38ea26kpj4d9l8o"
       },
       {
         "_row": 69,
