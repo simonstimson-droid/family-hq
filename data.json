@@ -1,5 +1,5 @@
 {
-  "\ud83d\udcc5 Calendar": {
+  "📅 Calendar": {
     "headers": [
       "Date",
       "Time",
@@ -22,7 +22,7 @@
         "_row": 2,
         "Date": "2026-04-13",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Training Day - Fairfield Park",
+        "Event": "🏫 Training Day - Fairfield Park",
         "Who": "Ava",
         "Location": "",
         "Notes": "School closed for pupils"
@@ -31,7 +31,7 @@
         "_row": 3,
         "Date": "2026-05-04",
         "Time": "All day",
-        "Event": "\ud83c\udfe6 Early May Bank Holiday",
+        "Event": "🏦 Early May Bank Holiday",
         "Who": "Both",
         "Location": "",
         "Notes": "All schools closed"
@@ -40,7 +40,7 @@
         "_row": 4,
         "Date": "2026-05-25",
         "Time": "All day",
-        "Event": "\ud83c\udfe6 Late May Bank Holiday",
+        "Event": "🏦 Late May Bank Holiday",
         "Who": "Both",
         "Location": "",
         "Notes": "All schools closed"
@@ -49,7 +49,7 @@
         "_row": 5,
         "Date": "2026-06-08",
         "Time": "All day",
-        "Event": "\ud83d\udec2 Apply for passport renewal",
+        "Event": "🛂 Apply for passport renewal",
         "Who": "Simon & Emma",
         "Location": "",
         "Notes": "URGENT - expires tomorrow!"
@@ -67,7 +67,7 @@
         "_row": 7,
         "Date": "2026-06-09",
         "Time": "All day",
-        "Event": "\ud83d\udec2 Passports expire!",
+        "Event": "🛂 Passports expire!",
         "Who": "Simon & Emma",
         "Location": "",
         "Notes": "Last valid day"
@@ -148,10 +148,10 @@
         "_row": 15,
         "Date": "2026-06-14",
         "Time": "11:00-14:00",
-        "Event": "\ud83c\udfaa Fairfield Park Summer Fete",
+        "Event": "🎪 Fairfield Park Summer Fete",
         "Who": "Ava's School",
         "Location": "Fairfield Park",
-        "Notes": "PTA event \u00a31 entry"
+        "Notes": "PTA event £1 entry"
       },
       {
         "_row": 16,
@@ -184,7 +184,7 @@
         "_row": 18,
         "Date": "2026-06-17",
         "Time": "08:00-09:00",
-        "Event": "\ud83c\udf93 Father's Breakfast",
+        "Event": "🎓 Father's Breakfast",
         "Who": "Ava Year 3 DB",
         "Location": "Fairfield Park",
         "Notes": "Last day of school"
@@ -193,7 +193,7 @@
         "_row": 93,
         "Date": "2026-06-17",
         "Time": "08:30",
-        "Event": "\ud83d\udc68\u200d\ud83d\udc67 Father's & Loved Ones Breakfast",
+        "Event": "👨‍👧 Father's & Loved Ones Breakfast",
         "Who": "Ava",
         "Location": "Fairfield Park (Dickens Blvd)",
         "Notes": "Year 3 DB site - pastries, juice, coffee"
@@ -265,7 +265,7 @@
         "_row": 94,
         "Date": "2026-06-22",
         "Time": "All day",
-        "Event": "\u2721\ufe0f Religious Diversity Day - Judaism",
+        "Event": "✡️ Religious Diversity Day - Judaism",
         "Who": "Ava",
         "Location": "Fairfield Park",
         "Notes": "Whole school event"
@@ -292,7 +292,7 @@
         "_row": 26,
         "Date": "2026-06-23",
         "Time": "All day",
-        "Event": "\ud83e\uddd8 Year 5 Yoga Day 1",
+        "Event": "🧘 Year 5 Yoga Day 1",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": "Comfortable clothes, bare feet, water bottle"
@@ -301,7 +301,7 @@
         "_row": 95,
         "Date": "2026-06-23",
         "Time": "All day",
-        "Event": "\ud83d\udd27 Engineering & Enterprise Week",
+        "Event": "🔧 Engineering & Enterprise Week",
         "Who": "Ava",
         "Location": "Fairfield Park",
         "Notes": "Whole school - activities all week"
@@ -319,7 +319,7 @@
         "_row": 28,
         "Date": "2026-06-24",
         "Time": "All day",
-        "Event": "\ud83e\uddd8 Year 5 Yoga Day 2",
+        "Event": "🧘 Year 5 Yoga Day 2",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": "Comfortable clothes, bare feet, water bottle"
@@ -337,7 +337,7 @@
         "_row": 96,
         "Date": "2026-06-24",
         "Time": "AM",
-        "Event": "\ud83c\udfdb\ufe0f Stotfold Mill Trip - Fox Class",
+        "Event": "🏛️ Stotfold Mill Trip - Fox Class",
         "Who": "Ava",
         "Location": "Stotfold Mill",
         "Notes": "AM trip - Fox Class only. Bring packed lunch, water bottle, sun hat"
@@ -373,10 +373,10 @@
         "_row": 32,
         "Date": "2026-06-26",
         "Time": "All day",
-        "Event": "\ud83c\udfaa Where's Wally Day",
+        "Event": "🎪 Where's Wally Day",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
-        "Notes": "Dress up! \u00a31.50 via MCAS"
+        "Notes": "Dress up! £1.50 via MCAS"
       },
       {
         "_row": 33,
@@ -427,7 +427,7 @@
         "_row": 97,
         "Date": "2026-06-30",
         "Time": "All day",
-        "Event": "\ud83c\udfc3 KS2 Sports Day",
+        "Event": "🏃 KS2 Sports Day",
         "Who": "Ava",
         "Location": "Fairfield Park",
         "Notes": "KS2 only - wear PE kit, bring water bottle + sun cream"
@@ -445,7 +445,7 @@
         "_row": 83,
         "Date": "2026-07-01",
         "Time": "11:00",
-        "Event": "\ud83c\udfe5 NHS Physiotherapy - Sarah Salter",
+        "Event": "🏥 NHS Physiotherapy - Sarah Salter",
         "Who": "Ava",
         "Location": "Child Development Centre, Hill Rise, Kempston, Bedford MK42 7EB",
         "Notes": "Bring shorts + vest top. Call 01234 310278 if unwell. Sat Nav: MK42 7DN"
@@ -544,7 +544,7 @@
         "_row": 46,
         "Date": "2026-07-08",
         "Time": "All day",
-        "Event": "\ud83c\udfa8 Creative Arts Festival",
+        "Event": "🎨 Creative Arts Festival",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": "Whole school event"
@@ -580,7 +580,7 @@
         "_row": 50,
         "Date": "2026-07-10",
         "Time": "All day",
-        "Event": "\ud83c\udfc3 Sports Day (Yrs 5-10)",
+        "Event": "🏃 Sports Day (Yrs 5-10)",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": ""
@@ -589,7 +589,7 @@
         "_row": 98,
         "Date": "2026-07-10",
         "Time": "10:00",
-        "Event": "\ud83c\udfa4 Fairfield Park's Got Talent Show",
+        "Event": "🎤 Fairfield Park's Got Talent Show",
         "Who": "Ava",
         "Location": "Fairfield Park",
         "Notes": "Performance for parents - 10am"
@@ -643,7 +643,7 @@
         "_row": 84,
         "Date": "2026-07-15",
         "Time": "14:00",
-        "Event": "\ud83e\uddea Test Event - Dashboard Sync",
+        "Event": "🧪 Test Event - Dashboard Sync",
         "Who": "Simon",
         "Location": "Home",
         "Notes": "Testing calendar sync"
@@ -679,7 +679,7 @@
         "_row": 59,
         "Date": "2026-07-17",
         "Time": "All day",
-        "Event": "\ud83d\udcc5 End of Term - PBA",
+        "Event": "📅 End of Term - PBA",
         "Who": "Ella",
         "Location": "Pix Brook Academy",
         "Notes": "Last day of school"
@@ -688,7 +688,7 @@
         "_row": 60,
         "Date": "2026-07-17",
         "Time": "All day",
-        "Event": "\ud83c\udfeb End of Term - Both Schools",
+        "Event": "🏫 End of Term - Both Schools",
         "Who": "Ava & Ella",
         "Location": "",
         "Notes": "Last day before summer holidays!"
@@ -697,7 +697,7 @@
         "_row": 99,
         "Date": "2026-07-17",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Last Day of Term",
+        "Event": "🏫 Last Day of Term",
         "Who": "Ava",
         "Location": "Fairfield Park",
         "Notes": "End of Summer Term 2026"
@@ -715,7 +715,7 @@
         "_row": 62,
         "Date": "2026-07-20",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Training Day - Fairfield Park",
+        "Event": "🏫 Training Day - Fairfield Park",
         "Who": "Ava",
         "Location": "",
         "Notes": "School closed for pupils"
@@ -724,7 +724,7 @@
         "_row": 63,
         "Date": "2026-07-20",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Training Day - PBA",
+        "Event": "🏫 Training Day - PBA",
         "Who": "Ella",
         "Location": "",
         "Notes": "School closed for pupils"
@@ -733,7 +733,7 @@
         "_row": 64,
         "Date": "2026-07-20",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Training Day - Both Schools",
+        "Event": "🏫 Training Day - Both Schools",
         "Who": "Ava & Ella",
         "Location": "",
         "Notes": "Staff training - children off"
@@ -742,7 +742,7 @@
         "_row": 65,
         "Date": "2026-07-21",
         "Time": "All day",
-        "Event": "\ud83d\udcc5 End of Term - Fairfield Park",
+        "Event": "📅 End of Term - Fairfield Park",
         "Who": "Ava",
         "Location": "Fairfield Park",
         "Notes": "Ava effectively finishes 17 July (training day 20 July)"
@@ -751,7 +751,7 @@
         "_row": 66,
         "Date": "2026-07-22",
         "Time": "All day",
-        "Event": "\ud83d\udcc5 End of Term - Fairfield Park",
+        "Event": "📅 End of Term - Fairfield Park",
         "Who": "Ava",
         "Location": "Fairfield Park",
         "Notes": "Last day of school"
@@ -768,7 +768,7 @@
       {
         "Date": "2026-07-23",
         "Time": "All day",
-        "Event": "\ud83c\udfaa Latitude Festival 2026",
+        "Event": "🎪 Latitude Festival 2026",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -797,7 +797,7 @@
       {
         "Date": "2026-07-26",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -867,7 +867,7 @@
       {
         "Date": "2026-07-28",
         "Time": "10:30-11:00",
-        "Event": "\ud83e\uddb7 Ella - Dentist",
+        "Event": "🦷 Ella - Dentist",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1006,7 +1006,7 @@
       {
         "Date": "2026-07-31",
         "Time": "All day",
-        "Event": "\u26fa Camping - Henlow Bridge Lakes",
+        "Event": "⛺ Camping - Henlow Bridge Lakes",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1065,7 +1065,7 @@
       {
         "Date": "2026-08-02",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1304,7 +1304,7 @@
       {
         "Date": "2026-08-08",
         "Time": "11:00-13:00",
-        "Event": "\ud83d\udca6 Graveley Slip n Slide - whole family",
+        "Event": "💦 Graveley Slip n Slide - whole family",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1323,7 +1323,7 @@
       {
         "Date": "2026-08-09",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1452,7 +1452,7 @@
       {
         "Date": "2026-08-13",
         "Time": "All day",
-        "Event": "\ud83d\udccd Simon collecting Ella",
+        "Event": "📍 Simon collecting Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1551,7 +1551,7 @@
       {
         "Date": "2026-08-16",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1562,7 +1562,7 @@
         "_row": 79,
         "Date": "2026-08-17",
         "Time": "All day",
-        "Event": "\ud83c\udf82 Ava's Birthday",
+        "Event": "🎂 Ava's Birthday",
         "Who": "Ava",
         "Location": "",
         "Notes": "Turning 11!"
@@ -1622,7 +1622,7 @@
         "Time": "07:00-09:00",
         "Event": "Ava surgery admission (RNOH Stanmore)",
         "Who": "",
-        "Location": "Royal National Orthopaedic Hospital (RNOH) Stanmore \u2014 Sir William Coxen Ward",
+        "Location": "Royal National Orthopaedic Hospital (RNOH) Stanmore — Sir William Coxen Ward",
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "14c6b0cf17b5430bafb7b019c6fce308"
@@ -1679,7 +1679,7 @@
       {
         "Date": "2026-08-20",
         "Time": "17:25-17:55",
-        "Event": "\u2708\ufe0f Ella lands - Luton (from Cyprus)",
+        "Event": "✈️ Ella lands - Luton (from Cyprus)",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1738,7 +1738,7 @@
       {
         "Date": "2026-08-23",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -1936,7 +1936,7 @@
       {
         "Date": "2026-08-30",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2066,7 +2066,7 @@
       {
         "Date": "2026-09-03",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Training Day - Both Schools",
+        "Event": "🏫 Training Day - Both Schools",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2086,7 +2086,7 @@
       {
         "Date": "2026-09-03",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2116,7 +2116,7 @@
       {
         "Date": "2026-09-04",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Training Day - Both Schools",
+        "Event": "🏫 Training Day - Both Schools",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2146,7 +2146,7 @@
       {
         "Date": "2026-09-05",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2156,7 +2156,7 @@
       {
         "Date": "2026-09-05",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2166,7 +2166,7 @@
       {
         "Date": "2026-09-05",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ella",
+        "Event": "🤿 Diving - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2176,7 +2176,7 @@
       {
         "Date": "2026-09-06",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2206,7 +2206,7 @@
       {
         "Date": "2026-09-07",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfc3 Athletics - Ella",
+        "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2246,7 +2246,7 @@
       {
         "Date": "2026-09-09",
         "Time": "All day",
-        "Event": "Ella\u2019s school photo ",
+        "Event": "Ella’s school photo ",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2256,7 +2256,7 @@
       {
         "Date": "2026-09-09",
         "Time": "18:30-19:00",
-        "Event": "\ud83c\udfca Swimming - Ava",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2276,7 +2276,7 @@
       {
         "Date": "2026-09-10",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2336,7 +2336,7 @@
       {
         "Date": "2026-09-12",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2346,7 +2346,7 @@
       {
         "Date": "2026-09-12",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2356,7 +2356,7 @@
       {
         "Date": "2026-09-12",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2366,7 +2366,7 @@
       {
         "Date": "2026-09-13",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2396,7 +2396,7 @@
       {
         "Date": "2026-09-14",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfc3 Athletics - Ella",
+        "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2456,7 +2456,7 @@
       {
         "Date": "2026-09-16",
         "Time": "18:30-19:00",
-        "Event": "\ud83c\udfca Swimming - Ava",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2476,7 +2476,7 @@
       {
         "Date": "2026-09-17",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2496,7 +2496,7 @@
       {
         "Date": "2026-09-18",
         "Time": "All day",
-        "Event": "Jane\u2019s Birthday ",
+        "Event": "Jane’s Birthday ",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2526,7 +2526,7 @@
       {
         "Date": "2026-09-19",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2536,7 +2536,7 @@
       {
         "Date": "2026-09-19",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2546,7 +2546,7 @@
       {
         "Date": "2026-09-19",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2557,7 +2557,7 @@
         "_row": 80,
         "Date": "2026-09-20",
         "Time": "All day",
-        "Event": "\ud83c\udf82 Ella's Birthday",
+        "Event": "🎂 Ella's Birthday",
         "Who": "Ella",
         "Location": "",
         "Notes": "Turning 11!"
@@ -2565,7 +2565,7 @@
       {
         "Date": "2026-09-20",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2575,7 +2575,7 @@
       {
         "Date": "2026-09-21",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfc3 Athletics - Ella",
+        "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2615,7 +2615,7 @@
       {
         "Date": "2026-09-23",
         "Time": "18:30-19:00",
-        "Event": "\ud83c\udfca Swimming - Ava",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2645,7 +2645,7 @@
       {
         "Date": "2026-09-24",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2685,7 +2685,7 @@
       {
         "Date": "2026-09-26",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2695,7 +2695,7 @@
       {
         "Date": "2026-09-26",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2705,7 +2705,7 @@
       {
         "Date": "2026-09-26",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2715,7 +2715,7 @@
       {
         "Date": "2026-09-27",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2725,7 +2725,7 @@
       {
         "Date": "2026-09-28",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfc3 Athletics - Ella",
+        "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2775,7 +2775,7 @@
       {
         "Date": "2026-09-30",
         "Time": "18:30-19:00",
-        "Event": "\ud83c\udfca Swimming - Ava",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2805,7 +2805,7 @@
       {
         "Date": "2026-10-01",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2845,7 +2845,7 @@
       {
         "Date": "2026-10-03",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2855,7 +2855,7 @@
       {
         "Date": "2026-10-03",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2865,7 +2865,7 @@
       {
         "Date": "2026-10-03",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2875,7 +2875,7 @@
       {
         "Date": "2026-10-04",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2885,7 +2885,7 @@
       {
         "Date": "2026-10-05",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfc3 Athletics - Ella",
+        "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2915,7 +2915,7 @@
       {
         "Date": "2026-10-07",
         "Time": "18:30-19:00",
-        "Event": "\ud83c\udfca Swimming - Ava",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2935,7 +2935,7 @@
       {
         "Date": "2026-10-08",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2975,7 +2975,7 @@
       {
         "Date": "2026-10-10",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2985,7 +2985,7 @@
       {
         "Date": "2026-10-10",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -2995,7 +2995,7 @@
       {
         "Date": "2026-10-10",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3005,7 +3005,7 @@
       {
         "Date": "2026-10-11",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3015,7 +3015,7 @@
       {
         "Date": "2026-10-12",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfc3 Athletics - Ella",
+        "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3065,7 +3065,7 @@
       {
         "Date": "2026-10-14",
         "Time": "18:30-19:00",
-        "Event": "\ud83c\udfca Swimming - Ava",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3095,7 +3095,7 @@
       {
         "Date": "2026-10-15",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3135,7 +3135,7 @@
       {
         "Date": "2026-10-17",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3145,7 +3145,7 @@
       {
         "Date": "2026-10-17",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3155,7 +3155,7 @@
       {
         "Date": "2026-10-17",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3165,7 +3165,7 @@
       {
         "Date": "2026-10-18",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3175,7 +3175,7 @@
       {
         "Date": "2026-10-19",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfc3 Athletics - Ella",
+        "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3205,7 +3205,7 @@
       {
         "Date": "2026-10-21",
         "Time": "18:30-19:00",
-        "Event": "\ud83c\udfca Swimming - Ava",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3225,7 +3225,7 @@
       {
         "Date": "2026-10-22",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3275,7 +3275,7 @@
       {
         "Date": "2026-10-24",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3285,7 +3285,7 @@
       {
         "Date": "2026-10-24",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3295,7 +3295,7 @@
       {
         "Date": "2026-10-24",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3305,7 +3305,7 @@
       {
         "Date": "2026-10-25",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3315,7 +3315,7 @@
       {
         "Date": "2026-10-26",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Half Term - Pix Brook",
+        "Event": "🏫 Half Term - Pix Brook",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3325,7 +3325,7 @@
       {
         "Date": "2026-10-26",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Half Term - Both Schools",
+        "Event": "🏫 Half Term - Both Schools",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3335,7 +3335,7 @@
       {
         "Date": "2026-10-26",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Half Term - Fairfield Park",
+        "Event": "🏫 Half Term - Fairfield Park",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3345,7 +3345,7 @@
       {
         "Date": "2026-10-26",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfc3 Athletics - Ella",
+        "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3365,7 +3365,7 @@
       {
         "Date": "2026-10-27",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Half Term - Both Schools",
+        "Event": "🏫 Half Term - Both Schools",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3396,7 +3396,7 @@
         "_row": 81,
         "Date": "2026-10-28",
         "Time": "All day",
-        "Event": "\ud83c\udf82 Simon's Birthday",
+        "Event": "🎂 Simon's Birthday",
         "Who": "Simon",
         "Location": "",
         "Notes": ""
@@ -3404,7 +3404,7 @@
       {
         "Date": "2026-10-28",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Half Term - Both Schools",
+        "Event": "🏫 Half Term - Both Schools",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3414,7 +3414,7 @@
       {
         "Date": "2026-10-28",
         "Time": "18:30-19:00",
-        "Event": "\ud83c\udfca Swimming - Ava",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3424,7 +3424,7 @@
       {
         "Date": "2026-10-29",
         "Time": "All day",
-        "Event": "\ufffd Half Term - Both Schools",
+        "Event": "� Half Term - Both Schools",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3444,7 +3444,7 @@
       {
         "Date": "2026-10-29",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3464,7 +3464,7 @@
       {
         "Date": "2026-10-30",
         "Time": "All day",
-        "Event": "\ud83c\udfeb Half Term - Both Schools",
+        "Event": "🏫 Half Term - Both Schools",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3504,7 +3504,7 @@
       {
         "Date": "2026-10-31",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3514,7 +3514,7 @@
       {
         "Date": "2026-10-31",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3524,7 +3524,7 @@
       {
         "Date": "2026-10-31",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3534,7 +3534,7 @@
       {
         "Date": "2026-11-01",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3554,7 +3554,7 @@
       {
         "Date": "2026-11-02",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfc3 Athletics - Ella",
+        "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3584,7 +3584,7 @@
       {
         "Date": "2026-11-04",
         "Time": "18:30-19:00",
-        "Event": "\ud83c\udfca Swimming - Ava",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3604,7 +3604,7 @@
       {
         "Date": "2026-11-05",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3644,7 +3644,7 @@
       {
         "Date": "2026-11-07",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3654,7 +3654,7 @@
       {
         "Date": "2026-11-07",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3664,7 +3664,7 @@
       {
         "Date": "2026-11-07",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3674,7 +3674,7 @@
       {
         "Date": "2026-11-08",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3684,7 +3684,7 @@
       {
         "Date": "2026-11-09",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfc3 Athletics - Ella",
+        "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3724,7 +3724,7 @@
       {
         "Date": "2026-11-11",
         "Time": "18:30-19:00",
-        "Event": "\ud83c\udfca Swimming - Ava",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3744,7 +3744,7 @@
       {
         "Date": "2026-11-12",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3794,7 +3794,7 @@
       {
         "Date": "2026-11-14",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3804,7 +3804,7 @@
       {
         "Date": "2026-11-14",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3814,7 +3814,7 @@
       {
         "Date": "2026-11-14",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3824,7 +3824,7 @@
       {
         "Date": "2026-11-15",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3834,7 +3834,7 @@
       {
         "Date": "2026-11-16",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfc3 Athletics - Ella",
+        "Event": "🏃 Athletics - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3864,7 +3864,7 @@
       {
         "Date": "2026-11-18",
         "Time": "18:30-19:00",
-        "Event": "\ud83c\udfca Swimming - Ava",
+        "Event": "🏊 Swimming - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3884,7 +3884,7 @@
       {
         "Date": "2026-11-19",
         "Time": "15:00-16:00",
-        "Event": "\ud83c\udfb5 Choir - Ella",
+        "Event": "🎵 Choir - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3924,7 +3924,7 @@
       {
         "Date": "2026-11-21",
         "Time": "09:15-10:00",
-        "Event": "\ud83d\udc83 BX Dance - Ava",
+        "Event": "💃 BX Dance - Ava",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3934,7 +3934,7 @@
       {
         "Date": "2026-11-21",
         "Time": "10:00-10:45",
-        "Event": "\ud83d\udc83 BX Dance - Ella",
+        "Event": "💃 BX Dance - Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3944,7 +3944,7 @@
       {
         "Date": "2026-11-21",
         "Time": "13:30-14:30",
-        "Event": "\ud83e\udd3f Diving - Ava & Ella",
+        "Event": "🤿 Diving - Ava & Ella",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3954,7 +3954,7 @@
       {
         "Date": "2026-11-22",
         "Time": "All day",
-        "Event": "Check Ella\u2019s Dinner Money",
+        "Event": "Check Ella’s Dinner Money",
         "Who": "",
         "Location": "",
         "Notes": "",
@@ -3965,19 +3965,19 @@
         "_row": 82,
         "Date": "2026-12-27",
         "Time": "All day",
-        "Event": "\ud83c\udf82 Emma's Birthday",
+        "Event": "🎂 Emma's Birthday",
         "Who": "Emma",
         "Location": "",
         "Notes": ""
       }
     ]
   },
-  "\ud83d\uded2 Shopping List": {
+  "🛒 Shopping List": {
     "headers": [
       "Item",
       "Quantity",
       "Added By",
-      "Done \u2713",
+      "Done ✓",
       "Category",
       "@"
     ],
@@ -3987,20 +3987,20 @@
         "Item": "Oat Milk",
         "Quantity": "2 cartons",
         "Added By": "",
-        "Done \u2713": "",
+        "Done ✓": "",
         "Category": "Dairy",
         "@": ""
       }
     ]
   },
-  "\u2705 Chores": {
+  "✅ Chores": {
     "headers": [
       "Task",
       "Assigned To",
       "Due Date",
       "Frequency",
       "Day",
-      "Done \u2713",
+      "Done ✓",
       "Notes"
     ],
     "rows": [
@@ -4011,12 +4011,12 @@
         "Due Date": "",
         "Frequency": "Weekly",
         "Day": "Wednesday",
-        "Done \u2713": "",
+        "Done ✓": "",
         "Notes": ""
       }
     ]
   },
-  "\ud83c\udf7d\ufe0f Meal Plan": {
+  "🍽️ Meal Plan": {
     "headers": [
       "Day",
       "Breakfast",
@@ -4083,7 +4083,7 @@
       }
     ]
   },
-  "\ud83d\udccb School & Activities": {
+  "📋 School & Activities": {
     "headers": [
       "Child",
       "Activity",
@@ -4098,7 +4098,7 @@
         "Activity": "School",
         "Day/Time": "Mon-Fri 8:45-3:25",
         "Location": "Fairfield Park",
-        "Notes": "Dickens Boulevard, Hitchin, SG4 7SS \u2014 Year 3 DB"
+        "Notes": "Dickens Boulevard, Hitchin, SG4 7SS — Year 3 DB"
       },
       {
         "_row": 3,
@@ -4106,7 +4106,7 @@
         "Activity": "School",
         "Day/Time": "Mon-Fri 8:00-3:00",
         "Location": "Pix Brook Academy",
-        "Notes": "Arlesey Road, Stotfold, SG5 4HB \u2014 Year 5, Pankhurst Class"
+        "Notes": "Arlesey Road, Stotfold, SG5 4HB — Year 5, Pankhurst Class"
       },
       {
         "_row": 4,
@@ -4130,7 +4130,7 @@
         "Activity": "Stretch & Flex (BX Dance)",
         "Day/Time": "Thu 5:00pm",
         "Location": "BX Dance",
-        "Notes": "Weekly class \u2014 both attend"
+        "Notes": "Weekly class — both attend"
       },
       {
         "_row": 7,
@@ -4138,7 +4138,7 @@
         "Activity": "Diving",
         "Day/Time": "Sat 1:30pm",
         "Location": "Luton Diving Centre",
-        "Notes": "Weekly class \u2014 both attend"
+        "Notes": "Weekly class — both attend"
       },
       {
         "_row": 8,
@@ -4190,7 +4190,7 @@
       }
     ]
   },
-  "\ud83d\udcb0 Budget": {
+  "💰 Budget": {
     "headers": [],
     "rows": [
       [
@@ -4203,7 +4203,7 @@
       ]
     ]
   },
-  "\ud83d\udcdd Announcements": {
+  "📝 Announcements": {
     "headers": [],
     "rows": [
       [
@@ -4214,7 +4214,7 @@
       ]
     ]
   },
-  "\ud83d\udccc To-Do": {
+  "📌 To-Do": {
     "headers": [
       "Task",
       "Assigned To",
@@ -4230,7 +4230,7 @@
         "Task": "Apply for passport renewal",
         "Assigned To": "Simon & Emma",
         "Due Date": "2026-06-08",
-        "Priority": "\ud83d\udd34 High",
+        "Priority": "🔴 High",
         "Done": "",
         "Notes": "URGENT - expires tomorrow!",
         "Created": "2026-06-08"
@@ -4240,7 +4240,7 @@
         "Task": "Order new school shoes for Ella",
         "Assigned To": "Emma",
         "Due Date": "2026-06-20",
-        "Priority": "\ud83d\udfe1 Medium",
+        "Priority": "🟡 Medium",
         "Done": "",
         "Notes": "Check uniform shop sizes",
         "Created": "2026-06-06"
@@ -4250,7 +4250,7 @@
         "Task": "Wash swimming kits",
         "Assigned To": "Simon",
         "Due Date": "",
-        "Priority": "\ud83d\udfe2 Low",
+        "Priority": "🟢 Low",
         "Done": "",
         "Notes": "Both Ava + Ella kits for next week",
         "Created": "2026-06-09"
@@ -4260,7 +4260,7 @@
         "Task": "Book summer holiday activities",
         "Assigned To": "Emma",
         "Due Date": "2026-06-15",
-        "Priority": "\ud83d\udfe1 Medium",
+        "Priority": "🟡 Medium",
         "Done": "",
         "Notes": "Research local holiday clubs",
         "Created": "2026-06-06"
@@ -4270,7 +4270,7 @@
         "Task": "Check Ava's bike tyres",
         "Assigned To": "Simon",
         "Due Date": "",
-        "Priority": "\ud83d\udfe2 Low",
+        "Priority": "🟢 Low",
         "Done": "",
         "Notes": "Pump up if flat",
         "Created": "2026-06-06"
@@ -4280,9 +4280,9 @@
         "Task": "Confirm HBS gymnastics dates",
         "Assigned To": "Emma",
         "Due Date": "2026-06-30",
-        "Priority": "\ud83d\udfe1 Medium",
+        "Priority": "🟡 Medium",
         "Done": "",
-        "Notes": "Ava Fri 6pm, Ella Fri 7pm \u2014 check summer schedule",
+        "Notes": "Ava Fri 6pm, Ella Fri 7pm — check summer schedule",
         "Created": "2026-06-06"
       },
       {
@@ -4290,7 +4290,7 @@
         "Task": "Buy birthday present for Ella",
         "Assigned To": "Simon",
         "Due Date": "2026-09-15",
-        "Priority": "\ud83d\udd34 High",
+        "Priority": "🔴 High",
         "Done": "",
         "Notes": "Ella's birthday Sept 20!",
         "Created": "2026-06-06"
@@ -4300,9 +4300,9 @@
         "Task": "Sort out old clothes for charity",
         "Assigned To": "Emma",
         "Due Date": "",
-        "Priority": "\ud83d\udfe2 Low",
+        "Priority": "🟢 Low",
         "Done": "",
-        "Notes": "Both girls \u2014 outgrown items",
+        "Notes": "Both girls — outgrown items",
         "Created": "2026-06-06"
       },
       {
@@ -4310,14 +4310,14 @@
         "Task": "Top up Ella's dinner money",
         "Assigned To": "Simon",
         "Due Date": "",
-        "Priority": "\ud83d\udd34 High",
+        "Priority": "🔴 High",
         "Done": "",
-        "Notes": "Balance: \u00a32.55 - Pix Brook Academy",
+        "Notes": "Balance: £2.55 - Pix Brook Academy",
         "Created": ""
       }
     ]
   },
-  "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Family Members": {
+  "👨‍👩‍👧‍👧 Family Members": {
     "headers": [
       "Name",
       "Role",
@@ -4361,11 +4361,11 @@
         "Email": "",
         "Phone": "",
         "DOB": "20/09/2015",
-        "Notes": "Year 5 at Pix Brook Academy \u2014 Pankhurst Class"
+        "Notes": "Year 5 at Pix Brook Academy — Pankhurst Class"
       }
     ]
   },
-  "\ud83d\udcde Important Contacts": {
+  "📞 Important Contacts": {
     "headers": [
       "Name",
       "Type",
@@ -4382,7 +4382,7 @@
         "Phone": "01462 830000",
         "Email": "office@fairfieldparklower.uk",
         "Address": "Dickens Boulevard, Fairfield Park, Hitchin, SG4 7SS",
-        "Notes": "Year 3 DB \u2014 School hours 8:45-3:25 \u2014 Main Office Option 1"
+        "Notes": "Year 3 DB — School hours 8:45-3:25 — Main Office Option 1"
       },
       {
         "_row": 3,
@@ -4391,7 +4391,7 @@
         "Phone": "01462 416243",
         "Email": "pixbrook@bestacademies.org.uk",
         "Address": "Arlesey Road, Stotfold, Church End, Central Bedfordshire, SG5 4HB",
-        "Notes": "Year 5 \u2014 School hours 8:00-3:00"
+        "Notes": "Year 5 — School hours 8:00-3:00"
       },
       {
         "_row": 4,
