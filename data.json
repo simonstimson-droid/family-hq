@@ -775,26 +775,6 @@
         "Notes": ""
       },
       {
-        "Date": "2026-07-27",
-        "Time": "All day",
-        "Event": "Ella & Ava - Nanny & Gramp's",
-        "Who": "",
-        "Location": "Tudor Cottage, Great Green, Pirton, SG5 3QD",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "6ok8ahehtgr9thau8c76ispjng_20260727"
-      },
-      {
-        "Date": "2026-07-27",
-        "Time": "All day",
-        "Event": "Emma - London",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "nv10dhjiqunsunkskjoaefol0k"
-      },
-      {
         "Date": "2026-07-28",
         "Time": "All day",
         "Event": "Emma @ home with both (no BX today)",
@@ -3960,6 +3940,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_88s42dhl8op3cba56l232b9k6d1j4ba18p242ba38l1j8ci36opjahi660_20261124T160000Z"
+      },
+      {
+        "Date": "2026-11-25",
+        "Time": "All day",
+        "Event": "Thomas Birthday ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_88sk4gi360rk2b9k74s34b9k6p0k4ba2750k8ba26crk4d1h8ks3gda270_20261125"
       },
       {
         "_row": 82,
