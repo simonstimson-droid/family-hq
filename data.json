@@ -794,16 +794,6 @@
         "_cal_id": "diug865d692j9mj4a1gfdp0oo8"
       },
       {
-        "Date": "2026-07-30",
-        "Time": "17:45-19:00",
-        "Event": "Ava beavers ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8krk4e1k68o4aba174s3ab9k60p3ib9p8oq3gb9p6l24ch9o6p134d1j8k_20260730T164500Z"
-      },
-      {
         "Date": "2026-07-31",
         "Time": "All day",
         "Event": "Emma at home",
@@ -3880,6 +3870,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20261126T174500Z"
+      },
+      {
+        "Date": "2026-11-27",
+        "Time": "18:00-19:00",
+        "Event": "Ava Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "8vq8ro32irkbb3893gvcvgqrdg_20261127T180000Z"
       },
       {
         "_row": 82,
