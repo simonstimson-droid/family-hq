@@ -786,16 +786,6 @@
       {
         "Date": "2026-07-31",
         "Time": "All day",
-        "Event": "Emma at home",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "67s8g682n7ebtrmpm2efltqrso"
-      },
-      {
-        "Date": "2026-07-31",
-        "Time": "All day",
         "Event": "⛺ Camping - Henlow Bridge Lakes",
         "Who": "",
         "Location": "",
@@ -3880,6 +3870,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "3h6o1juefds6ne7npfdaei2d2s_20261128T133000Z"
+      },
+      {
+        "Date": "2026-11-29",
+        "Time": "All day",
+        "Event": "Check Ella’s Dinner Money",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_68r36dpi88q48b9o6csj2b9k6oq3eba18co3cb9p75342h1j64q32e1g8c_20261129"
       },
       {
         "_row": 82,
