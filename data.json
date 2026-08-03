@@ -784,16 +784,6 @@
         "Notes": ""
       },
       {
-        "Date": "2026-07-31",
-        "Time": "All day",
-        "Event": "⛺ Camping - Henlow Bridge Lakes",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "ftddkbqp02itku2g8coltm8ols"
-      },
-      {
         "_row": 70,
         "Date": "2026-08-01",
         "Time": "13:30-14:30",
@@ -3880,6 +3870,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "sntvtg89tspcndl8h3k8soeh9k_20261130T181500Z"
+      },
+      {
+        "Date": "2026-12-01",
+        "Time": "All day",
+        "Event": "Pay NI",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6gq46c9j68ojgb9p6d348b9k8co4cb9o70o44b9g68qj6gq47123ggpk6k_20261201"
       },
       {
         "_row": 82,
