@@ -947,71 +947,7 @@
     ]
   },
   "🍽️ Meal Plan": {
-    "headers": [
-      "Day",
-      "Breakfast",
-      "Lunch",
-      "Dinner",
-      "Notes"
-    ],
-    "rows": [
-      {
-        "_row": 2,
-        "Day": "Monday",
-        "Breakfast": "Cereal / Toast",
-        "Lunch": "Sandwiches",
-        "Dinner": "Spaghetti Bolognese",
-        "Notes": ""
-      },
-      {
-        "_row": 3,
-        "Day": "Tuesday",
-        "Breakfast": "Porridge",
-        "Lunch": "School lunch",
-        "Dinner": "Chicken stir-fry",
-        "Notes": ""
-      },
-      {
-        "_row": 4,
-        "Day": "Wednesday",
-        "Breakfast": "Cereal / Toast",
-        "Lunch": "School leftovers",
-        "Dinner": "Fish fingers & chips",
-        "Notes": "Ava swimming after school"
-      },
-      {
-        "_row": 5,
-        "Day": "Thursday",
-        "Breakfast": "Pancakes",
-        "Lunch": "Wraps",
-        "Dinner": "Pizza night",
-        "Notes": ""
-      },
-      {
-        "_row": 6,
-        "Day": "Friday",
-        "Breakfast": "Cereal / Toast",
-        "Lunch": "School lunch",
-        "Dinner": "Takeaway / pub",
-        "Notes": "Charlie Bingham and beers"
-      },
-      {
-        "_row": 7,
-        "Day": "Saturday",
-        "Breakfast": "Full English",
-        "Lunch": "Soup & rolls",
-        "Dinner": "Roast chicken",
-        "Notes": ""
-      },
-      {
-        "_row": 8,
-        "Day": "Sunday",
-        "Breakfast": "Brunch",
-        "Lunch": "Family meal",
-        "Dinner": "Easy tea / sandwiches",
-        "Notes": "Prep for week ahead"
-      }
-    ]
+    "error": "<HttpError 503 when requesting https://sheets.googleapis.com/v4/spreadsheets/1zYs5s66J2nyv-LmaZWBL2Tzhu5vicrkOq3nDC5LSFXA/values/%27%F0%9F%8D%BD%EF%B8%8F%20Meal%20Plan%27%21A1%3AZ100?alt=json returned \"The service is currently unavailable.\". Details: \"The service is currently unavailable.\">"
   },
   "📋 School & Activities": {
     "headers": [
