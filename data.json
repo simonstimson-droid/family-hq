@@ -903,7 +903,25 @@
     ]
   },
   "🛒 Shopping List": {
-    "error": "<HttpError 503 when requesting https://sheets.googleapis.com/v4/spreadsheets/1zYs5s66J2nyv-LmaZWBL2Tzhu5vicrkOq3nDC5LSFXA/values/%27%F0%9F%9B%92%20Shopping%20List%27%21A1%3AZ100?alt=json returned \"The service is currently unavailable.\". Details: \"The service is currently unavailable.\">"
+    "headers": [
+      "Item",
+      "Quantity",
+      "Added By",
+      "Done ✓",
+      "Category",
+      "@"
+    ],
+    "rows": [
+      {
+        "_row": 2,
+        "Item": "Oat Milk",
+        "Quantity": "2 cartons",
+        "Added By": "",
+        "Done ✓": "",
+        "Category": "Dairy",
+        "@": ""
+      }
+    ]
   },
   "✅ Chores": {
     "headers": [
