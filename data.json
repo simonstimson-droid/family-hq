@@ -924,27 +924,7 @@
     ]
   },
   "✅ Chores": {
-    "headers": [
-      "Task",
-      "Assigned To",
-      "Due Date",
-      "Frequency",
-      "Day",
-      "Done ✓",
-      "Notes"
-    ],
-    "rows": [
-      {
-        "_row": 2,
-        "Task": "Put Bins Out",
-        "Assigned To": "Simon",
-        "Due Date": "",
-        "Frequency": "Weekly",
-        "Day": "Wednesday",
-        "Done ✓": "",
-        "Notes": ""
-      }
-    ]
+    "error": "<HttpError 503 when requesting https://sheets.googleapis.com/v4/spreadsheets/1zYs5s66J2nyv-LmaZWBL2Tzhu5vicrkOq3nDC5LSFXA/values/%27%E2%9C%85%20Chores%27%21A1%3AZ100?alt=json returned \"The service is currently unavailable.\". Details: \"The service is currently unavailable.\">"
   },
   "🍽️ Meal Plan": {
     "headers": [
