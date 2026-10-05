@@ -1144,6 +1144,16 @@
       },
       {
         "Date": "2026-10-14",
+        "Time": "10:50-11:50",
+        "Event": "Ava appointment ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_68s30dhj84q34ba170rk6b9k852k4b9p68oj6ba164p34c1j6h1k6cq664"
+      },
+      {
+        "Date": "2026-10-14",
         "Time": "12:00-12:30",
         "Event": "Ella - Gymnastics",
         "Who": "",
