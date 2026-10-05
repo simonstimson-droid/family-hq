@@ -883,16 +883,6 @@
         "Notes": "Turning 11!"
       },
       {
-        "Date": "2026-10-05",
-        "Time": "15:00-16:00",
-        "Event": "Ella - Netball",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_74p4cd256gp3cb9o8kpj0b9k6h2k2b9p6cp36b9o750k6gq26ko42da58k_20261005T140000Z"
-      },
-      {
         "Date": "2026-10-06",
         "Time": "17:30-18:00",
         "Event": "Ava - Singing Lesson",
@@ -1004,6 +994,16 @@
       },
       {
         "Date": "2026-10-09",
+        "Time": "14:00-15:00",
+        "Event": "Thea Bus",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6gs30ci26gq3gba484p36b9k74rk2ba289338b9i6cqk4d9i8d1j2d1g74"
+      },
+      {
+        "Date": "2026-10-09",
         "Time": "19:00-20:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
@@ -1061,6 +1061,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_cksmcdb4cko36oj671ij8opl6hgm4pb5c5j3ip1oc5i38ohk6hgm2p34clr6arjkcdnmq"
+      },
+      {
+        "Date": "2026-10-11",
+        "Time": "14:00-15:00",
+        "Event": "Zara round ours ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_84r36gi584pjeba4711jeb9k8krjeba28crj0ba68d0j6d1p8gok8dhg70"
       },
       {
         "Date": "2026-10-12",
