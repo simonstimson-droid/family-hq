@@ -883,16 +883,6 @@
         "Notes": "Turning 11!"
       },
       {
-        "Date": "2026-10-06",
-        "Time": "17:30-18:00",
-        "Event": "Ava - Singing Lesson",
-        "Who": "",
-        "Location": "Home",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_6cq4cg9p68ojgb9o68s3ib9k70ojgb9p68sk8b9n8cs3ie1h8p33gg9h60_20261006T163000Z"
-      },
-      {
         "Date": "2026-10-07",
         "Time": "All day",
         "Event": "Sarah tea",
@@ -4349,6 +4339,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_84pkac9n8p34cb9g6cok8b9k6oqjib9o65146b9h6d338ca38cpjghho6k_20270203T150000Z"
+      },
+      {
+        "Date": "2027-02-03",
+        "Time": "18:30-19:00",
+        "Event": "Ava swimming ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_60oj8gi58ks48b9g850jib9k68pkcba160sjab9l6t1k4gpo6coj4e9m8c_20270203T183000Z"
       }
     ]
   },
