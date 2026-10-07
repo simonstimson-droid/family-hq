@@ -894,16 +894,6 @@
       },
       {
         "Date": "2026-10-07",
-        "Time": "15:00-16:00",
-        "Event": "Ella - Young Voices",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_84pkac9n8p34cb9g6cok8b9k6oqjib9o65146b9h6d338ca38cpjghho6k_20261007T140000Z"
-      },
-      {
-        "Date": "2026-10-07",
         "Time": "18:30-19:00",
         "Event": "Ava swimming ",
         "Who": "",
@@ -4359,6 +4349,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8oq3cdpi64q3cba36grjeb9k74qjab9p6p248b9l6oskac246933eh9h70_20270204T120000Z"
+      },
+      {
+        "Date": "2027-02-04",
+        "Time": "15:00-16:00",
+        "Event": "Ella - Choir",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6orjge2260pk6b9m61130b9k6crj4b9o651kaba6692k8gpm6oqjcd1o88_20270204T150000Z"
       }
     ]
   },
