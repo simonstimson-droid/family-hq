@@ -1334,6 +1334,16 @@
       },
       {
         "Date": "2026-10-20",
+        "Time": "10:00-11:00",
+        "Event": "Lister follow up Emma",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6cs32ga28kp46ba58cs3gb9k74r36b9o610k2b9p6sqk4ea670sj2g9p8g"
+      },
+      {
+        "Date": "2026-10-20",
         "Time": "16:00-19:00",
         "Event": "Parent Consultations (face to face)",
         "Who": "",
