@@ -884,16 +884,6 @@
       },
       {
         "Date": "2026-10-08",
-        "Time": "07:30-08:30",
-        "Event": "Ava Poppies ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_68o38h9k6sr3ab9j6go4ab9k7533gba18p0k8ba36p0jgga388q32ca268_20261008T063000Z"
-      },
-      {
-        "Date": "2026-10-08",
         "Time": "12:00-12:30",
         "Event": "Ella - Homework Club",
         "Who": "",
@@ -2083,6 +2073,16 @@
       },
       {
         "Date": "2026-11-13",
+        "Time": "16:45-17:45",
+        "Event": "Ellla and Ava hair",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8ork4e1m6h13ab9g89338b9k8ko3iba16sp34b9i6p248ga364qj8c9n68"
+      },
+      {
+        "Date": "2026-11-13",
         "Time": "19:00-20:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
@@ -2302,16 +2302,6 @@
         "_cal_id": "7lv3kfr2d3bpeoc0me9mfbec2c_20261121T133000Z"
       },
       {
-        "Date": "2026-11-21",
-        "Time": "15:30-16:30",
-        "Event": "Ellla and Ava hair",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8ork4e1m6h13ab9g89338b9k8ko3iba16sp34b9i6p248ga364qj8c9n68"
-      },
-      {
         "Date": "2026-11-22",
         "Time": "All day",
         "Event": "Clean Ava’s pins",
@@ -2330,6 +2320,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_68r36dpi88q48b9o6csj2b9k6oq3eba18co3cb9p75342h1j64q32e1g8c_20261122"
+      },
+      {
+        "Date": "2026-11-22",
+        "Time": "10:30-11:30",
+        "Event": "Ava at Esmes party ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_64pj2da660q4cba664r46b9k8cojaba26533ib9h65338gi16kq42da160"
       },
       {
         "Date": "2026-11-23",
