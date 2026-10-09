@@ -983,6 +983,16 @@
         "_cal_id": "_74p4cd256gp3cb9o8kpj0b9k6h2k2b9p6cp36b9o750k6gq26ko42da58k_20261012T140000Z"
       },
       {
+        "Date": "2026-10-12",
+        "Time": "19:00-19:30",
+        "Event": "Parents evening appointments go live",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_84s4cca16krkcb9l8h33ab9k68q44b9o88q46b9p8ko3edpj8gp30e9p6s"
+      },
+      {
         "Date": "2026-10-13",
         "Time": "All day",
         "Event": "[Ava] Headteacher Special Assembly @ DB",
@@ -4359,6 +4369,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20270205T190000Z"
+      },
+      {
+        "Date": "2027-02-06",
+        "Time": "10:00-10:45",
+        "Event": "💃 BX Dance - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20270206T100000Z"
       }
     ]
   },
