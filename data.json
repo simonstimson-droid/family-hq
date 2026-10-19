@@ -2283,6 +2283,16 @@
       },
       {
         "Date": "2026-11-30",
+        "Time": "All day",
+        "Event": "Book Henlow",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8osj4c9h8l238ba16d23cb9k6p0jgb9p88rj8ba560pj2gq28oojee9n6k"
+      },
+      {
+        "Date": "2026-11-30",
         "Time": "09:00-10:00",
         "Event": "Pay PGL",
         "Who": "",
