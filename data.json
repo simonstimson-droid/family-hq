@@ -1323,6 +1323,16 @@
       },
       {
         "Date": "2026-10-29",
+        "Time": "17:00-18:00",
+        "Event": "Hair",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8d0j4c1h64r34b9l6kojib9k8cr3iba260q32b9i6krjedho6cojigq574"
+      },
+      {
+        "Date": "2026-10-29",
         "Time": "17:45-18:30",
         "Event": "Ava Beavers",
         "Who": "",
