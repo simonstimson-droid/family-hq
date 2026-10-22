@@ -894,16 +894,6 @@
       },
       {
         "Date": "2026-10-22",
-        "Time": "12:00-12:30",
-        "Event": "Ella - Homework Club",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8oq3cdpi64q3cba36grjeb9k74qjab9p6p248b9l6oskac246933eh9h70_20261022T110000Z"
-      },
-      {
-        "Date": "2026-10-22",
         "Time": "15:00-16:00",
         "Event": "Ella - Choir",
         "Who": "",
@@ -4429,6 +4419,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20270218T174500Z"
+      },
+      {
+        "Date": "2027-02-18",
+        "Time": "18:00-19:30",
+        "Event": "[Ava] Cubs",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "4bc3hp5571339dq4snrtggd3p4_20270218T180000Z"
       }
     ]
   },
