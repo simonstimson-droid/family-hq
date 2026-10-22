@@ -894,56 +894,6 @@
       },
       {
         "Date": "2026-10-22",
-        "Time": "16:00-19:00",
-        "Event": "Parent Consultations (online)",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "ud02t16cutojkakeuak0mm4vi0"
-      },
-      {
-        "Date": "2026-10-22",
-        "Time": "17:20-18:20",
-        "Event": "Ava’s parents evening teams ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_6kqk6gpo6kpj8ba4711k6b9k6gr48ba16124cba16523idq36924cd9l8g"
-      },
-      {
-        "Date": "2026-10-22",
-        "Time": "17:45-18:30",
-        "Event": "Ava Beavers",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "rs0b9rk6pmnqmovs2c26sqo84k_20261022T164500Z"
-      },
-      {
-        "Date": "2026-10-22",
-        "Time": "18:00-19:30",
-        "Event": "[Ava] Cubs",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "4bc3hp5571339dq4snrtggd3p4_20261022T170000Z"
-      },
-      {
-        "Date": "2026-10-22",
-        "Time": "18:40-19:40",
-        "Event": "Ava parents evening ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_8gsj0g9n88oj6ba46cokab9k712jgb9o60qjib9i6h0jccq66p346hhj8k"
-      },
-      {
-        "Date": "2026-10-22",
         "Time": "20:00-21:00",
         "Event": "Parents evening online ",
         "Who": "",
@@ -4429,6 +4379,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "ol6lse6rms26dbf0n6qvd4rcns"
+      },
+      {
+        "Date": "2027-02-19",
+        "Time": "19:00-20:00",
+        "Event": "Ella Gymnastics at HBS Revolutions",
+        "Who": "",
+        "Location": "Hitchin Boys' School, Grammar School Lodge, Grammar School Walk, Hitchin SG5 1JB, UK",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20270219T190000Z"
       }
     ]
   },
