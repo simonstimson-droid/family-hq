@@ -894,16 +894,6 @@
       },
       {
         "Date": "2026-10-22",
-        "Time": "15:00-16:00",
-        "Event": "Ella - Choir",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_6orjge2260pk6b9m61130b9k6crj4b9o651kaba6692k8gpm6oqjcd1o88_20261022T140000Z"
-      },
-      {
-        "Date": "2026-10-22",
         "Time": "16:00-19:00",
         "Event": "Parent Consultations (online)",
         "Who": "",
@@ -4429,6 +4419,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "4bc3hp5571339dq4snrtggd3p4_20270218T180000Z"
+      },
+      {
+        "Date": "2027-02-19",
+        "Time": "All day",
+        "Event": "🏫 Half Term - Both Schools",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "ol6lse6rms26dbf0n6qvd4rcns"
       }
     ]
   },
