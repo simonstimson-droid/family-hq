@@ -2263,6 +2263,16 @@
       },
       {
         "Date": "2026-12-04",
+        "Time": "10:00-11:00",
+        "Event": "Ava play",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6514ah9p8kp44b9g8csk6b9k6soj0b9o85144b9m712jcg9o74rk2dhp74"
+      },
+      {
+        "Date": "2026-12-04",
         "Time": "19:00-20:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
