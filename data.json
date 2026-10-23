@@ -894,16 +894,6 @@
       },
       {
         "Date": "2026-10-23",
-        "Time": "09:00-10:00",
-        "Event": "Nails ",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "_60qjcga385348b9o88r3cb9k60sjcb9p70ojgb9i8gqjac9n70q4ch9l6g"
-      },
-      {
-        "Date": "2026-10-23",
         "Time": "19:00-20:00",
         "Event": "Ella Gymnastics at HBS Revolutions",
         "Who": "",
@@ -4379,6 +4369,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "n1rqva9bbu1b92ktsv3mkhhq20_20270219T190000Z"
+      },
+      {
+        "Date": "2027-02-20",
+        "Time": "10:00-10:45",
+        "Event": "💃 BX Dance - Ella",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20270220T100000Z"
       }
     ]
   },
