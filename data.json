@@ -894,16 +894,6 @@
       },
       {
         "Date": "2026-10-24",
-        "Time": "10:00-10:45",
-        "Event": "💃 BX Dance - Ella",
-        "Who": "",
-        "Location": "",
-        "Notes": "",
-        "_source": "calendar",
-        "_cal_id": "fbrfld5d1ha8133t57j7mgfldc_20261024T090000Z"
-      },
-      {
-        "Date": "2026-10-24",
         "Time": "13:30-14:30",
         "Event": "🤿 Diving - Ella",
         "Who": "",
@@ -1170,6 +1160,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_8d244ga674ojib9g6533ab9k6koj8ba284rj0b9i74rj6d238cs3cga38c"
+      },
+      {
+        "Date": "2026-10-30",
+        "Time": "13:00-16:00",
+        "Event": "Sofia ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_8cq44h9m8l0k2b9h6kskcb9k6h2j6ba18514aba5750j6ca56p14cgpn6k"
       },
       {
         "Date": "2026-10-30",
