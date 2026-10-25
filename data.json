@@ -1253,6 +1253,16 @@
       },
       {
         "Date": "2026-11-03",
+        "Time": "All day",
+        "Event": "Car cleaning ",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_6gr3aca5612kcb9l6p2jcb9k8d242ba284ojgba688rj8dhl6ks34ga68c"
+      },
+      {
+        "Date": "2026-11-03",
         "Time": "17:30-18:00",
         "Event": "Ava - Singing Lesson",
         "Who": "",
@@ -4409,6 +4419,16 @@
         "Notes": "",
         "_source": "calendar",
         "_cal_id": "_68r36dpi88q48b9o6csj2b9k6oq3eba18co3cb9p75342h1j64q32e1g8c_20270221"
+      },
+      {
+        "Date": "2027-02-22",
+        "Time": "15:00-16:00",
+        "Event": "Ella - Netball",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_74p4cd256gp3cb9o8kpj0b9k6h2k2b9p6cp36b9o750k6gq26ko42da58k_20270222T150000Z"
       }
     ]
   },
