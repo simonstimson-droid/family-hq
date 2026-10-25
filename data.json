@@ -944,6 +944,16 @@
       },
       {
         "Date": "2026-10-26",
+        "Time": "10:00-11:00",
+        "Event": "Call Stanmore",
+        "Who": "",
+        "Location": "",
+        "Notes": "",
+        "_source": "calendar",
+        "_cal_id": "_70pjegpg890j0ba28gs48b9k8d2jab9o6oqj8b9m7134ce9i89236chn68"
+      },
+      {
+        "Date": "2026-10-26",
         "Time": "15:00-16:00",
         "Event": "Ella - Netball",
         "Who": "",
